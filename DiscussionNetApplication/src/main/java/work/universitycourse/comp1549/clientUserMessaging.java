@@ -64,7 +64,7 @@ public class clientUserMessaging extends javax.swing.JFrame {
         right_arrow_icon_4 = new javax.swing.JLabel();
         right_arrow_icon_5 = new javax.swing.JLabel();
         user_messaging_main_panel = new javax.swing.JPanel();
-        user_messages_textfield = new javax.swing.JTextField();
+        user_messages_textfield = new RoundJTextField(50);
         user_messages_send_button = new javax.swing.JButton();
         messages_label = new javax.swing.JLabel();
         client_details_panel_2 = new javax.swing.JPanel();
@@ -92,9 +92,7 @@ public class clientUserMessaging extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(242, 244, 250));
-        setMaximumSize(new java.awt.Dimension(1090, 708));
         setMinimumSize(new java.awt.Dimension(1090, 708));
-        setPreferredSize(new java.awt.Dimension(1090, 708));
         setResizable(false);
 
         header_panel_1.setBackground(new java.awt.Color(255, 255, 255));
@@ -623,10 +621,11 @@ public class clientUserMessaging extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(client_control_panel_label_2)
-                    .addComponent(client_control_panel_label_1)
-                    .addComponent(nav_icon))
+                .addGroup(header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nav_icon, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(client_control_panel_label_2)
+                        .addComponent(client_control_panel_label_1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
