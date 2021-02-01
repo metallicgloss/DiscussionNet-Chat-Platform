@@ -5,6 +5,9 @@
  */
 package work.universitycourse.comp1549;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author Daniel Browne
@@ -32,17 +35,16 @@ public class identitySetup extends javax.swing.JFrame {
         identity_setup_title_part_1 = new javax.swing.JLabel();
         identity_setup_title_part_2 = new javax.swing.JLabel();
         assigned_ID_nuber_label = new javax.swing.JLabel();
-        assigned_ID_number_textbox = new javax.swing.JTextField();
+        assigned_ID_number_textbox = new RoundJTextField();
         server_IP_label = new javax.swing.JLabel();
-        server_IP_textbox = new javax.swing.JTextField();
+        server_IP_textbox = new RoundJTextField();
         server_port_label = new javax.swing.JLabel();
-        server_port_textbox = new javax.swing.JTextField();
+        server_port_textbox = new RoundJTextField();
         authenticate_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(854, 519));
         setMinimumSize(new java.awt.Dimension(854, 519));
-        setPreferredSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
         main_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -61,13 +63,25 @@ public class identitySetup extends javax.swing.JFrame {
         identity_setup_title_part_2.setText("Identity Setup");
 
         assigned_ID_nuber_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        assigned_ID_nuber_label.setForeground(new java.awt.Color(47, 46, 65));
         assigned_ID_nuber_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ID_Icon.png"))); // NOI18N
         assigned_ID_nuber_label.setText("Assigned ID Number");
 
+        assigned_ID_number_textbox.setForeground(new java.awt.Color(0, 63, 143));
+        assigned_ID_number_textbox.setCaretColor(new java.awt.Color(0, 63, 143));
+        assigned_ID_number_textbox.setSelectionColor(new java.awt.Color(0, 63, 143));
+        assigned_ID_number_textbox.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                assigned_ID_number_textboxFocusGained(evt);
+            }
+        });
+
         server_IP_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        server_IP_label.setForeground(new java.awt.Color(47, 46, 65));
         server_IP_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configure_ip_icon.png"))); // NOI18N
         server_IP_label.setText("Server IP Address");
 
+        server_IP_textbox.setForeground(new java.awt.Color(0, 63, 143));
         server_IP_textbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 server_IP_textboxActionPerformed(evt);
@@ -75,9 +89,11 @@ public class identitySetup extends javax.swing.JFrame {
         });
 
         server_port_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        server_port_label.setForeground(new java.awt.Color(47, 46, 65));
         server_port_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/port_icon.png"))); // NOI18N
         server_port_label.setText("Server Port");
 
+        server_port_textbox.setForeground(new java.awt.Color(0, 63, 143));
         server_port_textbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 server_port_textboxActionPerformed(evt);
@@ -170,6 +186,12 @@ public class identitySetup extends javax.swing.JFrame {
     private void server_port_textboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_server_port_textboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_server_port_textboxActionPerformed
+
+    private void assigned_ID_number_textboxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assigned_ID_number_textboxFocusGained
+
+    
+       
+    }//GEN-LAST:event_assigned_ID_number_textboxFocusGained
 
     /**
      * @param args the command line arguments

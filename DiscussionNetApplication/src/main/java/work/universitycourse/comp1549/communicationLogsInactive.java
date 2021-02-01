@@ -33,7 +33,6 @@ public class communicationLogsInactive extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(854, 519));
         setMinimumSize(new java.awt.Dimension(854, 519));
-        setPreferredSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
