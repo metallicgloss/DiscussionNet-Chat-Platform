@@ -30,63 +30,61 @@ public class ClientUserMessaging extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel25 = new javax.swing.JLabel();
-        header_panel_1 = new javax.swing.JPanel();
-        discussionNet_title = new javax.swing.JLabel();
-        side_panel = new javax.swing.JPanel();
-        client_features_label = new javax.swing.JLabel();
-        user_messaging_label = new javax.swing.JLabel();
-        update_logs_label = new javax.swing.JLabel();
-        exit_app_label = new javax.swing.JLabel();
-        client_details_panel_1 = new javax.swing.JPanel();
-        client_details_icon = new javax.swing.JLabel();
-        client_details_label_1 = new javax.swing.JLabel();
-        client_details_label_2 = new javax.swing.JLabel();
-        server_details_panel_1 = new javax.swing.JPanel();
+        headerPanel1 = new javax.swing.JPanel();
+        discussionNetLabel = new javax.swing.JLabel();
+        sidePanel = new javax.swing.JPanel();
+        clientFeaturesLabel = new javax.swing.JLabel();
+        userMessagingLabel = new javax.swing.JLabel();
+        updateLogsLabel = new javax.swing.JLabel();
+        exitApplicationLabel = new javax.swing.JLabel();
+        clientDetailsPanel1 = new javax.swing.JPanel();
+        clientDetailsIcon = new javax.swing.JLabel();
+        clientDetailsLabel1 = new javax.swing.JLabel();
+        clientDetailsLabel2 = new javax.swing.JLabel();
+        serverDetailsPanel1 = new javax.swing.JPanel();
         server_details_icon = new javax.swing.JLabel();
-        server_details_label_1 = new javax.swing.JLabel();
-        server_details_label_2 = new javax.swing.JLabel();
-        footer_panel = new javax.swing.JPanel();
-        footer_text = new javax.swing.JLabel();
-        user_messaging_top_panel = new javax.swing.JPanel();
-        user_messaging_icon = new javax.swing.JLabel();
-        user_messaging_label_1 = new javax.swing.JLabel();
-        user_messaging_label_2 = new javax.swing.JLabel();
-        user_messaging_side_panel = new javax.swing.JPanel();
-        users_label = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        right_arrow_icon_1 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        right_arrow_icon_2 = new javax.swing.JLabel();
-        right_arrow_icon_3 = new javax.swing.JLabel();
-        right_arrow_icon_4 = new javax.swing.JLabel();
-        right_arrow_icon_5 = new javax.swing.JLabel();
-        user_messaging_main_panel = new javax.swing.JPanel();
-        user_messages_textfield = new RoundJTextField();
-        user_messages_send_button = new javax.swing.JButton();
-        messages_label = new javax.swing.JLabel();
-        client_details_panel_2 = new javax.swing.JPanel();
-        client_details_IP_label = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        client_details_port_label = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        client_details_ID_number_label = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        server_details_panel_2 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        header_panel_2 = new javax.swing.JPanel();
-        nav_icon = new javax.swing.JLabel();
-        client_control_panel_label_1 = new javax.swing.JLabel();
-        client_control_panel_label_2 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        serverDetailsLabel1 = new javax.swing.JLabel();
+        serverDetailsLabel2 = new javax.swing.JLabel();
+        footerPanel = new javax.swing.JPanel();
+        footerTextLabel = new javax.swing.JLabel();
+        userMessagingTopPanel = new javax.swing.JPanel();
+        userMessagingIconLabel = new javax.swing.JLabel();
+        userMessagingLabel1 = new javax.swing.JLabel();
+        userMessagingLabel2 = new javax.swing.JLabel();
+        userMessagingSidePanel = new javax.swing.JPanel();
+        usersLabel = new javax.swing.JLabel();
+        userLabel1 = new javax.swing.JLabel();
+        rightArrowIcon1 = new javax.swing.JLabel();
+        userLabel2 = new javax.swing.JLabel();
+        userLabel3 = new javax.swing.JLabel();
+        userLabel4 = new javax.swing.JLabel();
+        userLabel5 = new javax.swing.JLabel();
+        rightArrowIcon2 = new javax.swing.JLabel();
+        rightArrowIcon3 = new javax.swing.JLabel();
+        rightArrowIcon4 = new javax.swing.JLabel();
+        rightArrowIcon5 = new javax.swing.JLabel();
+        userMessagingMainPanel = new javax.swing.JPanel();
+        userMessagesTextfield = new RoundJTextField();
+        userMessagesButton = new javax.swing.JButton();
+        messagesLabel = new javax.swing.JLabel();
+        clientDetailsPanel2 = new javax.swing.JPanel();
+        clientDetailsIPAddressLabel = new javax.swing.JLabel();
+        clientDetailsIPAddressValueLabel = new javax.swing.JLabel();
+        clientDetailsConnectionPortLabel = new javax.swing.JLabel();
+        clientDetailsConnectionPortValueLabel = new javax.swing.JLabel();
+        clientDetailsAssignedIDNumberLabel = new javax.swing.JLabel();
+        clientDetailsAssignedIDNumberValueLabel = new javax.swing.JLabel();
+        serverDetailsPanel2 = new javax.swing.JPanel();
+        serverDetailsIPAddressLabel = new javax.swing.JLabel();
+        serverDetailsIPAddressValueLabel = new javax.swing.JLabel();
+        serverDetailsConnectionPortLabel = new javax.swing.JLabel();
+        serverDetailsConnectionPortValueLabel = new javax.swing.JLabel();
+        serverDetailsConnectionStatusLabel = new javax.swing.JLabel();
+        serverDetailsConnectionStatusValueLabel = new javax.swing.JLabel();
+        headerPanel2 = new javax.swing.JPanel();
+        navIconLabel = new javax.swing.JLabel();
+        clientControlPanelLabel1 = new javax.swing.JLabel();
+        clientControlPanelLabel2 = new javax.swing.JLabel();
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
 
@@ -95,538 +93,528 @@ public class ClientUserMessaging extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1090, 708));
         setResizable(false);
 
-        header_panel_1.setBackground(new java.awt.Color(255, 255, 255));
-        header_panel_1.setPreferredSize(new java.awt.Dimension(153, 43));
+        headerPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        headerPanel1.setPreferredSize(new java.awt.Dimension(153, 43));
 
-        discussionNet_title.setFont(new java.awt.Font("Montserrat SemiBold", 0, 16)); // NOI18N
-        discussionNet_title.setForeground(new java.awt.Color(0, 36, 109));
-        discussionNet_title.setText("DiscussionNet");
+        discussionNetLabel.setFont(new java.awt.Font("Montserrat SemiBold", 0, 16)); // NOI18N
+        discussionNetLabel.setForeground(new java.awt.Color(0, 36, 109));
+        discussionNetLabel.setText("DiscussionNet");
 
-        javax.swing.GroupLayout header_panel_1Layout = new javax.swing.GroupLayout(header_panel_1);
-        header_panel_1.setLayout(header_panel_1Layout);
-        header_panel_1Layout.setHorizontalGroup(
-            header_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(header_panel_1Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerPanel1Layout = new javax.swing.GroupLayout(headerPanel1);
+        headerPanel1.setLayout(headerPanel1Layout);
+        headerPanel1Layout.setHorizontalGroup(
+            headerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(discussionNet_title)
+                .addComponent(discussionNetLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        header_panel_1Layout.setVerticalGroup(
-            header_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(header_panel_1Layout.createSequentialGroup()
+        headerPanel1Layout.setVerticalGroup(
+            headerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(discussionNet_title)
+                .addComponent(discussionNetLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        side_panel.setBackground(new java.awt.Color(0, 36, 109));
-        side_panel.setForeground(new java.awt.Color(0, 36, 109));
-        side_panel.setToolTipText("");
-        side_panel.setPreferredSize(new java.awt.Dimension(154, 60));
+        sidePanel.setBackground(new java.awt.Color(0, 36, 109));
+        sidePanel.setForeground(new java.awt.Color(0, 36, 109));
+        sidePanel.setToolTipText("");
+        sidePanel.setPreferredSize(new java.awt.Dimension(154, 60));
 
-        client_features_label.setBackground(new java.awt.Color(255, 255, 255));
-        client_features_label.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
-        client_features_label.setForeground(new java.awt.Color(255, 255, 255));
-        client_features_label.setText("CLIENT FEATURES");
+        clientFeaturesLabel.setBackground(new java.awt.Color(255, 255, 255));
+        clientFeaturesLabel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        clientFeaturesLabel.setForeground(new java.awt.Color(255, 255, 255));
+        clientFeaturesLabel.setText("CLIENT FEATURES");
 
-        user_messaging_label.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
-        user_messaging_label.setForeground(new java.awt.Color(255, 255, 255));
-        user_messaging_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mail_icon.png"))); // NOI18N
-        user_messaging_label.setText("User Messaging");
+        userMessagingLabel.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        userMessagingLabel.setForeground(new java.awt.Color(255, 255, 255));
+        userMessagingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mail_icon.png"))); // NOI18N
+        userMessagingLabel.setText("User Messaging");
 
-        update_logs_label.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
-        update_logs_label.setForeground(new java.awt.Color(255, 255, 255));
-        update_logs_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file_icon.png"))); // NOI18N
-        update_logs_label.setText("Update Logs");
+        updateLogsLabel.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        updateLogsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        updateLogsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file_icon.png"))); // NOI18N
+        updateLogsLabel.setText("Update Logs");
 
-        exit_app_label.setBackground(new java.awt.Color(255, 255, 255));
-        exit_app_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        exit_app_label.setForeground(new java.awt.Color(255, 255, 255));
-        exit_app_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit_button.png"))); // NOI18N
-        exit_app_label.setText("Exit Application");
-        exit_app_label.addMouseListener(new java.awt.event.MouseAdapter() {
+        exitApplicationLabel.setBackground(new java.awt.Color(255, 255, 255));
+        exitApplicationLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        exitApplicationLabel.setForeground(new java.awt.Color(255, 255, 255));
+        exitApplicationLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit_button.png"))); // NOI18N
+        exitApplicationLabel.setText("Exit Application");
+        exitApplicationLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exit_app_labelMouseClicked(evt);
+                exitApplicationLabelMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                exit_app_labelMouseEntered(evt);
+                exitApplicationLabelMouseEntered(evt);
             }
         });
 
-        javax.swing.GroupLayout side_panelLayout = new javax.swing.GroupLayout(side_panel);
-        side_panel.setLayout(side_panelLayout);
-        side_panelLayout.setHorizontalGroup(
-            side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(side_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
+        sidePanel.setLayout(sidePanelLayout);
+        sidePanelLayout.setHorizontalGroup(
+            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidePanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exit_app_label)
-                    .addComponent(client_features_label)
-                    .addGroup(side_panelLayout.createSequentialGroup()
+                .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitApplicationLabel)
+                    .addComponent(clientFeaturesLabel)
+                    .addGroup(sidePanelLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addGroup(side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(update_logs_label)
-                            .addComponent(user_messaging_label))))
+                        .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateLogsLabel)
+                            .addComponent(userMessagingLabel))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
-        side_panelLayout.setVerticalGroup(
-            side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(side_panelLayout.createSequentialGroup()
+        sidePanelLayout.setVerticalGroup(
+            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sidePanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(client_features_label)
+                .addComponent(clientFeaturesLabel)
                 .addGap(18, 18, 18)
-                .addComponent(user_messaging_label)
+                .addComponent(userMessagingLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(update_logs_label)
+                .addComponent(updateLogsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exit_app_label)
+                .addComponent(exitApplicationLabel)
                 .addGap(25, 25, 25))
         );
 
-        client_details_panel_1.setBackground(new java.awt.Color(255, 255, 255));
-        client_details_panel_1.setPreferredSize(new java.awt.Dimension(322, 100));
+        clientDetailsPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        clientDetailsPanel1.setPreferredSize(new java.awt.Dimension(322, 100));
 
-        client_details_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client_details.png"))); // NOI18N
+        clientDetailsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/client_details.png"))); // NOI18N
 
-        client_details_label_1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        client_details_label_1.setText("Client");
+        clientDetailsLabel1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        clientDetailsLabel1.setText("Client");
 
-        client_details_label_2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
-        client_details_label_2.setForeground(new java.awt.Color(0, 36, 109));
-        client_details_label_2.setText("Details");
+        clientDetailsLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
+        clientDetailsLabel2.setForeground(new java.awt.Color(0, 36, 109));
+        clientDetailsLabel2.setText("Details");
 
-        javax.swing.GroupLayout client_details_panel_1Layout = new javax.swing.GroupLayout(client_details_panel_1);
-        client_details_panel_1.setLayout(client_details_panel_1Layout);
-        client_details_panel_1Layout.setHorizontalGroup(
-            client_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(client_details_panel_1Layout.createSequentialGroup()
+        javax.swing.GroupLayout clientDetailsPanel1Layout = new javax.swing.GroupLayout(clientDetailsPanel1);
+        clientDetailsPanel1.setLayout(clientDetailsPanel1Layout);
+        clientDetailsPanel1Layout.setHorizontalGroup(
+            clientDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientDetailsPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(client_details_icon)
+                .addComponent(clientDetailsIcon)
                 .addGap(37, 37, 37)
-                .addComponent(client_details_label_1)
+                .addComponent(clientDetailsLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(client_details_label_2)
+                .addComponent(clientDetailsLabel2)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
-        client_details_panel_1Layout.setVerticalGroup(
-            client_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(client_details_panel_1Layout.createSequentialGroup()
+        clientDetailsPanel1Layout.setVerticalGroup(
+            clientDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientDetailsPanel1Layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(client_details_icon)
+                .addComponent(clientDetailsIcon)
                 .addGap(22, 22, 22))
-            .addGroup(client_details_panel_1Layout.createSequentialGroup()
+            .addGroup(clientDetailsPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(client_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(client_details_label_1)
-                    .addComponent(client_details_label_2))
+                .addGroup(clientDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clientDetailsLabel1)
+                    .addComponent(clientDetailsLabel2))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        server_details_panel_1.setBackground(new java.awt.Color(255, 255, 255));
-        server_details_panel_1.setPreferredSize(new java.awt.Dimension(322, 100));
+        serverDetailsPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        serverDetailsPanel1.setPreferredSize(new java.awt.Dimension(322, 100));
 
         server_details_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/server_details.png"))); // NOI18N
 
-        server_details_label_1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        server_details_label_1.setText("Server");
+        serverDetailsLabel1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        serverDetailsLabel1.setText("Server");
 
-        server_details_label_2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
-        server_details_label_2.setForeground(new java.awt.Color(0, 36, 109));
-        server_details_label_2.setText("Details");
+        serverDetailsLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
+        serverDetailsLabel2.setForeground(new java.awt.Color(0, 36, 109));
+        serverDetailsLabel2.setText("Details");
 
-        javax.swing.GroupLayout server_details_panel_1Layout = new javax.swing.GroupLayout(server_details_panel_1);
-        server_details_panel_1.setLayout(server_details_panel_1Layout);
-        server_details_panel_1Layout.setHorizontalGroup(
-            server_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(server_details_panel_1Layout.createSequentialGroup()
+        javax.swing.GroupLayout serverDetailsPanel1Layout = new javax.swing.GroupLayout(serverDetailsPanel1);
+        serverDetailsPanel1.setLayout(serverDetailsPanel1Layout);
+        serverDetailsPanel1Layout.setHorizontalGroup(
+            serverDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(serverDetailsPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(server_details_icon)
                 .addGap(38, 38, 38)
-                .addComponent(server_details_label_1)
+                .addComponent(serverDetailsLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(server_details_label_2)
+                .addComponent(serverDetailsLabel2)
                 .addContainerGap(64, Short.MAX_VALUE))
         );
-        server_details_panel_1Layout.setVerticalGroup(
-            server_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(server_details_panel_1Layout.createSequentialGroup()
-                .addGroup(server_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(server_details_panel_1Layout.createSequentialGroup()
+        serverDetailsPanel1Layout.setVerticalGroup(
+            serverDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(serverDetailsPanel1Layout.createSequentialGroup()
+                .addGroup(serverDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(serverDetailsPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(server_details_icon))
-                    .addGroup(server_details_panel_1Layout.createSequentialGroup()
+                    .addGroup(serverDetailsPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(server_details_panel_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(server_details_label_1)
-                            .addComponent(server_details_label_2))))
+                        .addGroup(serverDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(serverDetailsLabel1)
+                            .addComponent(serverDetailsLabel2))))
                 .addContainerGap())
         );
 
-        footer_panel.setBackground(new java.awt.Color(255, 255, 255));
-        footer_panel.setPreferredSize(new java.awt.Dimension(936, 20));
+        footerPanel.setBackground(new java.awt.Color(255, 255, 255));
+        footerPanel.setPreferredSize(new java.awt.Dimension(936, 20));
 
-        footer_text.setText("DiscussionNet V1.0 - © Code Squad 2021 - Software Licenses");
+        footerTextLabel.setText("DiscussionNet V1.0 - © Code Squad 2021 - Software Licenses");
 
-        javax.swing.GroupLayout footer_panelLayout = new javax.swing.GroupLayout(footer_panel);
-        footer_panel.setLayout(footer_panelLayout);
-        footer_panelLayout.setHorizontalGroup(
-            footer_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footer_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
+        footerPanel.setLayout(footerPanelLayout);
+        footerPanelLayout.setHorizontalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(footer_text)
+                .addComponent(footerTextLabel)
                 .addGap(308, 308, 308))
         );
-        footer_panelLayout.setVerticalGroup(
-            footer_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footer_panelLayout.createSequentialGroup()
+        footerPanelLayout.setVerticalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
                 .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(footer_text))
+                .addComponent(footerTextLabel))
         );
 
-        user_messaging_top_panel.setBackground(new java.awt.Color(255, 255, 255));
-        user_messaging_top_panel.setMinimumSize(new java.awt.Dimension(93, 100));
-        user_messaging_top_panel.setPreferredSize(new java.awt.Dimension(894, 93));
+        userMessagingTopPanel.setBackground(new java.awt.Color(255, 255, 255));
+        userMessagingTopPanel.setMinimumSize(new java.awt.Dimension(93, 100));
+        userMessagingTopPanel.setPreferredSize(new java.awt.Dimension(894, 93));
 
-        user_messaging_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user_messaging.png"))); // NOI18N
+        userMessagingIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user_messaging.png"))); // NOI18N
 
-        user_messaging_label_1.setFont(new java.awt.Font("Montserrat", 0, 28)); // NOI18N
-        user_messaging_label_1.setText("User");
+        userMessagingLabel1.setFont(new java.awt.Font("Montserrat", 0, 28)); // NOI18N
+        userMessagingLabel1.setText("User");
 
-        user_messaging_label_2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 28)); // NOI18N
-        user_messaging_label_2.setForeground(new java.awt.Color(0, 36, 109));
-        user_messaging_label_2.setText("Messaging");
+        userMessagingLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 28)); // NOI18N
+        userMessagingLabel2.setForeground(new java.awt.Color(0, 36, 109));
+        userMessagingLabel2.setText("Messaging");
 
-        javax.swing.GroupLayout user_messaging_top_panelLayout = new javax.swing.GroupLayout(user_messaging_top_panel);
-        user_messaging_top_panel.setLayout(user_messaging_top_panelLayout);
-        user_messaging_top_panelLayout.setHorizontalGroup(
-            user_messaging_top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_messaging_top_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout userMessagingTopPanelLayout = new javax.swing.GroupLayout(userMessagingTopPanel);
+        userMessagingTopPanel.setLayout(userMessagingTopPanelLayout);
+        userMessagingTopPanelLayout.setHorizontalGroup(
+            userMessagingTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userMessagingTopPanelLayout.createSequentialGroup()
                 .addGap(295, 295, 295)
-                .addComponent(user_messaging_icon)
+                .addComponent(userMessagingIconLabel)
                 .addGap(18, 18, 18)
-                .addComponent(user_messaging_label_1)
+                .addComponent(userMessagingLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(user_messaging_label_2)
+                .addComponent(userMessagingLabel2)
                 .addContainerGap(296, Short.MAX_VALUE))
         );
-        user_messaging_top_panelLayout.setVerticalGroup(
-            user_messaging_top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_messaging_top_panelLayout.createSequentialGroup()
+        userMessagingTopPanelLayout.setVerticalGroup(
+            userMessagingTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userMessagingTopPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(user_messaging_top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(user_messaging_icon)
-                    .addGroup(user_messaging_top_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(user_messaging_label_2)
-                        .addComponent(user_messaging_label_1)))
+                .addGroup(userMessagingTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userMessagingIconLabel)
+                    .addGroup(userMessagingTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(userMessagingLabel2)
+                        .addComponent(userMessagingLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        user_messaging_side_panel.setBackground(new java.awt.Color(255, 255, 255));
-        user_messaging_side_panel.setPreferredSize(new java.awt.Dimension(156, 298));
+        userMessagingSidePanel.setBackground(new java.awt.Color(255, 255, 255));
+        userMessagingSidePanel.setPreferredSize(new java.awt.Dimension(156, 298));
 
-        users_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        users_label.setText("Users");
+        usersLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        usersLabel.setText("Users");
 
-        jLabel16.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText("User 100");
-        jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        userLabel1.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        userLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userLabel1.setText("User 100");
+        userLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        right_arrow_icon_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
+        rightArrowIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
 
-        jLabel18.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("User 101");
-        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        userLabel2.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        userLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userLabel2.setText("User 101");
+        userLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel19.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("User 102");
-        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        userLabel3.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        userLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userLabel3.setText("User 102");
+        userLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel20.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel20.setText("User 103");
-        jLabel20.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        userLabel4.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        userLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userLabel4.setText("User 103");
+        userLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel21.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel21.setText("User 104");
-        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        userLabel5.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        userLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        userLabel5.setText("User 104");
+        userLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        right_arrow_icon_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
+        rightArrowIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
 
-        right_arrow_icon_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
+        rightArrowIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
 
-        right_arrow_icon_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
+        rightArrowIcon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
 
-        right_arrow_icon_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
+        rightArrowIcon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/black_arrow.png"))); // NOI18N
 
-        javax.swing.GroupLayout user_messaging_side_panelLayout = new javax.swing.GroupLayout(user_messaging_side_panel);
-        user_messaging_side_panel.setLayout(user_messaging_side_panelLayout);
-        user_messaging_side_panelLayout.setHorizontalGroup(
-            user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout userMessagingSidePanelLayout = new javax.swing.GroupLayout(userMessagingSidePanel);
+        userMessagingSidePanel.setLayout(userMessagingSidePanelLayout);
+        userMessagingSidePanelLayout.setHorizontalGroup(
+            userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
-                        .addComponent(users_label)
+                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                        .addComponent(usersLabel)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
-                        .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
+                    .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                                .addComponent(userLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(right_arrow_icon_1))
-                            .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
-                                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel18))
+                                .addComponent(rightArrowIcon1))
+                            .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(userLabel5)
+                                    .addComponent(userLabel4)
+                                    .addComponent(userLabel3)
+                                    .addComponent(userLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(right_arrow_icon_2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(right_arrow_icon_3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(right_arrow_icon_4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(right_arrow_icon_5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rightArrowIcon2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(rightArrowIcon3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(rightArrowIcon4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(rightArrowIcon5, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(27, 27, 27))))
         );
-        user_messaging_side_panelLayout.setVerticalGroup(
-            user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
+        userMessagingSidePanelLayout.setVerticalGroup(
+            userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
-                        .addComponent(users_label)
+                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                        .addComponent(usersLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel16))
-                    .addComponent(right_arrow_icon_1))
+                        .addComponent(userLabel1))
+                    .addComponent(rightArrowIcon1))
                 .addGap(18, 18, 18)
-                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(user_messaging_side_panelLayout.createSequentialGroup()
-                        .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel18)
-                            .addComponent(right_arrow_icon_2))
+                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(userLabel2)
+                            .addComponent(rightArrowIcon2))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel19))
-                    .addComponent(right_arrow_icon_3))
+                        .addComponent(userLabel3))
+                    .addComponent(rightArrowIcon3))
                 .addGap(18, 18, 18)
-                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(right_arrow_icon_4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rightArrowIcon4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(user_messaging_side_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel21)
-                    .addComponent(right_arrow_icon_5))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(userLabel5)
+                    .addComponent(rightArrowIcon5))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
-        user_messaging_main_panel.setBackground(new java.awt.Color(255, 255, 255));
-        user_messaging_main_panel.setPreferredSize(new java.awt.Dimension(737, 298));
+        userMessagingMainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        userMessagingMainPanel.setPreferredSize(new java.awt.Dimension(737, 298));
 
-        user_messages_textfield.addActionListener(new java.awt.event.ActionListener() {
+        userMessagesTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                user_messages_textfieldActionPerformed(evt);
+                userMessagesTextfieldActionPerformed(evt);
             }
         });
 
-        user_messages_send_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/super_small_button_background.png"))); // NOI18N
-        user_messages_send_button.setBorder(null);
-        user_messages_send_button.setContentAreaFilled(false);
-        user_messages_send_button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userMessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/super_small_button_background.png"))); // NOI18N
+        userMessagesButton.setBorder(null);
+        userMessagesButton.setContentAreaFilled(false);
+        userMessagesButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        messages_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        messages_label.setText("Messages");
+        messagesLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        messagesLabel.setText("Messages");
 
-        javax.swing.GroupLayout user_messaging_main_panelLayout = new javax.swing.GroupLayout(user_messaging_main_panel);
-        user_messaging_main_panel.setLayout(user_messaging_main_panelLayout);
-        user_messaging_main_panelLayout.setHorizontalGroup(
-            user_messaging_main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_messaging_main_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout userMessagingMainPanelLayout = new javax.swing.GroupLayout(userMessagingMainPanel);
+        userMessagingMainPanel.setLayout(userMessagingMainPanelLayout);
+        userMessagingMainPanelLayout.setHorizontalGroup(
+            userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(user_messaging_main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(messages_label)
-                    .addGroup(user_messaging_main_panelLayout.createSequentialGroup()
-                        .addComponent(user_messages_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(messagesLabel)
+                    .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
+                        .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(user_messages_send_button)))
+                        .addComponent(userMessagesButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        user_messaging_main_panelLayout.setVerticalGroup(
-            user_messaging_main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_messaging_main_panelLayout.createSequentialGroup()
+        userMessagingMainPanelLayout.setVerticalGroup(
+            userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(messages_label)
+                .addComponent(messagesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(user_messaging_main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, user_messaging_main_panelLayout.createSequentialGroup()
-                        .addComponent(user_messages_send_button)
+                .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingMainPanelLayout.createSequentialGroup()
+                        .addComponent(userMessagesButton)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, user_messaging_main_panelLayout.createSequentialGroup()
-                        .addComponent(user_messages_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingMainPanelLayout.createSequentialGroup()
+                        .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
         );
 
-        client_details_panel_2.setBackground(new java.awt.Color(255, 255, 255));
-        client_details_panel_2.setMinimumSize(new java.awt.Dimension(322, 92));
+        clientDetailsPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        clientDetailsPanel2.setMinimumSize(new java.awt.Dimension(322, 92));
 
-        client_details_IP_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        client_details_IP_label.setText("IP Address");
+        clientDetailsIPAddressLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        clientDetailsIPAddressLabel.setText("IP Address");
 
-        jLabel30.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        jLabel30.setText("0.0.0.0");
+        clientDetailsIPAddressValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
+        clientDetailsIPAddressValueLabel.setText("0.0.0.0");
 
-        client_details_port_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        client_details_port_label.setText("Connection Port");
+        clientDetailsConnectionPortLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        clientDetailsConnectionPortLabel.setText("Connection Port");
 
-        jLabel32.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        jLabel32.setText("69420");
+        clientDetailsConnectionPortValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
+        clientDetailsConnectionPortValueLabel.setText("69420");
 
-        client_details_ID_number_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        client_details_ID_number_label.setText("Assigned ID Number");
+        clientDetailsAssignedIDNumberLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        clientDetailsAssignedIDNumberLabel.setText("Assigned ID Number");
 
-        jLabel34.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(112, 161, 255));
-        jLabel34.setText("105");
+        clientDetailsAssignedIDNumberValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
+        clientDetailsAssignedIDNumberValueLabel.setForeground(new java.awt.Color(112, 161, 255));
+        clientDetailsAssignedIDNumberValueLabel.setText("105");
 
-        javax.swing.GroupLayout client_details_panel_2Layout = new javax.swing.GroupLayout(client_details_panel_2);
-        client_details_panel_2.setLayout(client_details_panel_2Layout);
-        client_details_panel_2Layout.setHorizontalGroup(
-            client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(client_details_panel_2Layout.createSequentialGroup()
+        javax.swing.GroupLayout clientDetailsPanel2Layout = new javax.swing.GroupLayout(clientDetailsPanel2);
+        clientDetailsPanel2.setLayout(clientDetailsPanel2Layout);
+        clientDetailsPanel2Layout.setHorizontalGroup(
+            clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientDetailsPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(client_details_IP_label)
-                    .addComponent(jLabel30))
+                .addGroup(clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clientDetailsIPAddressLabel)
+                    .addComponent(clientDetailsIPAddressValueLabel))
                 .addGap(52, 52, 52)
-                .addGroup(client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(client_details_port_label)
-                    .addComponent(jLabel32))
+                .addGroup(clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clientDetailsConnectionPortLabel)
+                    .addComponent(clientDetailsConnectionPortValueLabel))
                 .addGap(45, 45, 45)
-                .addGroup(client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addComponent(client_details_ID_number_label))
+                .addGroup(clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clientDetailsAssignedIDNumberValueLabel)
+                    .addComponent(clientDetailsAssignedIDNumberLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        client_details_panel_2Layout.setVerticalGroup(
-            client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(client_details_panel_2Layout.createSequentialGroup()
+        clientDetailsPanel2Layout.setVerticalGroup(
+            clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientDetailsPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(client_details_IP_label)
-                    .addComponent(client_details_port_label)
-                    .addComponent(client_details_ID_number_label))
+                .addGroup(clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clientDetailsIPAddressLabel)
+                    .addComponent(clientDetailsConnectionPortLabel)
+                    .addComponent(clientDetailsAssignedIDNumberLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(client_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel34))
+                .addGroup(clientDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clientDetailsIPAddressValueLabel)
+                    .addComponent(clientDetailsConnectionPortValueLabel)
+                    .addComponent(clientDetailsAssignedIDNumberValueLabel))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        server_details_panel_2.setBackground(new java.awt.Color(255, 255, 255));
-        server_details_panel_2.setPreferredSize(new java.awt.Dimension(322, 92));
+        serverDetailsPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        serverDetailsPanel2.setPreferredSize(new java.awt.Dimension(322, 92));
 
-        jLabel35.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        jLabel35.setText("IP Address");
+        serverDetailsIPAddressLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        serverDetailsIPAddressLabel.setText("IP Address");
 
-        jLabel36.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        jLabel36.setText("0.0.0.0");
+        serverDetailsIPAddressValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
+        serverDetailsIPAddressValueLabel.setText("0.0.0.0");
 
-        jLabel37.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        jLabel37.setText("Connection Port");
+        serverDetailsConnectionPortLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        serverDetailsConnectionPortLabel.setText("Connection Port");
 
-        jLabel38.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        jLabel38.setText("69420");
+        serverDetailsConnectionPortValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
+        serverDetailsConnectionPortValueLabel.setText("69420");
 
-        jLabel39.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        jLabel39.setText("Connection Status");
+        serverDetailsConnectionStatusLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        serverDetailsConnectionStatusLabel.setText("Connection Status");
 
-        jLabel40.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(46, 213, 116));
-        jLabel40.setText("Connected");
+        serverDetailsConnectionStatusValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
+        serverDetailsConnectionStatusValueLabel.setForeground(new java.awt.Color(46, 213, 116));
+        serverDetailsConnectionStatusValueLabel.setText("Connected");
 
-        javax.swing.GroupLayout server_details_panel_2Layout = new javax.swing.GroupLayout(server_details_panel_2);
-        server_details_panel_2.setLayout(server_details_panel_2Layout);
-        server_details_panel_2Layout.setHorizontalGroup(
-            server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(server_details_panel_2Layout.createSequentialGroup()
+        javax.swing.GroupLayout serverDetailsPanel2Layout = new javax.swing.GroupLayout(serverDetailsPanel2);
+        serverDetailsPanel2.setLayout(serverDetailsPanel2Layout);
+        serverDetailsPanel2Layout.setHorizontalGroup(
+            serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(serverDetailsPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel36))
+                .addGroup(serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(serverDetailsIPAddressLabel)
+                    .addComponent(serverDetailsIPAddressValueLabel))
                 .addGap(50, 50, 50)
-                .addGroup(server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel38))
+                .addGroup(serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(serverDetailsConnectionPortLabel)
+                    .addComponent(serverDetailsConnectionPortValueLabel))
                 .addGap(48, 48, 48)
-                .addGroup(server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel39))
+                .addGroup(serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(serverDetailsConnectionStatusValueLabel)
+                    .addComponent(serverDetailsConnectionStatusLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        server_details_panel_2Layout.setVerticalGroup(
-            server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(server_details_panel_2Layout.createSequentialGroup()
+        serverDetailsPanel2Layout.setVerticalGroup(
+            serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(serverDetailsPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel39))
+                .addGroup(serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(serverDetailsIPAddressLabel)
+                    .addComponent(serverDetailsConnectionPortLabel)
+                    .addComponent(serverDetailsConnectionStatusLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(server_details_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel38)
-                    .addComponent(jLabel40))
+                .addGroup(serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(serverDetailsIPAddressValueLabel)
+                    .addComponent(serverDetailsConnectionPortValueLabel)
+                    .addComponent(serverDetailsConnectionStatusValueLabel))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        header_panel_2.setBackground(new java.awt.Color(255, 255, 255));
+        headerPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        nav_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nav_icon.png"))); // NOI18N
+        navIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nav_icon.png"))); // NOI18N
 
-        client_control_panel_label_1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
-        client_control_panel_label_1.setForeground(new java.awt.Color(0, 36, 109));
-        client_control_panel_label_1.setText("Client");
+        clientControlPanelLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
+        clientControlPanelLabel1.setForeground(new java.awt.Color(0, 36, 109));
+        clientControlPanelLabel1.setText("Client");
 
-        client_control_panel_label_2.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        client_control_panel_label_2.setForeground(new java.awt.Color(0, 36, 109));
-        client_control_panel_label_2.setText("Control Panel");
+        clientControlPanelLabel2.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        clientControlPanelLabel2.setForeground(new java.awt.Color(0, 36, 109));
+        clientControlPanelLabel2.setText("Control Panel");
 
-        javax.swing.GroupLayout header_panel_2Layout = new javax.swing.GroupLayout(header_panel_2);
-        header_panel_2.setLayout(header_panel_2Layout);
-        header_panel_2Layout.setHorizontalGroup(
-            header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(header_panel_2Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerPanel2Layout = new javax.swing.GroupLayout(headerPanel2);
+        headerPanel2.setLayout(headerPanel2Layout);
+        headerPanel2Layout.setHorizontalGroup(
+            headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(header_panel_2Layout.createSequentialGroup()
-                        .addComponent(nav_icon)
-                        .addGap(47, 47, 47)
-                        .addComponent(client_control_panel_label_1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(client_control_panel_label_2))
-                    .addGroup(header_panel_2Layout.createSequentialGroup()
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(navIconLabel)
+                .addGap(142, 142, 142)
+                .addComponent(clientControlPanelLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(clientControlPanelLabel2)
+                .addContainerGap(627, Short.MAX_VALUE))
         );
-        header_panel_2Layout.setVerticalGroup(
-            header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(header_panel_2Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nav_icon, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(header_panel_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(client_control_panel_label_2)
-                        .addComponent(client_control_panel_label_1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        headerPanel2Layout.setVerticalGroup(
+            headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(navIconLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(headerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(clientControlPanelLabel2)
+                        .addComponent(clientControlPanelLabel1)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -635,72 +623,72 @@ public class ClientUserMessaging extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(header_panel_1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(side_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(headerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(server_details_panel_1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(serverDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
-                                .addComponent(server_details_panel_2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
+                                .addComponent(serverDetailsPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(client_details_panel_1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(clientDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
-                                .addComponent(client_details_panel_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(clientDetailsPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(user_messaging_side_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                .addComponent(userMessagingSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                                 .addGap(2, 2, 2)
-                                .addComponent(user_messaging_main_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(user_messaging_top_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE))
+                                .addComponent(userMessagingMainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userMessagingTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE))
                         .addGap(12, 12, 12))
-                    .addComponent(footer_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(header_panel_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(headerPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(header_panel_1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                    .addComponent(header_panel_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(headerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(headerPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(client_details_panel_1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(client_details_panel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(clientDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clientDetailsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(server_details_panel_1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(server_details_panel_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(serverDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(serverDetailsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
-                        .addComponent(user_messaging_top_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userMessagingTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(user_messaging_side_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                            .addComponent(user_messaging_main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                            .addComponent(userMessagingSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                            .addComponent(userMessagingMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
                         .addGap(12, 12, 12)
-                        .addComponent(footer_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(side_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)))
+                        .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void user_messages_textfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_messages_textfieldActionPerformed
+    private void userMessagesTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMessagesTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_user_messages_textfieldActionPerformed
+    }//GEN-LAST:event_userMessagesTextfieldActionPerformed
 
-    private void exit_app_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_app_labelMouseClicked
+    private void exitApplicationLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitApplicationLabelMouseClicked
 
-    }//GEN-LAST:event_exit_app_labelMouseClicked
+    }//GEN-LAST:event_exitApplicationLabelMouseClicked
 
-    private void exit_app_labelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_app_labelMouseEntered
+    private void exitApplicationLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitApplicationLabelMouseEntered
 
-    }//GEN-LAST:event_exit_app_labelMouseEntered
+    }//GEN-LAST:event_exitApplicationLabelMouseEntered
 
     /**
      * @param args the command line arguments
@@ -739,63 +727,61 @@ public class ClientUserMessaging extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel client_control_panel_label_1;
-    private javax.swing.JLabel client_control_panel_label_2;
-    private javax.swing.JLabel client_details_ID_number_label;
-    private javax.swing.JLabel client_details_IP_label;
-    private javax.swing.JLabel client_details_icon;
-    private javax.swing.JLabel client_details_label_1;
-    private javax.swing.JLabel client_details_label_2;
-    private javax.swing.JPanel client_details_panel_1;
-    private javax.swing.JPanel client_details_panel_2;
-    private javax.swing.JLabel client_details_port_label;
-    private javax.swing.JLabel client_features_label;
-    private javax.swing.JLabel discussionNet_title;
-    private javax.swing.JLabel exit_app_label;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.JPanel footer_panel;
-    private javax.swing.JLabel footer_text;
-    private javax.swing.JPanel header_panel_1;
-    private javax.swing.JPanel header_panel_2;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel clientControlPanelLabel1;
+    private javax.swing.JLabel clientControlPanelLabel2;
+    private javax.swing.JLabel clientDetailsAssignedIDNumberLabel;
+    private javax.swing.JLabel clientDetailsAssignedIDNumberValueLabel;
+    private javax.swing.JLabel clientDetailsConnectionPortLabel;
+    private javax.swing.JLabel clientDetailsConnectionPortValueLabel;
+    private javax.swing.JLabel clientDetailsIPAddressLabel;
+    private javax.swing.JLabel clientDetailsIPAddressValueLabel;
+    private javax.swing.JLabel clientDetailsIcon;
+    private javax.swing.JLabel clientDetailsLabel1;
+    private javax.swing.JLabel clientDetailsLabel2;
+    private javax.swing.JPanel clientDetailsPanel1;
+    private javax.swing.JPanel clientDetailsPanel2;
+    private javax.swing.JLabel clientFeaturesLabel;
+    private javax.swing.JLabel discussionNetLabel;
+    private javax.swing.JLabel exitApplicationLabel;
+    private javax.swing.JPanel footerPanel;
+    private javax.swing.JLabel footerTextLabel;
+    private javax.swing.JPanel headerPanel1;
+    private javax.swing.JPanel headerPanel2;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel messages_label;
-    private javax.swing.JLabel nav_icon;
-    private javax.swing.JLabel right_arrow_icon_1;
-    private javax.swing.JLabel right_arrow_icon_2;
-    private javax.swing.JLabel right_arrow_icon_3;
-    private javax.swing.JLabel right_arrow_icon_4;
-    private javax.swing.JLabel right_arrow_icon_5;
+    private javax.swing.JLabel messagesLabel;
+    private javax.swing.JLabel navIconLabel;
+    private javax.swing.JLabel rightArrowIcon1;
+    private javax.swing.JLabel rightArrowIcon2;
+    private javax.swing.JLabel rightArrowIcon3;
+    private javax.swing.JLabel rightArrowIcon4;
+    private javax.swing.JLabel rightArrowIcon5;
+    private javax.swing.JLabel serverDetailsConnectionPortLabel;
+    private javax.swing.JLabel serverDetailsConnectionPortValueLabel;
+    private javax.swing.JLabel serverDetailsConnectionStatusLabel;
+    private javax.swing.JLabel serverDetailsConnectionStatusValueLabel;
+    private javax.swing.JLabel serverDetailsIPAddressLabel;
+    private javax.swing.JLabel serverDetailsIPAddressValueLabel;
+    private javax.swing.JLabel serverDetailsLabel1;
+    private javax.swing.JLabel serverDetailsLabel2;
+    private javax.swing.JPanel serverDetailsPanel1;
+    private javax.swing.JPanel serverDetailsPanel2;
     private javax.swing.JLabel server_details_icon;
-    private javax.swing.JLabel server_details_label_1;
-    private javax.swing.JLabel server_details_label_2;
-    private javax.swing.JPanel server_details_panel_1;
-    private javax.swing.JPanel server_details_panel_2;
-    private javax.swing.JPanel side_panel;
-    private javax.swing.JLabel update_logs_label;
-    private javax.swing.JButton user_messages_send_button;
-    private javax.swing.JTextField user_messages_textfield;
-    private javax.swing.JLabel user_messaging_icon;
-    private javax.swing.JLabel user_messaging_label;
-    private javax.swing.JLabel user_messaging_label_1;
-    private javax.swing.JLabel user_messaging_label_2;
-    private javax.swing.JPanel user_messaging_main_panel;
-    private javax.swing.JPanel user_messaging_side_panel;
-    private javax.swing.JPanel user_messaging_top_panel;
-    private javax.swing.JLabel users_label;
+    private javax.swing.JPanel sidePanel;
+    private javax.swing.JLabel updateLogsLabel;
+    private javax.swing.JLabel userLabel1;
+    private javax.swing.JLabel userLabel2;
+    private javax.swing.JLabel userLabel3;
+    private javax.swing.JLabel userLabel4;
+    private javax.swing.JLabel userLabel5;
+    private javax.swing.JButton userMessagesButton;
+    private javax.swing.JTextField userMessagesTextfield;
+    private javax.swing.JLabel userMessagingIconLabel;
+    private javax.swing.JLabel userMessagingLabel;
+    private javax.swing.JLabel userMessagingLabel1;
+    private javax.swing.JLabel userMessagingLabel2;
+    private javax.swing.JPanel userMessagingMainPanel;
+    private javax.swing.JPanel userMessagingSidePanel;
+    private javax.swing.JPanel userMessagingTopPanel;
+    private javax.swing.JLabel usersLabel;
     // End of variables declaration//GEN-END:variables
 }

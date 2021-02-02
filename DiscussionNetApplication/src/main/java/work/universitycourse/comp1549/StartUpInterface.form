@@ -39,19 +39,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="main_panel" min="-2" max="-2" attributes="0"/>
+              <Component id="mainPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="main_panel" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="main_panel">
+    <Container class="javax.swing.JPanel" name="mainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -66,37 +66,37 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                  <Component id="existing_network_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="existingNetworkLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                  <Component id="create_network_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="createNetworkLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
-                          <Component id="main_image" min="-2" max="-2" attributes="0"/>
+                          <Component id="mainImage" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
-                          <Component id="welcome_text_part_1" min="-2" max="-2" attributes="0"/>
+                          <Component id="titleLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="welcome_text_part_2" min="-2" max="-2" attributes="0"/>
+                          <Component id="titleLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="welcome_text_part_3" min="-2" max="-2" attributes="0"/>
+                          <Component id="titleLabel3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                          <Component id="configure_client_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="configureClientButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="configure_server_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="configureServerButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="footer_text" min="-2" max="-2" attributes="0"/>
+                  <Component id="footerTextLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -105,32 +105,32 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="26" max="32767" attributes="0"/>
-                  <Component id="main_image" min="-2" max="-2" attributes="0"/>
+                  <Component id="mainImage" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="welcome_text_part_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="welcome_text_part_2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="welcome_text_part_3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="titleLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="titleLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="titleLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="existing_network_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="create_network_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="existingNetworkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="createNetworkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="configure_client_button" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="configure_server_button" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="configureClientButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="configureServerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                  <Component id="footer_text" min="-2" max="-2" attributes="0"/>
+                  <Component id="footerTextLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="existing_network_label">
+        <Component class="javax.swing.JLabel" name="existingNetworkLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -141,7 +141,7 @@
             <Property name="text" type="java.lang.String" value="I want to join an existing network..."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="create_network_label">
+        <Component class="javax.swing.JLabel" name="createNetworkLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -152,7 +152,7 @@
             <Property name="text" type="java.lang.String" value="I want to create a new network..."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="welcome_text_part_2">
+        <Component class="javax.swing.JLabel" name="titleLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="24" style="0"/>
@@ -163,7 +163,7 @@
             <Property name="text" type="java.lang.String" value="DiscussionNet"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="welcome_text_part_3">
+        <Component class="javax.swing.JLabel" name="titleLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="24" style="0"/>
@@ -174,7 +174,7 @@
             <Property name="text" type="java.lang.String" value="Initial Setup"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="welcome_text_part_1">
+        <Component class="javax.swing.JLabel" name="titleLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="24" style="0"/>
@@ -185,7 +185,7 @@
             <Property name="text" type="java.lang.String" value="Welcome To"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="footer_text">
+        <Component class="javax.swing.JLabel" name="footerTextLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="9" style="0"/>
@@ -196,14 +196,14 @@
             <Property name="text" type="java.lang.String" value="DiscussionNet V1.0 - &#xa9; Code Squad 2021 - Software Licenses"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="main_image">
+        <Component class="javax.swing.JLabel" name="mainImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/welcome_image.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="configure_server_button">
+        <Component class="javax.swing.JButton" name="configureServerButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -226,7 +226,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="configure_client_button">
+        <Component class="javax.swing.JButton" name="configureClientButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

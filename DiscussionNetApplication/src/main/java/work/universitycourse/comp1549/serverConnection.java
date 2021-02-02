@@ -27,100 +27,100 @@ public class ServerConnection extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        main_panel = new javax.swing.JPanel();
-        main_image = new javax.swing.JLabel();
-        server_connection_title_part_1 = new javax.swing.JLabel();
-        server_connection_title_part_2 = new javax.swing.JLabel();
-        server_IP_address_label = new javax.swing.JLabel();
-        server_IP_address_textbox = new javax.swing.JTextField();
-        server_port_label = new javax.swing.JLabel();
-        server_port_textbox = new javax.swing.JTextField();
-        connect_to_server_button = new javax.swing.JButton();
+        mainPanel = new javax.swing.JPanel();
+        mainImage = new javax.swing.JLabel();
+        discussionNetServerConnectionLabel1 = new javax.swing.JLabel();
+        discussionNetServerConnectionLabel2 = new javax.swing.JLabel();
+        serverIPAddressLabel = new javax.swing.JLabel();
+        serverIPAddressTextfield = new javax.swing.JTextField();
+        serverPortLabel = new javax.swing.JLabel();
+        serverPortTextfield = new javax.swing.JTextField();
+        connectToServerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
-        main_panel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        main_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Connect.png"))); // NOI18N
+        mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Connect.png"))); // NOI18N
 
-        server_connection_title_part_1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
-        server_connection_title_part_1.setForeground(new java.awt.Color(0, 36, 109));
-        server_connection_title_part_1.setText("DiscussionNet");
+        discussionNetServerConnectionLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        discussionNetServerConnectionLabel1.setForeground(new java.awt.Color(0, 36, 109));
+        discussionNetServerConnectionLabel1.setText("DiscussionNet");
 
-        server_connection_title_part_2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        server_connection_title_part_2.setText("Server Connection");
+        discussionNetServerConnectionLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        discussionNetServerConnectionLabel2.setText("Server Connection");
 
-        server_IP_address_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        server_IP_address_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configure_ip_icon.png"))); // NOI18N
-        server_IP_address_label.setText("Server IP Address");
+        serverIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        serverIPAddressLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configure_ip_icon.png"))); // NOI18N
+        serverIPAddressLabel.setText("Server IP Address");
 
-        server_port_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        server_port_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/port_icon.png"))); // NOI18N
-        server_port_label.setText("Server Port");
+        serverPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        serverPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/port_icon.png"))); // NOI18N
+        serverPortLabel.setText("Server Port");
 
-        connect_to_server_button.setBackground(new java.awt.Color(255, 255, 255));
-        connect_to_server_button.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        connect_to_server_button.setForeground(new java.awt.Color(255, 255, 255));
-        connect_to_server_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
-        connect_to_server_button.setText("Connect to Server");
-        connect_to_server_button.setBorder(null);
-        connect_to_server_button.setBorderPainted(false);
-        connect_to_server_button.setContentAreaFilled(false);
-        connect_to_server_button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        connect_to_server_button.addActionListener(new java.awt.event.ActionListener() {
+        connectToServerButton.setBackground(new java.awt.Color(255, 255, 255));
+        connectToServerButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        connectToServerButton.setForeground(new java.awt.Color(255, 255, 255));
+        connectToServerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
+        connectToServerButton.setText("Connect to Server");
+        connectToServerButton.setBorder(null);
+        connectToServerButton.setBorderPainted(false);
+        connectToServerButton.setContentAreaFilled(false);
+        connectToServerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        connectToServerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                connect_to_server_buttonActionPerformed(evt);
+                connectToServerButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout main_panelLayout = new javax.swing.GroupLayout(main_panel);
-        main_panel.setLayout(main_panelLayout);
-        main_panelLayout.setHorizontalGroup(
-            main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(main_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(main_image)
+                .addComponent(mainImage)
                 .addGap(69, 69, 69)
-                .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(server_port_label)
-                        .addComponent(server_IP_address_label)
-                        .addGroup(main_panelLayout.createSequentialGroup()
-                            .addComponent(server_connection_title_part_1)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(serverPortLabel)
+                        .addComponent(serverIPAddressLabel)
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(discussionNetServerConnectionLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(server_connection_title_part_2))
-                        .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(server_IP_address_textbox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                            .addComponent(server_port_textbox, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(main_panelLayout.createSequentialGroup()
-                        .addComponent(connect_to_server_button)
+                            .addComponent(discussionNetServerConnectionLabel2))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(serverIPAddressTextfield, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                            .addComponent(serverPortTextfield, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(connectToServerButton)
                         .addGap(48, 48, 48)))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
-        main_panelLayout.setVerticalGroup(
-            main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(main_panelLayout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(105, 105, 105)
-                .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(main_panelLayout.createSequentialGroup()
-                        .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(server_connection_title_part_1)
-                            .addComponent(server_connection_title_part_2))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(discussionNetServerConnectionLabel1)
+                            .addComponent(discussionNetServerConnectionLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(server_IP_address_label)
+                        .addComponent(serverIPAddressLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(server_IP_address_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(serverIPAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(server_port_label)
+                        .addComponent(serverPortLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(server_port_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(serverPortTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(connect_to_server_button))
-                    .addGroup(main_panelLayout.createSequentialGroup()
+                        .addComponent(connectToServerButton))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(main_image)))
+                        .addComponent(mainImage)))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
@@ -128,19 +128,19 @@ public class ServerConnection extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void connect_to_server_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connect_to_server_buttonActionPerformed
+    private void connectToServerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectToServerButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_connect_to_server_buttonActionPerformed
+    }//GEN-LAST:event_connectToServerButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,14 +179,14 @@ public class ServerConnection extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton connect_to_server_button;
-    private javax.swing.JLabel main_image;
-    private javax.swing.JPanel main_panel;
-    private javax.swing.JLabel server_IP_address_label;
-    private javax.swing.JTextField server_IP_address_textbox;
-    private javax.swing.JLabel server_connection_title_part_1;
-    private javax.swing.JLabel server_connection_title_part_2;
-    private javax.swing.JLabel server_port_label;
-    private javax.swing.JTextField server_port_textbox;
+    private javax.swing.JButton connectToServerButton;
+    private javax.swing.JLabel discussionNetServerConnectionLabel1;
+    private javax.swing.JLabel discussionNetServerConnectionLabel2;
+    private javax.swing.JLabel mainImage;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel serverIPAddressLabel;
+    private javax.swing.JTextField serverIPAddressTextfield;
+    private javax.swing.JLabel serverPortLabel;
+    private javax.swing.JTextField serverPortTextfield;
     // End of variables declaration//GEN-END:variables
 }

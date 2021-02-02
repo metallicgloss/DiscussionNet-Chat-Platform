@@ -6,8 +6,6 @@
 package work.universitycourse.comp1549;
 
 import java.awt.Color;
-import java.awt.Font;
-import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -32,20 +30,20 @@ public class CommunicationLogsActive extends javax.swing.JFrame {
     }
     
     private  void table() {
-      main_table.getTableHeader().setOpaque(false);
-      main_table.getTableHeader().setBackground(Color.white);
-      main_table.getTableHeader().setForeground(new Color(47, 46, 65));
+      mainTable.getTableHeader().setOpaque(false);
+      mainTable.getTableHeader().setBackground(Color.white);
+      mainTable.getTableHeader().setForeground(new Color(47, 46, 65));
       
-       main_table.getTableHeader().setFont(new java.awt.Font("Montserrat Medium", 0, 13));
+       mainTable.getTableHeader().setFont(new java.awt.Font("Montserrat Medium", 0, 13));
 
      DefaultTableCellRenderer stringRenderer = (DefaultTableCellRenderer)
-     main_table.getDefaultRenderer(String.class);
+     mainTable.getDefaultRenderer(String.class);
      stringRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
-     DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) main_table.getTableHeader().getDefaultRenderer();
+     DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) mainTable.getTableHeader().getDefaultRenderer();
     renderer.setHorizontalAlignment(SwingConstants.CENTER);
     
-    JTableHeader header = main_table.getTableHeader();
+    JTableHeader header = mainTable.getTableHeader();
     header.setBorder(new LineBorder(new Color(229,229,229),1));
     
    
@@ -61,22 +59,22 @@ public class CommunicationLogsActive extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        main_table = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        topPanel = new javax.swing.JPanel();
+        communicationLogsLabel1 = new javax.swing.JLabel();
+        communicationLogsLabel2 = new javax.swing.JLabel();
+        scrollingPane = new javax.swing.JScrollPane();
+        mainTable = new javax.swing.JTable();
+        middlePanel = new javax.swing.JPanel();
+        serverStatusTextLabel = new javax.swing.JLabel();
+        statusLabel = new javax.swing.JLabel();
+        ipAddressLabel = new javax.swing.JLabel();
+        portLabel = new javax.swing.JLabel();
+        statusValueLabel = new javax.swing.JLabel();
+        ipAddressValueLabel = new javax.swing.JLabel();
+        portValueLabel = new javax.swing.JLabel();
+        serverStatusImageLabel = new javax.swing.JLabel();
+        footerPanel = new javax.swing.JPanel();
+        footerTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(854, 519));
@@ -84,17 +82,17 @@ public class CommunicationLogsActive extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        topPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        jLabel2.setText("Communication");
+        communicationLogsLabel1.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        communicationLogsLabel1.setText("Communication");
 
-        jLabel3.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 36, 109));
-        jLabel3.setText("Logs");
+        communicationLogsLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        communicationLogsLabel2.setForeground(new java.awt.Color(0, 36, 109));
+        communicationLogsLabel2.setText("Logs");
 
-        main_table.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
-        main_table.setModel(new javax.swing.table.DefaultTableModel(
+        mainTable.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
+        mainTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"10.0.0.1", "10.0.0.1", "Message", "Well, good morning Sir. Awake yet?"},
                 {"10.0.0.2", "10.0.0.2", "Message", "No."},
@@ -105,160 +103,154 @@ public class CommunicationLogsActive extends javax.swing.JFrame {
                 "Origin IP Address", "Destination IP Address", "Request Type", "Request Value"
             }
         ));
-        main_table.setAutoscrolls(false);
-        main_table.setEnabled(false);
-        main_table.setFocusable(false);
-        main_table.setGridColor(new java.awt.Color(47, 46, 65));
-        main_table.setIntercellSpacing(new java.awt.Dimension(2, 0));
-        main_table.setOpaque(false);
-        main_table.setRowHeight(30);
-        main_table.setRowSelectionAllowed(false);
-        main_table.setShowGrid(false);
-        main_table.setShowHorizontalLines(false);
-        main_table.setShowVerticalLines(false);
-        main_table.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(main_table);
+        mainTable.setAutoscrolls(false);
+        mainTable.setEnabled(false);
+        mainTable.setFocusable(false);
+        mainTable.setGridColor(new java.awt.Color(47, 46, 65));
+        mainTable.setIntercellSpacing(new java.awt.Dimension(2, 0));
+        mainTable.setOpaque(false);
+        mainTable.setRowHeight(30);
+        mainTable.setRowSelectionAllowed(false);
+        mainTable.setShowGrid(false);
+        mainTable.getTableHeader().setReorderingAllowed(false);
+        scrollingPane.setViewportView(mainTable);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topPanelLayout.createSequentialGroup()
                         .addGap(298, 298, 298)
-                        .addComponent(jLabel2)
+                        .addComponent(communicationLogsLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(communicationLogsLabel2))
+                    .addGroup(topPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(scrollingPane, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(communicationLogsLabel1)
+                    .addComponent(communicationLogsLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(scrollingPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        middlePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        jLabel4.setText("Server Status");
+        serverStatusTextLabel.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        serverStatusTextLabel.setText("Server Status");
 
-        jLabel5.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
-        jLabel5.setText("Status");
+        statusLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
+        statusLabel.setText("Status");
 
-        jLabel6.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
-        jLabel6.setText("IP Address");
+        ipAddressLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
+        ipAddressLabel.setText("IP Address");
 
-        jLabel7.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
-        jLabel7.setText("Port");
+        portLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
+        portLabel.setText("Port");
 
-        jLabel8.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(46, 213, 116));
-        jLabel8.setText("Active");
+        statusValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
+        statusValueLabel.setForeground(new java.awt.Color(46, 213, 116));
+        statusValueLabel.setText("Active");
 
-        jLabel9.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
-        jLabel9.setText("0.0.0.0");
+        ipAddressValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
+        ipAddressValueLabel.setText("0.0.0.0");
 
-        jLabel10.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
-        jLabel10.setText("69420");
+        portValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
+        portValueLabel.setText("69420");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/broadcast_active.png"))); // NOI18N
+        serverStatusImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/broadcast_active.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout middlePanelLayout = new javax.swing.GroupLayout(middlePanel);
+        middlePanel.setLayout(middlePanelLayout);
+        middlePanelLayout.setHorizontalGroup(
+            middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(middlePanelLayout.createSequentialGroup()
                 .addGap(159, 159, 159)
-                .addComponent(jLabel12)
+                .addComponent(serverStatusImageLabel)
                 .addGap(109, 109, 109)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel5))
+                .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statusValueLabel)
+                            .addComponent(statusLabel))
                         .addGap(89, 89, 89)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9))
+                        .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ipAddressLabel)
+                            .addComponent(ipAddressValueLabel))
                         .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel7)))
-                    .addComponent(jLabel4))
+                        .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(portValueLabel)
+                            .addComponent(portLabel)))
+                    .addComponent(serverStatusTextLabel))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        middlePanelLayout.setVerticalGroup(
+            middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(middlePanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(serverStatusImageLabel)
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addComponent(serverStatusTextLabel)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
+                        .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(portLabel)
+                            .addComponent(ipAddressLabel)
+                            .addComponent(statusLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))))
+                        .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(statusValueLabel)
+                            .addComponent(ipAddressValueLabel)
+                            .addComponent(portValueLabel))))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        footerPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel11.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
-        jLabel11.setText("DiscussionNet V1.0 - © Code Squad 2021 - Software Licenses");
+        footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
+        footerTextLabel.setText("DiscussionNet V1.0 - © Code Squad 2021 - Software Licenses");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
+        footerPanel.setLayout(footerPanelLayout);
+        footerPanelLayout.setHorizontalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerPanelLayout.createSequentialGroup()
                 .addGap(292, 292, 292)
-                .addComponent(jLabel11)
+                .addComponent(footerTextLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        footerPanelLayout.setVerticalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
                 .addGap(0, 11, Short.MAX_VALUE)
-                .addComponent(jLabel11))
+                .addComponent(footerTextLabel))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+            .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(middlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -303,21 +295,21 @@ public class CommunicationLogsActive extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable main_table;
+    private javax.swing.JLabel communicationLogsLabel1;
+    private javax.swing.JLabel communicationLogsLabel2;
+    private javax.swing.JPanel footerPanel;
+    private javax.swing.JLabel footerTextLabel;
+    private javax.swing.JLabel ipAddressLabel;
+    private javax.swing.JLabel ipAddressValueLabel;
+    private javax.swing.JTable mainTable;
+    private javax.swing.JPanel middlePanel;
+    private javax.swing.JLabel portLabel;
+    private javax.swing.JLabel portValueLabel;
+    private javax.swing.JScrollPane scrollingPane;
+    private javax.swing.JLabel serverStatusImageLabel;
+    private javax.swing.JLabel serverStatusTextLabel;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JLabel statusValueLabel;
+    private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }

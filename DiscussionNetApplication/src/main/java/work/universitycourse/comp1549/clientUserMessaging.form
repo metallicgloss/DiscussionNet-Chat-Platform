@@ -41,36 +41,36 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="header_panel_1" pref="154" max="32767" attributes="0"/>
-                  <Component id="side_panel" max="32767" attributes="0"/>
+                  <Component id="headerPanel1" pref="154" max="32767" attributes="0"/>
+                  <Component id="sidePanel" max="32767" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="server_details_panel_1" min="-2" pref="334" max="-2" attributes="0"/>
+                              <Component id="serverDetailsPanel1" min="-2" pref="334" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="server_details_panel_2" pref="576" max="32767" attributes="0"/>
+                              <Component id="serverDetailsPanel2" pref="576" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="client_details_panel_1" min="-2" pref="334" max="-2" attributes="0"/>
+                              <Component id="clientDetailsPanel1" min="-2" pref="334" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="client_details_panel_2" max="32767" attributes="0"/>
+                              <Component id="clientDetailsPanel2" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="user_messaging_side_panel" pref="173" max="32767" attributes="0"/>
+                              <Component id="userMessagingSidePanel" pref="173" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="user_messaging_main_panel" min="-2" max="-2" attributes="0"/>
+                              <Component id="userMessagingMainPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="user_messaging_top_panel" pref="912" max="32767" attributes="0"/>
+                          <Component id="userMessagingTopPanel" pref="912" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="footer_panel" max="32767" attributes="0"/>
+                  <Component id="footerPanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="header_panel_2" max="32767" attributes="0"/>
+                      <Component id="headerPanel2" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -80,39 +80,39 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="header_panel_1" pref="46" max="32767" attributes="0"/>
-                  <Component id="header_panel_2" max="32767" attributes="0"/>
+                  <Component id="headerPanel1" pref="48" max="32767" attributes="0"/>
+                  <Component id="headerPanel2" max="32767" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="client_details_panel_1" min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="client_details_panel_2" min="-2" max="-2" attributes="0"/>
+                          <Component id="clientDetailsPanel1" min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="clientDetailsPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="server_details_panel_1" min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="server_details_panel_2" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverDetailsPanel1" min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="serverDetailsPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="user_messaging_top_panel" min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="userMessagingTopPanel" min="-2" pref="76" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="user_messaging_side_panel" pref="373" max="32767" attributes="0"/>
-                          <Component id="user_messaging_main_panel" pref="373" max="32767" attributes="0"/>
+                          <Component id="userMessagingSidePanel" pref="371" max="32767" attributes="0"/>
+                          <Component id="userMessagingMainPanel" pref="371" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="footer_panel" min="-2" max="-2" attributes="0"/>
+                      <Component id="footerPanel" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="side_panel" pref="703" max="32767" attributes="0"/>
+                  <Component id="sidePanel" pref="701" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="header_panel_1">
+    <Container class="javax.swing.JPanel" name="headerPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -127,7 +127,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="discussionNet_title" min="-2" max="-2" attributes="0"/>
+                  <Component id="discussionNetLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -136,14 +136,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="discussionNet_title" min="-2" max="-2" attributes="0"/>
+                  <Component id="discussionNetLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="discussionNet_title">
+        <Component class="javax.swing.JLabel" name="discussionNetLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="16" style="0"/>
@@ -156,7 +156,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="side_panel">
+    <Container class="javax.swing.JPanel" name="sidePanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="6d" green="24" red="0" type="rgb"/>
@@ -176,13 +176,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="exit_app_label" min="-2" max="-2" attributes="0"/>
-                      <Component id="client_features_label" min="-2" max="-2" attributes="0"/>
+                      <Component id="exitApplicationLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientFeaturesLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="update_logs_label" min="-2" max="-2" attributes="0"/>
-                              <Component id="user_messaging_label" min="-2" max="-2" attributes="0"/>
+                              <Component id="updateLogsLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="userMessagingLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -194,20 +194,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="client_features_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="clientFeaturesLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="user_messaging_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="userMessagingLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="update_logs_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="updateLogsLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="exit_app_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="exitApplicationLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="client_features_label">
+        <Component class="javax.swing.JLabel" name="clientFeaturesLabel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -221,7 +221,7 @@
             <Property name="text" type="java.lang.String" value="CLIENT FEATURES"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="user_messaging_label">
+        <Component class="javax.swing.JLabel" name="userMessagingLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="11" style="0"/>
@@ -235,7 +235,7 @@
             <Property name="text" type="java.lang.String" value="User Messaging"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="update_logs_label">
+        <Component class="javax.swing.JLabel" name="updateLogsLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="11" style="0"/>
@@ -249,7 +249,7 @@
             <Property name="text" type="java.lang.String" value="Update Logs"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="exit_app_label">
+        <Component class="javax.swing.JLabel" name="exitApplicationLabel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -266,13 +266,13 @@
             <Property name="text" type="java.lang.String" value="Exit Application"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exit_app_labelMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exit_app_labelMouseEntered"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitApplicationLabelMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitApplicationLabelMouseEntered"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="client_details_panel_1">
+    <Container class="javax.swing.JPanel" name="clientDetailsPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -287,11 +287,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="client_details_icon" min="-2" max="-2" attributes="0"/>
+                  <Component id="clientDetailsIcon" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="client_details_label_1" min="-2" max="-2" attributes="0"/>
+                  <Component id="clientDetailsLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="client_details_label_2" min="-2" max="-2" attributes="0"/>
+                  <Component id="clientDetailsLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="72" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -300,14 +300,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace pref="12" max="32767" attributes="0"/>
-                  <Component id="client_details_icon" min="-2" max="-2" attributes="0"/>
+                  <Component id="clientDetailsIcon" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="client_details_label_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="client_details_label_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -315,14 +315,14 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="client_details_icon">
+        <Component class="javax.swing.JLabel" name="clientDetailsIcon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/client_details.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="client_details_label_1">
+        <Component class="javax.swing.JLabel" name="clientDetailsLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="18" style="0"/>
@@ -330,7 +330,7 @@
             <Property name="text" type="java.lang.String" value="Client"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="client_details_label_2">
+        <Component class="javax.swing.JLabel" name="clientDetailsLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="18" style="0"/>
@@ -343,7 +343,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="server_details_panel_1">
+    <Container class="javax.swing.JPanel" name="serverDetailsPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -360,9 +360,9 @@
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="server_details_icon" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="server_details_label_1" min="-2" max="-2" attributes="0"/>
+                  <Component id="serverDetailsLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="server_details_label_2" min="-2" max="-2" attributes="0"/>
+                  <Component id="serverDetailsLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -378,8 +378,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="server_details_label_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="server_details_label_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="serverDetailsLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="serverDetailsLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -396,7 +396,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_details_label_1">
+        <Component class="javax.swing.JLabel" name="serverDetailsLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="18" style="0"/>
@@ -404,7 +404,7 @@
             <Property name="text" type="java.lang.String" value="Server"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_details_label_2">
+        <Component class="javax.swing.JLabel" name="serverDetailsLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="18" style="0"/>
@@ -417,7 +417,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="footer_panel">
+    <Container class="javax.swing.JPanel" name="footerPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -432,7 +432,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="footer_text" min="-2" max="-2" attributes="0"/>
+                  <Component id="footerTextLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -441,20 +441,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
-                  <Component id="footer_text" min="-2" max="-2" attributes="0"/>
+                  <Component id="footerTextLabel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="footer_text">
+        <Component class="javax.swing.JLabel" name="footerTextLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="DiscussionNet V1.0 - &#xa9; Code Squad 2021 - Software Licenses"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="user_messaging_top_panel">
+    <Container class="javax.swing.JPanel" name="userMessagingTopPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -472,11 +472,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
-                  <Component id="user_messaging_icon" min="-2" max="-2" attributes="0"/>
+                  <Component id="userMessagingIconLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="user_messaging_label_1" min="-2" max="-2" attributes="0"/>
+                  <Component id="userMessagingLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="user_messaging_label_2" min="-2" max="-2" attributes="0"/>
+                  <Component id="userMessagingLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="296" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -486,10 +486,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="user_messaging_icon" min="-2" max="-2" attributes="0"/>
+                      <Component id="userMessagingIconLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="user_messaging_label_2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="user_messaging_label_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="userMessagingLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="userMessagingLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -498,14 +498,14 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="user_messaging_icon">
+        <Component class="javax.swing.JLabel" name="userMessagingIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/user_messaging.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="user_messaging_label_1">
+        <Component class="javax.swing.JLabel" name="userMessagingLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="28" style="0"/>
@@ -513,7 +513,7 @@
             <Property name="text" type="java.lang.String" value="User"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="user_messaging_label_2">
+        <Component class="javax.swing.JLabel" name="userMessagingLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="28" style="0"/>
@@ -526,7 +526,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="user_messaging_side_panel">
+    <Container class="javax.swing.JPanel" name="userMessagingSidePanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -543,29 +543,29 @@
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="users_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="usersLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="right_arrow_icon_1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rightArrowIcon1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                      <Component id="userLabel5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="userLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="userLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="userLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="right_arrow_icon_2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="right_arrow_icon_3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="right_arrow_icon_4" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="right_arrow_icon_5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rightArrowIcon2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rightArrowIcon3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rightArrowIcon4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rightArrowIcon5" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -581,41 +581,41 @@
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="users_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="usersLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                          <Component id="userLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="right_arrow_icon_1" min="-2" max="-2" attributes="0"/>
+                      <Component id="rightArrowIcon1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                              <Component id="right_arrow_icon_2" min="-2" max="-2" attributes="0"/>
+                              <Component id="userLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="rightArrowIcon2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                          <Component id="userLabel3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="right_arrow_icon_3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rightArrowIcon3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel20" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="right_arrow_icon_4" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="userLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="rightArrowIcon4" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                      <Component id="right_arrow_icon_5" min="-2" max="-2" attributes="0"/>
+                      <Component id="userLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="rightArrowIcon5" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="167" max="32767" attributes="0"/>
+                  <EmptySpace pref="165" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="users_label">
+        <Component class="javax.swing.JLabel" name="usersLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -623,7 +623,7 @@
             <Property name="text" type="java.lang.String" value="Users"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel16">
+        <Component class="javax.swing.JLabel" name="userLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -633,14 +633,14 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="right_arrow_icon_1">
+        <Component class="javax.swing.JLabel" name="rightArrowIcon1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel18">
+        <Component class="javax.swing.JLabel" name="userLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -650,7 +650,7 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel19">
+        <Component class="javax.swing.JLabel" name="userLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -660,7 +660,7 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel20">
+        <Component class="javax.swing.JLabel" name="userLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -670,7 +670,7 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel21">
+        <Component class="javax.swing.JLabel" name="userLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -680,28 +680,28 @@
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="right_arrow_icon_2">
+        <Component class="javax.swing.JLabel" name="rightArrowIcon2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="right_arrow_icon_3">
+        <Component class="javax.swing.JLabel" name="rightArrowIcon3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="right_arrow_icon_4">
+        <Component class="javax.swing.JLabel" name="rightArrowIcon4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="right_arrow_icon_5">
+        <Component class="javax.swing.JLabel" name="rightArrowIcon5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/black_arrow.png"/>
@@ -710,7 +710,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="user_messaging_main_panel">
+    <Container class="javax.swing.JPanel" name="userMessagingMainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -726,11 +726,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="messages_label" min="-2" max="-2" attributes="0"/>
+                      <Component id="messagesLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="user_messages_textfield" min="-2" pref="559" max="-2" attributes="0"/>
+                          <Component id="userMessagesTextfield" min="-2" pref="559" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="user_messages_send_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="userMessagesButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -741,15 +741,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="messages_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="messagesLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="user_messages_send_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="userMessagesButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="user_messages_textfield" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="userMessagesTextfield" min="-2" pref="45" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -758,15 +758,15 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="user_messages_textfield">
+        <Component class="javax.swing.JTextField" name="userMessagesTextfield">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="user_messages_textfieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMessagesTextfieldActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="user_messages_send_button">
+        <Component class="javax.swing.JButton" name="userMessagesButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/super_small_button_background.png"/>
@@ -778,7 +778,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="messages_label">
+        <Component class="javax.swing.JLabel" name="messagesLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -788,7 +788,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="client_details_panel_2">
+    <Container class="javax.swing.JPanel" name="clientDetailsPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -804,18 +804,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="client_details_IP_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel30" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsIPAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsIPAddressValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="client_details_port_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsConnectionPortLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsConnectionPortValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                      <Component id="client_details_ID_number_label" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsAssignedIDNumberValueLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsAssignedIDNumberLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -826,15 +826,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="client_details_IP_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="client_details_port_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="client_details_ID_number_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsIPAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsConnectionPortLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsAssignedIDNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsIPAddressValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsConnectionPortValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="clientDetailsAssignedIDNumberValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
@@ -842,7 +842,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="client_details_IP_label">
+        <Component class="javax.swing.JLabel" name="clientDetailsIPAddressLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -850,7 +850,7 @@
             <Property name="text" type="java.lang.String" value="IP Address"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel30">
+        <Component class="javax.swing.JLabel" name="clientDetailsIPAddressValueLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Light" size="11" style="0"/>
@@ -858,7 +858,7 @@
             <Property name="text" type="java.lang.String" value="0.0.0.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="client_details_port_label">
+        <Component class="javax.swing.JLabel" name="clientDetailsConnectionPortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -866,7 +866,7 @@
             <Property name="text" type="java.lang.String" value="Connection Port"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel32">
+        <Component class="javax.swing.JLabel" name="clientDetailsConnectionPortValueLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Light" size="11" style="0"/>
@@ -874,7 +874,7 @@
             <Property name="text" type="java.lang.String" value="69420"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="client_details_ID_number_label">
+        <Component class="javax.swing.JLabel" name="clientDetailsAssignedIDNumberLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -882,7 +882,7 @@
             <Property name="text" type="java.lang.String" value="Assigned ID Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel34">
+        <Component class="javax.swing.JLabel" name="clientDetailsAssignedIDNumberValueLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Light" size="11" style="0"/>
@@ -895,7 +895,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="server_details_panel_2">
+    <Container class="javax.swing.JPanel" name="serverDetailsPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -911,18 +911,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsIPAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsIPAddressValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionPortLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionPortValueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionStatusValueLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionStatusLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -933,15 +933,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsIPAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionPortLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsIPAddressValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionPortValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="serverDetailsConnectionStatusValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
@@ -949,7 +949,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel35">
+        <Component class="javax.swing.JLabel" name="serverDetailsIPAddressLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -957,7 +957,7 @@
             <Property name="text" type="java.lang.String" value="IP Address"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel36">
+        <Component class="javax.swing.JLabel" name="serverDetailsIPAddressValueLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Light" size="11" style="0"/>
@@ -965,7 +965,7 @@
             <Property name="text" type="java.lang.String" value="0.0.0.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel37">
+        <Component class="javax.swing.JLabel" name="serverDetailsConnectionPortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -973,7 +973,7 @@
             <Property name="text" type="java.lang.String" value="Connection Port"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel38">
+        <Component class="javax.swing.JLabel" name="serverDetailsConnectionPortValueLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Light" size="11" style="0"/>
@@ -981,7 +981,7 @@
             <Property name="text" type="java.lang.String" value="69420"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel39">
+        <Component class="javax.swing.JLabel" name="serverDetailsConnectionStatusLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Medium" size="11" style="0"/>
@@ -989,7 +989,7 @@
             <Property name="text" type="java.lang.String" value="Connection Status"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel40">
+        <Component class="javax.swing.JLabel" name="serverDetailsConnectionStatusValueLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat Light" size="11" style="0"/>
@@ -1002,7 +1002,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="header_panel_2">
+    <Container class="javax.swing.JPanel" name="headerPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1014,53 +1014,40 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="nav_icon" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="client_control_panel_label_1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="client_control_panel_label_2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="filler1" min="-2" pref="0" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="filler2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="navIconLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                  <Component id="clientControlPanelLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="clientControlPanelLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="627" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="filler1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="filler2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="nav_icon" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="navIconLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="client_control_panel_label_2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="client_control_panel_label_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="clientControlPanelLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="clientControlPanelLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="nav_icon">
+        <Component class="javax.swing.JLabel" name="navIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/nav_icon.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="client_control_panel_label_1">
+        <Component class="javax.swing.JLabel" name="clientControlPanelLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="14" style="0"/>
@@ -1071,7 +1058,7 @@
             <Property name="text" type="java.lang.String" value="Client"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="client_control_panel_label_2">
+        <Component class="javax.swing.JLabel" name="clientControlPanelLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="14" style="0"/>
@@ -1081,26 +1068,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Control Panel"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.Box$Filler" name="filler1">
-          <Properties>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[0, 32767]"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalGlue"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.Box$Filler" name="filler2">
-          <Properties>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[0, 32767]"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalGlue"/>
-          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

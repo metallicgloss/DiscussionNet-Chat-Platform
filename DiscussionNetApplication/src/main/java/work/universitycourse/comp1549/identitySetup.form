@@ -30,17 +30,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="main_panel" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="main_panel" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="main_panel">
+    <Container class="javax.swing.JPanel" name="mainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -62,27 +62,27 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="main_image" min="-2" max="-2" attributes="0"/>
+                  <Component id="mainImage" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="assigned_ID_nuber_label" min="-2" max="-2" attributes="0"/>
-                              <Component id="server_IP_label" min="-2" max="-2" attributes="0"/>
-                              <Component id="server_port_label" min="-2" max="-2" attributes="0"/>
+                              <Component id="assignedIDNumberLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="serverIPAddressLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="serverPortLabel" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="identity_setup_title_part_1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="discussionNetIdentitySetupLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="identity_setup_title_part_2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="discussionNetIdentitySetupLabel2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="assigned_ID_number_textbox" alignment="0" max="32767" attributes="0"/>
-                              <Component id="server_IP_textbox" alignment="0" max="32767" attributes="0"/>
-                              <Component id="server_port_textbox" alignment="0" max="32767" attributes="0"/>
+                              <Component id="assignedIDNumberTextfield" alignment="0" max="32767" attributes="0"/>
+                              <Component id="serverIPAddressTextbox" alignment="0" max="32767" attributes="0"/>
+                              <Component id="serverPortTextbox" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="authenticate_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="authenticateButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="184" max="32767" attributes="0"/>
@@ -95,28 +95,28 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="main_image" min="-2" max="-2" attributes="0"/>
+                          <Component id="mainImage" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="identity_setup_title_part_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="identity_setup_title_part_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="discussionNetIdentitySetupLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="discussionNetIdentitySetupLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="assigned_ID_nuber_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="assignedIDNumberLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="assigned_ID_number_textbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="assignedIDNumberTextfield" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="server_IP_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverIPAddressLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="server_IP_textbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverIPAddressTextbox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="server_port_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverPortLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="server_port_textbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverPortTextbox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="authenticate_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="authenticateButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="130" max="32767" attributes="0"/>
@@ -125,14 +125,14 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="main_image">
+        <Component class="javax.swing.JLabel" name="mainImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Identify.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="identity_setup_title_part_1">
+        <Component class="javax.swing.JLabel" name="discussionNetIdentitySetupLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="24" style="0"/>
@@ -143,7 +143,7 @@
             <Property name="text" type="java.lang.String" value="DiscussionNet"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="identity_setup_title_part_2">
+        <Component class="javax.swing.JLabel" name="discussionNetIdentitySetupLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="24" style="0"/>
@@ -151,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="Identity Setup"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="assigned_ID_nuber_label">
+        <Component class="javax.swing.JLabel" name="assignedIDNumberLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -165,7 +165,7 @@
             <Property name="text" type="java.lang.String" value="Assigned ID Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="assigned_ID_number_textbox">
+        <Component class="javax.swing.JTextField" name="assignedIDNumberTextfield">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="8f" green="3f" red="0" type="rgb"/>
@@ -178,14 +178,14 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="assigned_ID_number_textboxFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="assigned_ID_number_textboxFocusLost"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="assignedIDNumberTextfieldFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="assignedIDNumberTextfieldFocusLost"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField();"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_IP_label">
+        <Component class="javax.swing.JLabel" name="serverIPAddressLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -199,20 +199,20 @@
             <Property name="text" type="java.lang.String" value="Server IP Address"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="server_IP_textbox">
+        <Component class="javax.swing.JTextField" name="serverIPAddressTextbox">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="8f" green="3f" red="0" type="rgb"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="server_IP_textboxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="serverIPAddressTextboxActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_port_label">
+        <Component class="javax.swing.JLabel" name="serverPortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -226,20 +226,20 @@
             <Property name="text" type="java.lang.String" value="Server Port"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="server_port_textbox">
+        <Component class="javax.swing.JTextField" name="serverPortTextbox">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="server_port_textboxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="serverPortTextboxActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="authenticate_button">
+        <Component class="javax.swing.JButton" name="authenticateButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

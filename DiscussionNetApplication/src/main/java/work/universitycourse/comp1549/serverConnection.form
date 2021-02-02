@@ -27,17 +27,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="main_panel" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="main_panel" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="main_panel">
+    <Container class="javax.swing.JPanel" name="mainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -49,24 +49,24 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="main_image" min="-2" max="-2" attributes="0"/>
+                  <Component id="mainImage" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="server_port_label" min="-2" max="-2" attributes="0"/>
-                          <Component id="server_IP_address_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverPortLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverIPAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="server_connection_title_part_1" min="-2" max="-2" attributes="0"/>
+                              <Component id="discussionNetServerConnectionLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="server_connection_title_part_2" min="-2" max="-2" attributes="0"/>
+                              <Component id="discussionNetServerConnectionLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="server_IP_address_textbox" alignment="0" pref="357" max="32767" attributes="0"/>
-                              <Component id="server_port_textbox" alignment="0" max="32767" attributes="0"/>
+                              <Component id="serverIPAddressTextfield" alignment="0" pref="357" max="32767" attributes="0"/>
+                              <Component id="serverPortTextfield" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="connect_to_server_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="connectToServerButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -81,23 +81,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="server_connection_title_part_1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="server_connection_title_part_2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="discussionNetServerConnectionLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="discussionNetServerConnectionLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="server_IP_address_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverIPAddressLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="server_IP_address_textbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverIPAddressTextfield" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="server_port_label" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverPortLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="server_port_textbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="serverPortTextfield" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="connect_to_server_button" min="-2" max="-2" attributes="0"/>
+                          <Component id="connectToServerButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="main_image" min="-2" max="-2" attributes="0"/>
+                          <Component id="mainImage" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="151" max="32767" attributes="0"/>
@@ -106,14 +106,14 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="main_image">
+        <Component class="javax.swing.JLabel" name="mainImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Connect.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_connection_title_part_1">
+        <Component class="javax.swing.JLabel" name="discussionNetServerConnectionLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat SemiBold" size="24" style="0"/>
@@ -124,7 +124,7 @@
             <Property name="text" type="java.lang.String" value="DiscussionNet"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_connection_title_part_2">
+        <Component class="javax.swing.JLabel" name="discussionNetServerConnectionLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="24" style="0"/>
@@ -132,7 +132,7 @@
             <Property name="text" type="java.lang.String" value="Server Connection"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="server_IP_address_label">
+        <Component class="javax.swing.JLabel" name="serverIPAddressLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -143,9 +143,9 @@
             <Property name="text" type="java.lang.String" value="Server IP Address"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="server_IP_address_textbox">
+        <Component class="javax.swing.JTextField" name="serverIPAddressTextfield">
         </Component>
-        <Component class="javax.swing.JLabel" name="server_port_label">
+        <Component class="javax.swing.JLabel" name="serverPortLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Montserrat" size="13" style="0"/>
@@ -156,9 +156,9 @@
             <Property name="text" type="java.lang.String" value="Server Port"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="server_port_textbox">
+        <Component class="javax.swing.JTextField" name="serverPortTextfield">
         </Component>
-        <Component class="javax.swing.JButton" name="connect_to_server_button">
+        <Component class="javax.swing.JButton" name="connectToServerButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -181,7 +181,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="connect_to_server_buttonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="connectToServerButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

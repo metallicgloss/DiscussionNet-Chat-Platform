@@ -28,141 +28,141 @@ public class IdentitySetup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        main_panel = new javax.swing.JPanel();
-        main_image = new javax.swing.JLabel();
-        identity_setup_title_part_1 = new javax.swing.JLabel();
-        identity_setup_title_part_2 = new javax.swing.JLabel();
-        assigned_ID_nuber_label = new javax.swing.JLabel();
-        assigned_ID_number_textbox = new RoundJTextField();
-        server_IP_label = new javax.swing.JLabel();
-        server_IP_textbox = new RoundJTextField();
-        server_port_label = new javax.swing.JLabel();
-        server_port_textbox = new RoundJTextField();
-        authenticate_button = new javax.swing.JButton();
+        mainPanel = new javax.swing.JPanel();
+        mainImage = new javax.swing.JLabel();
+        discussionNetIdentitySetupLabel1 = new javax.swing.JLabel();
+        discussionNetIdentitySetupLabel2 = new javax.swing.JLabel();
+        assignedIDNumberLabel = new javax.swing.JLabel();
+        assignedIDNumberTextfield = new RoundJTextField();
+        serverIPAddressLabel = new javax.swing.JLabel();
+        serverIPAddressTextbox = new RoundJTextField();
+        serverPortLabel = new javax.swing.JLabel();
+        serverPortTextbox = new RoundJTextField();
+        authenticateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(854, 519));
         setMinimumSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
-        main_panel.setBackground(new java.awt.Color(255, 255, 255));
-        main_panel.setMaximumSize(new java.awt.Dimension(854, 519));
-        main_panel.setMinimumSize(new java.awt.Dimension(854, 519));
-        main_panel.setName(""); // NOI18N
-        main_panel.setPreferredSize(new java.awt.Dimension(854, 519));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setMaximumSize(new java.awt.Dimension(854, 519));
+        mainPanel.setMinimumSize(new java.awt.Dimension(854, 519));
+        mainPanel.setName(""); // NOI18N
+        mainPanel.setPreferredSize(new java.awt.Dimension(854, 519));
 
-        main_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Identify.png"))); // NOI18N
+        mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Identify.png"))); // NOI18N
 
-        identity_setup_title_part_1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
-        identity_setup_title_part_1.setForeground(new java.awt.Color(0, 36, 109));
-        identity_setup_title_part_1.setText("DiscussionNet");
+        discussionNetIdentitySetupLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        discussionNetIdentitySetupLabel1.setForeground(new java.awt.Color(0, 36, 109));
+        discussionNetIdentitySetupLabel1.setText("DiscussionNet");
 
-        identity_setup_title_part_2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        identity_setup_title_part_2.setText("Identity Setup");
+        discussionNetIdentitySetupLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        discussionNetIdentitySetupLabel2.setText("Identity Setup");
 
-        assigned_ID_nuber_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        assigned_ID_nuber_label.setForeground(new java.awt.Color(47, 46, 65));
-        assigned_ID_nuber_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ID_Icon.png"))); // NOI18N
-        assigned_ID_nuber_label.setText("Assigned ID Number");
+        assignedIDNumberLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        assignedIDNumberLabel.setForeground(new java.awt.Color(47, 46, 65));
+        assignedIDNumberLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ID_Icon.png"))); // NOI18N
+        assignedIDNumberLabel.setText("Assigned ID Number");
 
-        assigned_ID_number_textbox.setForeground(new java.awt.Color(0, 63, 143));
-        assigned_ID_number_textbox.setCaretColor(new java.awt.Color(0, 63, 143));
-        assigned_ID_number_textbox.setSelectionColor(new java.awt.Color(0, 63, 143));
-        assigned_ID_number_textbox.addFocusListener(new java.awt.event.FocusAdapter() {
+        assignedIDNumberTextfield.setForeground(new java.awt.Color(0, 63, 143));
+        assignedIDNumberTextfield.setCaretColor(new java.awt.Color(0, 63, 143));
+        assignedIDNumberTextfield.setSelectionColor(new java.awt.Color(0, 63, 143));
+        assignedIDNumberTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                assigned_ID_number_textboxFocusGained(evt);
+                assignedIDNumberTextfieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                assigned_ID_number_textboxFocusLost(evt);
+                assignedIDNumberTextfieldFocusLost(evt);
             }
         });
 
-        server_IP_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        server_IP_label.setForeground(new java.awt.Color(47, 46, 65));
-        server_IP_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configure_ip_icon.png"))); // NOI18N
-        server_IP_label.setText("Server IP Address");
+        serverIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        serverIPAddressLabel.setForeground(new java.awt.Color(47, 46, 65));
+        serverIPAddressLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configure_ip_icon.png"))); // NOI18N
+        serverIPAddressLabel.setText("Server IP Address");
 
-        server_IP_textbox.setForeground(new java.awt.Color(0, 63, 143));
-        server_IP_textbox.addActionListener(new java.awt.event.ActionListener() {
+        serverIPAddressTextbox.setForeground(new java.awt.Color(0, 63, 143));
+        serverIPAddressTextbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                server_IP_textboxActionPerformed(evt);
+                serverIPAddressTextboxActionPerformed(evt);
             }
         });
 
-        server_port_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        server_port_label.setForeground(new java.awt.Color(47, 46, 65));
-        server_port_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/port_icon.png"))); // NOI18N
-        server_port_label.setText("Server Port");
+        serverPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        serverPortLabel.setForeground(new java.awt.Color(47, 46, 65));
+        serverPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/port_icon.png"))); // NOI18N
+        serverPortLabel.setText("Server Port");
 
-        server_port_textbox.setForeground(new java.awt.Color(255, 0, 51));
-        server_port_textbox.addActionListener(new java.awt.event.ActionListener() {
+        serverPortTextbox.setForeground(new java.awt.Color(255, 0, 51));
+        serverPortTextbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                server_port_textboxActionPerformed(evt);
+                serverPortTextboxActionPerformed(evt);
             }
         });
 
-        authenticate_button.setBackground(new java.awt.Color(255, 255, 255));
-        authenticate_button.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-        authenticate_button.setForeground(new java.awt.Color(255, 255, 255));
-        authenticate_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
-        authenticate_button.setText("Authenticate");
-        authenticate_button.setBorder(null);
-        authenticate_button.setBorderPainted(false);
-        authenticate_button.setContentAreaFilled(false);
-        authenticate_button.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        authenticateButton.setBackground(new java.awt.Color(255, 255, 255));
+        authenticateButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+        authenticateButton.setForeground(new java.awt.Color(255, 255, 255));
+        authenticateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
+        authenticateButton.setText("Authenticate");
+        authenticateButton.setBorder(null);
+        authenticateButton.setBorderPainted(false);
+        authenticateButton.setContentAreaFilled(false);
+        authenticateButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout main_panelLayout = new javax.swing.GroupLayout(main_panel);
-        main_panel.setLayout(main_panelLayout);
-        main_panelLayout.setHorizontalGroup(
-            main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(main_panelLayout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(main_image)
-                .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(main_panelLayout.createSequentialGroup()
+                .addComponent(mainImage)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(assigned_ID_nuber_label)
-                            .addComponent(server_IP_label)
-                            .addComponent(server_port_label)
-                            .addGroup(main_panelLayout.createSequentialGroup()
-                                .addComponent(identity_setup_title_part_1)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(assignedIDNumberLabel)
+                            .addComponent(serverIPAddressLabel)
+                            .addComponent(serverPortLabel)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(discussionNetIdentitySetupLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(identity_setup_title_part_2))
-                            .addComponent(assigned_ID_number_textbox)
-                            .addComponent(server_IP_textbox)
-                            .addComponent(server_port_textbox)))
-                    .addGroup(main_panelLayout.createSequentialGroup()
+                                .addComponent(discussionNetIdentitySetupLabel2))
+                            .addComponent(assignedIDNumberTextfield)
+                            .addComponent(serverIPAddressTextbox)
+                            .addComponent(serverPortTextbox)))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(authenticate_button)))
+                        .addComponent(authenticateButton)))
                 .addContainerGap(184, Short.MAX_VALUE))
         );
-        main_panelLayout.setVerticalGroup(
-            main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(main_panelLayout.createSequentialGroup()
-                .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(main_panelLayout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(main_image))
-                    .addGroup(main_panelLayout.createSequentialGroup()
+                        .addComponent(mainImage))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addGroup(main_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(identity_setup_title_part_1)
-                            .addComponent(identity_setup_title_part_2))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(discussionNetIdentitySetupLabel1)
+                            .addComponent(discussionNetIdentitySetupLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(assigned_ID_nuber_label)
+                        .addComponent(assignedIDNumberLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(assigned_ID_number_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(assignedIDNumberTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(server_IP_label)
+                        .addComponent(serverIPAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(server_IP_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(serverIPAddressTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(server_port_label)
+                        .addComponent(serverPortLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(server_port_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(serverPortTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(authenticate_button)))
+                        .addComponent(authenticateButton)))
                 .addContainerGap(130, Short.MAX_VALUE))
         );
 
@@ -170,35 +170,35 @@ public class IdentitySetup extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void server_IP_textboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_server_IP_textboxActionPerformed
+    private void serverIPAddressTextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverIPAddressTextboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_server_IP_textboxActionPerformed
+    }//GEN-LAST:event_serverIPAddressTextboxActionPerformed
 
-    private void server_port_textboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_server_port_textboxActionPerformed
+    private void serverPortTextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serverPortTextboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_server_port_textboxActionPerformed
+    }//GEN-LAST:event_serverPortTextboxActionPerformed
 
-    private void assigned_ID_number_textboxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assigned_ID_number_textboxFocusGained
-
-
+    private void assignedIDNumberTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIDNumberTextfieldFocusGained
 
 
-    }//GEN-LAST:event_assigned_ID_number_textboxFocusGained
 
-    private void assigned_ID_number_textboxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assigned_ID_number_textboxFocusLost
+
+    }//GEN-LAST:event_assignedIDNumberTextfieldFocusGained
+
+    private void assignedIDNumberTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIDNumberTextfieldFocusLost
         
 
-    }//GEN-LAST:event_assigned_ID_number_textboxFocusLost
+    }//GEN-LAST:event_assignedIDNumberTextfieldFocusLost
 
     /**
      * @param args the command line arguments
@@ -237,16 +237,16 @@ public class IdentitySetup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel assigned_ID_nuber_label;
-    private javax.swing.JTextField assigned_ID_number_textbox;
-    private javax.swing.JButton authenticate_button;
-    private javax.swing.JLabel identity_setup_title_part_1;
-    private javax.swing.JLabel identity_setup_title_part_2;
-    private javax.swing.JLabel main_image;
-    private javax.swing.JPanel main_panel;
-    private javax.swing.JLabel server_IP_label;
-    private javax.swing.JTextField server_IP_textbox;
-    private javax.swing.JLabel server_port_label;
-    private javax.swing.JTextField server_port_textbox;
+    private javax.swing.JLabel assignedIDNumberLabel;
+    private javax.swing.JTextField assignedIDNumberTextfield;
+    private javax.swing.JButton authenticateButton;
+    private javax.swing.JLabel discussionNetIdentitySetupLabel1;
+    private javax.swing.JLabel discussionNetIdentitySetupLabel2;
+    private javax.swing.JLabel mainImage;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel serverIPAddressLabel;
+    private javax.swing.JTextField serverIPAddressTextbox;
+    private javax.swing.JLabel serverPortLabel;
+    private javax.swing.JTextField serverPortTextbox;
     // End of variables declaration//GEN-END:variables
 }
