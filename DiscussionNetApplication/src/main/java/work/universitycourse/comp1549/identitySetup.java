@@ -5,19 +5,17 @@
  */
 package work.universitycourse.comp1549;
 
-import java.awt.Color;
-import java.awt.Graphics;
 
 /**
  *
  * @author Daniel Browne
  */
-public class identitySetup extends javax.swing.JFrame {
+public class IdentitySetup extends javax.swing.JFrame {
 
     /**
      * Creates new form identitySetup
      */
-    public identitySetup() {
+    public IdentitySetup() {
         initComponents();
     }
 
@@ -74,6 +72,9 @@ public class identitySetup extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 assigned_ID_number_textboxFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                assigned_ID_number_textboxFocusLost(evt);
+            }
         });
 
         server_IP_label.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
@@ -93,7 +94,7 @@ public class identitySetup extends javax.swing.JFrame {
         server_port_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/port_icon.png"))); // NOI18N
         server_port_label.setText("Server Port");
 
-        server_port_textbox.setForeground(new java.awt.Color(0, 63, 143));
+        server_port_textbox.setForeground(new java.awt.Color(255, 0, 51));
         server_port_textbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 server_port_textboxActionPerformed(evt);
@@ -189,9 +190,15 @@ public class identitySetup extends javax.swing.JFrame {
 
     private void assigned_ID_number_textboxFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assigned_ID_number_textboxFocusGained
 
-    
-       
+
+
+
     }//GEN-LAST:event_assigned_ID_number_textboxFocusGained
+
+    private void assigned_ID_number_textboxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assigned_ID_number_textboxFocusLost
+        
+
+    }//GEN-LAST:event_assigned_ID_number_textboxFocusLost
 
     /**
      * @param args the command line arguments
@@ -210,20 +217,21 @@ public class identitySetup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(identitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(identitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(identitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(identitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new identitySetup().setVisible(true);
+                new IdentitySetup().setVisible(true);
             }
         });
     }

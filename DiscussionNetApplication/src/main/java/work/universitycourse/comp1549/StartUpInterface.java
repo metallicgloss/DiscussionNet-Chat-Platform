@@ -13,14 +13,14 @@ import javax.swing.JFrame;
  *
  * @author Daniel Browne
  */
-public class startupInterface extends javax.swing.JFrame {
+public class StartupInterface extends javax.swing.JFrame {
     
     
 
     /**
      * Creates new form StartUpInterface
      */
-    public startupInterface() {
+    public StartupInterface() {
         initComponents();
     }
     
@@ -92,7 +92,6 @@ public class startupInterface extends javax.swing.JFrame {
         configure_server_button.setForeground(new java.awt.Color(255, 255, 255));
         configure_server_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
         configure_server_button.setText("Configure Server");
-        configure_server_button.setActionCommand("Configure Server");
         configure_server_button.setBorder(null);
         configure_server_button.setBorderPainted(false);
         configure_server_button.setContentAreaFilled(false);
@@ -204,14 +203,18 @@ public class startupInterface extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(startupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(startupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(startupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(startupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -222,7 +225,7 @@ public class startupInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new startupInterface().setVisible(true);
+                new StartupInterface().setVisible(true);
             }
         });
     }

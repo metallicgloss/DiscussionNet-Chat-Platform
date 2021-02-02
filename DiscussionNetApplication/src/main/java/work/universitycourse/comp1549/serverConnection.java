@@ -9,12 +9,12 @@ package work.universitycourse.comp1549;
  *
   * @author Daniel Browne
  */
-public class serverConnection extends javax.swing.JFrame {
+public class ServerConnection extends javax.swing.JFrame {
 
     /**
      * Creates new form serverConnection
      */
-    public serverConnection() {
+    public ServerConnection() {
         initComponents();
     }
 
@@ -38,9 +38,7 @@ public class serverConnection extends javax.swing.JFrame {
         connect_to_server_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(854, 519));
         setMinimumSize(new java.awt.Dimension(854, 519));
-        setPreferredSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
         main_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -161,20 +159,21 @@ public class serverConnection extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(serverConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(serverConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(serverConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(serverConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerConnection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new serverConnection().setVisible(true);
+                new ServerConnection().setVisible(true);
             }
         });
     }

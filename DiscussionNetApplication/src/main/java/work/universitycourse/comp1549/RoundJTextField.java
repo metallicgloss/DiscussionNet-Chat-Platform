@@ -27,7 +27,7 @@ public class RoundJTextField extends JTextField {
          super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
-         g.setColor(new Color(229,229,229));  
+         g.setColor(new Color(229, 229, 229));  
          g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 15, 15);
     }
     public boolean contains(int x, int y) {

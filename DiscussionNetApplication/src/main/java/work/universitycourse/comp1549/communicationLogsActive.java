@@ -6,29 +6,51 @@
 package work.universitycourse.comp1549;
 
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+
+
 
 /**
  *
  * @author Daniel Browne
  */
-public class communicationLogsActive extends javax.swing.JFrame {
+public class CommunicationLogsActive extends javax.swing.JFrame {
+ 
     
     
-    public  void table() {
-    
-     setBackground(new Color(255,255,255));
-        
-    main_table.getTableHeader().setBackground(new Color(255,255,255));
-    main_table.getTableHeader().setForeground(new Color(255,255,255));
-    main_table.setRowHeight(25);
-}
-
     /**
      * Creates new form communicationLogs
      */
-    public communicationLogsActive() {
+    public CommunicationLogsActive() {
         initComponents();
+        table();
     }
+    
+    private  void table() {
+      main_table.getTableHeader().setOpaque(false);
+      main_table.getTableHeader().setBackground(Color.white);
+      main_table.getTableHeader().setForeground(new Color(47, 46, 65));
+      
+       main_table.getTableHeader().setFont(new java.awt.Font("Montserrat Medium", 0, 13));
+
+     DefaultTableCellRenderer stringRenderer = (DefaultTableCellRenderer)
+     main_table.getDefaultRenderer(String.class);
+     stringRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+     DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) main_table.getTableHeader().getDefaultRenderer();
+    renderer.setHorizontalAlignment(SwingConstants.CENTER);
+    
+    JTableHeader header = main_table.getTableHeader();
+    header.setBorder(new LineBorder(new Color(229,229,229),1));
+    
+   
+      
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,11 +106,16 @@ public class communicationLogsActive extends javax.swing.JFrame {
             }
         ));
         main_table.setAutoscrolls(false);
-        main_table.setGridColor(new java.awt.Color(255, 51, 0));
+        main_table.setEnabled(false);
+        main_table.setFocusable(false);
+        main_table.setGridColor(new java.awt.Color(47, 46, 65));
+        main_table.setIntercellSpacing(new java.awt.Dimension(2, 0));
         main_table.setOpaque(false);
+        main_table.setRowHeight(30);
         main_table.setRowSelectionAllowed(false);
         main_table.setShowGrid(false);
-        main_table.getTableHeader().setResizingAllowed(false);
+        main_table.setShowHorizontalLines(false);
+        main_table.setShowVerticalLines(false);
         main_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(main_table);
 
@@ -104,9 +131,9 @@ public class communicationLogsActive extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,8 +143,8 @@ public class communicationLogsActive extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,7 +195,7 @@ public class communicationLogsActive extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel7)))
                     .addComponent(jLabel4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +215,7 @@ public class communicationLogsActive extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -217,8 +244,12 @@ public class communicationLogsActive extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,27 +275,29 @@ public class communicationLogsActive extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(communicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommunicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(communicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommunicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(communicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommunicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(communicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CommunicationLogsActive.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new communicationLogsActive().setVisible(true);
+                new CommunicationLogsActive().setVisible(true);
             }
         });
     }

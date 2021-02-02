@@ -15,12 +15,12 @@ package work.universitycourse.comp1549;
  *
  * @author Daniel Browne
  */
-public class serverManagementConfiguration extends javax.swing.JFrame {
+public class ServerManagementConfiguration extends javax.swing.JFrame {
 
     /**
      * Creates new form serverManagementConfiguration
      */
-    public serverManagementConfiguration() {
+    public ServerManagementConfiguration() {
         initComponents();
     }
     
@@ -43,17 +43,15 @@ public class serverManagementConfiguration extends javax.swing.JFrame {
         server_management_title_part_2 = new javax.swing.JLabel();
         configured_IP_label = new javax.swing.JLabel();
         assigned_network_port_label = new javax.swing.JLabel();
-        assigned_network_port_textbox = new javax.swing.JTextField();
+        assigned_network_port_textbox = new RoundJTextField();
         provision_server_button = new javax.swing.JButton();
         footer_text = new javax.swing.JLabel();
         main_image = new javax.swing.JLabel();
-        configured_IP_textbox = new javax.swing.JTextField();
+        configured_IP_textbox = new RoundJTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(854, 519));
         setMinimumSize(new java.awt.Dimension(854, 519));
-        setPreferredSize(new java.awt.Dimension(854, 519));
         setResizable(false);
 
         main_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -191,20 +189,21 @@ public class serverManagementConfiguration extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(serverManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(serverManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(serverManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(serverManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerManagementConfiguration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new serverManagementConfiguration().setVisible(true);
+                new ServerManagementConfiguration().setVisible(true);
             }
         });
     }
