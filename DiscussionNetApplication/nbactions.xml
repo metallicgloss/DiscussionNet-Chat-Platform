@@ -10,7 +10,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.0.0:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath work.universitycourse.comp1549.StartUpInterface</exec.args>
+                <exec.args>-classpath %classpath work.universitycourse.comp1549.Interfaces.StartUpInterface</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
