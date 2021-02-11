@@ -1,15 +1,9 @@
 work\universitycourse\comp1549\Interfaces\Server\ServerLogsInactive.class
-work\universitycourse\comp1549\Interfaces\Client\ClientMessaging$2.class
-work\universitycourse\comp1549\Interfaces\StartUpInterface$2.class
-work\universitycourse\comp1549\Interfaces\Server\ServerConfiguration$2.class
+work\universitycourse\comp1549\Interfaces\Server\ServerConfiguration$1.class
+work\universitycourse\comp1549\Components\RoundJTextField.class
 work\universitycourse\comp1549\Interfaces\Server\ServerLogsActive.class
 work\universitycourse\comp1549\Interfaces\Client\ClientMessaging$1.class
 work\universitycourse\comp1549\Interfaces\Server\ServerLogsInactive$1.class
-work\universitycourse\comp1549\Interfaces\Server\ServerConfiguration$1.class
-work\universitycourse\comp1549\Interfaces\Client\ClientMessaging$3.class
-work\universitycourse\comp1549\Components\RoundJTextField.class
 work\universitycourse\comp1549\Interfaces\Server\ServerConfiguration.class
 work\universitycourse\comp1549\Interfaces\Server\ServerLogsActive$1.class
-work\universitycourse\comp1549\Interfaces\StartUpInterface$1.class
 work\universitycourse\comp1549\Interfaces\Client\ClientMessaging.class
-work\universitycourse\comp1549\Interfaces\StartUpInterface.class

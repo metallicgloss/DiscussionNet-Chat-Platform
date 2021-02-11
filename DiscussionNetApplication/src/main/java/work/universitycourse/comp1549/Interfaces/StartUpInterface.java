@@ -6,7 +6,9 @@
 package work.universitycourse.comp1549.Interfaces;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import work.universitycourse.comp1549.Modules.InterfaceManager;
+import work.universitycourse.comp1549.Interfaces.Client.ClientServerConnection;
+import work.universitycourse.comp1549.Interfaces.Server.ServerConfiguration;
 
 /**
  *
@@ -94,7 +96,13 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureServerButton.setBorder(null);
         configureServerButton.setBorderPainted(false);
         configureServerButton.setContentAreaFilled(false);
+        configureServerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         configureServerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        configureServerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                configureServerButtonMouseClicked(evt);
+            }
+        });
 
         configureClientButton.setBackground(new java.awt.Color(255, 255, 255));
         configureClientButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
@@ -104,7 +112,13 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureClientButton.setBorder(null);
         configureClientButton.setBorderPainted(false);
         configureClientButton.setContentAreaFilled(false);
+        configureClientButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         configureClientButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        configureClientButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                configureClientButtonMouseClicked(evt);
+            }
+        });
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
@@ -185,6 +199,14 @@ public class StartUpInterface extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void configureClientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configureClientButtonMouseClicked
+        InterfaceManager.changeWindow(this, new ClientServerConnection());
+    }//GEN-LAST:event_configureClientButtonMouseClicked
+
+    private void configureServerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configureServerButtonMouseClicked
+        InterfaceManager.changeWindow(this, new ServerConfiguration());
+    }//GEN-LAST:event_configureServerButtonMouseClicked
+
     private void formWindowActivated(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
     }// GEN-LAST:event_formWindowActivated
@@ -209,19 +231,27 @@ public class StartUpInterface extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StartUpInterface.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StartUpInterface.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StartUpInterface.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartUpInterface.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
+        
         // </editor-fold>
         // </editor-fold>
         // </editor-fold>
