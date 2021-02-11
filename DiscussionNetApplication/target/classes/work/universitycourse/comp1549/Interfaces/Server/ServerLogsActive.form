@@ -327,7 +327,7 @@
         <Component class="javax.swing.JLabel" name="serverStatusImageLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/broadcast_active.png"/>
+              <Image iconType="3" name="/graphics/broadcast_active.png"/>
             </Property>
           </Properties>
         </Component>

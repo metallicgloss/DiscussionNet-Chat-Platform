@@ -155,7 +155,7 @@
               <Font name="Montserrat" size="13" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/configure_ip_icon.png"/>
+              <Image iconType="3" name="/icons/wireless.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Configured IP Address"/>
           </Properties>
@@ -166,7 +166,7 @@
               <Font name="Montserrat" size="13" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/port_icon.png"/>
+              <Image iconType="3" name="/icons/port_icon.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Assigned Network Port"/>
           </Properties>
@@ -191,7 +191,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/large_button_background.png"/>
+              <Image iconType="3" name="/buttons/large.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Provision Server"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -200,12 +200,14 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Hand Cursor"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="iconTextGap" type="int" value="3"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="provisionServerButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="provisionServerButtonMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="provisionServerButtonActionPerformed"/>
           </Events>
         </Component>
@@ -220,14 +222,11 @@
         <Component class="javax.swing.JLabel" name="mainImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Settings.png"/>
+              <Image iconType="3" name="/graphics/settings.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="configuredIPAddressTextfield">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="configuredIPAddressTextfieldActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
           </AuxValues>

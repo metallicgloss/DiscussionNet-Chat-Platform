@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package work.universitycourse.comp1549.Interfaces;
 
 import javax.swing.ImageIcon;
@@ -34,7 +29,7 @@ public class StartUpInterface extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         ImageIcon img = new ImageIcon(getClass().getResource("/icon.png"));
@@ -48,6 +43,7 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureServerButton = new javax.swing.JButton();
         configureClientButton = new javax.swing.JButton();
         footerTextLabel = new javax.swing.JLabel();
+        footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DiscussionNet V1.0 ");
@@ -55,11 +51,6 @@ public class StartUpInterface extends javax.swing.JFrame {
         setIconImage(img.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
         mainPanel.setMaximumSize(new java.awt.Dimension(847, 519));
@@ -86,12 +77,12 @@ public class StartUpInterface extends javax.swing.JFrame {
         titleLabel1.setForeground(new java.awt.Color(47, 46, 65));
         titleLabel1.setText("Welcome To");
 
-        mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/welcome_image.png"))); // NOI18N
+        mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/welcome_image.png"))); // NOI18N
 
         configureServerButton.setBackground(new java.awt.Color(255, 255, 255));
         configureServerButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         configureServerButton.setForeground(new java.awt.Color(255, 255, 255));
-        configureServerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
+        configureServerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/medium.png"))); // NOI18N
         configureServerButton.setText("Configure Server");
         configureServerButton.setBorder(null);
         configureServerButton.setBorderPainted(false);
@@ -99,15 +90,24 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureServerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         configureServerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         configureServerButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                configureServerButtonMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                configureServerButtonMouseEntered(evt);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                configureServerButtonMouseExited(evt);
+            }
+        });
+        configureServerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configureServerButtonActionPerformed(evt);
             }
         });
 
         configureClientButton.setBackground(new java.awt.Color(255, 255, 255));
         configureClientButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         configureClientButton.setForeground(new java.awt.Color(255, 255, 255));
-        configureClientButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medium_button_background.png"))); // NOI18N
+        configureClientButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/medium.png"))); // NOI18N
         configureClientButton.setText("Configure Client");
         configureClientButton.setBorder(null);
         configureClientButton.setBorderPainted(false);
@@ -115,101 +115,120 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureClientButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         configureClientButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         configureClientButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                configureClientButtonMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                configureClientButtonMouseEntered(evt);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                configureClientButtonMouseExited(evt);
+            }
+        });
+        configureClientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configureClientButtonActionPerformed(evt);
             }
         });
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel.setText("DiscussionNet V1.0 - © Code Squad 2021 - Software Licenses");
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
+
+        footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
+        footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
+        footerLicensesTextLabel.setText("Software Licenses");
+        footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                footerLicensesTextLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addGap(247, 247, 247)
-                            .addComponent(mainImage))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addGap(139, 139, 139)
-                            .addComponent(titleLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(titleLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(titleLabel3))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(configureClientButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(configureServerButton)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+        mainPanelLayout.setHorizontalGroup(mainPanelLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                        mainPanelLayout.createSequentialGroup().addGap(102, 102, 102).addComponent(existingNetworkLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(createNetworkLabel).addGap(133, 133, 133))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                        mainPanelLayout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(mainPanelLayout.createSequentialGroup().addGap(298, 298, 298)
+                                                .addComponent(mainImage))
+                                        .addGroup(mainPanelLayout.createSequentialGroup().addGap(190, 190, 190)
+                                                .addComponent(titleLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(titleLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(titleLabel3))
+                                        .addGroup(mainPanelLayout.createSequentialGroup().addGap(43, 43, 43)
+                                                .addComponent(configureClientButton).addGap(18, 18, 18)
+                                                .addComponent(configureServerButton)))
+                                .addGap(52, 52, 52))
+                .addGroup(mainPanelLayout.createSequentialGroup().addGap(285, 285, 285).addComponent(footerTextLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(footerLicensesTextLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        mainPanelLayout.setVerticalGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createSequentialGroup().addGap(51, 51, 51).addComponent(mainImage)
+                        .addGap(18, 18, 18)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(titleLabel1).addComponent(titleLabel2).addComponent(titleLabel3))
                         .addGap(51, 51, 51)
-                        .addComponent(existingNetworkLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(createNetworkLabel)
-                        .addGap(81, 81, 81)))
-                .addGap(52, 52, 52))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(footerTextLabel)
-                .addGap(291, 291, 291))
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(mainImage)
-                .addGap(18, 18, 18)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleLabel1)
-                    .addComponent(titleLabel2)
-                    .addComponent(titleLabel3))
-                .addGap(51, 51, 51)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(existingNetworkLabel)
-                    .addComponent(createNetworkLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(configureClientButton)
-                    .addComponent(configureServerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(footerTextLabel)
-                .addContainerGap())
-        );
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(existingNetworkLabel).addComponent(createNetworkLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(configureClientButton).addComponent(configureServerButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(footerLicensesTextLabel).addComponent(footerTextLabel))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
+                javax.swing.GroupLayout.Alignment.TRAILING,
+                layout.createSequentialGroup().addGap(0, 0, 0)
+                        .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(mainPanel,
+                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void configureClientButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configureClientButtonMouseClicked
+    private void configureClientButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_configureClientButtonActionPerformed
         InterfaceManager.changeWindow(this, new ClientServerConnection());
-    }//GEN-LAST:event_configureClientButtonMouseClicked
+    }// GEN-LAST:event_configureClientButtonActionPerformed
 
-    private void configureServerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configureServerButtonMouseClicked
+    private void configureServerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_configureServerButtonActionPerformed
         InterfaceManager.changeWindow(this, new ServerConfiguration());
-    }//GEN-LAST:event_configureServerButtonMouseClicked
+    }// GEN-LAST:event_configureServerButtonActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-    }// GEN-LAST:event_formWindowActivated
+    private void configureClientButtonMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_configureClientButtonMouseEntered
+        InterfaceManager.buttonHover(configureClientButton, true, "medium");
+    }// GEN-LAST:event_configureClientButtonMouseEntered
+
+    private void configureClientButtonMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_configureClientButtonMouseExited
+        InterfaceManager.buttonHover(configureClientButton, false, "medium");
+    }// GEN-LAST:event_configureClientButtonMouseExited
+
+    private void configureServerButtonMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_configureServerButtonMouseEntered
+        InterfaceManager.buttonHover(configureServerButton, true, "medium");
+    }// GEN-LAST:event_configureServerButtonMouseEntered
+
+    private void configureServerButtonMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_configureServerButtonMouseExited
+        InterfaceManager.buttonHover(configureServerButton, false, "medium");
+    }// GEN-LAST:event_configureServerButtonMouseExited
+
+    private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+        InterfaceManager.changeWindow(this, new Licenses());
+    }// GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -231,43 +250,11 @@ public class StartUpInterface extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StartUpInterface.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
-        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -282,6 +269,7 @@ public class StartUpInterface extends javax.swing.JFrame {
     private javax.swing.JButton configureServerButton;
     private javax.swing.JLabel createNetworkLabel;
     private javax.swing.JLabel existingNetworkLabel;
+    private javax.swing.JLabel footerLicensesTextLabel;
     private javax.swing.JLabel footerTextLabel;
     private javax.swing.JLabel mainImage;
     private javax.swing.JPanel mainPanel;

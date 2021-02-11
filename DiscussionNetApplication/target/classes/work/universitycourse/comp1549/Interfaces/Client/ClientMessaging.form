@@ -5,7 +5,7 @@
     <Component class="javax.swing.JLabel" name="jLabel25">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/black_arrow.png"/>
+          <Image iconType="3" name="/icons/black_arrow.png"/>
         </Property>
       </Properties>
     </Component>
@@ -225,7 +225,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/mail_icon.png"/>
+              <Image iconType="3" name="/icons/mail.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="User Messaging"/>
           </Properties>
@@ -239,7 +239,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/file_icon.png"/>
+              <Image iconType="3" name="/icons/file_icon.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Update Logs"/>
           </Properties>
@@ -256,14 +256,10 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/exit_button.png"/>
+              <Image iconType="3" name="/icons/exit.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Exit Application"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitApplicationLabelMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitApplicationLabelMouseEntered"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -313,7 +309,7 @@
         <Component class="javax.swing.JLabel" name="clientDetailsIcon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/client_details.png"/>
+              <Image iconType="3" name="/graphics/client_details.png"/>
             </Property>
           </Properties>
         </Component>
@@ -387,7 +383,7 @@
         <Component class="javax.swing.JLabel" name="server_details_icon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/server_details.png"/>
+              <Image iconType="3" name="/graphics/server_details.png"/>
             </Property>
           </Properties>
         </Component>
@@ -428,15 +424,21 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="footerTextLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="335" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="footerLicensesTextLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="328" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="footerTextLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="footerLicensesTextLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="footerTextLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -450,8 +452,25 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="2e" red="2f" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DiscussionNet V1.0 - &#xa9; Code Squad 2021 - Software Licenses"/>
+            <Property name="text" type="java.lang.String" value="DiscussionNet V1.0   -   &#xa9; Code Squad 2021   -"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="footerLicensesTextLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Montserrat" size="9" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="41" green="2e" red="2f" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Software Licenses"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLicensesTextLabelMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -502,7 +521,7 @@
         <Component class="javax.swing.JLabel" name="userMessagingIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/user_messaging.png"/>
+              <Image iconType="3" name="/graphics/user_messaging.png"/>
             </Property>
           </Properties>
         </Component>
@@ -641,7 +660,7 @@
         <Component class="javax.swing.JLabel" name="rightArrowIcon1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/black_arrow.png"/>
+              <Image iconType="3" name="/icons/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
@@ -688,28 +707,28 @@
         <Component class="javax.swing.JLabel" name="rightArrowIcon2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/black_arrow.png"/>
+              <Image iconType="3" name="/icons/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="rightArrowIcon3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/black_arrow.png"/>
+              <Image iconType="3" name="/icons/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="rightArrowIcon4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/black_arrow.png"/>
+              <Image iconType="3" name="/icons/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="rightArrowIcon5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/black_arrow.png"/>
+              <Image iconType="3" name="/icons/black_arrow.png"/>
             </Property>
           </Properties>
         </Component>
@@ -764,9 +783,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="userMessagesTextfield">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMessagesTextfieldActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
           </AuxValues>
@@ -774,14 +790,21 @@
         <Component class="javax.swing.JButton" name="userMessagesButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/super_small_button_background.png"/>
+              <Image iconType="3" name="/buttons/small.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="userMessagesButtonMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="userMessagesButtonMouseExited"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="messagesLabel">
           <Properties>
@@ -1048,7 +1071,7 @@
         <Component class="javax.swing.JLabel" name="navIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/nav_icon.png"/>
+              <Image iconType="3" name="/icons/nav_icon.png"/>
             </Property>
           </Properties>
         </Component>
