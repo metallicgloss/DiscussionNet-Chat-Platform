@@ -2,6 +2,7 @@ package work.universitycourse.comp1549.Interfaces.Client;
 
 import work.universitycourse.comp1549.Components.RoundJTextField;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
+import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Interfaces.Licenses;
 
 /**
@@ -43,8 +44,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
         footerTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle
-                .getBundle("work/universitycourse/comp1549/Interfaces/Client/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Client/Bundle"); // NOI18N
         setTitle(bundle.getString("ClientServerConnection.title")); // NOI18N
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
@@ -63,13 +63,11 @@ public class ClientServerConnection extends javax.swing.JFrame {
 
         discussionNetServerConnectionLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         discussionNetServerConnectionLabel1.setForeground(new java.awt.Color(0, 36, 109));
-        discussionNetServerConnectionLabel1
-                .setText(bundle.getString("ClientServerConnection.discussionNetServerConnectionLabel1.text_1")); // NOI18N
+        discussionNetServerConnectionLabel1.setText(bundle.getString("ClientServerConnection.discussionNetServerConnectionLabel1.text_1")); // NOI18N
         discussionNetServerConnectionLabel1.setName("discussionNetServerConnectionLabel1"); // NOI18N
 
         discussionNetServerConnectionLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        discussionNetServerConnectionLabel2
-                .setText(bundle.getString("ClientServerConnection.discussionNetServerConnectionLabel2.text_1")); // NOI18N
+        discussionNetServerConnectionLabel2.setText(bundle.getString("ClientServerConnection.discussionNetServerConnectionLabel2.text_1")); // NOI18N
         discussionNetServerConnectionLabel2.setName("discussionNetServerConnectionLabel2"); // NOI18N
 
         serverIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
@@ -92,7 +90,6 @@ public class ClientServerConnection extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 connectToServerButtonMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 connectToServerButtonMouseExited(evt);
             }
@@ -132,105 +129,95 @@ public class ClientServerConnection extends javax.swing.JFrame {
         footerTextLabel.setText(bundle.getString("ClientServerConnection.footerTextLabel.text_1")); // NOI18N
         footerTextLabel.setName("footerTextLabel"); // NOI18N
 
-        javax.swing.GroupLayout clientServerConnectionPanelLayout = new javax.swing.GroupLayout(
-                clientServerConnectionPanel);
+        javax.swing.GroupLayout clientServerConnectionPanelLayout = new javax.swing.GroupLayout(clientServerConnectionPanel);
         clientServerConnectionPanel.setLayout(clientServerConnectionPanelLayout);
-        clientServerConnectionPanelLayout.setHorizontalGroup(clientServerConnectionPanelLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup().addGap(78, 78, 78)
-                        .addComponent(mainImage).addGap(79, 79, 79)
-                        .addGroup(clientServerConnectionPanelLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
-                                        .addGroup(clientServerConnectionPanelLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
-                                                        .addGap(0, 1, Short.MAX_VALUE)
-                                                        .addGroup(clientServerConnectionPanelLayout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(serverPortLabel)
-                                                                .addComponent(serverIPAddressLabel)
-                                                                .addGroup(clientServerConnectionPanelLayout
-                                                                        .createSequentialGroup()
-                                                                        .addComponent(
-                                                                                discussionNetServerConnectionLabel1)
-                                                                        .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(
-                                                                                discussionNetServerConnectionLabel2))))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                        clientServerConnectionPanelLayout.createSequentialGroup()
-                                                                .addGroup(clientServerConnectionPanelLayout
-                                                                        .createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(serverIPAddressTextbox,
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(serverPortTextbox))
-                                                                .addGap(66, 66, 66)))
-                                        .addGap(79, 79, 79))
-                                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
-                                        .addComponent(connectToServerButton, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup().addGap(285, 285, 285)
-                        .addComponent(footerTextLabel)
+        clientServerConnectionPanelLayout.setHorizontalGroup(
+            clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(mainImage)
+                .addGap(79, 79, 79)
+                .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                        .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(serverPortLabel)
+                                    .addComponent(serverIPAddressLabel)
+                                    .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                                        .addComponent(discussionNetServerConnectionLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(discussionNetServerConnectionLabel2))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, clientServerConnectionPanelLayout.createSequentialGroup()
+                                .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(serverIPAddressTextbox, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(serverPortTextbox))
+                                .addGap(66, 66, 66)))
+                        .addGap(79, 79, 79))
+                    .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                        .addComponent(connectToServerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                .addGap(285, 285, 285)
+                .addComponent(footerTextLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(footerLicensesTextLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        clientServerConnectionPanelLayout.setVerticalGroup(
+            clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(mainImage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE))
+                    .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(discussionNetServerConnectionLabel1)
+                            .addComponent(discussionNetServerConnectionLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(serverIPAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(footerLicensesTextLabel).addGap(0, 0, Short.MAX_VALUE)));
-        clientServerConnectionPanelLayout.setVerticalGroup(clientServerConnectionPanelLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
-                        .addGroup(clientServerConnectionPanelLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
-                                        .addGap(187, 187, 187).addComponent(mainImage)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139,
-                                                Short.MAX_VALUE))
-                                .addGroup(clientServerConnectionPanelLayout.createSequentialGroup()
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(clientServerConnectionPanelLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(discussionNetServerConnectionLabel1)
-                                                .addComponent(discussionNetServerConnectionLabel2))
-                                        .addGap(18, 18, 18).addComponent(serverIPAddressLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(serverIPAddressTextbox, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30).addComponent(serverPortLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(serverPortTextbox, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(connectToServerButton).addGap(117, 117, 117)))
-                        .addGroup(clientServerConnectionPanelLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(footerLicensesTextLabel).addComponent(footerTextLabel))));
+                        .addComponent(serverIPAddressTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(serverPortLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(serverPortTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(connectToServerButton)
+                        .addGap(117, 117, 117)))
+                .addGroup(clientServerConnectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(footerLicensesTextLabel)
+                    .addComponent(footerTextLabel)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-                clientServerConnectionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                Short.MAX_VALUE));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-                clientServerConnectionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                Short.MAX_VALUE));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(clientServerConnectionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(clientServerConnectionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        getAccessibleContext()
-                .setAccessibleName(bundle.getString("ClientServerConnection.AccessibleContext.accessibleName")); // NOI18N
+        getAccessibleContext().setAccessibleName(bundle.getString("ClientServerConnection.AccessibleContext.accessibleName")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void connectToServerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectToServerButtonActionPerformed
+        // TODO: Validation / Sanitisation of Input - potentially live updates for colour if invalid.
+        InterfaceManager.changeWindow(this, new ClientIdentitySetup(serverIPAddressTextbox.getText(), serverPortTextbox.getText()));
+    }//GEN-LAST:event_connectToServerButtonActionPerformed
+
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_footerLicensesTextLabelMouseClicked
         InterfaceManager.changeWindow(this, new Licenses());
     }// GEN-LAST:event_footerLicensesTextLabelMouseClicked
-
-    private void connectToServerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_connectToServerButtonActionPerformed
-        // Handle Connection To Server Here
-        InterfaceManager.changeWindow(this, new ClientIdentitySetup());
-    }// GEN-LAST:event_connectToServerButtonActionPerformed
 
     private void connectToServerButtonMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_connectToServerButtonMouseEntered
         InterfaceManager.buttonHover(connectToServerButton, true, "medium");

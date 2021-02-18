@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import java.io.StringWriter;
+import java.io.PrintWriter;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -55,5 +58,13 @@ public class InterfaceManager {
         } else {
             targetButton.setIcon(new javax.swing.ImageIcon(InterfaceManager.class.getResource("/buttons/" + buttonSize + ".png")));
         }
+    }
+    
+    public static void displayError(Exception errorString, String errorMessage) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        errorString.printStackTrace(pw);
+        String stackTrace = sw.toString();
+        showMessageDialog(null, stackTrace + " " + errorMessage);
     }
 }
