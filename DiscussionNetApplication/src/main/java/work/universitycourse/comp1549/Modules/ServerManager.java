@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import work.universitycourse.comp1549.Components.Channel;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
+import static javax.swing.JOptionPane.showMessageDialog;
         
 /**
  *
@@ -18,8 +19,8 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 public class ServerManager {
     private ServerSocket server;
     private Channel serverChannel;
-    private int port = 9090;
-    private String serverIP = "127.0.0.1";
+    private int port;
+    private String serverIP;
     private int maxConnections = 1024;
     private boolean serverRunning;
 
@@ -39,6 +40,7 @@ public class ServerManager {
         RequestHandler requestHandler = new RequestHandler();
         Thread requestHandlerThread = new Thread(requestHandler);
         requestHandlerThread.start();
+        showMessageDialog(null, "Server Started");
         // Accept new clients while the thread is running
         this.serverRunning = true;
         while (this.serverRunning) {
@@ -58,8 +60,8 @@ public class ServerManager {
             this.server = new ServerSocket(this.port, this.maxConnections, serverAddr);
             this.server.setReuseAddress(true);
         } catch (IOException e) {
+            InterfaceManager.displayError(e, "Failed to start server on port!");
             this.serverRunning = false;
-            System.out.println("Failed to start server on specified port. IOException error occurred.");
         }
     }
 
@@ -68,9 +70,9 @@ public class ServerManager {
             // Accept new client and add them to the channel
             Socket clientSocket = this.server.accept();
             this.serverChannel.addClientConnection(clientSocket);
-            System.out.println("New Client Joined");
+            showMessageDialog(null, "Client Joined");
         } catch (IOException e) {
-            System.out.println("Failed ot add new client! IOException error occurred.");
+            InterfaceManager.displayError(e, "Failed to add new client!");
         }
     }
 
@@ -80,7 +82,7 @@ public class ServerManager {
                 this.server.close();
             }
         } catch (IOException e) {
-            System.out.println("Failed to close server! IOException error occurred.");
+            InterfaceManager.displayError(e, "Failed to stop server!");
         } finally {
             this.serverRunning = false;
         }
@@ -118,7 +120,7 @@ public class ServerManager {
             try {
                 Thread.sleep(ms);
             } catch (InterruptedException e) {
-                System.out.println("Thread sleep error occurred");
+                InterfaceManager.displayError(e, "Thread sleep error occurred");
             }
         }
 
