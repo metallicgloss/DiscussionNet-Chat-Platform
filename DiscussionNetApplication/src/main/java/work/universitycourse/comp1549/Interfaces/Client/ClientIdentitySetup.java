@@ -1,7 +1,9 @@
 package work.universitycourse.comp1549.Interfaces.Client;
 
+import static javax.swing.JOptionPane.showMessageDialog;
 import work.universitycourse.comp1549.Components.RoundJTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
+import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -13,11 +15,17 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  * 
  */
 public class ClientIdentitySetup extends javax.swing.JFrame {
-
+    // TODO: Compress into object - temp quick passing of variables.
+    public static String serverIPAddress;
+    public static String serverPort;
+    
     /**
      * Creates new form identitySetup
      */
-    public ClientIdentitySetup() {
+    public ClientIdentitySetup(String serverIPAddress, String serverPort) {
+        super();
+        this.serverIPAddress = serverIPAddress;
+        this.serverPort = serverPort;
         initComponents();
     }
 
@@ -224,7 +232,16 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void authenticateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authenticateButtonActionPerformed
-        InterfaceManager.changeWindow(this, new ClientMessaging());
+        InterfaceManager.changeWindow(
+            this,
+            new ClientMessaging(
+                this.serverIPAddress,
+                this.serverPort,
+                assignedIDNumberTextfield.getText(),
+                clientIPAddressTextbox.getText(),
+                clientPortTextbox.getText()
+            )
+        );
     }//GEN-LAST:event_authenticateButtonActionPerformed
 
     private void authenticateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticateButtonMouseEntered
@@ -258,25 +275,18 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientIdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientIdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientIdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ClientIdentitySetup.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
+        // </editor-fold>
+        
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientIdentitySetup().setVisible(true);
+                new ClientIdentitySetup(args[0], args[1]).setVisible(true);
             }
         });
     }

@@ -1,8 +1,11 @@
 package work.universitycourse.comp1549.Interfaces.Client;
 
+import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Components.RoundJTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
+import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -13,11 +16,27 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  * 
  */
 public class ClientMessaging extends javax.swing.JFrame {
+    // TODO: Compress into object - temp quick passing of variables.
+    public static String serverIPAddress;
+    public static String serverPort;
+    public static String clientIdentifier;
+    public static String clientIPAddress;
+    public static String clientPort;
+    
+    private static ClientManager client;
+    private static ClientManager listener;
+
 
     /**
      * Creates new form clientUserMessaging
      */
-    public ClientMessaging() {
+    public ClientMessaging(String serverIPAddress, String serverPort, String clientIdentifier, String clientIPAddress, String clientPort) {
+        super();
+        this.serverIPAddress = serverIPAddress;
+        this.serverPort = serverPort;
+        this.clientIdentifier = clientIdentifier;
+        this.clientIPAddress = clientIPAddress;
+        this.clientPort = clientPort;
         initComponents();
     }
 
@@ -65,6 +84,8 @@ public class ClientMessaging extends javax.swing.JFrame {
         rightArrowIcon3 = new javax.swing.JLabel();
         rightArrowIcon4 = new javax.swing.JLabel();
         rightArrowIcon5 = new javax.swing.JLabel();
+        temporaryStartListenerButton = new javax.swing.JButton();
+        temporaryStartClientButton = new javax.swing.JButton();
         userMessagingMainPanel = new javax.swing.JPanel();
         userMessagesTextfield = new RoundJTextField();
         userMessagesButton = new javax.swing.JButton();
@@ -408,6 +429,22 @@ public class ClientMessaging extends javax.swing.JFrame {
         rightArrowIcon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/black_arrow.png"))); // NOI18N
         rightArrowIcon5.setName("rightArrowIcon5"); // NOI18N
 
+        temporaryStartListenerButton.setText(bundle.getString("ClientMessaging.temporaryStartListenerButton.text")); // NOI18N
+        temporaryStartListenerButton.setName("temporaryStartListenerButton"); // NOI18N
+        temporaryStartListenerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                temporaryStartListenerButtonActionPerformed(evt);
+            }
+        });
+
+        temporaryStartClientButton.setText(bundle.getString("ClientMessaging.temporaryStartClientButton.text")); // NOI18N
+        temporaryStartClientButton.setName("temporaryStartClientButton"); // NOI18N
+        temporaryStartClientButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                temporaryStartClientButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout userMessagingSidePanelLayout = new javax.swing.GroupLayout(userMessagingSidePanel);
         userMessagingSidePanel.setLayout(userMessagingSidePanelLayout);
         userMessagingSidePanelLayout.setHorizontalGroup(
@@ -415,9 +452,6 @@ public class ClientMessaging extends javax.swing.JFrame {
             .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
-                        .addComponent(usersLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
                         .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
@@ -440,7 +474,16 @@ public class ClientMessaging extends javax.swing.JFrame {
                                 .addComponent(userLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(rightArrowIcon4)))
-                        .addGap(27, 27, 27))))
+                        .addGap(27, 27, 27))
+                    .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(temporaryStartClientButton)
+                            .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(usersLabel)
+                                .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addComponent(temporaryStartListenerButton))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         userMessagingSidePanelLayout.setVerticalGroup(
             userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,7 +511,11 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userLabel5)
                     .addComponent(rightArrowIcon5))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(temporaryStartClientButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(temporaryStartListenerButton)
+                .addGap(73, 73, 73))
         );
 
         userMessagingMainPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -489,6 +536,11 @@ public class ClientMessaging extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 userMessagesButtonMouseExited(evt);
+            }
+        });
+        userMessagesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userMessagesButtonActionPerformed(evt);
             }
         });
 
@@ -757,6 +809,24 @@ public class ClientMessaging extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void temporaryStartListenerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_temporaryStartListenerButtonActionPerformed
+        this.listener = new ClientManager("127.0.0.1", 9090, "Listener", "localhost", 9092);
+        while (this.listener.checkClientConnected()) {
+                Message messageObj = this.listener.getMessage();
+                if (messageObj != null) {
+                    showMessageDialog(null, "Sender: " + messageObj.sender + " - " + "Message: " + messageObj.message);
+                }
+            }
+    }//GEN-LAST:event_temporaryStartListenerButtonActionPerformed
+
+    private void temporaryStartClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_temporaryStartClientButtonActionPerformed
+        this.client = new ClientManager("127.0.0.1", 9090, "Speaker", "localhost", 9091);
+    }//GEN-LAST:event_temporaryStartClientButtonActionPerformed
+
+    private void userMessagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMessagesButtonActionPerformed
+        this.client.sendMessage("Listener", userMessagesTextfield.getText());
+    }//GEN-LAST:event_userMessagesButtonActionPerformed
+
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_footerLicensesTextLabelMouseClicked
         InterfaceManager.changeWindow(this, new Licenses());
     }// GEN-LAST:event_footerLicensesTextLabelMouseClicked
@@ -809,7 +879,7 @@ public class ClientMessaging extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientMessaging().setVisible(true);
+                new ClientMessaging(args[0],args[1],args[2],args[3],args[4]).setVisible(true);
             }
         });
     }
@@ -856,6 +926,8 @@ public class ClientMessaging extends javax.swing.JFrame {
     private javax.swing.JPanel serverDetailsPanel2;
     private javax.swing.JLabel server_details_icon;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JButton temporaryStartClientButton;
+    private javax.swing.JButton temporaryStartListenerButton;
     private javax.swing.JLabel updateLogsLabel;
     private javax.swing.JLabel userLabel1;
     private javax.swing.JLabel userLabel2;

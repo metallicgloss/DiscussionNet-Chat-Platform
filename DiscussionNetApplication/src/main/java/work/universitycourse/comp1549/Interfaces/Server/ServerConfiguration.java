@@ -203,7 +203,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void provisionServerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_provisionServerButtonActionPerformed
-        InterfaceManager.changeWindow(this, new ServerLogsActive());
+        InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));
     }// GEN-LAST:event_provisionServerButtonActionPerformed
 
     private void provisionServerButtonMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_provisionServerButtonMouseEntered
