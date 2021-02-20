@@ -9,7 +9,7 @@ import work.universitycourse.comp1549.Modules.ClientConnectionManager;
 
 /**
  *
- * @author Adnan Turna
+ * @author Adnan Turan
  * @author Daniel Browne
  * @author Gabriel Netz
  * @author William Phillips

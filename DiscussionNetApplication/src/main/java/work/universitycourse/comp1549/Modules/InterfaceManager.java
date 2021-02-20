@@ -15,7 +15,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
- * @author Adnan Turna
+ * @author Adnan Turan
  * @author Daniel Browne
  * @author Gabriel Netz
  * @author William Phillips
