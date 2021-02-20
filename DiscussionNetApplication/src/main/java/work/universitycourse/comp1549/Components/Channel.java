@@ -63,6 +63,6 @@ public class Channel {
     }
 
     private void startClientThread(String clientID) {
-        new Thread((Runnable) this.clientConnections.get(clientID)).start();
+        new Thread(this.clientConnections.get(clientID)).start();
     }
 }

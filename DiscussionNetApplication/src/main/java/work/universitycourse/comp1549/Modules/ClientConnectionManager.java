@@ -16,7 +16,7 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  * @author Gabriel Netz
  * @author William Phillips
  */
-public class ClientConnectionManager {
+public class ClientConnectionManager implements Runnable {
 
     private Socket clientSocket;
         private ObjectInputStream inputStream;

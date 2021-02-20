@@ -4,6 +4,7 @@ import java.net.Socket;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
@@ -15,23 +16,31 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  * @author William Phillips
  */
 public class ClientManager {
-    private ObjectOutputStream outputStream = null;
+     private ObjectOutputStream outputStream = null;
     private ObjectInputStream inputStream = null;
     private Socket clientSocket;
     private boolean runClient;
     private String username;
 
-    public ClientManager(String hostIP, int port, String username) {
+    public ClientManager(String serverIP, int serverPort, String username, String clientIP, int clientPort) {
         try {
-            this.clientSocket = new Socket(hostIP, port);
+            // Create socket
+            InetAddress inetAddress = InetAddress.getByName(clientIP);
+            this.clientSocket = new Socket(serverIP, serverPort, inetAddress, clientPort);
+
+            // Set input and output streams
             this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
             this.inputStream = new ObjectInputStream(this.clientSocket.getInputStream());
+            
+            // Define other variables
             this.username = username; // TODO check username does not already exists
             this.runClient = true;
+            
+            // Make contact with the server
             this.sendUsernameToServer();
         } catch (IOException e) {
-            this.runClient = false;
             InterfaceManager.displayError(e, "Failed to set streams.");
+            this.runClient = false;
         }
     }
 
@@ -45,13 +54,13 @@ public class ClientManager {
         return messageObj;
     }
 
-    public void sendMessage(String receiver, String message) {
-        Message messageObj = new Message(this.username, receiver, message, Message.MESSAGE_TYPE);
+    public void sendMessage(String reciever, String message) {
+        Message messageObj = new Message(this.username, reciever, message, Message.MESSAGE_TYPE);
         this.sendToChannel(messageObj);
     }
 
-    public void sendInstruction(String receiver, String message) {
-        Message messageObj = new Message(this.username, receiver, message, Message.INSTRUCTION_TYPE);
+    public void sendInstruction(String reciever, String message) {
+        Message messageObj = new Message(this.username, reciever, message, Message.INSTRUCTION_TYPE);
         this.sendToChannel(messageObj);
     }
 

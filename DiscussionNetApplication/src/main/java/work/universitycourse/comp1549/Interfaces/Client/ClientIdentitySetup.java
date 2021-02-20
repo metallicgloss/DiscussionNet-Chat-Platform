@@ -15,7 +15,7 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  * 
  */
 public class ClientIdentitySetup extends javax.swing.JFrame {
-    
+    // TODO: Compress into object - temp quick passing of variables.
     public static String serverIPAddress;
     public static String serverPort;
     
@@ -232,7 +232,16 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void authenticateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authenticateButtonActionPerformed
-        InterfaceManager.changeWindow(this, new ClientMessaging());
+        InterfaceManager.changeWindow(
+            this,
+            new ClientMessaging(
+                this.serverIPAddress,
+                this.serverPort,
+                assignedIDNumberTextfield.getText(),
+                clientIPAddressTextbox.getText(),
+                clientPortTextbox.getText()
+            )
+        );
     }//GEN-LAST:event_authenticateButtonActionPerformed
 
     private void authenticateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticateButtonMouseEntered
