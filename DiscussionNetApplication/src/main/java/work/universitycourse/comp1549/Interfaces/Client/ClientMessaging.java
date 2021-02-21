@@ -811,12 +811,12 @@ public class ClientMessaging extends javax.swing.JFrame {
 
     private void temporaryStartListenerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_temporaryStartListenerButtonActionPerformed
         this.listener = new ClientManager("127.0.0.1", 9090, "Listener", "localhost", 9092);
-        while (this.listener.checkClientConnected()) {
-                Message messageObj = this.listener.getMessage();
-                if (messageObj != null) {
-                    showMessageDialog(null, "Sender: " + messageObj.sender + " - " + "Message: " + messageObj.message);
-                }
-            }
+        // while (true) {
+        //         Message messageObj = this.listener.getMessage();
+        //         if (messageObj != null) {
+        //             showMessageDialog(null, "Sender: " + messageObj.sender + " - " + "Message: " + messageObj.message);
+        //         }
+        //     }
     }//GEN-LAST:event_temporaryStartListenerButtonActionPerformed
 
     private void temporaryStartClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_temporaryStartClientButtonActionPerformed
@@ -824,6 +824,7 @@ public class ClientMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_temporaryStartClientButtonActionPerformed
 
     private void userMessagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMessagesButtonActionPerformed
+        // this.client.
         this.client.sendMessage("Listener", userMessagesTextfield.getText());
     }//GEN-LAST:event_userMessagesButtonActionPerformed
 
