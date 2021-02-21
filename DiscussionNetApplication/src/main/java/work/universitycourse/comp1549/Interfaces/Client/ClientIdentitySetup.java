@@ -45,9 +45,10 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         assignedIDNumberLabel = new javax.swing.JLabel();
         assignedIDNumberTextfield = new RoundJTextField();
         clientIPAddressLabel = new javax.swing.JLabel();
-        clientIPAddressTextbox = new RoundJTextField();
+        clientIPAddressTextField = new RoundJTextField();
+        userMessagesIconLabel = new javax.swing.JLabel();
         clientPortLabel = new javax.swing.JLabel();
-        clientPortTextbox = new RoundJTextField();
+        clientPortTextField = new RoundJTextField();
         authenticateButton = new javax.swing.JButton();
         footerTextLabel = new javax.swing.JLabel();
         footerLicensesTextLabel = new javax.swing.JLabel();
@@ -66,52 +67,130 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         clientIdentitySetupPanel.setName(""); // NOI18N
         clientIdentitySetupPanel.setPreferredSize(new java.awt.Dimension(847, 519));
         InterfaceManager.detectExitRequest(clientIdentitySetupPanel);
+        clientIdentitySetupPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clientIdentitySetupPanelMouseClicked(evt);
+            }
+        });
+        clientIdentitySetupPanel.setLayout(null);
 
         mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/identity.png"))); // NOI18N
         mainImage.setName("mainImage"); // NOI18N
+        clientIdentitySetupPanel.add(mainImage);
+        mainImage.setBounds(70, 159, 239, 207);
 
         discussionNetIdentitySetupLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         discussionNetIdentitySetupLabel1.setForeground(new java.awt.Color(0, 36, 109));
         discussionNetIdentitySetupLabel1.setText(bundle.getString("ClientIdentitySetup.discussionNetIdentitySetupLabel1.text_1")); // NOI18N
         discussionNetIdentitySetupLabel1.setName("discussionNetIdentitySetupLabel1"); // NOI18N
+        clientIdentitySetupPanel.add(discussionNetIdentitySetupLabel1);
+        discussionNetIdentitySetupLabel1.setBounds(426, 83, 175, 30);
 
         discussionNetIdentitySetupLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         discussionNetIdentitySetupLabel2.setText(bundle.getString("ClientIdentitySetup.discussionNetIdentitySetupLabel2.text_1")); // NOI18N
         discussionNetIdentitySetupLabel2.setName("discussionNetIdentitySetupLabel2"); // NOI18N
+        clientIdentitySetupPanel.add(discussionNetIdentitySetupLabel2);
+        discussionNetIdentitySetupLabel2.setBounds(607, 83, 171, 30);
 
         assignedIDNumberLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         assignedIDNumberLabel.setForeground(new java.awt.Color(47, 46, 65));
         assignedIDNumberLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_id.png"))); // NOI18N
         assignedIDNumberLabel.setText(bundle.getString("ClientIdentitySetup.assignedIDNumberLabel.text_1")); // NOI18N
         assignedIDNumberLabel.setName("assignedIDNumberLabel"); // NOI18N
+        clientIdentitySetupPanel.add(assignedIDNumberLabel);
+        assignedIDNumberLabel.setBounds(426, 131, 153, 17);
 
-        assignedIDNumberTextfield.setForeground(new java.awt.Color(0, 63, 143));
+        assignedIDNumberTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        assignedIDNumberTextfield.setForeground(new java.awt.Color(152, 150, 162));
         assignedIDNumberTextfield.setAlignmentX(0.0F);
         assignedIDNumberTextfield.setAlignmentY(0.0F);
-        assignedIDNumberTextfield.setCaretColor(new java.awt.Color(0, 63, 143));
+        assignedIDNumberTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
+        assignedIDNumberTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         assignedIDNumberTextfield.setMargin(new java.awt.Insets(0, 0, 0, 0));
         assignedIDNumberTextfield.setName("assignedIDNumberTextfield"); // NOI18N
         assignedIDNumberTextfield.setSelectionColor(new java.awt.Color(0, 63, 143));
+        assignedIDNumberTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                assignedIDNumberTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                assignedIDNumberTextfieldFocusLost(evt);
+            }
+        });
+        clientIdentitySetupPanel.add(assignedIDNumberTextfield);
+        assignedIDNumberTextfield.setBounds(426, 159, 343, 19);
 
         clientIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         clientIPAddressLabel.setForeground(new java.awt.Color(47, 46, 65));
         clientIPAddressLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wireless.png"))); // NOI18N
         clientIPAddressLabel.setText(bundle.getString("ClientIdentitySetup.clientIPAddressLabel.text_1")); // NOI18N
         clientIPAddressLabel.setName("clientIPAddressLabel"); // NOI18N
+        clientIdentitySetupPanel.add(clientIPAddressLabel);
+        clientIPAddressLabel.setBounds(426, 209, 127, 17);
 
-        clientIPAddressTextbox.setForeground(new java.awt.Color(0, 63, 143));
-        clientIPAddressTextbox.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        clientIPAddressTextbox.setName("clientIPAddressTextbox"); // NOI18N
+        clientIPAddressTextField.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        clientIPAddressTextField.setForeground(new java.awt.Color(152, 150, 162));
+        clientIPAddressTextField.setCaretColor(new java.awt.Color(152, 150, 162));
+        clientIPAddressTextField.setDisabledTextColor(new java.awt.Color(152, 150, 162));
+        clientIPAddressTextField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        clientIPAddressTextField.setName("clientIPAddressTextField"); // NOI18N
+        clientIPAddressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                clientIPAddressTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                clientIPAddressTextFieldFocusLost(evt);
+            }
+        });
+        clientIdentitySetupPanel.add(clientIPAddressTextField);
+        clientIPAddressTextField.setBounds(426, 237, 343, 19);
+
+        userMessagesIconLabel.setBackground(new java.awt.Color(255, 255, 255));
+        userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
+        userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_icon.png"))); // NOI18N
+        userMessagesIconLabel.setText(bundle.getString("ClientIdentitySetup.userMessagesIconLabel.text")); // NOI18N
+        userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        userMessagesIconLabel.setFocusable(false);
+        userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userMessagesIconLabel.setIconTextGap(0);
+        userMessagesIconLabel.setInheritsPopupMenu(false);
+        userMessagesIconLabel.setName("userMessagesIconLabel"); // NOI18N
+        userMessagesIconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseEntered(evt);
+            }
+        });
+        clientIdentitySetupPanel.add(userMessagesIconLabel);
+        userMessagesIconLabel.setBounds(640, 370, 30, 30);
 
         clientPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         clientPortLabel.setForeground(new java.awt.Color(47, 46, 65));
         clientPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/port_icon.png"))); // NOI18N
         clientPortLabel.setText(bundle.getString("ClientIdentitySetup.clientPortLabel.text_1")); // NOI18N
         clientPortLabel.setName("clientPortLabel"); // NOI18N
+        clientIdentitySetupPanel.add(clientPortLabel);
+        clientPortLabel.setBounds(426, 293, 86, 17);
 
-        clientPortTextbox.setForeground(new java.awt.Color(255, 0, 51));
-        clientPortTextbox.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        clientPortTextbox.setName("clientPortTextbox"); // NOI18N
+        clientPortTextField.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        clientPortTextField.setForeground(new java.awt.Color(152, 150, 162));
+        clientPortTextField.setCaretColor(new java.awt.Color(152, 150, 162));
+        clientPortTextField.setDisabledTextColor(new java.awt.Color(152, 150, 162));
+        clientPortTextField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        clientPortTextField.setName("clientPortTextField"); // NOI18N
+        clientPortTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                clientPortTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                clientPortTextFieldFocusLost(evt);
+            }
+        });
+        clientIdentitySetupPanel.add(clientPortTextField);
+        clientPortTextField.setBounds(426, 321, 343, 19);
 
         authenticateButton.setBackground(new java.awt.Color(255, 255, 255));
         authenticateButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
@@ -137,11 +216,15 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
                 authenticateButtonActionPerformed(evt);
             }
         });
+        clientIdentitySetupPanel.add(authenticateButton);
+        authenticateButton.setBounds(430, 350, 343, 69);
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
         footerTextLabel.setText(bundle.getString("ClientIdentitySetup.footerTextLabel.text_1")); // NOI18N
         footerTextLabel.setName("footerTextLabel"); // NOI18N
+        clientIdentitySetupPanel.add(footerTextLabel);
+        footerTextLabel.setBounds(285, 507, 189, 12);
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
@@ -153,67 +236,8 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
                 footerLicensesTextLabelMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout clientIdentitySetupPanelLayout = new javax.swing.GroupLayout(clientIdentitySetupPanel);
-        clientIdentitySetupPanel.setLayout(clientIdentitySetupPanelLayout);
-        clientIdentitySetupPanelLayout.setHorizontalGroup(
-            clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(clientIdentitySetupPanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(mainImage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addGroup(clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(assignedIDNumberLabel)
-                    .addComponent(clientIPAddressLabel)
-                    .addComponent(clientPortLabel)
-                    .addGroup(clientIdentitySetupPanelLayout.createSequentialGroup()
-                        .addComponent(discussionNetIdentitySetupLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(discussionNetIdentitySetupLabel2))
-                    .addGroup(clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(assignedIDNumberTextfield, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(clientIPAddressTextbox, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(clientPortTextbox, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(authenticateButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(69, 69, 69))
-            .addGroup(clientIdentitySetupPanelLayout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(footerTextLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(footerLicensesTextLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        clientIdentitySetupPanelLayout.setVerticalGroup(
-            clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(clientIdentitySetupPanelLayout.createSequentialGroup()
-                .addGroup(clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(clientIdentitySetupPanelLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(mainImage))
-                    .addGroup(clientIdentitySetupPanelLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(discussionNetIdentitySetupLabel1)
-                            .addComponent(discussionNetIdentitySetupLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(assignedIDNumberLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(assignedIDNumberTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(clientIPAddressLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(clientIPAddressTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(clientPortLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(clientPortTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(authenticateButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addGroup(clientIdentitySetupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(footerLicensesTextLabel)
-                    .addComponent(footerTextLabel)))
-        );
+        clientIdentitySetupPanel.add(footerLicensesTextLabel);
+        footerLicensesTextLabel.setBounds(480, 507, 80, 12);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,16 +256,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void authenticateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authenticateButtonActionPerformed
-        InterfaceManager.changeWindow(
-            this,
-            new ClientMessaging(
-                this.serverIPAddress,
-                this.serverPort,
-                assignedIDNumberTextfield.getText(),
-                clientIPAddressTextbox.getText(),
-                clientPortTextbox.getText()
-            )
-        );
+        confirmIdentity();
     }//GEN-LAST:event_authenticateButtonActionPerformed
 
     private void authenticateButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authenticateButtonMouseEntered
@@ -252,10 +267,60 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         InterfaceManager.buttonHover(authenticateButton, false, "medium");
     }//GEN-LAST:event_authenticateButtonMouseExited
 
-    private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
-    }// GEN-LAST:event_footerLicensesTextLabelMouseClicked
+    private void assignedIDNumberTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIDNumberTextfieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(assignedIDNumberTextfield, true);
+    }//GEN-LAST:event_assignedIDNumberTextfieldFocusGained
 
+    private void assignedIDNumberTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIDNumberTextfieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(assignedIDNumberTextfield, false);
+    }//GEN-LAST:event_assignedIDNumberTextfieldFocusLost
+
+    private void clientIPAddressTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clientIPAddressTextFieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(clientIPAddressTextField, true);
+    }//GEN-LAST:event_clientIPAddressTextFieldFocusGained
+
+    private void clientIPAddressTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clientIPAddressTextFieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(clientIPAddressTextField, false);
+    }//GEN-LAST:event_clientIPAddressTextFieldFocusLost
+
+    private void clientPortTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clientPortTextFieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(clientPortTextField, true);
+    }//GEN-LAST:event_clientPortTextFieldFocusGained
+
+    private void clientPortTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clientPortTextFieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(clientPortTextField, false);
+    }//GEN-LAST:event_clientPortTextFieldFocusLost
+
+    private void clientIdentitySetupPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientIdentitySetupPanelMouseClicked
+        InterfaceManager.toggleTextFieldFocus(assignedIDNumberTextfield, false);
+        InterfaceManager.toggleTextFieldFocus(clientIPAddressTextField, false);
+        InterfaceManager.toggleTextFieldFocus(clientPortTextField, false);
+    }//GEN-LAST:event_clientIdentitySetupPanelMouseClicked
+
+    private void userMessagesIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
+        confirmIdentity();
+    }//GEN-LAST:event_userMessagesIconLabelMouseClicked
+
+    private void userMessagesIconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
+        InterfaceManager.buttonHover(authenticateButton, true, "medium");
+    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
+
+    private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+        InterfaceManager.changeWindow(this, new Licenses());
+    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
+
+    private void confirmIdentity() {
+        InterfaceManager.changeWindow(
+            this,
+            new ClientMessaging(
+                this.serverIPAddress,
+                this.serverPort,
+                assignedIDNumberTextfield.getText(),
+                clientIPAddressTextField.getText(),
+                clientPortTextField.getText()
+            )
+        );
+    }
     /**
      * @param args the command line arguments
      */
@@ -296,14 +361,15 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     private javax.swing.JTextField assignedIDNumberTextfield;
     private javax.swing.JButton authenticateButton;
     private javax.swing.JLabel clientIPAddressLabel;
-    private javax.swing.JTextField clientIPAddressTextbox;
+    private javax.swing.JTextField clientIPAddressTextField;
     private javax.swing.JPanel clientIdentitySetupPanel;
     private javax.swing.JLabel clientPortLabel;
-    private javax.swing.JTextField clientPortTextbox;
+    private javax.swing.JTextField clientPortTextField;
     private javax.swing.JLabel discussionNetIdentitySetupLabel1;
     private javax.swing.JLabel discussionNetIdentitySetupLabel2;
     private javax.swing.JLabel footerLicensesTextLabel;
     private javax.swing.JLabel footerTextLabel;
     private javax.swing.JLabel mainImage;
+    private javax.swing.JLabel userMessagesIconLabel;
     // End of variables declaration//GEN-END:variables
 }
