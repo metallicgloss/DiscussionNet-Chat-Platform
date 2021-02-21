@@ -878,7 +878,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="messagesLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="userMessagesTextfield" min="-2" pref="559" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="userMessagesTextfield" min="-2" pref="559" max="-2" attributes="0"/>
+                              <Component id="temporarySenderIdentifierTextBox" min="-2" pref="146" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="userMessagesButton" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -899,6 +902,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+                          <Component id="temporarySenderIdentifierTextBox" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="userMessagesTextfield" min="-2" pref="45" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
@@ -946,6 +951,14 @@
               <ResourceString bundle="work/universitycourse/comp1549/Interfaces/Client/Bundle.properties" key="ClientMessaging.messagesLabel.text_1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
             <Property name="name" type="java.lang.String" value="messagesLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="temporarySenderIdentifierTextBox">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="work/universitycourse/comp1549/Interfaces/Client/Bundle.properties" key="ClientMessaging.temporarySenderIdentifierTextBox.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="temporarySenderIdentifierTextBox" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

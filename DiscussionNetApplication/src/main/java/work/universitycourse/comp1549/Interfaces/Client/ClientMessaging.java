@@ -90,6 +90,7 @@ public class ClientMessaging extends javax.swing.JFrame {
         userMessagesTextfield = new RoundJTextField();
         userMessagesButton = new javax.swing.JButton();
         messagesLabel = new javax.swing.JLabel();
+        temporarySenderIdentifierTextBox = new javax.swing.JTextField();
         clientDetailsPanel2 = new javax.swing.JPanel();
         clientDetailsIPAddressLabel = new javax.swing.JLabel();
         clientDetailsIPAddressValueLabel = new javax.swing.JLabel();
@@ -548,6 +549,9 @@ public class ClientMessaging extends javax.swing.JFrame {
         messagesLabel.setText(bundle.getString("ClientMessaging.messagesLabel.text_1")); // NOI18N
         messagesLabel.setName("messagesLabel"); // NOI18N
 
+        temporarySenderIdentifierTextBox.setText(bundle.getString("ClientMessaging.temporarySenderIdentifierTextBox.text")); // NOI18N
+        temporarySenderIdentifierTextBox.setName("temporarySenderIdentifierTextBox"); // NOI18N
+
         javax.swing.GroupLayout userMessagingMainPanelLayout = new javax.swing.GroupLayout(userMessagingMainPanel);
         userMessagingMainPanel.setLayout(userMessagingMainPanelLayout);
         userMessagingMainPanelLayout.setHorizontalGroup(
@@ -557,7 +561,9 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(messagesLabel)
                     .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
-                        .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(temporarySenderIdentifierTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userMessagesButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -573,6 +579,8 @@ public class ClientMessaging extends javax.swing.JFrame {
                         .addComponent(userMessagesButton)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingMainPanelLayout.createSequentialGroup()
+                        .addComponent(temporarySenderIdentifierTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
         );
@@ -825,7 +833,7 @@ public class ClientMessaging extends javax.swing.JFrame {
 
     private void userMessagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMessagesButtonActionPerformed
         // this.client.
-        this.client.sendMessage("Listener", userMessagesTextfield.getText());
+        this.client.sendMessage(temporarySenderIdentifierTextBox.getText(), userMessagesTextfield.getText());
     }//GEN-LAST:event_userMessagesButtonActionPerformed
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_footerLicensesTextLabelMouseClicked
@@ -927,6 +935,7 @@ public class ClientMessaging extends javax.swing.JFrame {
     private javax.swing.JPanel serverDetailsPanel2;
     private javax.swing.JLabel server_details_icon;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JTextField temporarySenderIdentifierTextBox;
     private javax.swing.JButton temporaryStartClientButton;
     private javax.swing.JButton temporaryStartListenerButton;
     private javax.swing.JLabel updateLogsLabel;
