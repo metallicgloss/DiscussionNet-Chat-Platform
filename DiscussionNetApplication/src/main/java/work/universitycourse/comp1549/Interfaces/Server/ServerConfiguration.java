@@ -78,6 +78,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         assignedNetworkPortLabel.setName("assignedNetworkPortLabel"); // NOI18N
 
         assignedNetworkPortTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        assignedNetworkPortTextfield.setText(bundle.getString("ServerConfiguration.assignedNetworkPortTextfield.text")); // NOI18N
         assignedNetworkPortTextfield.setName("assignedNetworkPortTextfield"); // NOI18N
 
         provisionServerButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -109,6 +110,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/settings.png"))); // NOI18N
         mainImage.setName("mainImage"); // NOI18N
 
+        configuredIPAddressTextfield.setText(bundle.getString("ServerConfiguration.configuredIPAddressTextfield.text")); // NOI18N
         configuredIPAddressTextfield.setName("configuredIPAddressTextfield"); // NOI18N
 
         footerTextLabel1.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N

@@ -214,6 +214,9 @@
         <Component class="javax.swing.JTextField" name="assignedNetworkPortTextfield">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="work/universitycourse/comp1549/Interfaces/Server/Bundle.properties" key="ServerConfiguration.assignedNetworkPortTextfield.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="assignedNetworkPortTextfield" noResource="true"/>
           </Properties>
           <AuxValues>
@@ -265,6 +268,9 @@
         </Component>
         <Component class="javax.swing.JTextField" name="configuredIPAddressTextfield">
           <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="work/universitycourse/comp1549/Interfaces/Server/Bundle.properties" key="ServerConfiguration.configuredIPAddressTextfield.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="configuredIPAddressTextfield" noResource="true"/>
           </Properties>
           <AuxValues>
