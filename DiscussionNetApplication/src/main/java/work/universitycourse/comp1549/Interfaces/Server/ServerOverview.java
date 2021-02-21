@@ -1,11 +1,15 @@
 package work.universitycourse.comp1549.Interfaces.Server;
 
 import java.awt.Color;
+import javax.swing.JFrame;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 import work.universitycourse.comp1549.Modules.ServerManager;
 
@@ -29,17 +33,36 @@ public class ServerOverview extends javax.swing.JFrame {
         this.serverIPAddress = serverIPAddress;
         this.serverPort = serverPort;
         
-        ServerManager serverInstance = new ServerManager(this.serverIPAddress, Integer.parseInt(this.serverPort), 1024);
-        serverInstance.startServer();
-        
         initComponents();
         table();
+        
+        new Thread(new Runnable() {
+            private JTable serverLog;
+            private String serverIPAddress;
+            private int serverPort;
+            private int maxConnections;
+
+            public Runnable init(JTable serverLog, String serverIPAddress, int serverPort, int maxConnections) {
+                this.serverLog = serverLog;
+                this.serverIPAddress = serverIPAddress;
+                this.serverPort = serverPort;
+                this.maxConnections = maxConnections;
+                return this;
+            }
+
+            @Override
+            public void run() {
+                ServerManager serverInstance = new ServerManager(this.serverLog, this.serverIPAddress, this.serverPort, 1024);
+                serverInstance.startServer();
+            }
+        }.init(this.mainTable, this.serverIPAddress, Integer.parseInt(this.serverPort), 1024)).start();
+        
     }
 
-    private void table() {
-        mainTable.getTableHeader().setOpaque(false);
-        mainTable.getTableHeader().setBackground(Color.white);
-        mainTable.getTableHeader().setForeground(new Color(47, 46, 65));
+    private void table() {        
+        mainTable.setOpaque(false);
+        mainTable.setFillsViewportHeight(true);
+        mainTable.setBackground(Color.white);
 
         mainTable.getTableHeader().setFont(new java.awt.Font("Montserrat Medium", 0, 13));
 
@@ -51,7 +74,6 @@ public class ServerOverview extends javax.swing.JFrame {
 
         JTableHeader header = mainTable.getTableHeader();
         header.setBorder(new LineBorder(new Color(229, 229, 229), 1));
-
     }
 
     /**
@@ -78,7 +100,8 @@ public class ServerOverview extends javax.swing.JFrame {
         portValueLabel = new javax.swing.JLabel();
         serverStatusImageLabel = new javax.swing.JLabel();
         footerPanel = new javax.swing.JPanel();
-        footerTextLabel = new javax.swing.JLabel();
+        footerTextLabel2 = new javax.swing.JLabel();
+        footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Server/Bundle"); // NOI18N
@@ -108,54 +131,80 @@ public class ServerOverview extends javax.swing.JFrame {
         mainTable.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         mainTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"10.0.0.1", "10.0.0.1", "Message", "Well, good morning Sir. Awake yet?"},
-                {"10.0.0.2", "10.0.0.2", "Message", "No."},
-                {"10.0.0.3", "10.0.0.3", "Message", "@Netz#7428 WAKE UP"},
-                {"10.0.0.4", "10.0.0.4", "Health Check", null}
+
             },
             new String [] {
-                "Origin IP Address", "Destination IP Address", "Request Type", "Request Value"
+                "Source", "Destination", "Type", "Payload"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         mainTable.setAutoscrolls(false);
-        mainTable.setEnabled(false);
         mainTable.setFocusable(false);
-        mainTable.setGridColor(new java.awt.Color(47, 46, 65));
+        mainTable.setGridColor(new java.awt.Color(255, 255, 255));
         mainTable.setIntercellSpacing(new java.awt.Dimension(2, 0));
         mainTable.setName("mainTable"); // NOI18N
         mainTable.setOpaque(false);
         mainTable.setRowHeight(30);
         mainTable.setRowSelectionAllowed(false);
         mainTable.setShowGrid(false);
+        mainTable.getTableHeader().setResizingAllowed(false);
         mainTable.getTableHeader().setReorderingAllowed(false);
+        mainTable.getTableHeader().setOpaque(false);
+        mainTable.getTableHeader().setBackground(Color.white);
+        mainTable.getTableHeader().setForeground(Color.black);
         scrollingPane.setViewportView(mainTable);
+        if (mainTable.getColumnModel().getColumnCount() > 0) {
+            mainTable.getColumnModel().getColumn(0).setResizable(false);
+            mainTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ServerOverview.mainTable.columnModel.title0")); // NOI18N
+            mainTable.getColumnModel().getColumn(1).setResizable(false);
+            mainTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ServerOverview.mainTable.columnModel.title3")); // NOI18N
+            mainTable.getColumnModel().getColumn(2).setResizable(false);
+            mainTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ServerOverview.mainTable.columnModel.title6")); // NOI18N
+            mainTable.getColumnModel().getColumn(3).setResizable(false);
+            mainTable.getColumnModel().getColumn(3).setPreferredWidth(200);
+            mainTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ServerOverview.mainTable.columnModel.title7")); // NOI18N
+        }
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(298, 298, 298)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
+                        .addComponent(scrollingPane, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
                         .addComponent(communicationLogsLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(communicationLogsLabel2))
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(scrollingPane, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(communicationLogsLabel2)
+                        .addGap(266, 266, 266))))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(44, 44, 44)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(communicationLogsLabel1)
                     .addComponent(communicationLogsLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(scrollingPane, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(scrollingPane, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         middlePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -198,9 +247,9 @@ public class ServerOverview extends javax.swing.JFrame {
         middlePanelLayout.setHorizontalGroup(
             middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, middlePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(154, Short.MAX_VALUE)
                 .addComponent(serverStatusImageLabel)
-                .addGap(109, 109, 109)
+                .addGap(71, 71, 71)
                 .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(middlePanelLayout.createSequentialGroup()
                         .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,17 +264,19 @@ public class ServerOverview extends javax.swing.JFrame {
                             .addComponent(portValueLabel)
                             .addComponent(portLabel)))
                     .addComponent(serverStatusTextLabel))
-                .addGap(147, 147, 147))
+                .addGap(185, 185, 185))
         );
         middlePanelLayout.setVerticalGroup(
             middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, middlePanelLayout.createSequentialGroup()
+            .addGroup(middlePanelLayout.createSequentialGroup()
                 .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(serverStatusImageLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, middlePanelLayout.createSequentialGroup()
+                        .addComponent(serverStatusImageLabel)
+                        .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, middlePanelLayout.createSequentialGroup()
                         .addComponent(serverStatusTextLabel)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(portLabel)
                             .addComponent(ipAddressLabel)
@@ -235,31 +286,46 @@ public class ServerOverview extends javax.swing.JFrame {
                             .addComponent(statusValueLabel)
                             .addComponent(ipAddressValueLabel)
                             .addComponent(portValueLabel))
-                        .addGap(8, 8, 8)))
-                .addGap(40, 40, 40))
+                        .addGap(57, 57, 57))))
         );
 
         footerPanel.setBackground(new java.awt.Color(255, 255, 255));
         footerPanel.setName("footerPanel"); // NOI18N
 
-        footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
-        footerTextLabel.setText(bundle.getString("ServerOverview.footerTextLabel.text_1")); // NOI18N
-        footerTextLabel.setName("footerTextLabel"); // NOI18N
+        footerTextLabel2.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
+        footerTextLabel2.setForeground(new java.awt.Color(47, 46, 65));
+        footerTextLabel2.setText(bundle.getString("ServerOverview.footerTextLabel2.text")); // NOI18N
+        footerTextLabel2.setName("footerTextLabel2"); // NOI18N
+
+        footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
+        footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
+        footerLicensesTextLabel.setText(bundle.getString("ServerOverview.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
+        footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                footerLicensesTextLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
         footerPanel.setLayout(footerPanelLayout);
         footerPanelLayout.setHorizontalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerPanelLayout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(footerTextLabel)
+                .addGap(287, 287, 287)
+                .addComponent(footerTextLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(footerLicensesTextLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         footerPanelLayout.setVerticalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
-                .addGap(0, 11, Short.MAX_VALUE)
-                .addComponent(footerTextLabel))
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addGroup(footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(footerLicensesTextLabel)
+                    .addComponent(footerTextLabel2)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -273,7 +339,7 @@ public class ServerOverview extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addComponent(topPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
                 .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
@@ -284,6 +350,10 @@ public class ServerOverview extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+        InterfaceManager.changeWindow(this, new Licenses());
+    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -330,8 +400,10 @@ public class ServerOverview extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel communicationLogsLabel1;
     private javax.swing.JLabel communicationLogsLabel2;
+    private javax.swing.JLabel footerLicensesTextLabel;
     private javax.swing.JPanel footerPanel;
-    private javax.swing.JLabel footerTextLabel;
+    private javax.swing.JLabel footerTextLabel1;
+    private javax.swing.JLabel footerTextLabel2;
     private javax.swing.JLabel ipAddressLabel;
     private javax.swing.JLabel ipAddressValueLabel;
     private javax.swing.JTable mainTable;

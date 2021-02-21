@@ -12,6 +12,8 @@ import javax.swing.KeyStroke;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -66,5 +68,10 @@ public class InterfaceManager {
         errorString.printStackTrace(pw);
         String stackTrace = sw.toString();
         showMessageDialog(null, stackTrace + " " + errorMessage);
+    }
+    
+    public static void registerServerLog(JTable serverLog, String sourceClient, String destinationClient, String requestType, String requestPayload) {
+        DefaultTableModel model = (DefaultTableModel) serverLog.getModel();
+        model.addRow(new Object[]{sourceClient, destinationClient, requestType, requestPayload});
     }
 }

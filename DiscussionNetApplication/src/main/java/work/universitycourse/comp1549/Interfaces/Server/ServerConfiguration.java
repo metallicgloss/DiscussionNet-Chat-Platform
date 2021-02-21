@@ -1,6 +1,7 @@
 package work.universitycourse.comp1549.Interfaces.Server;
 
 import work.universitycourse.comp1549.Components.RoundJTextField;
+import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -36,13 +37,13 @@ public class ServerConfiguration extends javax.swing.JFrame {
         assignedNetworkPortLabel = new javax.swing.JLabel();
         assignedNetworkPortTextfield = new RoundJTextField();
         provisionServerButton = new javax.swing.JButton();
-        footerTextLabel = new javax.swing.JLabel();
         mainImage = new javax.swing.JLabel();
         configuredIPAddressTextfield = new RoundJTextField();
+        footerTextLabel1 = new javax.swing.JLabel();
+        footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle
-                .getBundle("work/universitycourse/comp1549/Interfaces/Server/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Server/Bundle"); // NOI18N
         setTitle(bundle.getString("ServerConfiguration.title")); // NOI18N
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(InterfaceManager.programIcon.getImage());
@@ -59,13 +60,11 @@ public class ServerConfiguration extends javax.swing.JFrame {
 
         serverManagementConfigurationLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         serverManagementConfigurationLabel1.setForeground(new java.awt.Color(0, 36, 109));
-        serverManagementConfigurationLabel1
-                .setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel1.text_1")); // NOI18N
+        serverManagementConfigurationLabel1.setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel1.text_1")); // NOI18N
         serverManagementConfigurationLabel1.setName("serverManagementConfigurationLabel1"); // NOI18N
 
         serverManagementConfigurationLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        serverManagementConfigurationLabel2
-                .setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel2.text_1")); // NOI18N
+        serverManagementConfigurationLabel2.setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel2.text_1")); // NOI18N
         serverManagementConfigurationLabel2.setName("serverManagementConfigurationLabel2"); // NOI18N
 
         configuredIPAddresLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
@@ -97,7 +96,6 @@ public class ServerConfiguration extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 provisionServerButtonMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 provisionServerButtonMouseExited(evt);
             }
@@ -108,99 +106,112 @@ public class ServerConfiguration extends javax.swing.JFrame {
             }
         });
 
-        footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
-        footerTextLabel.setText(bundle.getString("ServerConfiguration.footerTextLabel.text_1")); // NOI18N
-        footerTextLabel.setName("footerTextLabel"); // NOI18N
-
         mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/settings.png"))); // NOI18N
         mainImage.setName("mainImage"); // NOI18N
 
         configuredIPAddressTextfield.setName("configuredIPAddressTextfield"); // NOI18N
 
+        footerTextLabel1.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
+        footerTextLabel1.setForeground(new java.awt.Color(47, 46, 65));
+        footerTextLabel1.setText(bundle.getString("ServerConfiguration.footerTextLabel1.text")); // NOI18N
+        footerTextLabel1.setName("footerTextLabel1"); // NOI18N
+
+        footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
+        footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
+        footerLicensesTextLabel.setText(bundle.getString("ServerConfiguration.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
+        footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                footerLicensesTextLabelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout serverConfigurationPanelLayout = new javax.swing.GroupLayout(serverConfigurationPanel);
         serverConfigurationPanel.setLayout(serverConfigurationPanelLayout);
-        serverConfigurationPanelLayout.setHorizontalGroup(serverConfigurationPanelLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(serverConfigurationPanelLayout.createSequentialGroup().addGap(49, 49, 49)
-                        .addGroup(serverConfigurationPanelLayout
-                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(provisionServerButton)
-                                .addGroup(serverConfigurationPanelLayout.createSequentialGroup().addGap(184, 184, 184)
-                                        .addComponent(serverManagementConfigurationLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(serverManagementConfigurationLabel2))
-                                .addGroup(serverConfigurationPanelLayout.createSequentialGroup().addGap(251, 251, 251)
-                                        .addComponent(footerTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 258,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(serverConfigurationPanelLayout.createSequentialGroup().addGap(223, 223, 223)
-                                        .addComponent(mainImage))
-                                .addGroup(serverConfigurationPanelLayout.createSequentialGroup().addGap(19, 19, 19)
-                                        .addGroup(serverConfigurationPanelLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                                                        .addComponent(configuredIPAddressTextfield,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 334,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(54, 54, 54)
-                                                        .addComponent(assignedNetworkPortTextfield,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 334,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(0, 0, Short.MAX_VALUE))
-                                                .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                                                        .addGap(72, 72, 72).addComponent(configuredIPAddresLabel)
-                                                        .addPreferredGap(
-                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(assignedNetworkPortLabel).addGap(95, 95, 95)))))
-                        .addGap(37, 37, 37)));
-        serverConfigurationPanelLayout
-                .setVerticalGroup(
-                        serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(
-                                        serverConfigurationPanelLayout.createSequentialGroup().addGap(40, 40, 40)
-                                                .addComponent(mainImage)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(serverConfigurationPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(serverManagementConfigurationLabel1)
-                                                        .addComponent(serverManagementConfigurationLabel2))
-                                                .addGap(42, 42, 42)
-                                                .addGroup(serverConfigurationPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(configuredIPAddresLabel)
-                                                        .addComponent(assignedNetworkPortLabel))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(serverConfigurationPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(configuredIPAddressTextfield,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(assignedNetworkPortTextfield,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18).addComponent(provisionServerButton)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56,
-                                                        Short.MAX_VALUE)
-                                                .addComponent(footerTextLabel).addContainerGap()));
+        serverConfigurationPanelLayout.setHorizontalGroup(
+            serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                                .addComponent(configuredIPAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(assignedNetworkPortTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(configuredIPAddresLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(assignedNetworkPortLabel)
+                                .addGap(132, 132, 132))))
+                    .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                        .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(provisionServerButton)
+                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                                .addGap(184, 184, 184)
+                                .addComponent(serverManagementConfigurationLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(serverManagementConfigurationLabel2))
+                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(mainImage)))
+                        .addGap(37, 37, 37))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serverConfigurationPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(footerTextLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(footerLicensesTextLabel)
+                .addGap(280, 280, 280))
+        );
+        serverConfigurationPanelLayout.setVerticalGroup(
+            serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(mainImage)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(serverManagementConfigurationLabel1)
+                    .addComponent(serverManagementConfigurationLabel2))
+                .addGap(42, 42, 42)
+                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(configuredIPAddresLabel)
+                    .addComponent(assignedNetworkPortLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(configuredIPAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignedNetworkPortTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(provisionServerButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(footerLicensesTextLabel)
+                    .addComponent(footerTextLabel1)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-                serverConfigurationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                Short.MAX_VALUE));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-                serverConfigurationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                Short.MAX_VALUE));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(serverConfigurationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(serverConfigurationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        getAccessibleContext()
-                .setAccessibleName(bundle.getString("ServerConfiguration.AccessibleContext.accessibleName")); // NOI18N
-        getAccessibleContext().setAccessibleDescription(
-                bundle.getString("ServerConfiguration.AccessibleContext.accessibleDescription")); // NOI18N
+        getAccessibleContext().setAccessibleName(bundle.getString("ServerConfiguration.AccessibleContext.accessibleName")); // NOI18N
+        getAccessibleContext().setAccessibleDescription(bundle.getString("ServerConfiguration.AccessibleContext.accessibleDescription")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+        InterfaceManager.changeWindow(this, new Licenses());
+    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void provisionServerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_provisionServerButtonActionPerformed
         InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));
@@ -264,7 +275,8 @@ public class ServerConfiguration extends javax.swing.JFrame {
     private javax.swing.JTextField assignedNetworkPortTextfield;
     private javax.swing.JLabel configuredIPAddresLabel;
     private javax.swing.JTextField configuredIPAddressTextfield;
-    private javax.swing.JLabel footerTextLabel;
+    private javax.swing.JLabel footerLicensesTextLabel;
+    private javax.swing.JLabel footerTextLabel1;
     private javax.swing.JLabel mainImage;
     private javax.swing.JButton provisionServerButton;
     private javax.swing.JPanel serverConfigurationPanel;

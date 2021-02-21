@@ -8,6 +8,8 @@ import work.universitycourse.comp1549.Components.Channel;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JFrame;
+import javax.swing.JTable;
         
 /**
  *
@@ -23,24 +25,27 @@ public class ServerManager {
     private String serverIP;
     private int maxConnections = 1024;
     private boolean serverRunning;
+    private JTable serverLog;
 
     public ServerManager() {
         this.initServer();
     }
 
-    public ServerManager(String ip, int port, int maxConnections) {
+    public ServerManager(JTable serverLog, String ip, int port, int maxConnections) {
         this.serverIP = ip;
         this.port = port;
         this.maxConnections = maxConnections;
+        this.serverLog = serverLog;
+        
         this.initServer();
     }
 
     public void startServer() {
         // Start Request handler thread
-        RequestHandler requestHandler = new RequestHandler();
+        RequestHandler requestHandler = new RequestHandler(this.serverLog);
         Thread requestHandlerThread = new Thread(requestHandler);
         requestHandlerThread.start();
-        showMessageDialog(null, "Server Started");
+        InterfaceManager.registerServerLog(this.serverLog, "-", "-", "Startup", "Server Started.");
         // Accept new clients while the thread is running
         this.serverRunning = true;
         while (this.serverRunning) {
@@ -70,7 +75,7 @@ public class ServerManager {
             // Accept new client and add them to the channel
             Socket clientSocket = this.server.accept();
             this.serverChannel.addClientConnection(clientSocket);
-            showMessageDialog(null, "Client Joined");
+            InterfaceManager.registerServerLog(this.serverLog, "-", "-", "Connection", "New Client Connected.");
         } catch (IOException e) {
             InterfaceManager.displayError(e, "Failed to add new client!");
         }
@@ -91,9 +96,11 @@ public class ServerManager {
     private static class RequestHandler implements Runnable {
 
         private Channel serverChannel;
+        private JTable serverLog;
 
-        public RequestHandler() {
+        public RequestHandler(JTable serverLog) {
             this.serverChannel = Channel.getChannel();
+            this.serverLog = serverLog;
         }
 
         @Override
@@ -101,11 +108,12 @@ public class ServerManager {
             while (true) {
                 // Get next message in channel
                 Message messageObj = this.serverChannel.getNextMessage();
-
+                
                 // Process next message if one is present
                 if (messageObj != null) {
                     if (this.serverChannel.checkClientConnectionExists(messageObj.receiver)) {
                         this.serverChannel.getClientConnection(messageObj.receiver).sendMessage(messageObj);
+                        InterfaceManager.registerServerLog(this.serverLog, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
                     } else {
                         // TODO How to handle a receiver that is not in the clientconnections hash map
                     }
