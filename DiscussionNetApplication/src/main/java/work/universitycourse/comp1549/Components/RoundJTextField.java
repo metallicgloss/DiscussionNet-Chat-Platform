@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -28,7 +29,7 @@ public class RoundJTextField extends JTextField {
     }
 
     protected void paintBorder(Graphics g) {
-        g.setColor(new Color(229, 229, 229));
+        g.setColor(new Color(230,230,231));
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 15, 15);
     }
 
