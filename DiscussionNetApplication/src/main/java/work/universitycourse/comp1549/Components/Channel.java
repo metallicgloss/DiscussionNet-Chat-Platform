@@ -18,6 +18,7 @@ public class Channel {
     private static Channel channel;
     private Deque<Message> channelMessages = new ArrayDeque<Message>(); // Used as a Queue
     private HashMap<String, ClientConnectionManager> clientConnections = new HashMap<String, ClientConnectionManager>();
+    private ClientConnectionManager coordinatorClientConnection = null;
 
 
     private Channel() {}
@@ -50,7 +51,7 @@ public class Channel {
         return this.clientConnections.containsKey(clientID);
     }
 
-    public void addClientConnection(Socket clientSocket) {
+    public String addClientConnection(Socket clientSocket) {
         // Create client connection object
         ClientConnectionManager clientConnectionObj = new ClientConnectionManager(clientSocket);
         String clientID = clientConnectionObj.getClientID();
@@ -60,9 +61,20 @@ public class Channel {
 
         // Start thread to listen for new client messeges
         this.startClientThread(clientID);
+        return clientID;
+    }
+
+    public ClientConnectionManager getCoordinatorConnection() {
+        return this.coordinatorClientConnection;
+    }
+    
+    public void setCoordinatorConnection(String clientID) {
+        // TODO If possible recheck client connection before setting or make server do it
+        this.coordinatorClientConnection = this.clientConnections.get(clientID);
     }
 
     private void startClientThread(String clientID) {
         new Thread(this.clientConnections.get(clientID)).start();
     }
+
 }

@@ -10,14 +10,16 @@ public class ClientInstruction {
     // -> Never sent and instruction code to 0 
     // -> Update the value of 'HIGHEST_INSTRUCTION_CODE' to be the value of the highest instruction code
     // -> Update method 'checkDataStringValid' to handle instructions data type
-    private static final int HIGHEST_INSTRUCTION_CODE = 1;
+    private static final int HIGHEST_INSTRUCTION_CODE = 2;
     public static final int SEND_MESSAGE_INSTRUCTION_TYPE = 1;
+    public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
     
     public String data;
     public int instructionType;
 
 
     // Used to create an instruction
+    // TODO probably destory this as its not being used
     public ClientInstruction(int instructionType, String data) throws InstructionNotExistException, DataFormatInvalidException {
         // Check instruction code exists
         ClientInstruction.checkInstructionCodeExist(instructionType);
@@ -55,6 +57,10 @@ public class ClientInstruction {
         return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "::" + receiver + "<SEPERATOR>" + message;
     }
 
+    public static String createBecomeCoordinatorInstructionString() {
+        return Integer.toString(ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE) + "::BECOME COORDINATOR";
+    }
+
     // Converts String to Int
     private static int convertStringToInt(String text) {
         int temp = 0;
@@ -78,6 +84,10 @@ public class ClientInstruction {
                 // FORMAT RECIEVER<SEPERATOR>MESSAGE
                 ClientInstruction.validateDataForMessageInstruction(data);
                 break;
+            case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
+                // FORMAT BECOME COORDINATOR
+                ClientInstruction.validateDataForBecomeCoordinatorInstruction(data);
+                break;
             default:
                 throw new InstructionNotExistException(instructionCode);
         }
@@ -88,6 +98,14 @@ public class ClientInstruction {
         String[] dataComponents = data.split("<SEPERATOR>");
         if (dataComponents.length != 2) {
             throw new DataFormatInvalidException("RECIEVER<SEPERATOR>MESSAGE");
+        }
+    }
+
+    // Checks data provided is in a valid form for 'Become Coordinator' instruction type
+    private static void validateDataForBecomeCoordinatorInstruction(String data) throws DataFormatInvalidException {
+        String[] dataComponents = data.split("<SEPERATOR>");
+        if (! dataComponents[0].equals("BECOME COORDINATOR")) {
+            throw new DataFormatInvalidException("BECOME COORDINATOR");
         }
     }
 

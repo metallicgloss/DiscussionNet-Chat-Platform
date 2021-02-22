@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import work.universitycourse.comp1549.Components.Channel;
+import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -47,6 +48,7 @@ public class ServerManager {
         Thread requestHandlerThread = new Thread(requestHandler);
         requestHandlerThread.start();
         InterfaceManager.registerServerLog(this.serverLog, "-", "-", "Startup", "Server Started.");
+        
         // Accept new clients while the thread is running
         this.serverRunning = true;
         while (this.serverRunning) {
@@ -75,10 +77,22 @@ public class ServerManager {
     // Tells the server to accept new client connection requests
     private void acceptNewClient() {
         try {
+            String clientID;
+
             // Accept new client and add them to the channel
             Socket clientSocket = this.server.accept();
-            this.serverChannel.addClientConnection(clientSocket);
+            clientID = this.serverChannel.addClientConnection(clientSocket);
             InterfaceManager.registerServerLog(this.serverLog, "-", "-", "Connection", "New Client Connected.");
+
+            // Set coordinator if not already set
+            if (this.serverChannel.getCoordinatorConnection() == null) {
+                // Tell client that it will be the coordinator
+                String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
+                Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString, Message.INSTRUCTION_TYPE);
+                this.serverChannel.addMessage(setCoordinatorInstruction);
+                this.serverChannel.setCoordinatorConnection(clientID);
+            }
+
         } catch (IOException e) {
             InterfaceManager.displayError(e, "Failed to add new client!");
         }
@@ -139,3 +153,9 @@ public class ServerManager {
 
     }
 }
+
+/**
+ * TODO
+ * Add coordinator position [CHECK]
+ * Check coordinator is present else remove them and assign new coordinator
+ */
