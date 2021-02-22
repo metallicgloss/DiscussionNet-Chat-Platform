@@ -45,14 +45,17 @@ public class ClientInstruction {
         }
     }
 
+    // Convert instruction objects properties into a string
     public String convertInstructionToString() {
         return Integer.toString(this.instructionType) + "::" + this.data;
     }
 
+    // Creates a custom 'Send Message' instruction string
     public static String createSendMessageInstructionString(String receiver, String message) {
         return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "::" + receiver + "<SEPERATOR>" + message;
     }
 
+    // Converts String to Int
     private static int convertStringToInt(String text) {
         int temp = 0;
         try {
@@ -61,12 +64,14 @@ public class ClientInstruction {
         return temp;
     }
 
+    // Checks the instruction code provided is a genuine
     private static void checkInstructionCodeExist(int instructionCode) throws InstructionNotExistException {
         if (instructionCode <= 0 || instructionCode > ClientInstruction.HIGHEST_INSTRUCTION_CODE) {
             throw new InstructionNotExistException(instructionCode);
         }
     }
 
+    // Checks the data provided is in the valid form the instruction code provided
     private static void checkDataStringValid(int instructionCode, String data) throws DataFormatInvalidException, InstructionNotExistException {
         switch (instructionCode) {
             case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
@@ -78,6 +83,7 @@ public class ClientInstruction {
         }
     }
 
+    // Checks data provided is in a valid form for 'Send Message' instruction type
     private static void validateDataForMessageInstruction(String data) throws DataFormatInvalidException {
         String[] dataComponents = data.split("<SEPERATOR>");
         if (dataComponents.length != 2) {

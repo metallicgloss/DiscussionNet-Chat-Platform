@@ -40,6 +40,7 @@ public class ServerManager {
         this.initServer();
     }
 
+    // Starts the server
     public void startServer() {
         // Start Request handler thread
         RequestHandler requestHandler = new RequestHandler(this.serverLog);
@@ -54,6 +55,7 @@ public class ServerManager {
         this.closeServer();
     }
 
+    // Initialises properites needs for the server to run
     private void initServer() {
         // Get server channel
         this.serverChannel = Channel.getChannel();
@@ -70,6 +72,7 @@ public class ServerManager {
         }
     }
 
+    // Tells the server to accept new client connection requests
     private void acceptNewClient() {
         try {
             // Accept new client and add them to the channel
@@ -81,6 +84,7 @@ public class ServerManager {
         }
     }
 
+    // Closes the server
     private void closeServer() {
         try {
             if (this.server != null) {
@@ -93,6 +97,7 @@ public class ServerManager {
         }
     }
 
+    // Used to handle messages received from clients
     private static class RequestHandler implements Runnable {
 
         private Channel serverChannel;

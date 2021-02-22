@@ -68,10 +68,12 @@ public class ClientManager {
         }
     }
 
+    // Send a message to another client or the server
     public void sendMessage(String receiver, String message) {
         this.instructionsManager.addSendMessageInstruction(receiver, message);
     }
 
+    // Listens for incoming messages from the server
     private class ServerListener implements Runnable {
 
         private ObjectInputStream inputStream;
@@ -101,10 +103,10 @@ public class ClientManager {
                     switch(serverResponse.messageType) {
                         case Message.INSTRUCTION_TYPE:
                             this.instructionsManager.addInstruction(serverResponse.message);
-                            showMessageDialog(null, "Instruction Recieved from " + serverResponse.sender + ": " + serverResponse.message);
+                            showMessageDialog(null, "Instruction received from " + serverResponse.sender + ": " + serverResponse.message);
                             break;
                         case Message.MESSAGE_TYPE:
-                            showMessageDialog(null, "Message Recieved from " + serverResponse.sender + ": " + serverResponse.message);
+                            showMessageDialog(null, "Message received from " + serverResponse.sender + ": " + serverResponse.message);
                             break;
                         default:
                             showMessageDialog(null, "Unknown Message Type Sent: " + Integer.toString(serverResponse.messageType));
@@ -117,6 +119,7 @@ public class ClientManager {
             }
         }
 
+        // Tells the thread to sleep a certain amount of time
         private void wait(int ms) {
             try {
                 Thread.sleep(ms);
@@ -126,6 +129,7 @@ public class ClientManager {
         }
     }
 
+    // Handles instructions that have been placed in a Queue for the client to process
     private class InstructionsHandler implements Runnable {
 
         private ObjectOutputStream outputStream;
@@ -162,16 +166,19 @@ public class ClientManager {
             }
         }
 
+        // Sends a message to the server
         public void sendMessage(String receiver, String message) {
             Message messageObj = new Message(this.username, receiver, message, Message.MESSAGE_TYPE);
             this.sendToChannel(messageObj);
         }
     
+        // Sends an instruction to the server
         public void sendInstruction(String receiver, String message) {
             Message messageObj = new Message(this.username, receiver, message, Message.INSTRUCTION_TYPE);
             this.sendToChannel(messageObj);
         }
     
+        // Sends message object to the server (sends is specifically to the channel which handles messages received by the server)
         private void sendToChannel(Message messageObj) {
             try {
                 this.outputStream.writeObject(messageObj);
@@ -180,6 +187,7 @@ public class ClientManager {
             }
         }
 
+        // Tells the thread to sleep a certain amount of time
         private void wait(int ms) {
             try {
                 Thread.sleep(ms);
@@ -190,6 +198,7 @@ public class ClientManager {
 
     }
 
+    // Stores and manages the insertion and removal of instructions for the client to process
     private class InstructionsManager {
         private Deque<ClientInstruction> instructions = new ArrayDeque<ClientInstruction>();
 
@@ -200,8 +209,8 @@ public class ClientManager {
                 ClientInstruction instructionObj = new ClientInstruction(instruction);
                 this.instructions.addLast(instructionObj);
             } catch (InstructionNotExistException | InstructionFormatException| DataFormatInvalidException e) {
-                Exception a = e;
-                InterfaceManager.displayError(a, "Instruction construction related error");
+                Exception temp = e;
+                InterfaceManager.displayError(temp, "Instruction construction related error");
             }
         }
 
