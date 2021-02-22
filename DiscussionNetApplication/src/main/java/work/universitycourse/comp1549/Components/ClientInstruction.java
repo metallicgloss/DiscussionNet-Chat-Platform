@@ -7,12 +7,16 @@ import work.universitycourse.comp1549.Exceptions.DataFormatInvalidException;
 public class ClientInstruction {
     
     // NOTE // XXX // IMPORTANT
+    // Follow these steps when adding a new instruction
     // -> Never sent and instruction code to 0 
     // -> Update the value of 'HIGHEST_INSTRUCTION_CODE' to be the value of the highest instruction code
     // -> Update method 'checkDataStringValid' to handle instructions data type
-    private static final int HIGHEST_INSTRUCTION_CODE = 2;
+    // -> Add handler for instruction
+    // -> Add instruction connection string
+    private static final int HIGHEST_INSTRUCTION_CODE = 3;
     public static final int SEND_MESSAGE_INSTRUCTION_TYPE = 1;
     public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
+    public static final int REVOKE_COORDINATOR_INSTRUCTION_TYPE = 3;
     
     public String data;
     public int instructionType;
@@ -57,8 +61,14 @@ public class ClientInstruction {
         return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "::" + receiver + "<SEPERATOR>" + message;
     }
 
+    // Create a custom 'Become Coordinator' instruction string
     public static String createBecomeCoordinatorInstructionString() {
         return Integer.toString(ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE) + "::BECOME COORDINATOR";
+    }
+
+    // Create a custom 'Revoke Coordinator' instruction string
+    public static String revokeCoordinatorInstructionString() {
+        return Integer.toString(ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE) + "::REVOKE COORDINATOR";
     }
 
     // Converts String to Int
@@ -88,6 +98,9 @@ public class ClientInstruction {
                 // FORMAT BECOME COORDINATOR
                 ClientInstruction.validateDataForBecomeCoordinatorInstruction(data);
                 break;
+            case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE:
+                // FORMAT REVOKE COORDINATOR
+                ClientInstruction.validateDataForRevokeCoordinatorInstruction(data);
             default:
                 throw new InstructionNotExistException(instructionCode);
         }
@@ -106,6 +119,14 @@ public class ClientInstruction {
         String[] dataComponents = data.split("<SEPERATOR>");
         if (! dataComponents[0].equals("BECOME COORDINATOR")) {
             throw new DataFormatInvalidException("BECOME COORDINATOR");
+        }
+    }
+
+    // Checks data provided is in a valid form for 'Revoke Coordinator' instruction type
+    private static void validateDataForRevokeCoordinatorInstruction(String data) throws DataFormatInvalidException {
+        String[] dataComponents = data.split("<SEPERATOR>");
+        if (! dataComponents[0].equals("REVOKE COORDINATOR")) {
+            throw new DataFormatInvalidException("REVOKE COORDINATOR");
         }
     }
 

@@ -135,6 +135,7 @@ public class ClientManager {
         private ObjectOutputStream outputStream;
         private InstructionsManager instructionsManager;
         private String username;
+        private boolean isCoordinator = false;
 
         public InstructionsHandler(ObjectOutputStream outputStream, InstructionsManager instructionsManager, String username) {
             this.outputStream = outputStream;
@@ -150,10 +151,16 @@ public class ClientManager {
                     switch (instruction.instructionType) {
                         case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE: 
                             // SEND MESSAGE TO SERVER
-                            String[] dataComponents = instruction.data.split("<SEPERATOR>");
-                            String receiver = dataComponents[0];
-                            String message = dataComponents[1];
-                            this.sendMessage(receiver, message);
+                            this.processSendMessageInstruction(instruction.data);
+                            break;
+                        case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
+                            // Make client coordinator
+                            this.isCoordinator = true;
+                            showMessageDialog(null, "You are now a coordinator!");
+                            break;
+                        case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE:
+                            // Revoke client coordinator
+                            this.isCoordinator = false;
                             break;
                         default:
                             // TODO Send custom error message as unexpected instruction was sent
@@ -166,10 +173,16 @@ public class ClientManager {
             }
         }
 
+
         // Sends a message to the server
         public void sendMessage(String receiver, String message) {
             Message messageObj = new Message(this.username, receiver, message, Message.MESSAGE_TYPE);
             this.sendToChannel(messageObj);
+        }
+
+        // Returns if the client is a coordinator
+        public boolean checkIsCoordinator() {
+            return this.isCoordinator;
         }
     
         // Sends an instruction to the server
@@ -194,6 +207,14 @@ public class ClientManager {
             } catch (InterruptedException e) {
                 InterfaceManager.displayError(e, "Thread sleep error occurred");
             }
+        }
+
+        // Processes the instruction 'Send Message'
+        private void processSendMessageInstruction(String data) {
+            String[] dataComponents = data.split("<SEPERATOR>");
+            String receiver = dataComponents[0];
+            String message = dataComponents[1];
+            this.sendMessage(receiver, message);
         }
 
     }
