@@ -28,9 +28,10 @@ public class ServerManager {
     private boolean serverRunning;
     private JTable serverLog;
 
-    public ServerManager() {
-        this.initServer();
-    }
+    // TODO remove if code works fine without
+    // public ServerManager() {
+    //     this.initServer();
+    // }
 
     public ServerManager(JTable serverLog, String ip, int port, int maxConnections) {
         this.serverIP = ip;
@@ -130,11 +131,50 @@ public class ServerManager {
                 
                 // Process next message if one is present
                 if (messageObj != null) {
-                    if (this.serverChannel.checkClientConnectionExists(messageObj.receiver)) {
-                        this.serverChannel.getClientConnection(messageObj.receiver).sendMessage(messageObj);
-                        InterfaceManager.registerServerLog(this.serverLog, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
-                    } else {
-                        // TODO How to handle a receiver that is not in the clientconnections hash map
+                    if (messageObj.messageType == Message.MESSAGE_TYPE) {
+                        // Check client is in the list
+                        if (this.serverChannel.checkClientConnectionExists(messageObj.receiver)) {
+                            // Client is in the list
+                            this.serverChannel.getClientConnection(messageObj.receiver).sendMessage(messageObj);
+                            InterfaceManager.registerServerLog(this.serverLog, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
+                        } else {
+                            // TODO How to handle a receiver that is not in the clientconnections hash map
+                            Message serverMessage = new Message("SERVER", messageObj.sender, "'" + messageObj.receiver + "' does not exist", Message.MESSAGE_TYPE);
+                            this.serverChannel.getClientConnection(messageObj.sender).sendMessage(serverMessage);
+                        }
+                    } else if (messageObj.messageType == Message.INSTRUCTION_TYPE) {
+                        // Handle Instruction
+                        if (messageObj.sender.equals(messageObj.receiver) && messageObj.receiver.equals("SERVER")) {
+                            // Message is from the server itself
+
+                            // Seperate instruction components
+                            String[] instructionComponents = messageObj.message.split("<SEPERATOR>");
+
+                            // Process Instruction
+                            switch(instructionComponents[0]) {
+                                case "REMOVE CONNECTION":
+                                    String clientID = instructionComponents[1];
+                                    // Check connection in client hash map
+                                    if (this.serverChannel.checkClientConnectionExists(clientID)) {
+                                        // Check client is coordinater
+                                        boolean isClientCoordinator = clientID.equals(this.serverChannel.getCoordinatorID());
+                                        
+                                        // Remove client
+                                        this.serverChannel.removeClientConnection(clientID);
+                                        InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", clientID + " has left the server.");
+                                        
+                                        if (isClientCoordinator) {
+                                            // Get new coordinator as current has been terminated
+                                            this.serverChannel.setCoordinatorConnectionNull();
+                                            InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
+                                        }
+                                    }
+                                    break;
+                            }
+                            
+                        } else {
+                            // Message is from a client
+                        }
                     }
                 }
 

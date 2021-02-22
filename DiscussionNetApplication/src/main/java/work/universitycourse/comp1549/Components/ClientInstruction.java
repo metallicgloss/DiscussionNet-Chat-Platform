@@ -101,6 +101,7 @@ public class ClientInstruction {
             case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE:
                 // FORMAT REVOKE COORDINATOR
                 ClientInstruction.validateDataForRevokeCoordinatorInstruction(data);
+                break;
             default:
                 throw new InstructionNotExistException(instructionCode);
         }

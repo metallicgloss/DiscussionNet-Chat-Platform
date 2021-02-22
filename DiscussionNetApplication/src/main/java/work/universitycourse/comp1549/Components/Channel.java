@@ -64,8 +64,22 @@ public class Channel {
         return clientID;
     }
 
+    public void removeClientConnection(String clientID) {
+        // Removes a client connection form the client hashmap
+        if (this.checkClientConnectionExists(clientID)) {
+            this.stopClientThread(clientID);
+            this.clientConnections.remove(clientID);
+        } else {
+            // TODO how to handle an attempt of removing a non existing client
+        }
+    }
+
     public ClientConnectionManager getCoordinatorConnection() {
         return this.coordinatorClientConnection;
+    }
+
+    public String getCoordinatorID() {
+        return this.coordinatorClientConnection.getClientID();
     }
     
     public void setCoordinatorConnection(String clientID) {
@@ -73,8 +87,16 @@ public class Channel {
         this.coordinatorClientConnection = this.clientConnections.get(clientID);
     }
 
+    public void setCoordinatorConnectionNull() {
+        this.coordinatorClientConnection = null;
+    }
+
     private void startClientThread(String clientID) {
         new Thread(this.clientConnections.get(clientID)).start();
+    }
+
+    private void stopClientThread(String clientID) {
+        this.clientConnections.get(clientID).stopThread();
     }
 
 }
