@@ -16,6 +16,10 @@ import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
+import work.universitycourse.comp1549.Exceptions.InstructionNotExistException;
+import work.universitycourse.comp1549.Exceptions.InstructionFormatException; 
+import work.universitycourse.comp1549.Exceptions.DataFormatInvalidException; 
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -26,10 +30,8 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * @author William Phillips
  */
 public class ClientManager {
-    // private ObjectOutputStream outputStream = null;
-    // private ObjectInputStream inputStream = null;
+
     private Socket clientSocket;
-    private boolean runClient;
     private String username;
 
     private Thread serverListenerThread;
@@ -40,43 +42,29 @@ public class ClientManager {
 
     public ClientManager(String serverIP, int serverPort, String username, String clientIP, int clientPort) {
         try {
-            System.out.println("XX1");
             // Create socket
             InetAddress inetAddress = InetAddress.getByName(clientIP);
             this.clientSocket = new Socket(serverIP, serverPort, inetAddress, clientPort);
-
-            // Set input and output streams
-            // this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
-            // this.inputStream = new ObjectInputStream(this.clientSocket.getInputStream());
             
             // Define other variables
             this.username = username; // TODO check username does not already exists
-            // // this.runClient = true;
             
             // Make contact with the server (send username to client)
             this.instructionsManager.addSendMessageInstruction("SERVER", this.username);
-            System.out.println("XX-");
-            // this.sendUsernameToServer();
             
             // Create Threads
             InstructionsHandler instructionsHandler = new InstructionsHandler(new ObjectOutputStream(this.clientSocket.getOutputStream()), this.instructionsManager, this.username);
             this.instructionsHandlerThread = new Thread(instructionsHandler);
             
-            
             ServerListener serverListener = new ServerListener(new ObjectInputStream(this.clientSocket.getInputStream()), this.instructionsManager);
             this.serverListenerThread = new Thread(serverListener);
 
-
             // Start Threads
-            System.out.println("XX2");
             this.serverListenerThread.start();
-            System.out.println("XX3");
             this.instructionsHandlerThread.start();
-            System.out.println("XX4");
 
         } catch (IOException e) {
             InterfaceManager.displayError(e, "Failed to set streams.");
-            // // this.runClient = false;
         }
     }
 
@@ -84,22 +72,14 @@ public class ClientManager {
         this.instructionsManager.addSendMessageInstruction(receiver, message);
     }
 
-    
-
-    // public boolean checkClientConnected() {
-    //     return // this.runClient;
-    // }
-
     private class ServerListener implements Runnable {
 
         private ObjectInputStream inputStream;
         private InstructionsManager instructionsManager;
 
         public ServerListener(ObjectInputStream inputStream, InstructionsManager instructionsManager) {
-            System.out.println("SL-");
             this.inputStream = inputStream;
             this.instructionsManager = instructionsManager;
-            System.out.println("SLA");
         }
 
         public Message getMessage() {
@@ -114,7 +94,6 @@ public class ClientManager {
 
         @Override
         public void run() {
-            System.out.println("SLB");
             while (true) {
                 Message serverResponse = this.getMessage();
                 if (serverResponse != null) {
@@ -174,6 +153,7 @@ public class ClientManager {
                             break;
                         default:
                             // TODO Send custom error message as unexpected instruction was sent
+                            // TODO Technically should not be possible as it would of been handled else where
                             break;
                     }
                 }
@@ -196,7 +176,6 @@ public class ClientManager {
             try {
                 this.outputStream.writeObject(messageObj);
             } catch (IOException e) {
-                // this.runClient = false;
                 InterfaceManager.displayError(e, "Message send failed.");
             }
         }
@@ -208,16 +187,6 @@ public class ClientManager {
                 InterfaceManager.displayError(e, "Thread sleep error occurred");
             }
         }
-        
-
-        // private void sendUsernameToServer() {
-        //     this.sendMessage("SERVER", this.username);
-        // }
-
-        /**
-         * TODO
-         * Break instruction into components and process
-         */
 
     }
 
@@ -227,8 +196,13 @@ public class ClientManager {
         public InstructionsManager() {}
 
         public void addInstruction(String instruction) {
-            ClientInstruction instructionObj = new ClientInstruction(instruction);
-            this.instructions.addLast(instructionObj);
+            try {
+                ClientInstruction instructionObj = new ClientInstruction(instruction);
+                this.instructions.addLast(instructionObj);
+            } catch (InstructionNotExistException | InstructionFormatException| DataFormatInvalidException e) {
+                Exception a = e;
+                InterfaceManager.displayError(a, "Instruction construction related error");
+            }
         }
 
         public void addSendMessageInstruction(String receiver, String message) {
