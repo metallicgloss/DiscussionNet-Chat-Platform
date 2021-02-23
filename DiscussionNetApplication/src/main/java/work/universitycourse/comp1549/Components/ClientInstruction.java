@@ -25,17 +25,20 @@ public class ClientInstruction {
     // Used to create an instruction
     // TODO probably destory this as its not being used
     public ClientInstruction(int instructionType, String data) throws InstructionNotExistException, DataFormatInvalidException {
+
         // Check instruction code exists
         ClientInstruction.checkInstructionCodeExist(instructionType);
         ClientInstruction.checkDataStringValid(instructionType, data);
 
         this.instructionType = instructionType;
         this.data = data;
+
     }
     
 
     // Used to convert from an instruction string to an instruction object
     public ClientInstruction(String instructionString) throws InstructionNotExistException, InstructionFormatException, DataFormatInvalidException {
+
         // Seperate instruction string into its components <INSTRUCTION_TYPE>, <DATA>
         String[] instructionComponenets = instructionString.split("::");
         this.instructionType = ClientInstruction.convertStringToInt(instructionComponenets[0]);
@@ -49,6 +52,7 @@ public class ClientInstruction {
             this.data = instructionComponenets[1];
             ClientInstruction.checkDataStringValid(this.instructionType, this.data);
         }
+
     }
 
     // Convert instruction objects properties into a string
@@ -73,62 +77,83 @@ public class ClientInstruction {
 
     // Converts String to Int
     private static int convertStringToInt(String text) {
+
         int temp = 0;
         try {
             temp = Integer.parseInt(text);
         } catch (NumberFormatException e) {}
         return temp;
+
     }
 
     // Checks the instruction code provided is a genuine
     private static void checkInstructionCodeExist(int instructionCode) throws InstructionNotExistException {
+
         if (instructionCode <= 0 || instructionCode > ClientInstruction.HIGHEST_INSTRUCTION_CODE) {
             throw new InstructionNotExistException(instructionCode);
         }
+
     }
 
     // Checks the data provided is in the valid form the instruction code provided
     private static void checkDataStringValid(int instructionCode, String data) throws DataFormatInvalidException, InstructionNotExistException {
+
         switch (instructionCode) {
             case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
-                // FORMAT RECIEVER<SEPERATOR>MESSAGE
+
+                // FORMAT RECEIVER<SEPERATOR>MESSAGE
                 ClientInstruction.validateDataForMessageInstruction(data);
                 break;
+
             case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
+
                 // FORMAT BECOME COORDINATOR
                 ClientInstruction.validateDataForBecomeCoordinatorInstruction(data);
                 break;
+
             case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE:
+
                 // FORMAT REVOKE COORDINATOR
                 ClientInstruction.validateDataForRevokeCoordinatorInstruction(data);
                 break;
+
             default:
                 throw new InstructionNotExistException(instructionCode);
         }
+
     }
 
     // Checks data provided is in a valid form for 'Send Message' instruction type
     private static void validateDataForMessageInstruction(String data) throws DataFormatInvalidException {
+
         String[] dataComponents = data.split("<SEPERATOR>");
+
         if (dataComponents.length != 2) {
-            throw new DataFormatInvalidException("RECIEVER<SEPERATOR>MESSAGE");
+            throw new DataFormatInvalidException("RECEIVER<SEPERATOR>MESSAGE");
         }
+
     }
 
     // Checks data provided is in a valid form for 'Become Coordinator' instruction type
     private static void validateDataForBecomeCoordinatorInstruction(String data) throws DataFormatInvalidException {
+
         String[] dataComponents = data.split("<SEPERATOR>");
+
         if (! dataComponents[0].equals("BECOME COORDINATOR")) {
             throw new DataFormatInvalidException("BECOME COORDINATOR");
         }
+
     }
 
     // Checks data provided is in a valid form for 'Revoke Coordinator' instruction type
     private static void validateDataForRevokeCoordinatorInstruction(String data) throws DataFormatInvalidException {
+
         String[] dataComponents = data.split("<SEPERATOR>");
+        
         if (! dataComponents[0].equals("REVOKE COORDINATOR")) {
             throw new DataFormatInvalidException("REVOKE COORDINATOR");
         }
+
     }
 
 }

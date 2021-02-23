@@ -24,34 +24,40 @@ public class Channel {
     private Channel() {}
 
     public static Channel getChannel() {
+
         if (channel == null) {
             channel = new Channel();
         }
         return channel;
+
     }
 
+    // Adds a message object to the channel after setting a timestamp for the message
     public void addMessage(Message messageObj) {
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         messageObj.timestamp = timestamp;
         this.channelMessages.addLast(messageObj);
+
     }
 
+    // Gets next available message from the channelMessages, using FIFO
     public Message getNextMessage() {
-        // Gets next available message from the channelMessages, using FIFO
         return this.channelMessages.poll();
     }
 
+    // Returns clientConnection object using the client's ID
     public ClientConnectionManager getClientConnection(String clientID) {
-        // Returns clientConnection object using the client's ID
         return this.clientConnections.get(clientID);
     }
 
+    // Check if a clientConnection exists by checking the client's ID
     public boolean checkClientConnectionExists(String clientID) {
-        // Check if a clientConnection exists by checking the client's ID
         return this.clientConnections.containsKey(clientID);
     }
 
     public String addClientConnection(Socket clientSocket) {
+
         // Create client connection object
         ClientConnectionManager clientConnectionObj = new ClientConnectionManager(clientSocket);
         String clientID = clientConnectionObj.getClientID();
@@ -65,13 +71,17 @@ public class Channel {
     }
 
     public void removeClientConnection(String clientID) {
+
         // Removes a client connection form the client hashmap
         if (this.checkClientConnectionExists(clientID)) {
+
             this.stopClientThread(clientID);
             this.clientConnections.remove(clientID);
+
         } else {
             // TODO how to handle an attempt of removing a non existing client
         }
+
     }
 
     public ClientConnectionManager getCoordinatorConnection() {

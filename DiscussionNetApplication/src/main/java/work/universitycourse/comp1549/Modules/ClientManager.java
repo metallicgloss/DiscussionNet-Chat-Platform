@@ -85,6 +85,7 @@ public class ClientManager {
         }
 
         public Message getMessage() {
+
             Message messageObj = null;
             try {
                 messageObj = (Message) this.inputStream.readObject();
@@ -92,25 +93,35 @@ public class ClientManager {
                 InterfaceManager.displayError(e, "Client Related Error.");
             }
             return messageObj;
+            
         }
 
         @Override
         public void run() {
+
             while (true) {
+
                 Message serverResponse = this.getMessage();
+                
                 if (serverResponse != null) {
                     // handle request
                     switch(serverResponse.messageType) {
                         case Message.INSTRUCTION_TYPE:
+
                             this.instructionsManager.addInstruction(serverResponse.message);
                             showMessageDialog(null, "Instruction received from " + serverResponse.sender + ": " + serverResponse.message);
                             break;
+
                         case Message.MESSAGE_TYPE:
+
                             showMessageDialog(null, "Message received from " + serverResponse.sender + ": " + serverResponse.message);
                             break;
+
                         default:
+
                             showMessageDialog(null, "Unknown Message Type Sent: " + Integer.toString(serverResponse.messageType));
                             break;
+
                     }
                 }
 
@@ -121,11 +132,13 @@ public class ClientManager {
 
         // Tells the thread to sleep a certain amount of time
         private void wait(int ms) {
+
             try {
                 Thread.sleep(ms);
             } catch (InterruptedException e) {
                 InterfaceManager.displayError(e, "Thread sleep error occurred");
             }
+
         }
     }
 
@@ -145,30 +158,42 @@ public class ClientManager {
 
         @Override
         public void run() {
+
             while (true) {
+
                 ClientInstruction instruction = this.instructionsManager.getNextInstruction();
+
                 if (instruction != null) {
+
                     switch (instruction.instructionType) {
                         case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE: 
+
                             // SEND MESSAGE TO SERVER
                             this.processSendMessageInstruction(instruction.data);
                             break;
+
                         case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
+
                             // Make client coordinator
                             this.isCoordinator = true;
                             showMessageDialog(null, "You are now a coordinator!");
                             break;
+
                         case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE:
+
                             // Revoke client coordinator
                             this.isCoordinator = false;
                             break;
+
                         default:
                             // TODO Send custom error message as unexpected instruction was sent
                             // TODO Technically should not be possible as it would of been handled else where
                             break;
                     }
+
                 }
 
+                // Put the thread to sleep for a bit before checking again
                 this.wait(100);
             }
         }
@@ -187,34 +212,42 @@ public class ClientManager {
     
         // Sends an instruction to the server
         public void sendInstruction(String receiver, String message) {
+
             Message messageObj = new Message(this.username, receiver, message, Message.INSTRUCTION_TYPE);
             this.sendToChannel(messageObj);
+
         }
     
         // Sends message object to the server (sends is specifically to the channel which handles messages received by the server)
         private void sendToChannel(Message messageObj) {
+
             try {
                 this.outputStream.writeObject(messageObj);
             } catch (IOException e) {
                 InterfaceManager.displayError(e, "Message send failed.");
             }
+
         }
 
         // Tells the thread to sleep a certain amount of time
         private void wait(int ms) {
+
             try {
                 Thread.sleep(ms);
             } catch (InterruptedException e) {
                 InterfaceManager.displayError(e, "Thread sleep error occurred");
             }
+
         }
 
         // Processes the instruction 'Send Message'
         private void processSendMessageInstruction(String data) {
+
             String[] dataComponents = data.split("<SEPERATOR>");
             String receiver = dataComponents[0];
             String message = dataComponents[1];
             this.sendMessage(receiver, message);
+
         }
 
     }
