@@ -73,12 +73,14 @@ public class Channel {
     public void removeClientConnection(String clientID) {
 
         // Removes a client connection form the client hashmap
+
         if (this.checkClientConnectionExists(clientID)) {
 
             this.stopClientThread(clientID);
             this.clientConnections.remove(clientID);
 
         } else {
+
             // TODO how to handle an attempt of removing a non existing client
         }
 

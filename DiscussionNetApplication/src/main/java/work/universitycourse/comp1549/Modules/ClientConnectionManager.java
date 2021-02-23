@@ -22,8 +22,8 @@ public class ClientConnectionManager implements Runnable {
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private String clientID;
-    private Channel serverChannel;
-    private boolean isRunning = true;
+    private volatile Channel serverChannel;
+    private volatile boolean isRunning = true;
 
     public ClientConnectionManager(Socket socket) {
 
@@ -40,6 +40,8 @@ public class ClientConnectionManager implements Runnable {
         while (this.isRunning) {
             this.addMessageToChannel();
         }
+
+        Thread.currentThread().interrupt();
 
     }
 
@@ -96,9 +98,9 @@ public class ClientConnectionManager implements Runnable {
             data = (Message) this.inputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
 
-            // TODO Change to tell sever to remove client
             Message terminateClientInstruction = new Message("SERVER", "SERVER", "REMOVE CONNECTION<SEPERATOR>" + this.clientID, Message.INSTRUCTION_TYPE);
             this.serverChannel.addMessage(terminateClientInstruction);
+            this.isRunning = false;
             
         }
         return data;
@@ -112,10 +114,11 @@ public class ClientConnectionManager implements Runnable {
         } catch (IOException e) {
             InterfaceManager.displayError(e, "Message Send Failed.");
         }
-        
+
     }
 
     public void stopThread() {
+        this.closeStreams();
         this.isRunning = false;
     }
 

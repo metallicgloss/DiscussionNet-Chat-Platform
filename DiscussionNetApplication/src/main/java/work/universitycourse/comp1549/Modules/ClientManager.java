@@ -41,6 +41,7 @@ public class ClientManager {
     private InstructionsManager instructionsManager = new InstructionsManager();
 
     public ClientManager(String serverIP, int serverPort, String username, String clientIP, int clientPort) {
+
         try {
             // Create socket
             InetAddress inetAddress = InetAddress.getByName(clientIP);
@@ -66,6 +67,7 @@ public class ClientManager {
         } catch (IOException e) {
             InterfaceManager.displayError(e, "Failed to set streams.");
         }
+
     }
 
     // Send a message to another client or the server
@@ -93,7 +95,7 @@ public class ClientManager {
                 InterfaceManager.displayError(e, "Client Related Error.");
             }
             return messageObj;
-            
+
         }
 
         @Override
@@ -164,7 +166,6 @@ public class ClientManager {
                 ClientInstruction instruction = this.instructionsManager.getNextInstruction();
 
                 if (instruction != null) {
-
                     switch (instruction.instructionType) {
                         case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE: 
 

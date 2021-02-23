@@ -93,7 +93,6 @@ public class ServerManager {
 
             // Set coordinator if not already set
             if (this.serverChannel.getCoordinatorConnection() == null) {
-
                 // Tell client that it will be the coordinator
                 String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
                 Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString, Message.INSTRUCTION_TYPE);
@@ -132,19 +131,24 @@ public class ServerManager {
         private JTable serverLog;
 
         public RequestHandler(JTable serverLog) {
+
             this.serverChannel = Channel.getChannel();
             this.serverLog = serverLog;
+            
         }
 
         @Override
         public void run() {
+
             while (true) {
                 // Get next message in channel
                 Message messageObj = this.serverChannel.getNextMessage();
-                
                 // Process next message if one is present
                 if (messageObj != null) {
-                    if (messageObj.messageType == Message.MESSAGE_TYPE) {
+
+                    // TODO simplify boolean if possible
+                    boolean isMessageAnInstructionFromServerToClient = messageObj.messageType == Message.INSTRUCTION_TYPE && (! messageObj.sender.equals(messageObj.receiver)) && messageObj.sender.equals("SERVER");
+                    if (messageObj.messageType == Message.MESSAGE_TYPE || isMessageAnInstructionFromServerToClient) {
 
                         // Process Message Object of type message
                         this.processMessage(messageObj);
@@ -221,24 +225,23 @@ public class ServerManager {
             // Process Instruction
             switch(instructionComponents[0]) {
                 case "REMOVE CONNECTION":
-
+                    
                     String clientID = instructionComponents[1];
 
-                    // Check connection is in client hash map
-                    if (this.serverChannel.checkClientConnectionExists(clientID)) {
-                        // Check client is coordinater
-                        boolean isClientCoordinator = clientID.equals(this.serverChannel.getCoordinatorID());
-                        
-                        // Remove client
-                        this.serverChannel.removeClientConnection(clientID);
-                        InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", clientID + " has left the server.");
-                        
-                        if (isClientCoordinator) {
-                            // Get new coordinator as current has been terminated
-                            this.serverChannel.setCoordinatorConnectionNull();
-                            InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
-                        }
+                    // Check if client is coordinator
+                    boolean isClientCoordinator = clientID.equals(this.serverChannel.getCoordinatorID());
+
+                    // Remove client connection
+                    this.executeInstructionRemoveConnection(clientID);
+
+                    // Get new coordinator if this client was a coordinator
+                    if (isClientCoordinator) {
+                        this.serverChannel.setCoordinatorConnectionNull();
+                        InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
+                        // TODO execute instruction getNewCoordinator
+    
                     }
+
                     break;
 
                 default:
@@ -256,6 +259,24 @@ public class ServerManager {
                 default:
                     // TODO How to handle unknown instruction
                     break;
+            }
+
+        }
+
+        // ===================================================
+        // -          Specific Instruction Processes         -
+        // ===================================================
+
+        // Executes the instruction used to remove a clientConnection
+        private void executeInstructionRemoveConnection(String clientID) {
+
+            // Check connection is in client hash map
+            if (this.serverChannel.checkClientConnectionExists(clientID)) {
+
+                // Remove client
+                this.serverChannel.removeClientConnection(clientID);
+                InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", clientID + " has left the server.");
+                
             }
 
         }
