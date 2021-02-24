@@ -3,291 +3,282 @@ package work.universitycourse.comp1549.Modules;
 import java.net.Socket;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.ServerSocket;
-import work.universitycourse.comp1549.Components.Channel;
+import java.net.ServerSocket; // USED
+import work.universitycourse.comp1549.Components.ServerChannel; // USED
 import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JFrame;
-import javax.swing.JTable;
-        
+import javax.swing.JTable; // USED
+
 /**
  *
  * @author Adnan Turan
  * @author Daniel Browne
  * @author Gabriel Netz
  * @author William Phillips
+ *
+ * 
+ * ===================================================
+ * -                    Contents                     -
+ * ===================================================
+ * 
+ *              Constructor & Server Setup
+ *              
+ *                  Request Handler Class
+ *                  
+ *                          > Runnable Method
+ *                          
+ *                          > Message Processing
+ *                          
+ *                          > Instruction Processing
+ *                          
+ *                          > Specific Instruction Processes
+ * 
+ * 
  */
+
+
 public class ServerManager {
     private ServerSocket server;
-    private Channel serverChannel;
-    private int port;
+    private ServerChannel serverChannel;
+    private int serverPort;
     private String serverIP;
-    private int maxConnections = 1024;
+    private int maxClientConnections = 1024;
     private boolean serverRunning;
-    private JTable serverLog;
+    private JTable serverLogger;
 
-        public ServerManager(JTable serverLog, String ip, int port, int maxConnections) {
-        
-        this.serverIP = ip;
-        this.port = port;
-        this.maxConnections = maxConnections;
-        this.serverLog = serverLog;
-        
-        this.initServer();
-    }
+    // ===================================================
+    // -           Constructor & Server Setup            -
+    // ===================================================
 
-    // Starts the server
-    public void startServer() {
+        public ServerManager(JTable serverLogger, String serverIP, int serverPort, int maxClientConnections) {
 
-        // Start Request handler thread
-        RequestHandler requestHandler = new RequestHandler(this.serverLog);
-        Thread requestHandlerThread = new Thread(requestHandler);
-        requestHandlerThread.start();
-        InterfaceManager.registerServerLog(this.serverLog, "-", "-", "Startup", "Server Started.");
-        
-        // Accept new clients while the thread is running
-        this.serverRunning = true;
-        while (this.serverRunning) {
-            this.acceptNewClient();
+            this.serverIP = serverIP;
+            this.serverPort = serverPort;
+            this.maxClientConnections = maxClientConnections;
+            this.serverLogger = serverLogger;
+            this.serverChannel = new ServerChannel();
+
+            this.initServer();
+
         }
-        this.closeServer();
 
-    }
-
-    // Initialises properites needs for the server to run
-    private void initServer() {
-
-        // Get server channel
-        this.serverChannel = Channel.getChannel();
-
-        // Initialise server socket
-        // TODO replace with check port available
-
-        try {
+        // Set up server sockets
+        private void initServer() {
+            
+            try {
 
             InetAddress serverAddr = InetAddress.getByName(this.serverIP);
-            this.server = new ServerSocket(this.port, this.maxConnections, serverAddr);
+            this.server = new ServerSocket(this.serverPort, this.maxClientConnections, serverAddr);
             this.server.setReuseAddress(true);
 
-        } catch (IOException e) {
+            } catch (IOException e) {
 
-            InterfaceManager.displayError(e, "Failed to start server on port!");
-            this.serverRunning = false;
-
-        }
-
-    }
-
-    // Tells the server to accept new client connection requests
-    private void acceptNewClient() {
-
-        try {
-            String clientID;
-
-            // Accept new client and add them to the channel
-            Socket clientSocket = this.server.accept();
-            clientID = this.serverChannel.addClientConnection(clientSocket);
-            InterfaceManager.registerServerLog(this.serverLog, "-", "-", "Connection", "New Client Connected.");
-
-            // Set coordinator if not already set
-            if (this.serverChannel.getCoordinatorConnection() == null) {
-                // Tell client that it will be the coordinator
-                String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
-                Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString, Message.INSTRUCTION_TYPE);
-                this.serverChannel.addMessage(setCoordinatorInstruction);
-                this.serverChannel.setCoordinatorConnection(clientID);
-
+                InterfaceManager.displayError(e, "Failed to start server on port!");
+                this.serverRunning = false;
+    
             }
 
-        } catch (IOException e) {
-            InterfaceManager.displayError(e, "Failed to add new client!");
         }
 
-    }
+        // Starts the server
+        public void startServer() {
 
-    // Closes the server
-    private void closeServer() {
-
-        try {
-
-            if (this.server != null) {
-                this.server.close();
-            }
-
-        } catch (IOException e) {
-            InterfaceManager.displayError(e, "Failed to stop server!");
-        } finally {
-            this.serverRunning = false;
-        }
-
-    }
-
-    // Used to handle messages received from clients
-    private static class RequestHandler implements Runnable {
-
-        private Channel serverChannel;
-        private JTable serverLog;
-
-        public RequestHandler(JTable serverLog) {
-
-            this.serverChannel = Channel.getChannel();
-            this.serverLog = serverLog;
+            // Start Request handler thread
+            RequestHandler requestHandler = new RequestHandler();
+            Thread requestHandlerThread = new Thread(requestHandler);
+            requestHandlerThread.start();
+            InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Startup", "Server Started.");
             
-        }
-
-        @Override
-        public void run() {
-
-            while (true) {
-                // Get next message in channel
-                Message messageObj = this.serverChannel.getNextMessage();
-                // Process next message if one is present
-                if (messageObj != null) {
-
-                    // TODO simplify boolean if possible
-                    boolean isMessageAnInstructionFromServerToClient = messageObj.messageType == Message.INSTRUCTION_TYPE && (! messageObj.sender.equals(messageObj.receiver)) && messageObj.sender.equals("SERVER");
-                    if (messageObj.messageType == Message.MESSAGE_TYPE || isMessageAnInstructionFromServerToClient) {
-
-                        // Process Message Object of type message
-                        this.processMessage(messageObj);
-                        
-                    } else if (messageObj.messageType == Message.INSTRUCTION_TYPE) {
-
-                        // Process Instruction Object of type instruction
-                        this.processInstruction(messageObj);
-                    }
-                }
-
-                // Put the thread to sleep for a bit before checking again
-                this.wait(100);
+            // Accept new clients while the thread is running
+            this.serverRunning = true;
+            while (this.serverRunning) {
+                this.acceptNewClient();
             }
+            this.closeServer();
 
         }
 
-        // Tells the thread to sleep a certain amount of time
-        private void wait(int ms) {
+        // Accepts a new client connection
+        private void acceptNewClient() {
 
             try {
-                Thread.sleep(ms);
-            } catch (InterruptedException e) {
-                InterfaceManager.displayError(e, "Thread sleep error occurred");
+                String clientID;
+
+                // Accept new client and add them to the channel
+                Socket clientSocket = this.server.accept();
+                clientID = this.serverChannel.addNewClientConnection(clientSocket);
+                InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection", "New Client Connected.");
+
+                // Set coordinator if not already set
+                if (! this.serverChannel.checkCoordinatorIsSet()) {
+                    // Tell client that it will be the coordinator
+                    String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
+                    Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString, Message.INSTRUCTION_TYPE);
+                    this.serverChannel.addMessageToChannel(setCoordinatorInstruction);
+                    this.serverChannel.setCoordinatorConnection(clientID);
+
+                }
+
+            } catch (IOException e) {
+                InterfaceManager.displayError(e, "Failed to add new client!");
+            }
+
+         }
+
+        // Closes the server
+        private void closeServer() {
+
+            try {
+
+                if (this.server != null) {
+                    this.server.close();
+                }
+
+            } catch (IOException e) {
+                InterfaceManager.displayError(e, "Failed to stop server!");
+            } finally {
+                this.serverRunning = false;
             }
 
         }
 
-        // ===================================================
-        // -   Process Messages / Instructions in Channel    -
-        // ===================================================
+    // ===================================================
+    // -               Request Handler Class            -
+    // ===================================================
 
-        // Processes a Message object of type message
-        private void processMessage(Message messageObj) {
+        private class RequestHandler implements Runnable {
 
-            // Check client is in the list
-            if (this.serverChannel.checkClientConnectionExists(messageObj.receiver)) {
+            public RequestHandler() {}
 
-                // Receiver is in list, therefore send the message to them
-                this.serverChannel.getClientConnection(messageObj.receiver).sendMessage(messageObj);
-                InterfaceManager.registerServerLog(this.serverLog, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
+            // ===================================================
+            // -                 Runnable Method                 -
+            // ===================================================
 
-            } else {
+                @Override
+                public void run() {
 
-                // Tell sender that receiver does not exists
-                Message serverMessage = new Message("SERVER", messageObj.sender, "'" + messageObj.receiver + "' does not exist", Message.MESSAGE_TYPE);
-                this.serverChannel.getClientConnection(messageObj.sender).sendMessage(serverMessage);
+                    while (true) {
 
-            }
+                        // Get next message in channel
+                        Message messageObj = ServerManager.this.serverChannel.getNextMessageFromChannel();
 
-        }
+                        // Process next message if one is present
+                        if (messageObj != null) {
 
-        private void processInstruction(Message messageObj) {
+                            // Check if its a instruction for server or someone else
+                            if (messageObj.receiver.equals("SERVER") && messageObj.messageType == Message.INSTRUCTION_TYPE) {
+                                
+                                // Process instruction to server
+                                this.processInstruction(messageObj);
 
-            // Handle Instruction
-            if (messageObj.sender.equals(messageObj.receiver) && messageObj.receiver.equals("SERVER")) {
+                            } else {
+                                this.sendMessageToClient(messageObj);   
+                            }
 
-                // Message is from the server itself
-                this.processInstructionsFromServer(messageObj);
-                
-            } else {
-                
-                // Message is from a client
-                this.processInstructionFromClient(messageObj);
-            }   
+                        }
 
-        }
-
-        // Processes instrutions create by the sever iteself (usually created by one of the nested class to communicate to another nested class)
-        private void processInstructionsFromServer(Message messageObj) {
-            // Seperate instruction components
-            String[] instructionComponents = messageObj.message.split("<SEPERATOR>");
-
-            // Process Instruction
-            switch(instructionComponents[0]) {
-                case "REMOVE CONNECTION":
-                    
-                    String clientID = instructionComponents[1];
-
-                    // Check if client is coordinator
-                    boolean isClientCoordinator = clientID.equals(this.serverChannel.getCoordinatorID());
-
-                    // Remove client connection
-                    this.executeInstructionRemoveConnection(clientID);
-
-                    // Get new coordinator if this client was a coordinator
-                    if (isClientCoordinator) {
-                        this.serverChannel.setCoordinatorConnectionNull();
-                        InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
-                        // TODO execute instruction getNewCoordinator
-    
                     }
 
-                    break;
+                }
+            
+            // ===================================================
+            // -               Message Processing                -
+            // ===================================================
 
-                default:
-                    // TODO How to handle a unknown instruction
-                    break;
+                // Sends the message from the server to the client
+                private void sendMessageToClient(Message messageObj) {
+
+                    // Check client is in the list
+                    if (ServerManager.this.serverChannel.checkClientConnectionExists(messageObj.receiver)) {
+
+                        // Client is in list, send message
+                        ServerManager.this.serverChannel.sendMessageToClient(messageObj.receiver, messageObj);
+                        InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
+
+                    } else {
+
+                        // Tell sender that receiver does not exists
+                        Message serverMessage = new Message("SERVER", messageObj.sender, "'" + messageObj.receiver + "' does not exist", Message.MESSAGE_TYPE);
+                        ServerManager.this.serverChannel.sendMessageToClient(messageObj.sender, serverMessage);
+
+                    }
+
+                }
+            
+            // ===================================================
+            // -             Instruction Processing              -
+            // ===================================================
+
+                private void processInstruction(Message messageObj) {
+
+                    // Get Instruction Components
+                    String[] instructionComponents = messageObj.message.split("<SEPERATOR>");
+
+                    // Process Instruction
+                    switch (instructionComponents[0]) {
+
+                        case "REMOVE CONNECTION":
+                            
+                            // CHECK INSTRUCTION IS FROM SERVER OR COORDINATOR
+                            String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+                            boolean isInstructionFromServer = messageObj.receiver.equals(messageObj.sender);
+                            boolean isInstructionFromCoordinator = messageObj.sender.equals(coordinatorID);
+                            if (isInstructionFromServer || isInstructionFromCoordinator) {
+
+                                String clientID = instructionComponents[1];
+                                this.executeRemoveConnectionInstruction(clientID);
+
+                                // Get new coordinator if this client was the coordinator
+                                if (clientID.equals(coordinatorID)) {
+
+                                    ServerManager.this.serverChannel.setCoordinatorConnectionNull();
+                                    InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
+                                    // TODO execute instruction getNewCoordinator
+
+                                }
+
+                            } else {
+                                // Create custome error message to handle unauthorised instruction
+                            }
+
+                            break;
+                        
+                        case "ADD CLIENT TO LIST":
+                            // CHECK Sender is coordinator
+                            // DATA FORMAT <clientID><SEPERATOR><clientPort><SEPERATOR><clientIP>
+                        
+                        default:
+                            // TODO How to handle a unknown instruction
+                            break;
+                            
+
+                    }
+
+                }
+            
+            // ===================================================
+            // -          Specific Instruction Processes         -
+            // ===================================================
+
+            // Executes the instruction used to remove a clientConnection
+            private void executeRemoveConnectionInstruction(String clientID) {
+
+                // Remove client connection
+                if (ServerManager.this.serverChannel.checkClientConnectionExists(clientID)) {
+
+                    // Remove Client
+                    ServerManager.this.serverChannel.removeClientConnection(clientID);
+                    InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", clientID + " has left the server.");
+
+                }
+
             }
+
+
 
         }
 
-        private void processInstructionFromClient(Message messageObj) {
-            // Seperate instruction components
-            String[] instructionComponents = messageObj.message.split("<SEPERATOR>");
-
-            switch (instructionComponents[0]) {
-                default:
-                    // TODO How to handle unknown instruction
-                    break;
-            }
-
-        }
-
-        // ===================================================
-        // -          Specific Instruction Processes         -
-        // ===================================================
-
-        // Executes the instruction used to remove a clientConnection
-        private void executeInstructionRemoveConnection(String clientID) {
-
-            // Check connection is in client hash map
-            if (this.serverChannel.checkClientConnectionExists(clientID)) {
-
-                // Remove client
-                this.serverChannel.removeClientConnection(clientID);
-                InterfaceManager.registerServerLog(this.serverLog, "-", "-", "COMMAND", clientID + " has left the server.");
-                
-            }
-
-        }
-
-    }
 }
-
-/**
- * TODO
- * Add coordinator position [CHECK]
- * Check coordinator is present else remove them [CHECK]
- * Refactor code
- * Assign new coordinator if old has been removed
- */

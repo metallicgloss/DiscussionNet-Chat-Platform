@@ -14,6 +14,7 @@ import java.net.InetAddress;
 
 import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.Message;
+import work.universitycourse.comp1549.Components.ClientListLocalHandler;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 import work.universitycourse.comp1549.Exceptions.InstructionNotExistException;
@@ -37,7 +38,7 @@ public class ClientManager {
     private Thread serverListenerThread;
     private Thread instructionsHandlerThread;
 
-    // private InstructionsManager instructionsManager;
+    private ClientListLocalHandler localClientList = new ClientListLocalHandler();
     private InstructionsManager instructionsManager = new InstructionsManager();
 
     public ClientManager(String serverIP, int serverPort, String username, String clientIP, int clientPort) {
@@ -75,6 +76,61 @@ public class ClientManager {
         this.instructionsManager.addSendMessageInstruction(receiver, message);
     }
 
+    // ===================================================
+    // -               Instruction Manager               -
+    // ===================================================
+    /** 
+     * The instruction manager implements a queue style array to ensure that instructions are executed using the FIFO principle.
+     * The instruction manager is used to allow the other nested classes to communicate with each other.
+     *      One will create instructions, the other will process them.
+    */
+
+    // Stores and manages the insertion and removal of instructions for the client to process
+    private class InstructionsManager {
+
+        private Deque<ClientInstruction> instructions = new ArrayDeque<ClientInstruction>();
+
+        public InstructionsManager() {}
+
+        // Inserts an instruction to the list of instructions (Inserted using FIFO)
+        public void addInstruction(String instruction) {
+
+            try {
+
+                ClientInstruction instructionObj = new ClientInstruction(instruction);
+                this.instructions.addLast(instructionObj);
+
+            } catch (InstructionNotExistException | InstructionFormatException| DataFormatInvalidException e) {
+
+                Exception temp = e;
+                InterfaceManager.displayError(temp, "Instruction construction related error");
+
+            }
+
+        }
+
+        // Adds a specific instruction (Send Message) instruction to the list of instructions
+        public void addSendMessageInstruction(String receiver, String message) {
+
+            String instructionString = ClientInstruction.createSendMessageInstructionString(receiver, message);
+            this.addInstruction(instructionString);
+
+        }
+
+        // Returns the next instruction in the list (Fetched using FIFO)
+        public ClientInstruction getNextInstruction() {
+            return this.instructions.poll();
+        }
+    }
+
+    // ===================================================
+    // -                  Server Listener                -
+    // =================================================== 
+    /**
+     * A threadable that periodically will check for new messages from the server and will
+     * create instructions based on the server's messages for the client to process.
+     */
+
     // Listens for incoming messages from the server
     private class ServerListener implements Runnable {
 
@@ -86,6 +142,7 @@ public class ClientManager {
             this.instructionsManager = instructionsManager;
         }
 
+        // Returns the next message sent by the server
         public Message getMessage() {
 
             Message messageObj = null;
@@ -143,6 +200,19 @@ public class ClientManager {
 
         }
     }
+
+    // ===================================================
+    // -               Instruction Handler               -
+    // ===================================================
+    /**
+     *  A threadable that periodically checks if for new instructions and processes them when found.
+     * 
+     *  // NOTE // XXX // IMPORTANT 
+     *  Follow these steps when adding a new instruction to process
+     *  Add instruction code to the run method
+     *  Create method to process the instruction (look at section: Instruction Processing)
+     *  
+     */
 
     // Handles instructions that have been placed in a Queue for the client to process
     private class InstructionsHandler implements Runnable {
@@ -241,7 +311,12 @@ public class ClientManager {
 
         }
 
-        // Processes the instruction 'Send Message'
+        
+        // ===================================================
+        // -             Instruction Processing              -
+        // ===================================================
+
+        // Processes the instruction 'Send Message Obj of Type Instruction'
         private void processSendMessageInstruction(String data) {
 
             String[] dataComponents = data.split("<SEPERATOR>");
@@ -251,32 +326,6 @@ public class ClientManager {
 
         }
 
-    }
-
-    // Stores and manages the insertion and removal of instructions for the client to process
-    private class InstructionsManager {
-        private Deque<ClientInstruction> instructions = new ArrayDeque<ClientInstruction>();
-
-        public InstructionsManager() {}
-
-        public void addInstruction(String instruction) {
-            try {
-                ClientInstruction instructionObj = new ClientInstruction(instruction);
-                this.instructions.addLast(instructionObj);
-            } catch (InstructionNotExistException | InstructionFormatException| DataFormatInvalidException e) {
-                Exception temp = e;
-                InterfaceManager.displayError(temp, "Instruction construction related error");
-            }
-        }
-
-        public void addSendMessageInstruction(String receiver, String message) {
-            String instructionString = ClientInstruction.createSendMessageInstructionString(receiver, message);
-            this.addInstruction(instructionString);
-        }
-
-        public ClientInstruction getNextInstruction() {
-            return this.instructions.poll();
-        }
     }
 
 }

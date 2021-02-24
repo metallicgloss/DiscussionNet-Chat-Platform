@@ -4,37 +4,30 @@ import work.universitycourse.comp1549.Exceptions.InstructionNotExistException;
 import work.universitycourse.comp1549.Exceptions.InstructionFormatException; 
 import work.universitycourse.comp1549.Exceptions.DataFormatInvalidException; 
 
+
+
 public class ClientInstruction {
     
     // NOTE // XXX // IMPORTANT
+    // ===================================================
+    // -     READ THIS BEFORE ADDING NEW INSTRUCTIONS    -
+    // ===================================================
     // Follow these steps when adding a new instruction
-    // -> Never sent and instruction code to 0 
+    // -> Never sent and instruction type to 0 
     // -> Update the value of 'HIGHEST_INSTRUCTION_CODE' to be the value of the highest instruction code
-    // -> Update method 'checkDataStringValid' to handle instructions data type
-    // -> Add handler for instruction
-    // -> Add instruction connection string
-    private static final int HIGHEST_INSTRUCTION_CODE = 3;
+    // -> Update method 'checkDataStringValid' to validate instruction's data format (look at section: Instruction Validation Functions)
+    // -> Add function to handle instructions (Look at section: Instruction Handler Functions)
+    // -> Implement function to handle instruction on server / client side
+
+    private static final int HIGHEST_INSTRUCTION_CODE = 5;
     public static final int SEND_MESSAGE_INSTRUCTION_TYPE = 1;
     public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
     public static final int REVOKE_COORDINATOR_INSTRUCTION_TYPE = 3;
+    public static final int REQUEST_CLIENT_LIST_INSTRUCTION_TYPE = 4; // TODO Trace this and may need changing to allow coordinator to treat this differently from other clients
+    public static final int ADD_CLIENT_TO_LIST_INSTRUCTION_TYPE = 5;
     
     public String data;
     public int instructionType;
-
-
-    // Used to create an instruction
-    // TODO probably destory this as its not being used
-    public ClientInstruction(int instructionType, String data) throws InstructionNotExistException, DataFormatInvalidException {
-
-        // Check instruction code exists
-        ClientInstruction.checkInstructionCodeExist(instructionType);
-        ClientInstruction.checkDataStringValid(instructionType, data);
-
-        this.instructionType = instructionType;
-        this.data = data;
-
-    }
-    
 
     // Used to convert from an instruction string to an instruction object
     public ClientInstruction(String instructionString) throws InstructionNotExistException, InstructionFormatException, DataFormatInvalidException {
@@ -54,6 +47,21 @@ public class ClientInstruction {
         }
 
     }
+
+    // Converts String to Int
+    private static int convertStringToInt(String text) {
+
+        int temp = 0;
+        try {
+            temp = Integer.parseInt(text);
+        } catch (NumberFormatException e) {}
+        return temp;
+
+    }
+
+    // ===================================================
+    // -          Instruction Handler Functions          -
+    // ===================================================
 
     // Convert instruction objects properties into a string
     public String convertInstructionToString() {
@@ -75,16 +83,14 @@ public class ClientInstruction {
         return Integer.toString(ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE) + "::REVOKE COORDINATOR";
     }
 
-    // Converts String to Int
-    private static int convertStringToInt(String text) {
-
-        int temp = 0;
-        try {
-            temp = Integer.parseInt(text);
-        } catch (NumberFormatException e) {}
-        return temp;
-
+    // Create a custom 'Request Clients List' instruction string
+    public static String requestClientListInstructionString() {
+        return Integer.toString(ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE) + "::REQUEST CLIENT LIST";
     }
+
+    // ===================================================
+    // -          Instruction Validation Functions       -
+    // ===================================================
 
     // Checks the instruction code provided is a genuine
     private static void checkInstructionCodeExist(int instructionCode) throws InstructionNotExistException {
@@ -101,20 +107,32 @@ public class ClientInstruction {
         switch (instructionCode) {
             case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
 
-                // FORMAT RECEIVER<SEPERATOR>MESSAGE
+                // FORMAT: RECEIVER<SEPERATOR>MESSAGE
                 ClientInstruction.validateDataForMessageInstruction(data);
                 break;
 
             case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
 
-                // FORMAT BECOME COORDINATOR
+                // FORMAT: BECOME COORDINATOR
                 ClientInstruction.validateDataForBecomeCoordinatorInstruction(data);
                 break;
 
             case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE:
 
-                // FORMAT REVOKE COORDINATOR
+                // FORMAT: REVOKE COORDINATOR
                 ClientInstruction.validateDataForRevokeCoordinatorInstruction(data);
+                break;
+            
+            case ClientInstruction.REQUEST_CLIENT_LIST_INSTRUCTION_TYPE:
+
+                // FORMAT: REQUEST CLIENT LIST
+                ClientInstruction.validateRequestClientListInstruction(data);
+                break;
+            
+            case ClientInstruction.ADD_CLIENT_TO_LIST_INSTRUCTION_TYPE:
+
+                // FORMAT: ADD CLIENT TO LIST
+                ClientInstruction.validateAddClientToListInstruction(data);
                 break;
 
             default:
@@ -122,6 +140,10 @@ public class ClientInstruction {
         }
 
     }
+
+    // ===================================================
+    // -        Validate Instruction Data Components     -
+    // ===================================================
 
     // Checks data provided is in a valid form for 'Send Message' instruction type
     private static void validateDataForMessageInstruction(String data) throws DataFormatInvalidException {
@@ -139,7 +161,7 @@ public class ClientInstruction {
 
         String[] dataComponents = data.split("<SEPERATOR>");
 
-        if (! dataComponents[0].equals("BECOME COORDINATOR")) {
+        if (! dataComponents[0].equals("BECOME COORDINATOR") && dataComponents.length != 1) {
             throw new DataFormatInvalidException("BECOME COORDINATOR");
         }
 
@@ -149,9 +171,32 @@ public class ClientInstruction {
     private static void validateDataForRevokeCoordinatorInstruction(String data) throws DataFormatInvalidException {
 
         String[] dataComponents = data.split("<SEPERATOR>");
-        
-        if (! dataComponents[0].equals("REVOKE COORDINATOR")) {
+
+        if (! dataComponents[0].equals("REVOKE COORDINATOR") && dataComponents.length != 1) {
             throw new DataFormatInvalidException("REVOKE COORDINATOR");
+        }
+
+    }
+
+    // Checks data provided is in a valid form for 'Request Client List' instruction type
+    private static void validateRequestClientListInstruction(String data) throws DataFormatInvalidException {
+
+        String[] dataComponents = data.split("<SEPERATOR>");
+
+        if (! dataComponents[0].equals("REQUEST CLIENT LIST") && dataComponents.length != 1) {
+            throw new DataFormatInvalidException("REQUEST CLIENT LIST");
+        }
+
+    }
+
+    // Checks data provided is in a valid form for 'Request Client List' instruction type
+    private static void validateAddClientToListInstruction(String data) throws DataFormatInvalidException {
+
+        String[] dataComponents = data.split("<SEPERATOR>"); // FORMAT: <ADD CLIENT TO LIST><SEPERATOR><CLIENT_IP><SEPERATOR><CLIENT_PORT><SEPERATOR><CLIENT_ID>
+        // TODO maybe add more checks to ensure they are in correct format
+
+        if (! dataComponents[0].equals("ADD CLIENT TO LIST") && dataComponents.length != 4) {
+            throw new DataFormatInvalidException("ADD CLIENT TO LIST");
         }
 
     }
