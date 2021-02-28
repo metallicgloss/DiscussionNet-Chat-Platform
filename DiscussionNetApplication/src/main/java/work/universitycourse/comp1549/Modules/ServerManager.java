@@ -1,16 +1,22 @@
 package work.universitycourse.comp1549.Modules;
 
-import java.net.Socket;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
+
+import java.net.Socket;
 import java.net.InetAddress;
-import java.net.ServerSocket; // USED
-import work.universitycourse.comp1549.Components.ServerChannel; // USED
+import java.net.ServerSocket;
+
+import work.universitycourse.comp1549.Components.ServerChannel;
+import work.universitycourse.comp1549.Components.ClientInfo;
 import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.Message;
-import work.universitycourse.comp1549.Modules.InterfaceManager;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JFrame;
-import javax.swing.JTable; // USED
+import javax.swing.JTable;
+
 
 /**
  *
@@ -35,13 +41,14 @@ import javax.swing.JTable; // USED
  *                          > Instruction Processing
  *                          
  *                          > Specific Instruction Processes
- * 
+ *                          
+ *                          > Miscellaneous Functions
  * 
  */
 
 
 public class ServerManager {
-    private ServerSocket server;
+    private ServerSocket server = null;
     private ServerChannel serverChannel;
     private int serverPort;
     private String serverIP;
@@ -62,6 +69,7 @@ public class ServerManager {
             this.serverChannel = new ServerChannel();
 
             this.initServer();
+            new Thread(new DebuggProgram()).start(); // DEBUG
 
         }
 
@@ -94,9 +102,11 @@ public class ServerManager {
             
             // Accept new clients while the thread is running
             this.serverRunning = true;
+
             while (this.serverRunning) {
                 this.acceptNewClient();
             }
+
             this.closeServer();
 
         }
@@ -105,22 +115,13 @@ public class ServerManager {
         private void acceptNewClient() {
 
             try {
+
                 String clientID;
 
                 // Accept new client and add them to the channel
                 Socket clientSocket = this.server.accept();
                 clientID = this.serverChannel.addNewClientConnection(clientSocket);
-                InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection", "New Client Connected.");
-
-                // Set coordinator if not already set
-                if (! this.serverChannel.checkCoordinatorIsSet()) {
-                    // Tell client that it will be the coordinator
-                    String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
-                    Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString, Message.INSTRUCTION_TYPE);
-                    this.serverChannel.addMessageToChannel(setCoordinatorInstruction);
-                    this.serverChannel.setCoordinatorConnection(clientID);
-
-                }
+                InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection", "New Client Connected: " + clientID);
 
             } catch (IOException e) {
                 InterfaceManager.displayError(e, "Failed to add new client!");
@@ -192,18 +193,32 @@ public class ServerManager {
                 private void sendMessageToClient(Message messageObj) {
 
                     // Check client is in the list
-                    if (ServerManager.this.serverChannel.checkClientConnectionExists(messageObj.receiver)) {
+                    boolean checkReceiverInChannel = ServerManager.this.serverChannel.checkClientConnectionExists(messageObj.receiver);
+                    boolean checkSenderInChannel = ServerManager.this.serverChannel.checkClientConnectionExists(messageObj.sender);
+
+                    if ( (checkReceiverInChannel || messageObj.sender == "SERVER") && (checkSenderInChannel || messageObj.sender == "SERVER") ) {
 
                         // Client is in list, send message
-                        ServerManager.this.serverChannel.sendMessageToClient(messageObj.receiver, messageObj);
-                        InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
+                        ServerManager.this.serverChannel.sendMessageToClient(messageObj);
+
+                        if (messageObj.messageType == Message.INSTRUCTION_TYPE) {
+                            InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Instruction", messageObj.message);
+                        } else {
+                            InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
+                        }
 
                     } else {
 
                         // Tell sender that receiver does not exists
-                        Message serverMessage = new Message("SERVER", messageObj.sender, "'" + messageObj.receiver + "' does not exist", Message.MESSAGE_TYPE);
-                        ServerManager.this.serverChannel.sendMessageToClient(messageObj.sender, serverMessage);
+                        System.out.println("Error try to execute message: " + messageObj.message + " from " + messageObj.sender + " to " + messageObj.receiver + " of type " + messageObj.messageType);
+                        
+                        // Check sender is in channel otherwise message may of came from a client that has disconnected or been rejected
+                        if (checkSenderInChannel) {
 
+                            Message serverMessage = new Message("SERVER", messageObj.sender, "'" + messageObj.receiver + "' does not exist", Message.MESSAGE_TYPE);
+                            ServerManager.this.serverChannel.sendMessageToClient(serverMessage);
+
+                        }
                     }
 
                 }
@@ -216,44 +231,65 @@ public class ServerManager {
 
                     // Get Instruction Components
                     String[] instructionComponents = messageObj.message.split("<SEPERATOR>");
+                    int instructionType = Integer.parseInt(instructionComponents[0]);
+                    String[] dataComponents = instructionComponents[1].split("::");
 
-                    // Process Instruction
-                    switch (instructionComponents[0]) {
+                    // Check if Coordinator is set
+                    if (! ServerManager.this.serverChannel.checkCoordinatorIsSet() && instructionType == ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE) {
 
-                        case "REMOVE CONNECTION":
+                        // Accept client as coordinator
+                        String clientID = dataComponents[0];
+                        this.executeInstructionEstablishConnection(messageObj.sender, clientID);
+                        
+                    } else {
+
+                        String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+
+                        // Process Instruction
+                        switch (instructionType) {
+
+                            case ClientInstruction.REJECT_JOIN_REQUEST_INSTRUCTION_TYPE:
+                                
+                                // Process a reject request
+                                this.executeInstructionRejectJoinRequest(messageObj);
+                                break;
                             
-                            // CHECK INSTRUCTION IS FROM SERVER OR COORDINATOR
-                            String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
-                            boolean isInstructionFromServer = messageObj.receiver.equals(messageObj.sender);
-                            boolean isInstructionFromCoordinator = messageObj.sender.equals(coordinatorID);
-                            if (isInstructionFromServer || isInstructionFromCoordinator) {
+                            case ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE:
+                                
+                                // Process connection request
+                                this.executeInstructionEstablishConnection(messageObj.sender, dataComponents[0]);
+                                break;
+                            
+                            case ClientInstruction.ACCEPT_CLIENT_CONNECTION_INSTRUCTION_TYPE:
 
-                                String clientID = instructionComponents[1];
-                                this.executeRemoveConnectionInstruction(clientID);
+                                // Check instruction is from coordinator
+                                if (messageObj.sender.equals(coordinatorID)) {
 
-                                // Get new coordinator if this client was the coordinator
-                                if (clientID.equals(coordinatorID)) {
+                                    // Process accept client Connection
+                                    this.executeInstructionAcceptClientConnection(dataComponents[0], dataComponents[1]);
+                                    break;
 
-                                    ServerManager.this.serverChannel.setCoordinatorConnectionNull();
-                                    InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
-                                    // TODO execute instruction getNewCoordinator
-
+                                } else {
+                                    // TODO How to handle unauthorised instruction call
                                 }
-
-                            } else {
-                                // Create custome error message to handle unauthorised instruction
-                            }
-
-                            break;
-                        
-                        case "ADD CLIENT TO LIST":
-                            // CHECK Sender is coordinator
-                            // DATA FORMAT <clientID><SEPERATOR><clientPort><SEPERATOR><clientIP>
-                        
-                        default:
-                            // TODO How to handle a unknown instruction
-                            break;
                             
+                            case ClientInstruction.CLIENT_DISCONNECTED_INSTRUCTION_TYPE:
+
+                                // Process client disconnected instruction
+                                this.executeInstructionClientDisconnected(dataComponents[0]);
+                                break;
+
+                            case ClientInstruction.UPDATE_CLIENT_INFOS_SERVER_CACHE_INSTRUCTION_TYPE:
+
+                                // Update the client info list cached on the server
+                                this.executeInstructionUpdateClientInfoCache(dataComponents[0]);
+                                break;
+                            
+                            default:
+                                // TODO How to handle a unknown instruction
+                                break;
+                                
+                        }
 
                     }
 
@@ -264,7 +300,7 @@ public class ServerManager {
             // ===================================================
 
             // Executes the instruction used to remove a clientConnection
-            private void executeRemoveConnectionInstruction(String clientID) {
+            private void executeInstructionRemoveConnection(String clientID) {
 
                 // Remove client connection
                 if (ServerManager.this.serverChannel.checkClientConnectionExists(clientID)) {
@@ -277,8 +313,205 @@ public class ServerManager {
 
             }
 
+            // Executes the instrution used to establish a connection from a client to the srver
+            private void executeInstructionEstablishConnection(String tempID, String clientID) {
+
+                // Check if coordinator is set
+                if (ServerManager.this.serverChannel.checkCoordinatorIsSet()) {
+
+                    // Send to coordinator to determine connection
+                    
+                        // Define Variables
+                    ClientInfo clientInfo = ServerManager.this.serverChannel.getClientInfo(tempID);
+                    String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+                    String reviewJoinRequestString = ClientInstruction.createReviewJoinRequestInstructionString(tempID, clientID, clientInfo.clientIP, clientInfo.clientPort);
+                    
+                        // Send to coordinator to determine connection
+                    Message reviewJoinRequestInstruction = new Message("SERVER", coordinatorID, reviewJoinRequestString, Message.INSTRUCTION_TYPE);
+                    ServerManager.this.serverChannel.addMessageToChannel(reviewJoinRequestInstruction);
+                    
+
+                } else {
+
+                    // Make client Coordinator
+
+                        // Replace Temp ID with specified ID
+                    ServerManager.this.serverChannel.renameClientID(tempID, clientID);
+                    
+                        // Tell client that they will be the coordinator
+                    this.makeClientCoordinator(clientID);
+
+                }
+
+            }
+
+            // Executes the instruction used to accept a client connection
+            private void executeInstructionAcceptClientConnection(String tempID, String clientID) {
+                ServerManager.this.serverChannel.renameClientID(tempID, clientID);
+            }
+
+            // Execute the instruction used to reject a join request
+            private void executeInstructionRejectJoinRequest(Message messageObj) {
+
+                String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+                String[] dataComponents = messageObj.message.split("<SEPERATOR>")[1].split("::");
+                String clientID = dataComponents[0];
+
+                // Check instruction is from coordinator
+                if (messageObj.sender.equals(coordinatorID)) {
+
+                    ServerManager.this.serverChannel.terminateClientConnection(clientID);
+                    this.executeInstructionRemoveConnection(clientID);
+
+                }
+
+            }
+
+            // Execute the instruction used to handle a client that has disconnected
+            private void executeInstructionClientDisconnected(String clientID) {
+
+                String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+
+                // Check if coordinator disconnected
+                if (clientID.equals(coordinatorID)) {
+
+                    // Set coordinator to null
+                    ServerManager.this.serverChannel.setCoordinatorConnectionNull();
+                    InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
+
+                    // Find new coordinator
+                    this.findNewCoordinator(coordinatorID);
+
+                    // Set coordinator ID to be the new coordinator
+                    coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+
+                }
+
+                // Remove connection from client connection list cache
+                this.executeInstructionRemoveConnection(clientID);
+
+                // If coordinator present, notify them
+                if (ServerManager.this.serverChannel.checkCoordinatorIsSet()) {
+
+                    // Tell coordinator about the client that has disconnected
+                    String notifyClientDisconnecString = ClientInstruction.createNotifyClientDisconnectedInstructionString(clientID);
+                    Message notifyClientDisconnectInstruction = new Message("SERVER", coordinatorID, notifyClientDisconnecString, Message.INSTRUCTION_TYPE);
+                    ServerManager.this.serverChannel.addMessageToChannel(notifyClientDisconnectInstruction);
+
+                }
+
+            }
+
+            // Execute the instruction used to update the client infomation on the server cache
+            private void executeInstructionUpdateClientInfoCache(String allClientInfoString) {
+
+                HashMap<String, ClientInfo> newClientInfoList = this.convertAllClientInfoStringToHashMap(allClientInfoString);
+                ServerManager.this.serverChannel.setClientInfoListCache(newClientInfoList);
+
+            }
+
+            // ===================================================
+            // -             Miscellaneous Functions             -
+            // ===================================================
+            
+            // Used to make another member coordinator when a previous coordinator disconnects
+            private void findNewCoordinator(String oldCoordinatorID) {
+
+                HashMap<String, ClientInfo> clientInfoListCache = ServerManager.this.serverChannel.getAllClientInfo();
+
+                // Check that there is another client connected
+                if (clientInfoListCache.keySet().size() != 1) { // Has to be != 1 as current coordinator is still in the list           
+
+                    String newCoordinatorID = "";
+                    
+                    // Find new coordinator ID
+                    for (String currentClientID : clientInfoListCache.keySet()) {
+
+                        if (! currentClientID.equals(oldCoordinatorID)) {
+                            newCoordinatorID = currentClientID;
+                            break;
+                        }
+
+                    }
+
+                    this.makeClientCoordinator(newCoordinatorID);
+
+                }
+
+            }
+
+            // Makes and tells the client specified that they will become the coordinator
+            private void makeClientCoordinator(String clientID) {
+
+                String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
+                Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString, Message.INSTRUCTION_TYPE);
+                ServerManager.this.serverChannel.addMessageToChannel(setCoordinatorInstruction);
+                ServerManager.this.serverChannel.setCoordinatorConnection(clientID);
+                
+            }
+
+            // Unpackages all client info string back to a clientInfo hashmap
+            private HashMap<String, ClientInfo> convertAllClientInfoStringToHashMap(String clientInfoString) {
+
+                HashMap<String, ClientInfo> clientInfoList = new HashMap<String, ClientInfo>();
+
+                String[] clients = clientInfoString.split("%%");
+
+                for (String currentClientInfo : clients) {
+                    
+                    String[] components = currentClientInfo.split(",");
+                    String clientID = components[0];
+                    String clientIP = components[1];
+                    int clientPort = Integer.parseInt(components[2]);
+
+                    ClientInfo clientInfoObj = new ClientInfo(clientID, clientIP, clientPort);
+                    clientInfoList.put(clientID, clientInfoObj);
+
+                }
+
+                return clientInfoList;
+
+            }
+
+        }
+
+        // DEBUG CLASS
+        private class DebuggProgram implements Runnable {
+
+            @Override
+            public void run() {
+
+                while (true) {
+                
+                    System.out.println("Connections = " + ServerManager.this.serverChannel.getAllClientInfo());
+                    this.wait(5000);
+                    
+                }
+                
+            }
+
+            private void wait(int ms) {
+
+                try {
+                    Thread.sleep(ms);
+                } catch (InterruptedException e) {
+                    InterfaceManager.displayError(e, "Thread sleep error occurred");
+                }
+
+            }
 
 
         }
 
 }
+
+// TODO
+// Make Server find new coordinator                                     [CHECK]
+// Make the rename method change the clientInfo details as well         [CHECK]
+// Test that client info is being accuratly updated                     [CHECK]
+// Create Code to remove client info                                    [CHECK]
+// Make server update cache                                             [CHECK] When do we ever use the cahce version?
+// Make UI get list of clientinfo                                       [CHECK]
+// Make sure clients with same name can't connect                       [CHECK]
+// Make sure clients dont attempt to connect with same port             [CHECK]
+// Handle server disconnecting when clients still alive                 [CHECK]

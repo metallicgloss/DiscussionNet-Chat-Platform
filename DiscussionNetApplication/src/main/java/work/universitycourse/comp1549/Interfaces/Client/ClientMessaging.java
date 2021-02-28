@@ -86,11 +86,14 @@ public class ClientMessaging extends javax.swing.JFrame {
         rightArrowIcon5 = new javax.swing.JLabel();
         temporaryStartListenerButton = new javax.swing.JButton();
         temporaryStartClientButton = new javax.swing.JButton();
+        startExampleOneButton = new javax.swing.JButton();
         userMessagingMainPanel = new javax.swing.JPanel();
         userMessagesTextfield = new RoundJTextField();
         userMessagesButton = new javax.swing.JButton();
         messagesLabel = new javax.swing.JLabel();
         temporarySenderIdentifierTextBox = new javax.swing.JTextField();
+        startExampleTwoButton = new javax.swing.JButton();
+        startExampleThreeButton = new javax.swing.JButton();
         clientDetailsPanel2 = new javax.swing.JPanel();
         clientDetailsIPAddressLabel = new javax.swing.JLabel();
         clientDetailsIPAddressValueLabel = new javax.swing.JLabel();
@@ -191,7 +194,7 @@ public class ClientMessaging extends javax.swing.JFrame {
                     .addComponent(userMessagingLabel)
                     .addComponent(clientFeaturesLabel)
                     .addComponent(exitApplicationLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +237,7 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addComponent(clientDetailsLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clientDetailsLabel2)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         clientDetailsPanel1Layout.setVerticalGroup(
             clientDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +280,7 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addComponent(serverDetailsLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(serverDetailsLabel2)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         serverDetailsPanel1Layout.setVerticalGroup(
             serverDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,6 +449,14 @@ public class ClientMessaging extends javax.swing.JFrame {
             }
         });
 
+        startExampleOneButton.setText(bundle.getString("ClientMessaging.startExampleOneButton.text")); // NOI18N
+        startExampleOneButton.setName("startExampleOneButton"); // NOI18N
+        startExampleOneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startExampleOneButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout userMessagingSidePanelLayout = new javax.swing.GroupLayout(userMessagingSidePanel);
         userMessagingSidePanel.setLayout(userMessagingSidePanelLayout);
         userMessagingSidePanelLayout.setHorizontalGroup(
@@ -454,37 +465,36 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
-                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
-                                .addComponent(userLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(rightArrowIcon1))
-                            .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
-                                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userLabel5)
-                                    .addComponent(userLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rightArrowIcon3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(rightArrowIcon5, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingSidePanelLayout.createSequentialGroup()
-                                .addComponent(userLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rightArrowIcon2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingSidePanelLayout.createSequentialGroup()
-                                .addComponent(userLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rightArrowIcon4)))
-                        .addGap(27, 27, 27))
+                        .addComponent(userLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(rightArrowIcon1))
                     .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
-                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(temporaryStartClientButton)
+                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userLabel5)
+                            .addComponent(userLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rightArrowIcon3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rightArrowIcon5, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingSidePanelLayout.createSequentialGroup()
+                        .addComponent(userLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rightArrowIcon2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingSidePanelLayout.createSequentialGroup()
+                        .addComponent(userLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rightArrowIcon4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingSidePanelLayout.createSequentialGroup()
+                        .addComponent(temporaryStartClientButton)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(usersLabel)
+                        .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
+                            .addGap(9, 9, 9)
                             .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(usersLabel)
-                                .addGroup(userMessagingSidePanelLayout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(temporaryStartListenerButton))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(temporaryStartListenerButton)
+                                .addComponent(startExampleOneButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)))))
+                .addGap(27, 27, 27))
         );
         userMessagingSidePanelLayout.setVerticalGroup(
             userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,11 +522,13 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addGroup(userMessagingSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(userLabel5)
                     .addComponent(rightArrowIcon5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(temporaryStartClientButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(temporaryStartListenerButton)
-                .addGap(73, 73, 73))
+                .addGap(18, 18, 18)
+                .addComponent(startExampleOneButton)
+                .addGap(31, 31, 31))
         );
 
         userMessagingMainPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -552,20 +564,44 @@ public class ClientMessaging extends javax.swing.JFrame {
         temporarySenderIdentifierTextBox.setText(bundle.getString("ClientMessaging.temporarySenderIdentifierTextBox.text")); // NOI18N
         temporarySenderIdentifierTextBox.setName("temporarySenderIdentifierTextBox"); // NOI18N
 
+        startExampleTwoButton.setText(bundle.getString("ClientMessaging.startExampleTwoButton.text")); // NOI18N
+        startExampleTwoButton.setName("startExampleTwoButton"); // NOI18N
+        startExampleTwoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startExampleTwoButtonActionPerformed(evt);
+            }
+        });
+
+        startExampleThreeButton.setText(bundle.getString("ClientMessaging.startExampleThreeButton.text")); // NOI18N
+        startExampleThreeButton.setName("startExampleThreeButton"); // NOI18N
+        startExampleThreeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startExampleThreeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout userMessagingMainPanelLayout = new javax.swing.GroupLayout(userMessagingMainPanel);
         userMessagingMainPanel.setLayout(userMessagingMainPanelLayout);
         userMessagingMainPanelLayout.setHorizontalGroup(
             userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(messagesLabel)
                     .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(temporarySenderIdentifierTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userMessagesButton)))
+                            .addComponent(messagesLabel)
+                            .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
+                                .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(temporarySenderIdentifierTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(userMessagesButton))))
+                    .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(startExampleTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(startExampleThreeButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         userMessagingMainPanelLayout.setVerticalGroup(
@@ -573,7 +609,11 @@ public class ClientMessaging extends javax.swing.JFrame {
             .addGroup(userMessagingMainPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(messagesLabel)
+                .addGap(95, 95, 95)
+                .addComponent(startExampleThreeButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(startExampleTwoButton)
+                .addGap(65, 65, 65)
                 .addGroup(userMessagingMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userMessagingMainPanelLayout.createSequentialGroup()
                         .addComponent(userMessagesButton)
@@ -710,7 +750,7 @@ public class ClientMessaging extends javax.swing.JFrame {
                     .addComponent(serverDetailsIPAddressValueLabel)
                     .addComponent(serverDetailsConnectionPortValueLabel)
                     .addComponent(serverDetailsConnectionStatusValueLabel))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         headerTitlePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -789,7 +829,7 @@ public class ClientMessaging extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(headerNamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(headerNamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                     .addComponent(headerTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -809,7 +849,7 @@ public class ClientMessaging extends javax.swing.JFrame {
                             .addComponent(userMessagingMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
                         .addGap(12, 12, 12)
                         .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)))
+                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)))
         );
 
         getAccessibleContext().setAccessibleName(bundle.getString("ClientMessaging.AccessibleContext.accessibleName")); // NOI18N
@@ -834,9 +874,24 @@ public class ClientMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_temporaryStartClientButtonActionPerformed
 
     private void userMessagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMessagesButtonActionPerformed
-        // this.client.
+
         this.client.sendMessage(temporarySenderIdentifierTextBox.getText(), userMessagesTextfield.getText());
     }//GEN-LAST:event_userMessagesButtonActionPerformed
+
+    private void startExampleOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startExampleOneButtonActionPerformed
+        this.client = new ClientManager("127.0.0.1", 9090, "Example1", "localhost", 9091);
+        temporarySenderIdentifierTextBox.setText("Example1");
+    }//GEN-LAST:event_startExampleOneButtonActionPerformed
+
+    private void startExampleTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startExampleTwoButtonActionPerformed
+        this.client = new ClientManager("127.0.0.1", 9090, "Example2", "localhost", 9094);
+        temporarySenderIdentifierTextBox.setText("Example3");
+    }//GEN-LAST:event_startExampleTwoButtonActionPerformed
+
+    private void startExampleThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startExampleThreeButtonActionPerformed
+        this.client = new ClientManager("127.0.0.1", 9090, "Example3", "localhost", 9095);
+        temporarySenderIdentifierTextBox.setText("Example3");
+    }//GEN-LAST:event_startExampleThreeButtonActionPerformed
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_footerLicensesTextLabelMouseClicked
         InterfaceManager.changeWindow(this, new Licenses());
@@ -937,6 +992,9 @@ public class ClientMessaging extends javax.swing.JFrame {
     private javax.swing.JPanel serverDetailsPanel2;
     private javax.swing.JLabel server_details_icon;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JButton startExampleOneButton;
+    private javax.swing.JButton startExampleThreeButton;
+    private javax.swing.JButton startExampleTwoButton;
     private javax.swing.JTextField temporarySenderIdentifierTextBox;
     private javax.swing.JButton temporaryStartClientButton;
     private javax.swing.JButton temporaryStartListenerButton;
