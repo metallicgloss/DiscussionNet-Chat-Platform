@@ -96,6 +96,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         assignedNetworkPortTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         assignedNetworkPortTextfield.setForeground(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        assignedNetworkPortTextfield.setText(bundle.getString("ServerConfiguration.assignedNetworkPortTextfield.text")); // NOI18N
         assignedNetworkPortTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setName("assignedNetworkPortTextfield"); // NOI18N
@@ -165,6 +166,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         serverConfigurationPanel.add(mainImage);
         mainImage.setBounds(272, 40, 315, 192);
 
+        configuredIPAddressTextfield.setText(bundle.getString("ServerConfiguration.configuredIPAddressTextfield.text")); // NOI18N
         configuredIPAddressTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         configuredIPAddressTextfield.setForeground(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);

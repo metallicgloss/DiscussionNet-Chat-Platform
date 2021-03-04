@@ -22,9 +22,12 @@ public class Message implements Serializable {
     public Timestamp timestamp;
 
     public Message(String sender, String receiver, String message, int type) {
+        
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
         this.messageType = type;
+        
     }
+
 }
