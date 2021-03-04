@@ -1,7 +1,7 @@
 package work.universitycourse.comp1549.Interfaces.Server;
 
 import java.awt.Color;
-import work.universitycourse.comp1549.Components.RoundJTextField;
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
@@ -36,11 +36,11 @@ public class ServerConfiguration extends javax.swing.JFrame {
         serverManagementConfigurationLabel2 = new javax.swing.JLabel();
         configuredIPAddresLabel = new javax.swing.JLabel();
         assignedNetworkPortLabel = new javax.swing.JLabel();
-        assignedNetworkPortTextfield = new RoundJTextField();
+        assignedNetworkPortTextfield = new JRoundedTextField();
         userMessagesIconLabel = new javax.swing.JLabel();
         provisionServerButton = new javax.swing.JButton();
         mainImage = new javax.swing.JLabel();
-        configuredIPAddressTextfield = new RoundJTextField();
+        configuredIPAddressTextfield = new JRoundedTextField();
         footerTextLabel1 = new javax.swing.JLabel();
         footerLicensesTextLabel = new javax.swing.JLabel();
 
@@ -227,7 +227,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
+        InterfaceManager.displayLicenses();
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void configuredIPAddressTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_configuredIPAddressTextfieldFocusGained

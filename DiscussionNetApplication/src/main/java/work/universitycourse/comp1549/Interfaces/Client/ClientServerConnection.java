@@ -1,6 +1,6 @@
 package work.universitycourse.comp1549.Interfaces.Client;
 
-import work.universitycourse.comp1549.Components.RoundJTextField;
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Interfaces.Licenses;
@@ -39,8 +39,8 @@ public class ClientServerConnection extends javax.swing.JFrame {
         userMessagesIconLabel = new javax.swing.JLabel();
         connectToServerButton = new javax.swing.JButton();
         serverPortLabel = new javax.swing.JLabel();
-        serverIPAddressTextField = new RoundJTextField();
-        serverPortTextField = new RoundJTextField();
+        serverIPAddressTextField = new JRoundedTextField();
+        serverPortTextField = new JRoundedTextField();
         footerLicensesTextLabel = new javax.swing.JLabel();
         footerTextLabel = new javax.swing.JLabel();
 
@@ -250,7 +250,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesIconLabelMouseEntered
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
+        InterfaceManager.displayLicenses();
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void connectToServerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_connectToServerButtonMouseEntered

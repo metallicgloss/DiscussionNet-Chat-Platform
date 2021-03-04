@@ -1,7 +1,10 @@
 package work.universitycourse.comp1549.Interfaces.Client;
 
+import java.awt.Component;
+import java.awt.event.KeyEvent;
+import java.util.Calendar;
 import work.universitycourse.comp1549.Components.Message;
-import work.universitycourse.comp1549.Components.RoundJTextField;
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
@@ -39,6 +42,7 @@ public class ClientMessaging extends javax.swing.JFrame {
         
         this.client = new ClientManager(
                 this.primaryMessagePane,
+                this,
                 this.serverIPAddress,
                 Integer.parseInt(this.serverPort),
                 this.clientIdentifier,
@@ -86,7 +90,7 @@ public class ClientMessaging extends javax.swing.JFrame {
         userMessagingLabel1 = new javax.swing.JLabel();
         userMessagingLabel2 = new javax.swing.JLabel();
         userMessagingMainPanel = new javax.swing.JPanel();
-        userMessagesTextfield = new RoundJTextField();
+        userMessagesTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
         userMessagesIconLabel = new javax.swing.JLabel();
         userMessagesButton = new javax.swing.JButton();
         clientDetailsPanel2 = new javax.swing.JPanel();
@@ -381,12 +385,9 @@ public class ClientMessaging extends javax.swing.JFrame {
         userMessagesTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         userMessagesTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         userMessagesTextfield.setName("userMessagesTextfield"); // NOI18N
-        userMessagesTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                userMessagesTextfieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                userMessagesTextfieldFocusLost(evt);
+        userMessagesTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userMessagesTextfieldKeyPressed(evt);
             }
         });
         userMessagingMainPanel.add(userMessagesTextfield);
@@ -599,6 +600,10 @@ public class ClientMessaging extends javax.swing.JFrame {
                     .addComponent(headerNamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(headerTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,17 +617,11 @@ public class ClientMessaging extends javax.swing.JFrame {
                                 .addComponent(clientDetailsPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(userMessagingTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE))
                         .addGap(12, 12, 12))
-                    .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(headerTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(userMessagingMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(primaryMessagePane)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userMessagingMainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(primaryMessagePane))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -662,16 +661,8 @@ public class ClientMessaging extends javax.swing.JFrame {
         showMessageDialog(null, this.client.getAllClientIDsFromLocalList());
     }//GEN-LAST:event_userMessagesButtonActionPerformed
                                                 
-    private void userMessagesTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userMessagesTextfieldFocusGained
-        InterfaceManager.toggleTextFieldFocus(userMessagesTextfield, true);
-    }//GEN-LAST:event_userMessagesTextfieldFocusGained
-
-    private void userMessagesTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userMessagesTextfieldFocusLost
-        InterfaceManager.toggleTextFieldFocus(userMessagesTextfield, false);
-    }//GEN-LAST:event_userMessagesTextfieldFocusLost
-
     private void userMessagesIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
-        this.client.sendMessage("Listener", userMessagesTextfield.getText());
+        this.sendMessage();
     }//GEN-LAST:event_userMessagesIconLabelMouseClicked
 
     private void userMessagesIconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
@@ -683,13 +674,25 @@ public class ClientMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesIconLabelMouseExited
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
+        InterfaceManager.displayLicenses();
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void exitApplicationLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitApplicationLabelMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitApplicationLabelMouseClicked
 
+    private void userMessagesTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userMessagesTextfieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.sendMessage();
+         }
+    }//GEN-LAST:event_userMessagesTextfieldKeyPressed
+
+    private void sendMessage() {
+        this.client.sendMessage(this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex()), userMessagesTextfield.getText());
+        InterfaceManager.displayMessage(this.primaryMessagePane, Calendar.getInstance().getTime(), "Sent", this.clientIdentifier, userMessagesTextfield.getText());
+        userMessagesTextfield.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */

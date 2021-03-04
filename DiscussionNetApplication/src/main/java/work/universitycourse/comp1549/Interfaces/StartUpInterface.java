@@ -218,7 +218,7 @@ public class StartUpInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_configureServerButtonMouseExited
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
+        InterfaceManager.displayLicenses();
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     /**

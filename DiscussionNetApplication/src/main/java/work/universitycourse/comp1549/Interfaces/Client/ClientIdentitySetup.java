@@ -1,7 +1,7 @@
 package work.universitycourse.comp1549.Interfaces.Client;
 
 import static javax.swing.JOptionPane.showMessageDialog;
-import work.universitycourse.comp1549.Components.RoundJTextField;
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
@@ -43,12 +43,12 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         discussionNetIdentitySetupLabel1 = new javax.swing.JLabel();
         discussionNetIdentitySetupLabel2 = new javax.swing.JLabel();
         assignedIDNumberLabel = new javax.swing.JLabel();
-        assignedIDNumberTextfield = new RoundJTextField();
+        assignedIDNumberTextfield = new JRoundedTextField();
         clientIPAddressLabel = new javax.swing.JLabel();
-        clientIPAddressTextField = new RoundJTextField();
+        clientIPAddressTextField = new JRoundedTextField();
         userMessagesIconLabel = new javax.swing.JLabel();
         clientPortLabel = new javax.swing.JLabel();
-        clientPortTextField = new RoundJTextField();
+        clientPortTextField = new JRoundedTextField();
         authenticateButton = new javax.swing.JButton();
         footerTextLabel = new javax.swing.JLabel();
         footerLicensesTextLabel = new javax.swing.JLabel();
@@ -306,7 +306,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesIconLabelMouseEntered
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
+        InterfaceManager.displayLicenses();
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void confirmIdentity() {
