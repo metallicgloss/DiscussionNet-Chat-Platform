@@ -1,5 +1,6 @@
 package work.universitycourse.comp1549.Interfaces.Server;
 
+import java.awt.Color;
 import work.universitycourse.comp1549.Components.RoundJTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
@@ -36,6 +37,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         configuredIPAddresLabel = new javax.swing.JLabel();
         assignedNetworkPortLabel = new javax.swing.JLabel();
         assignedNetworkPortTextfield = new RoundJTextField();
+        userMessagesIconLabel = new javax.swing.JLabel();
         provisionServerButton = new javax.swing.JButton();
         mainImage = new javax.swing.JLabel();
         configuredIPAddressTextfield = new RoundJTextField();
@@ -57,29 +59,79 @@ public class ServerConfiguration extends javax.swing.JFrame {
         serverConfigurationPanel.setName("serverConfigurationPanel"); // NOI18N
         serverConfigurationPanel.setPreferredSize(new java.awt.Dimension(847, 519));
         InterfaceManager.detectExitRequest(serverConfigurationPanel);
+        serverConfigurationPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                serverConfigurationPanelMouseClicked(evt);
+            }
+        });
+        serverConfigurationPanel.setLayout(null);
 
         serverManagementConfigurationLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         serverManagementConfigurationLabel1.setForeground(new java.awt.Color(0, 36, 109));
         serverManagementConfigurationLabel1.setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel1.text_1")); // NOI18N
         serverManagementConfigurationLabel1.setName("serverManagementConfigurationLabel1"); // NOI18N
+        serverConfigurationPanel.add(serverManagementConfigurationLabel1);
+        serverManagementConfigurationLabel1.setBounds(233, 238, 79, 30);
 
         serverManagementConfigurationLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         serverManagementConfigurationLabel2.setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel2.text_1")); // NOI18N
         serverManagementConfigurationLabel2.setName("serverManagementConfigurationLabel2"); // NOI18N
+        serverConfigurationPanel.add(serverManagementConfigurationLabel2);
+        serverManagementConfigurationLabel2.setBounds(318, 238, 335, 30);
 
         configuredIPAddresLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         configuredIPAddresLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wireless.png"))); // NOI18N
         configuredIPAddresLabel.setText(bundle.getString("ServerConfiguration.configuredIPAddresLabel.text_1")); // NOI18N
         configuredIPAddresLabel.setName("configuredIPAddresLabel"); // NOI18N
+        serverConfigurationPanel.add(configuredIPAddresLabel);
+        configuredIPAddresLabel.setBounds(140, 310, 162, 17);
 
         assignedNetworkPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         assignedNetworkPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/port_icon.png"))); // NOI18N
         assignedNetworkPortLabel.setText(bundle.getString("ServerConfiguration.assignedNetworkPortLabel.text_1")); // NOI18N
         assignedNetworkPortLabel.setName("assignedNetworkPortLabel"); // NOI18N
+        serverConfigurationPanel.add(assignedNetworkPortLabel);
+        assignedNetworkPortLabel.setBounds(549, 310, 166, 17);
 
+        assignedNetworkPortTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        assignedNetworkPortTextfield.setForeground(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         assignedNetworkPortTextfield.setText(bundle.getString("ServerConfiguration.assignedNetworkPortTextfield.text")); // NOI18N
+        assignedNetworkPortTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
+        assignedNetworkPortTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setName("assignedNetworkPortTextfield"); // NOI18N
+        assignedNetworkPortTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                assignedNetworkPortTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                assignedNetworkPortTextfieldFocusLost(evt);
+            }
+        });
+        serverConfigurationPanel.add(assignedNetworkPortTextfield);
+        assignedNetworkPortTextfield.setBounds(456, 333, 334, 23);
+
+        userMessagesIconLabel.setBackground(new java.awt.Color(255, 255, 255));
+        userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
+        userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_icon.png"))); // NOI18N
+        userMessagesIconLabel.setText(bundle.getString("ServerConfiguration.userMessagesIconLabel.text")); // NOI18N
+        userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        userMessagesIconLabel.setFocusable(false);
+        userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userMessagesIconLabel.setIconTextGap(0);
+        userMessagesIconLabel.setInheritsPopupMenu(false);
+        userMessagesIconLabel.setName("userMessagesIconLabel"); // NOI18N
+        userMessagesIconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseEntered(evt);
+            }
+        });
+        serverConfigurationPanel.add(userMessagesIconLabel);
+        userMessagesIconLabel.setBounds(480, 390, 30, 30);
 
         provisionServerButton.setBackground(new java.awt.Color(255, 255, 255));
         provisionServerButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
@@ -106,17 +158,38 @@ public class ServerConfiguration extends javax.swing.JFrame {
                 provisionServerButtonActionPerformed(evt);
             }
         });
+        serverConfigurationPanel.add(provisionServerButton);
+        provisionServerButton.setBounds(50, 370, 761, 69);
 
         mainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/settings.png"))); // NOI18N
         mainImage.setName("mainImage"); // NOI18N
+        serverConfigurationPanel.add(mainImage);
+        mainImage.setBounds(272, 40, 315, 192);
 
         configuredIPAddressTextfield.setText(bundle.getString("ServerConfiguration.configuredIPAddressTextfield.text")); // NOI18N
+        configuredIPAddressTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        configuredIPAddressTextfield.setForeground(new java.awt.Color(152, 150, 162));
+        configuredIPAddressTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        configuredIPAddressTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
+        configuredIPAddressTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setName("configuredIPAddressTextfield"); // NOI18N
+        configuredIPAddressTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                configuredIPAddressTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                configuredIPAddressTextfieldFocusLost(evt);
+            }
+        });
+        serverConfigurationPanel.add(configuredIPAddressTextfield);
+        configuredIPAddressTextfield.setBounds(68, 333, 334, 23);
 
         footerTextLabel1.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel1.setForeground(new java.awt.Color(47, 46, 65));
         footerTextLabel1.setText(bundle.getString("ServerConfiguration.footerTextLabel1.text")); // NOI18N
         footerTextLabel1.setName("footerTextLabel1"); // NOI18N
+        serverConfigurationPanel.add(footerTextLabel1);
+        footerTextLabel1.setBounds(292, 507, 189, 12);
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
@@ -128,71 +201,8 @@ public class ServerConfiguration extends javax.swing.JFrame {
                 footerLicensesTextLabelMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout serverConfigurationPanelLayout = new javax.swing.GroupLayout(serverConfigurationPanel);
-        serverConfigurationPanel.setLayout(serverConfigurationPanelLayout);
-        serverConfigurationPanelLayout.setHorizontalGroup(
-            serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                                .addComponent(configuredIPAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)
-                                .addComponent(assignedNetworkPortTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addComponent(configuredIPAddresLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(assignedNetworkPortLabel)
-                                .addGap(132, 132, 132))))
-                    .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                        .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(provisionServerButton)
-                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                                .addGap(184, 184, 184)
-                                .addComponent(serverManagementConfigurationLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(serverManagementConfigurationLabel2))
-                            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                                .addGap(223, 223, 223)
-                                .addComponent(mainImage)))
-                        .addGap(37, 37, 37))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, serverConfigurationPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(footerTextLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(footerLicensesTextLabel)
-                .addGap(280, 280, 280))
-        );
-        serverConfigurationPanelLayout.setVerticalGroup(
-            serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(serverConfigurationPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(mainImage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serverManagementConfigurationLabel1)
-                    .addComponent(serverManagementConfigurationLabel2))
-                .addGap(42, 42, 42)
-                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(configuredIPAddresLabel)
-                    .addComponent(assignedNetworkPortLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(configuredIPAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assignedNetworkPortTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(provisionServerButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(serverConfigurationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(footerLicensesTextLabel)
-                    .addComponent(footerTextLabel1)))
-        );
+        serverConfigurationPanel.add(footerLicensesTextLabel);
+        footerLicensesTextLabel.setBounds(487, 507, 80, 12);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,17 +225,50 @@ public class ServerConfiguration extends javax.swing.JFrame {
         InterfaceManager.changeWindow(this, new Licenses());
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
-    private void provisionServerButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_provisionServerButtonActionPerformed
-        InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));
-    }// GEN-LAST:event_provisionServerButtonActionPerformed
+    private void configuredIPAddressTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_configuredIPAddressTextfieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, true);
+    }//GEN-LAST:event_configuredIPAddressTextfieldFocusGained
 
-    private void provisionServerButtonMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_provisionServerButtonMouseEntered
+    private void configuredIPAddressTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_configuredIPAddressTextfieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, false);
+    }//GEN-LAST:event_configuredIPAddressTextfieldFocusLost
+
+    private void assignedNetworkPortTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedNetworkPortTextfieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, true);
+    }//GEN-LAST:event_assignedNetworkPortTextfieldFocusGained
+
+    private void assignedNetworkPortTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedNetworkPortTextfieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, false);
+    }//GEN-LAST:event_assignedNetworkPortTextfieldFocusLost
+
+    private void serverConfigurationPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_serverConfigurationPanelMouseClicked
+        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, false);
+        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, false);
+    }//GEN-LAST:event_serverConfigurationPanelMouseClicked
+
+    private void userMessagesIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
+        provisionServer();
+    }//GEN-LAST:event_userMessagesIconLabelMouseClicked
+
+    private void userMessagesIconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
+        InterfaceManager.buttonHover(provisionServerButton, true, "medium");
+    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
+
+    private void provisionServerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provisionServerButtonActionPerformed
+        provisionServer();
+    }//GEN-LAST:event_provisionServerButtonActionPerformed
+
+    private void provisionServerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provisionServerButtonMouseEntered
         InterfaceManager.buttonHover(provisionServerButton, true, "large");
-    }// GEN-LAST:event_provisionServerButtonMouseEntered
+    }//GEN-LAST:event_provisionServerButtonMouseEntered
 
-    private void provisionServerButtonMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_provisionServerButtonMouseExited
+    private void provisionServerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provisionServerButtonMouseExited
         InterfaceManager.buttonHover(provisionServerButton, false, "large");
-    }// GEN-LAST:event_provisionServerButtonMouseExited
+    }//GEN-LAST:event_provisionServerButtonMouseExited
+    
+    private void provisionServer() {
+        InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));
+    }
 
     /**
      * @param args the command line arguments
@@ -241,7 +284,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -284,5 +327,6 @@ public class ServerConfiguration extends javax.swing.JFrame {
     private javax.swing.JPanel serverConfigurationPanel;
     private javax.swing.JLabel serverManagementConfigurationLabel1;
     private javax.swing.JLabel serverManagementConfigurationLabel2;
+    private javax.swing.JLabel userMessagesIconLabel;
     // End of variables declaration//GEN-END:variables
 }

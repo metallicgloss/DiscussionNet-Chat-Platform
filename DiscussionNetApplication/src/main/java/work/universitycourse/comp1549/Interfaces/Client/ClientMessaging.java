@@ -89,11 +89,13 @@ public class ClientMessaging extends javax.swing.JFrame {
         startExampleOneButton = new javax.swing.JButton();
         userMessagingMainPanel = new javax.swing.JPanel();
         userMessagesTextfield = new RoundJTextField();
-        userMessagesButton = new javax.swing.JButton();
         messagesLabel = new javax.swing.JLabel();
         temporarySenderIdentifierTextBox = new javax.swing.JTextField();
         startExampleTwoButton = new javax.swing.JButton();
         startExampleThreeButton = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        userMessagesIconLabel = new javax.swing.JLabel();
+        userMessagesButton = new javax.swing.JButton();
         clientDetailsPanel2 = new javax.swing.JPanel();
         clientDetailsIPAddressLabel = new javax.swing.JLabel();
         clientDetailsIPAddressValueLabel = new javax.swing.JLabel();
@@ -366,7 +368,7 @@ public class ClientMessaging extends javax.swing.JFrame {
                 .addComponent(userMessagingLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userMessagingLabel2)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         userMessagingTopPanelLayout.setVerticalGroup(
             userMessagingTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,32 +536,29 @@ public class ClientMessaging extends javax.swing.JFrame {
         userMessagingMainPanel.setBackground(new java.awt.Color(255, 255, 255));
         userMessagingMainPanel.setName("userMessagingMainPanel"); // NOI18N
         userMessagingMainPanel.setPreferredSize(new java.awt.Dimension(737, 298));
+        userMessagingMainPanel.setLayout(null);
 
+        userMessagesTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        userMessagesTextfield.setForeground(new java.awt.Color(152, 150, 162));
+        userMessagesTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
+        userMessagesTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         userMessagesTextfield.setName("userMessagesTextfield"); // NOI18N
-
-        userMessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/small.png"))); // NOI18N
-        userMessagesButton.setBorder(null);
-        userMessagesButton.setContentAreaFilled(false);
-        userMessagesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        userMessagesButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        userMessagesButton.setName("userMessagesButton"); // NOI18N
-        userMessagesButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                userMessagesButtonMouseEntered(evt);
+        userMessagesTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                userMessagesTextfieldFocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                userMessagesButtonMouseExited(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                userMessagesTextfieldFocusLost(evt);
             }
         });
-        userMessagesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userMessagesButtonActionPerformed(evt);
-            }
-        });
+        userMessagingMainPanel.add(userMessagesTextfield);
+        userMessagesTextfield.setBounds(25, 301, 559, 44);
 
         messagesLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
         messagesLabel.setText(bundle.getString("ClientMessaging.messagesLabel.text_1")); // NOI18N
         messagesLabel.setName("messagesLabel"); // NOI18N
+        userMessagingMainPanel.add(messagesLabel);
+        messagesLabel.setBounds(25, 22, 58, 14);
 
         temporarySenderIdentifierTextBox.setText(bundle.getString("ClientMessaging.temporarySenderIdentifierTextBox.text")); // NOI18N
         temporarySenderIdentifierTextBox.setName("temporarySenderIdentifierTextBox"); // NOI18N
@@ -623,7 +622,55 @@ public class ClientMessaging extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(userMessagesTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
+        jLayeredPane1.setName("jLayeredPane1"); // NOI18N
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        userMessagingMainPanel.add(jLayeredPane1);
+        jLayeredPane1.setBounds(581, 137, 100, 100);
+
+        userMessagesIconLabel.setBackground(new java.awt.Color(255, 255, 255));
+        userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
+        userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_circle_icon.png"))); // NOI18N
+        userMessagesIconLabel.setText(bundle.getString("ClientMessaging.userMessagesIconLabel.text")); // NOI18N
+        userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        userMessagesIconLabel.setFocusable(false);
+        userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userMessagesIconLabel.setIconTextGap(0);
+        userMessagesIconLabel.setInheritsPopupMenu(false);
+        userMessagesIconLabel.setName("userMessagesIconLabel"); // NOI18N
+        userMessagesIconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseExited(evt);
+            }
+        });
+        userMessagingMainPanel.add(userMessagesIconLabel);
+        userMessagesIconLabel.setBounds(600, 300, 120, 40);
+
+        userMessagesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/small.png"))); // NOI18N
+        userMessagesButton.setBorder(null);
+        userMessagesButton.setContentAreaFilled(false);
+        userMessagesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        userMessagesButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        userMessagesButton.setName("userMessagesButton"); // NOI18N
+        userMessagingMainPanel.add(userMessagesButton);
+        userMessagesButton.setBounds(590, 290, 140, 60);
 
         clientDetailsPanel2.setBackground(new java.awt.Color(255, 255, 255));
         clientDetailsPanel2.setMinimumSize(new java.awt.Dimension(322, 92));
@@ -874,7 +921,6 @@ public class ClientMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_temporaryStartClientButtonActionPerformed
 
     private void userMessagesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMessagesButtonActionPerformed
-
         this.client.sendMessage(temporarySenderIdentifierTextBox.getText(), userMessagesTextfield.getText());
     }//GEN-LAST:event_userMessagesButtonActionPerformed
 
@@ -898,12 +944,33 @@ public class ClientMessaging extends javax.swing.JFrame {
     }// GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void userMessagesButtonMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_userMessagesButtonMouseEntered
-        InterfaceManager.buttonHover(userMessagesButton, true, "small");
-    }// GEN-LAST:event_userMessagesButtonMouseEntered
+      InterfaceManager.buttonHover(userMessagesButton, true, "small");
+    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
 
-    private void userMessagesButtonMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_userMessagesButtonMouseExited
+    private void userMessagesTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userMessagesTextfieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(userMessagesTextfield, true);
+    }//GEN-LAST:event_userMessagesTextfieldFocusGained
+
+    private void userMessagesTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userMessagesTextfieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(userMessagesTextfield, false);
+    }//GEN-LAST:event_userMessagesTextfieldFocusLost
+
+    private void userMessagesIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
+        // this.client.
+        this.client.sendMessage("Listener", userMessagesTextfield.getText());
+    }//GEN-LAST:event_userMessagesIconLabelMouseClicked
+
+    private void userMessagesIconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
+        InterfaceManager.buttonHover(userMessagesButton, true, "small");
+    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
+
+    private void userMessagesIconLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseExited
         InterfaceManager.buttonHover(userMessagesButton, false, "small");
-    }// GEN-LAST:event_userMessagesButtonMouseExited
+    }//GEN-LAST:event_userMessagesIconLabelMouseExited
+
+    private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+        InterfaceManager.changeWindow(this, new Licenses());
+    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -919,7 +986,7 @@ public class ClientMessaging extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -973,6 +1040,7 @@ public class ClientMessaging extends javax.swing.JFrame {
     private javax.swing.JPanel headerNamePanel;
     private javax.swing.JPanel headerTitlePanel;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel messagesLabel;
     private javax.swing.JLabel navIconLabel;
     private javax.swing.JLabel rightArrowIcon1;
@@ -1005,6 +1073,7 @@ public class ClientMessaging extends javax.swing.JFrame {
     private javax.swing.JLabel userLabel4;
     private javax.swing.JLabel userLabel5;
     private javax.swing.JButton userMessagesButton;
+    private javax.swing.JLabel userMessagesIconLabel;
     private javax.swing.JTextField userMessagesTextfield;
     private javax.swing.JLabel userMessagingIconLabel;
     private javax.swing.JLabel userMessagingLabel;

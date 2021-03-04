@@ -1,5 +1,6 @@
 package work.universitycourse.comp1549.Modules;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
@@ -11,9 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import java.io.StringWriter;
 import java.io.PrintWriter;
+import javax.swing.BorderFactory;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+import work.universitycourse.comp1549.Components.RoundJTextField;
 
 /**
  *
@@ -68,6 +73,16 @@ public class InterfaceManager {
         errorString.printStackTrace(pw);
         String stackTrace = sw.toString();
         showMessageDialog(null, stackTrace + " " + errorMessage);
+    }
+    
+    public static void toggleTextFieldFocus(JTextField TextField, Boolean toggleStatus) {
+        if(toggleStatus) {
+            TextField.setForeground(new Color(255,255,255));
+            TextField.setBackground(new Color(112,161,255));
+        } else {
+            TextField.setForeground(new Color(152,150,162));
+            TextField.setBackground(new Color(255,255,255));
+        }
     }
     
     public static void registerServerLog(JTable serverLog, String sourceClient, String destinationClient, String requestType, String requestPayload) {
