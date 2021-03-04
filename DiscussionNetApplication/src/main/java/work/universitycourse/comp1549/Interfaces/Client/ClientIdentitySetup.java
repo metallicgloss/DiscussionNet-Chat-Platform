@@ -106,7 +106,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         assignedIDNumberTextfield.setAlignmentY(0.0F);
         assignedIDNumberTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         assignedIDNumberTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
-        assignedIDNumberTextfield.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        assignedIDNumberTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
         assignedIDNumberTextfield.setName("assignedIDNumberTextfield"); // NOI18N
         assignedIDNumberTextfield.setSelectionColor(new java.awt.Color(0, 63, 143));
         assignedIDNumberTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -118,7 +118,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
             }
         });
         clientIdentitySetupPanel.add(assignedIDNumberTextfield);
-        assignedIDNumberTextfield.setBounds(426, 159, 343, 19);
+        assignedIDNumberTextfield.setBounds(426, 159, 343, 30);
 
         clientIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         clientIPAddressLabel.setForeground(new java.awt.Color(47, 46, 65));
@@ -132,7 +132,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         clientIPAddressTextField.setForeground(new java.awt.Color(152, 150, 162));
         clientIPAddressTextField.setCaretColor(new java.awt.Color(152, 150, 162));
         clientIPAddressTextField.setDisabledTextColor(new java.awt.Color(152, 150, 162));
-        clientIPAddressTextField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        clientIPAddressTextField.setMargin(new java.awt.Insets(0, 5, 0, 5));
         clientIPAddressTextField.setName("clientIPAddressTextField"); // NOI18N
         clientIPAddressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -143,7 +143,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
             }
         });
         clientIdentitySetupPanel.add(clientIPAddressTextField);
-        clientIPAddressTextField.setBounds(426, 237, 343, 19);
+        clientIPAddressTextField.setBounds(426, 237, 343, 30);
 
         userMessagesIconLabel.setBackground(new java.awt.Color(255, 255, 255));
         userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,7 +179,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         clientPortTextField.setForeground(new java.awt.Color(152, 150, 162));
         clientPortTextField.setCaretColor(new java.awt.Color(152, 150, 162));
         clientPortTextField.setDisabledTextColor(new java.awt.Color(152, 150, 162));
-        clientPortTextField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        clientPortTextField.setMargin(new java.awt.Insets(0, 5, 0, 5));
         clientPortTextField.setName("clientPortTextField"); // NOI18N
         clientPortTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -190,7 +190,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
             }
         });
         clientIdentitySetupPanel.add(clientPortTextField);
-        clientPortTextField.setBounds(426, 321, 343, 19);
+        clientPortTextField.setBounds(426, 321, 343, 30);
 
         authenticateButton.setBackground(new java.awt.Color(255, 255, 255));
         authenticateButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N

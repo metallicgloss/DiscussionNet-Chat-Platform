@@ -150,7 +150,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
         serverIPAddressTextField.setForeground(new java.awt.Color(152, 150, 162));
         serverIPAddressTextField.setCaretColor(new java.awt.Color(152, 150, 162));
         serverIPAddressTextField.setDisabledTextColor(new java.awt.Color(152, 150, 162));
-        serverIPAddressTextField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        serverIPAddressTextField.setMargin(new java.awt.Insets(0, 5, 0, 5));
         serverIPAddressTextField.setName("serverIPAddressTextField"); // NOI18N
         serverIPAddressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -161,13 +161,13 @@ public class ClientServerConnection extends javax.swing.JFrame {
             }
         });
         clientServerConnectionPanel.add(serverIPAddressTextField);
-        serverIPAddressTextField.setBounds(362, 219, 340, 19);
+        serverIPAddressTextField.setBounds(362, 219, 340, 30);
 
         serverPortTextField.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         serverPortTextField.setForeground(new java.awt.Color(152, 150, 162));
         serverPortTextField.setCaretColor(new java.awt.Color(152, 150, 162));
         serverPortTextField.setDisabledTextColor(new java.awt.Color(152, 150, 162));
-        serverPortTextField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        serverPortTextField.setMargin(new java.awt.Insets(0, 5, 0, 5));
         serverPortTextField.setName("serverPortTextField"); // NOI18N
         serverPortTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -178,7 +178,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
             }
         });
         clientServerConnectionPanel.add(serverPortTextField);
-        serverPortTextField.setBounds(362, 291, 340, 19);
+        serverPortTextField.setBounds(362, 291, 340, 30);
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
@@ -263,7 +263,13 @@ public class ClientServerConnection extends javax.swing.JFrame {
 
     private void connectToServer() {
         // TODO: Validation / Sanitisation of Input - potentially live updates for colour if invalid.
-        InterfaceManager.changeWindow(this, new ClientIdentitySetup(serverIPAddressTextField.getText(), serverPortTextField.getText()));
+        InterfaceManager.changeWindow(
+                this,
+                new ClientIdentitySetup(
+                        serverIPAddressTextField.getText(),
+                        serverPortTextField.getText()
+                )
+        );
     }
 
     /**

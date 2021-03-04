@@ -99,6 +99,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         assignedNetworkPortTextfield.setText(bundle.getString("ServerConfiguration.assignedNetworkPortTextfield.text")); // NOI18N
         assignedNetworkPortTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
+        assignedNetworkPortTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
         assignedNetworkPortTextfield.setName("assignedNetworkPortTextfield"); // NOI18N
         assignedNetworkPortTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -109,7 +110,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
             }
         });
         serverConfigurationPanel.add(assignedNetworkPortTextfield);
-        assignedNetworkPortTextfield.setBounds(456, 333, 334, 23);
+        assignedNetworkPortTextfield.setBounds(456, 333, 334, 30);
 
         userMessagesIconLabel.setBackground(new java.awt.Color(255, 255, 255));
         userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,6 +129,9 @@ public class ServerConfiguration extends javax.swing.JFrame {
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 userMessagesIconLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                userMessagesIconLabelMouseExited(evt);
             }
         });
         serverConfigurationPanel.add(userMessagesIconLabel);
@@ -166,12 +170,13 @@ public class ServerConfiguration extends javax.swing.JFrame {
         serverConfigurationPanel.add(mainImage);
         mainImage.setBounds(272, 40, 315, 192);
 
-        configuredIPAddressTextfield.setText(bundle.getString("ServerConfiguration.configuredIPAddressTextfield.text")); // NOI18N
         configuredIPAddressTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         configuredIPAddressTextfield.setForeground(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        configuredIPAddressTextfield.setText(bundle.getString("ServerConfiguration.configuredIPAddressTextfield.text")); // NOI18N
         configuredIPAddressTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
+        configuredIPAddressTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
         configuredIPAddressTextfield.setName("configuredIPAddressTextfield"); // NOI18N
         configuredIPAddressTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -182,7 +187,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
             }
         });
         serverConfigurationPanel.add(configuredIPAddressTextfield);
-        configuredIPAddressTextfield.setBounds(68, 333, 334, 23);
+        configuredIPAddressTextfield.setBounds(68, 333, 334, 30);
 
         footerTextLabel1.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel1.setForeground(new java.awt.Color(47, 46, 65));
@@ -251,7 +256,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesIconLabelMouseClicked
 
     private void userMessagesIconLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
-        InterfaceManager.buttonHover(provisionServerButton, true, "medium");
+        InterfaceManager.buttonHover(provisionServerButton, true, "large");
     }//GEN-LAST:event_userMessagesIconLabelMouseEntered
 
     private void provisionServerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provisionServerButtonActionPerformed
@@ -265,6 +270,10 @@ public class ServerConfiguration extends javax.swing.JFrame {
     private void provisionServerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_provisionServerButtonMouseExited
         InterfaceManager.buttonHover(provisionServerButton, false, "large");
     }//GEN-LAST:event_provisionServerButtonMouseExited
+
+    private void userMessagesIconLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseExited
+        InterfaceManager.buttonHover(provisionServerButton, false, "large");
+    }//GEN-LAST:event_userMessagesIconLabelMouseExited
     
     private void provisionServer() {
         InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));

@@ -163,7 +163,7 @@
               <Color blue="a2" green="96" red="98" type="rgb"/>
             </Property>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
+              <Insets value="[0, 5, 0, 5]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="assignedIDNumberTextfield" noResource="true"/>
             <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -179,7 +179,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="426" y="159" width="343" height="-1"/>
+              <AbsoluteConstraints x="426" y="159" width="343" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -220,7 +220,7 @@
               <Color blue="a2" green="96" red="98" type="rgb"/>
             </Property>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
+              <Insets value="[0, 5, 0, 5]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="clientIPAddressTextField" noResource="true"/>
           </Properties>
@@ -233,7 +233,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="426" y="237" width="343" height="-1"/>
+              <AbsoluteConstraints x="426" y="237" width="343" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -308,7 +308,7 @@
               <Color blue="a2" green="96" red="98" type="rgb"/>
             </Property>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
+              <Insets value="[0, 5, 0, 5]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="clientPortTextField" noResource="true"/>
           </Properties>
@@ -321,7 +321,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="426" y="321" width="343" height="-1"/>
+              <AbsoluteConstraints x="426" y="321" width="343" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

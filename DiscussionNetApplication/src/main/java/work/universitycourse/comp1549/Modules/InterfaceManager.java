@@ -13,7 +13,9 @@ import javax.swing.KeyStroke;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -77,16 +79,22 @@ public class InterfaceManager {
     
     public static void toggleTextFieldFocus(JTextField TextField, Boolean toggleStatus) {
         if(toggleStatus) {
-            TextField.setForeground(new Color(255,255,255));
+            TextField.setForeground(Color.WHITE);
             TextField.setBackground(new Color(112,161,255));
+            TextField.setCaretColor(Color.WHITE);
         } else {
             TextField.setForeground(new Color(152,150,162));
-            TextField.setBackground(new Color(255,255,255));
+            TextField.setBackground(Color.WHITE);
+            TextField.setCaretColor(new Color(152,150,162));
         }
     }
     
     public static void registerServerLog(JTable serverLog, String sourceClient, String destinationClient, String requestType, String requestPayload) {
         DefaultTableModel model = (DefaultTableModel) serverLog.getModel();
         model.addRow(new Object[]{sourceClient, destinationClient, requestType, requestPayload});
+    }
+    
+    public static void createNewUser(JTabbedPane messagePane, String userID) {
+        messagePane.addTab(userID, new JLabel("This is tab 1"));
     }
 }

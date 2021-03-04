@@ -12,12 +12,12 @@ import java.util.Set;
 import java.net.Socket;
 import java.net.BindException;
 import java.net.InetAddress;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -71,6 +71,8 @@ public class ClientManager {
     private ObjectInputStream inputStream;
 
     private ClientInfo clientInfo;
+    
+    private JTabbedPane messagePane;
 
     private HashMap<String, ClientInfo> clientListLocal = new HashMap<String, ClientInfo>();
 
@@ -78,7 +80,7 @@ public class ClientManager {
     // -                   Constructor                   -
     // ===================================================
 
-        public ClientManager(String serverIP, int serverPort, String clientID, String clientIP, int clientPort) {
+        public ClientManager(JTabbedPane messagePane, String serverIP, int serverPort, String clientID, String clientIP, int clientPort) {
 
             try {
 
@@ -89,6 +91,7 @@ public class ClientManager {
                     this.clientSocket = new Socket(serverIP, serverPort, inetAddress, clientPort);
                     
                     // Define other variables
+                    this.messagePane = messagePane;
                     this.clientID = clientID;
                     this.clientInfo = new ClientInfo(clientID, clientIP, clientPort);
                     this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
@@ -591,6 +594,8 @@ public class ClientManager {
                     ClientInfo clientInfo = new ClientInfo(clientID, clientIP, clientPort);
                     ClientManager.this.addClientInfoToLocalList(clientID, clientInfo);
 
+                    InterfaceManager.createNewUser(ClientManager.this.messagePane, clientID);
+                    
                 }
 
                 // Process the instruction 'Notify Client Disconnected'
