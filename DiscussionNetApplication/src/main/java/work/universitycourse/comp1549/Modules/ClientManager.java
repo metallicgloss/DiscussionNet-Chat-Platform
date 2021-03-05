@@ -141,11 +141,11 @@ public class ClientManager {
      */
 
     // Allows the UI to send a message
-    public void sendMessage(String receiver, String message) {
+    public void sendMessage(String receiver, String message, boolean server_chat_message) {
 
         try {
 
-            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message);
+            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message, server_chat_message);
             ClientInstruction instructionObj = new ClientInstruction(sendMessageInstruction);
             this.instructionsQueue.addInstructionToQueue(instructionObj);
 
@@ -530,8 +530,9 @@ public class ClientManager {
             String[] dataComponents = data.split("::");
             String receiver = dataComponents[0];
             String message = dataComponents[1];
+            boolean server_chat_message = dataComponents[2].equals("true");
 
-            this.sendMessage(receiver, message);
+            this.sendMessage(receiver, message, server_chat_message);
 
         }
 
@@ -577,7 +578,7 @@ public class ClientManager {
 
                 // Reject Connection as client ID already in use
                 // Tell client why they are being rejected
-                this.sendMessage(tempID, "Connection Rejected! Client ID already in use!");
+                this.sendMessage(tempID, "Connection Rejected! Client ID already in use!", false);
 
                 // Tell server to reject connection
                 String rejectJoinRequestString = ClientInstruction.createRejectJoinRequestInstructionString(tempID);
@@ -740,9 +741,9 @@ public class ClientManager {
         }
 
         // Sends a message to the server
-        private void sendMessage(String receiver, String message) {
+        private void sendMessage(String receiver, String message, boolean server_chat_message) {
 
-            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE);
+            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE, server_chat_message);
             this.transmitMessage(messageObj);
 
         }
