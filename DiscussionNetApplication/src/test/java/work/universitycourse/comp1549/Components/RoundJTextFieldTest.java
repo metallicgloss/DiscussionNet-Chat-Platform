@@ -1,0 +1,83 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package work.universitycourse.comp1549.Components;
+
+import java.awt.Graphics;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ *
+ * @author Gabriel
+ */
+public class RoundJTextFieldTest {
+    
+    public RoundJTextFieldTest() {
+    }
+    
+    @BeforeAll
+    public static void setUpClass() {
+    }
+    
+    @AfterAll
+    public static void tearDownClass() {
+    }
+    
+    @BeforeEach
+    public void setUp() {
+    }
+    
+    @AfterEach
+    public void tearDown() {
+    }
+
+    /**
+     * Test of paintComponent method, of class RoundJTextField.
+     */
+    @Test
+    public void testPaintComponent() {
+        System.out.println("paintComponent");
+        Graphics g = null;
+        RoundJTextField instance = new RoundJTextField();
+        instance.paintComponent(g);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of paintBorder method, of class RoundJTextField.
+     */
+    @Test
+    public void testPaintBorder() {
+        System.out.println("paintBorder");
+        Graphics g = null;
+        RoundJTextField instance = new RoundJTextField();
+        instance.paintBorder(g);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of contains method, of class RoundJTextField.
+     */
+    @Test
+    public void testContains() {
+        System.out.println("contains");
+        int x = 0;
+        int y = 0;
+        RoundJTextField instance = new RoundJTextField();
+        boolean expResult = false;
+        boolean result = instance.contains(x, y);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
+}
