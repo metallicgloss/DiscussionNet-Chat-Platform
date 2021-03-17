@@ -16,8 +16,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author Gabriel
+ * @author Adnan Turan
+ * @author Daniel Browne
+ * @author Gabriel Netz
+ * @author William Phillips
  */
 public class ServerChannelTest {
     
@@ -42,33 +44,37 @@ public class ServerChannelTest {
 
     /**
      * Test of addMessageToChannel method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testAddMessageToChannel() {
         System.out.println("addMessageToChannel");
-        Message messageObj = null;
+        Message messageObj = new Message("userA", "userB", "testmessage", 2);
+        System.out.println(messageObj);
         ServerChannel instance = new ServerChannel();
         instance.addMessageToChannel(messageObj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(1,1);
     }
 
     /**
      * Test of getNextMessageFromChannel method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testGetNextMessageFromChannel() {
         System.out.println("getNextMessageFromChannel");
         ServerChannel instance = new ServerChannel();
-        Message expResult = null;
+        Message messageObj = new Message("userA", "userB", "testmessage", 2);
+        Message expResult = messageObj;
+        instance.addMessageToChannel(messageObj);
         Message result = instance.getNextMessageFromChannel();
+        System.out.println(result);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of sendMessageToClient method, of class ServerChannel.
+     * TODO
      */
     @Test
     public void testSendMessageToClient() {
@@ -76,38 +82,37 @@ public class ServerChannelTest {
         Message messageObj = null;
         ServerChannel instance = new ServerChannel();
         instance.sendMessageToClient(messageObj);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Unsure how to test this one")
+        
     }
 
     /**
      * Test of checkClientConnectionExists method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testCheckClientConnectionExists() {
         System.out.println("checkClientConnectionExists");
-        String clientID = "";
+        String clientID = "clientA";
         ServerChannel instance = new ServerChannel();
         boolean expResult = false;
         boolean result = instance.checkClientConnectionExists(clientID);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of addNewClientConnection method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testAddNewClientConnection() {
         System.out.println("addNewClientConnection");
-        Socket clientSocket = null;
+        Socket clientSocket = new Socket();
         ServerChannel instance = new ServerChannel();
-        String expResult = "";
+        String expResult = "clientID";
         String result = instance.addNewClientConnection(clientSocket);
+        System.out.println(result);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

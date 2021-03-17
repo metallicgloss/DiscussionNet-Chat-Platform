@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package work.universitycourse.comp1549.Components;
 
 import org.junit.jupiter.api.AfterEach;
@@ -10,12 +6,20 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import work.universitycourse.comp1549.Components.ClientInstruction.DataFormatException;
+import work.universitycourse.comp1549.Components.ClientInstruction.InstructionFormatException;
+import work.universitycourse.comp1549.Components.ClientInstruction.InstructionNotExistException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author Gabriel
+ * @author Adnan Turan
+ * @author Daniel Browne
+ * @author Gabriel Netz
+ * @author William Phillips
  */
+
 public class ClientInstructionTest {
     
     public ClientInstructionTest() {
@@ -41,90 +45,92 @@ public class ClientInstructionTest {
 
     /**
      * Test of convertInstructionToString method, of class ClientInstruction.
+     * DONE
      */
     @org.junit.jupiter.api.Test
     public void testConvertInstructionToString() {
         System.out.println("convertInstructionToString");
-        ClientInstruction instance = null;
-        String expResult = "";
+        ClientInstruction instance;
+        String expResult = "<MESSAGE>,<TEST_MESSAGE>";
+        String test = "message<separator>test_message";
+        try {
+            instance = new ClientInstruction(test);
+        } catch (InstructionNotExistException | InstructionFormatException | DataFormatException e) {
+            e.printStackTrace();
+        }
         String result = instance.convertInstructionToString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
      * Test of createSendMessageInstructionString method, of class ClientInstruction.
+     * DONE
      */
     @org.junit.jupiter.api.Test
     public void testCreateSendMessageInstructionString() {
         System.out.println("createSendMessageInstructionString");
-        String receiver = "";
-        String message = "";
-        String expResult = "";
+        String receiver = "COORDINATOR";
+        String message = "testmessage";
+        String expResult = Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + "::" + message;
         String result = ClientInstruction.createSendMessageInstructionString(receiver, message);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of createBecomeCoordinatorInstructionString method, of class ClientInstruction.
+     * DONE
      */
     @org.junit.jupiter.api.Test
     public void testCreateBecomeCoordinatorInstructionString() {
         System.out.println("createBecomeCoordinatorInstructionString");
-        String expResult = "";
+        String expResult = Integer.toString(ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE) + "<SEPERATOR>BECOME COORDINATOR";
         String result = ClientInstruction.createBecomeCoordinatorInstructionString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of createRevokeCoordinatorInstructionString method, of class ClientInstruction.
+     * DONE
      */
     @org.junit.jupiter.api.Test
     public void testCreateRevokeCoordinatorInstructionString() {
         System.out.println("createRevokeCoordinatorInstructionString");
-        String expResult = "";
+        String expResult = Integer.toString(ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE) + "<SEPERATOR>REVOKE COORDINATOR";
         String result = ClientInstruction.createRevokeCoordinatorInstructionString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of createEstablishConnectionInstructionString method, of class ClientInstruction.
+     * DONE
      */
     @org.junit.jupiter.api.Test
     public void testCreateEstablishConnectionInstructionString() {
         System.out.println("createEstablishConnectionInstructionString");
-        String clientID = "";
-        String expResult = "";
+        String clientID = "ID";
+        String expResult = Integer.toString(ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE) + "<SEPERATOR>" + clientID;
         String result = ClientInstruction.createEstablishConnectionInstructionString(clientID);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of createReviewJoinRequestInstructionString method, of class ClientInstruction.
+     * DONE
      */
     @org.junit.jupiter.api.Test
     public void testCreateReviewJoinRequestInstructionString() {
         System.out.println("createReviewJoinRequestInstructionString");
-        String tempID = "";
-        String clientID = "";
-        String clientIP = "";
+        String tempID = "123";
+        String clientID = "12";
+        String clientIP = "192.168.1.0";
         int clientPort = 0;
-        String expResult = "";
+        String expResult = Integer.toString(ClientInstruction.REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE) + "<SEPERATOR>" + tempID + "::" + clientID + "::" + clientIP + "::" + Integer.toString(clientPort);
         String result = ClientInstruction.createReviewJoinRequestInstructionString(tempID, clientID, clientIP, clientPort);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
+    
     /**
      * Test of createRejectJoinRequestInstructionString method, of class ClientInstruction.
      */

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package work.universitycourse.comp1549.Components;
 
 import org.junit.jupiter.api.AfterEach;
@@ -15,40 +11,41 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  *
  * @author Gabriel
+ * @author Gabriel
+ * @author Gabriel
+ * @author Gabriel
  */
 public class ClientInfoTest {
     
     public ClientInfoTest() {
     }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
 
     /**
      * Test of toString method, of class ClientInfo.
      */
+    
     @Test
     public void testToString() {
+        String clientID = "TestID";
+        String clientIP = "192.168.0.1";
+        int clientPort = 11;
+        ClientInfo instance = new ClientInfo(clientID,clientIP,clientPort);
         System.out.println("toString");
-        ClientInfo instance = null;
+        String expResult = "TestID,192.168.0.1,11";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testToStringError() {
+        String clientID = "TestID";
+        String clientIP = "";
+        int clientPort = 11;
+        ClientInfo instance = new ClientInfo(clientID,clientIP,clientPort);
+        System.out.println(instance);
+        System.out.println("toString");
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
 }
