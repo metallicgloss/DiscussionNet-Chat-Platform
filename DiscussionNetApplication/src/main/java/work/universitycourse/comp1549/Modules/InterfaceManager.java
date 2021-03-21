@@ -27,6 +27,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JViewport;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -162,6 +163,9 @@ public class InterfaceManager {
         if(messageType.equals("Received")) {
             targetPanel.add(new JLabel());
         }
+        
+        // Trigger refresh of component tree to render new content in panel; required to show messages quickly without mouse hover over tab.
+        SwingUtilities.updateComponentTreeUI(targetPanel);
         
         JScrollBar messageListScroll = messageList.getVerticalScrollBar();
         messageListScroll.setValue(messageListScroll.getMaximum());
