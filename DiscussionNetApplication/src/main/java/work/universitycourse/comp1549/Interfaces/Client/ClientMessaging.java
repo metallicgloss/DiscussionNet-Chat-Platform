@@ -688,7 +688,7 @@ public class ClientMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesTextfieldKeyPressed
 
     private void sendMessage() {
-        this.client.sendMessage(this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex()), userMessagesTextfield.getText());
+        this.client.sendMessage(this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex()), userMessagesTextfield.getText(), false);
         InterfaceManager.displayMessage(this.primaryMessagePane, Calendar.getInstance().getTime(), "Sent", this.clientIdentifier, userMessagesTextfield.getText());
         userMessagesTextfield.setText("");
     }

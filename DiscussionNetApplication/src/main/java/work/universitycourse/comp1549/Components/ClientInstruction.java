@@ -102,8 +102,8 @@ public class ClientInstruction {
         }
 
         // Creates a custom 'Send Message' instruction string
-        public static String createSendMessageInstructionString(String receiver, String message) {
-            return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + "::" + message;
+        public static String createSendMessageInstructionString(String receiver, String message, boolean server_chat_message) {
+            return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + "::" + message + "::" + server_chat_message;
         }
 
         // Create a custom 'Become Coordinator' instruction string
@@ -191,7 +191,7 @@ public class ClientInstruction {
             switch (instructionType) {
                 case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
 
-                    // FORMAT: RECEIVER::MESSAGE
+                    // FORMAT: RECEIVER::MESSAGE::SERVER_CHAT_MESSAGE_BOOLEAN
                     ClientInstruction.validateDataForMessageInstruction(data);
                     break;
 
@@ -288,8 +288,8 @@ public class ClientInstruction {
 
             String[] dataComponents = data.split("::");
 
-            if (dataComponents.length != 2) {
-                throw new DataFormatException("RECEIVER::MESSAGE");
+            if (dataComponents.length != 3) {
+                throw new DataFormatException("RECEIVER::MESSAGE::SERVER_CHAT_MESSAGE_BOOLEAN");
             }
 
         }

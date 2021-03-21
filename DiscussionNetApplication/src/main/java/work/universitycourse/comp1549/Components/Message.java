@@ -20,6 +20,7 @@ public class Message implements Serializable {
     public String sender, receiver, message;
     public int messageType;
     public Timestamp timestamp;
+    public boolean server_chat_message = false;
 
     public Message(String sender, String receiver, String message, int type) {
         
@@ -30,4 +31,13 @@ public class Message implements Serializable {
         
     }
 
+    public Message(String sender, String receiver, String message, int type, boolean server_chat_message) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.message = message;
+        this.messageType = type;
+        this.server_chat_message = server_chat_message;
+    }
+  
 }
+
