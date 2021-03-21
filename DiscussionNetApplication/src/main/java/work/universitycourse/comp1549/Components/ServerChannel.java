@@ -5,15 +5,11 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.ArrayDeque;
 import java.util.UUID;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
-
 import java.net.Socket;
-
 import java.sql.Timestamp;
-
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -53,6 +49,7 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  */
 
 public class ServerChannel {
+    
     private volatile Deque<Message> channelMessages = new ArrayDeque<Message>(); // Used as a Queue
     private HashMap<String, ClientConnection> clientConnections = new HashMap<String, ClientConnection>();
     private ClientConnection coordinatorClientConnection = null;

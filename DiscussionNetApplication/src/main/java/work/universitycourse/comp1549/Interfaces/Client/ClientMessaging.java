@@ -56,6 +56,8 @@ public class ClientMessaging extends javax.swing.JFrame {
         serverDetailsIPAddressValueLabel.setText(this.serverIPAddress);
         serverDetailsConnectionPortValueLabel.setText(this.serverPort);
         serverDetailsConnectionStatusValueLabel.setText("Connected");
+
+        InterfaceManager.createClient(this.primaryMessagePane, "Group Chat");
     }
 
     /**
@@ -688,8 +690,25 @@ public class ClientMessaging extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesTextfieldKeyPressed
 
     private void sendMessage() {
-        this.client.sendMessage(this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex()), userMessagesTextfield.getText(), false);
-        InterfaceManager.displayMessage(this.primaryMessagePane, Calendar.getInstance().getTime(), "Sent", this.clientIdentifier, userMessagesTextfield.getText());
+        // Default message type to private.
+        Boolean messageType = false;
+        
+        // Get selected channel.
+        String messageRecipient = this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex());
+        
+        if(messageRecipient == "Group Chat") {
+            // If group chat message, alter message type.
+            messageType = true;
+        }
+        
+        // Execute send of message.
+        this.client.sendMessage(messageRecipient, userMessagesTextfield.getText(), messageType);
+        
+        // Display the outbound message on the user interface.
+        InterfaceManager.displayMessage(this.primaryMessagePane, Calendar.getInstance().getTime(), "Sent", this.clientIdentifier, userMessagesTextfield.getText(), 
+                messageType);
+        
+        // Clear text box after message sending.
         userMessagesTextfield.setText("");
     }
     

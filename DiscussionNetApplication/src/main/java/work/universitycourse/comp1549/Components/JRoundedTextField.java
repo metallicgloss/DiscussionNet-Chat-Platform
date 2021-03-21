@@ -5,7 +5,6 @@ import javax.swing.JTextField;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -16,6 +15,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * 
  */
 public class JRoundedTextField extends JTextField {
+
     private Shape shape;
 
     public JRoundedTextField() {
@@ -39,4 +39,5 @@ public class JRoundedTextField extends JTextField {
         }
         return shape.contains(x, y);
     }
+    
 }

@@ -120,7 +120,7 @@ public class InterfaceManager {
                 
         JLabel userIDLabel = new JLabel();
         userIDLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        userIDLabel.setText("User: " + userID);
+        userIDLabel.setText("Channel: " + userID);
         userIDLabel.setBorder(new CompoundBorder(userIDLabel.getBorder(), new EmptyBorder(10,10,10,10)));
         messagePanel.add(userIDLabel);
         messagePanel.add(new JLabel());
@@ -135,7 +135,12 @@ public class InterfaceManager {
         messagePane.remove(identifyClientTabIndex(messagePane, userID));
     }
     
-    public static void displayMessage(JTabbedPane messageListPane, Date messageTime, String messageType, String messageContent, String userID) {
+    public static void displayMessage(JTabbedPane messageListPane, Date messageTime, String messageType, String userID, String messageContent, Boolean groupMessage) {
+        if (messageType.equals("Received")) {
+            // If received, switch to tab - allows message to show and acts as a 'notification' style alert of new.
+            messageListPane.setSelectedIndex(identifyClientTabIndex(messageListPane, userID));
+        } 
+
         JScrollPane messageList = (JScrollPane)messageListPane.getSelectedComponent();
         JViewport messageView = messageList.getViewport();
         JPanel targetPanel = (JPanel)messageView.getComponents()[0];

@@ -342,7 +342,14 @@ public class ClientManager {
 
                         case Message.MESSAGE_TYPE:
                             
-                            InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received", serverResponse.sender, serverResponse.message);
+                            if(serverResponse.server_chat_message){
+                                // If message has been received from the group chat channel.
+                                InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received",
+                                        serverResponse.sender, serverResponse.message, true);
+                            } else {
+                                InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received",
+                                        serverResponse.sender, serverResponse.message, false);
+                            }
                             break;
 
                         default:
