@@ -141,9 +141,10 @@ public class InterfaceManager {
         if (messageType.equals("Received")) {
             // Inbound message, may not be selected for user. Get content from the tab of that user.
             if(groupMessage) {
-                userID = "Group Chat";
+                messageList = (JScrollPane)messageListPane.getComponentAt(0);
+            } else {
+                messageList = (JScrollPane)messageListPane.getComponentAt(identifyClientTabIndex(messageListPane, userID));
             }
-            messageList = (JScrollPane)messageListPane.getComponentAt(identifyClientTabIndex(messageListPane, userID));
         } else {
             messageList = (JScrollPane)messageListPane.getSelectedComponent();
         }

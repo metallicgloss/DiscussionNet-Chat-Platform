@@ -729,10 +729,11 @@ public class ClientManager {
 
             // For each client send group chat message
             String senderID = Message.fromString(messageObjStr).sender;
+            
             for (String currentClientID: ClientManager.this.getAllClientIDsFromLocalList()) {
 
-                // Do not send message to itself or the person who sent it
-                if (! currentClientID.equals(ClientManager.this.clientID) && ! currentClientID.equals(senderID)) {
+                // Do not send message back to the person who sent the message.
+                if (!currentClientID.equals(senderID)) {
                     
                     // Send message object to clients server chat
                     this.sendMessage(currentClientID, messageObjStr, true);
