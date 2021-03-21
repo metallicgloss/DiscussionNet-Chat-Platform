@@ -5,6 +5,7 @@ import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.ClientInfo;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Set;
@@ -12,12 +13,16 @@ import java.util.Set;
 import java.net.Socket;
 import java.net.BindException;
 import java.net.InetAddress;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Iterator;
+import java.util.Map;
+import javax.swing.JFrame;
 
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTabbedPane;
+import work.universitycourse.comp1549.Interfaces.Client.ClientServerConnection;
 
 /**
  *
@@ -27,33 +32,32 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * @author William Phillips
  *
  * 
- * ===================================================
- * -                    Contents                     -
- * ===================================================
+ *         =================================================== - Contents -
+ *         ===================================================
  * 
- *                     Constructor
- *                     
- *                     UI Functions
+ *         Constructor
  * 
- *              Local Client Info List Handler
- *                     
- *               Instructions Queue Class
- *              
- *                          > Queue Processing
- *              
- *                  Server Listener Class
- *                  
- *                          > Runnable Method
- *                          
- *                          > Messaging and Thread Functions
- *                          
- *                Instruction Handler Class
- *                
- *                          > Runnable Method
- *                          
- *                          > Specific Instruction Processing
- *                          
- *                          > Messaging and Thread Functions
+ *         UI Functions
+ * 
+ *         Local Client Info List Handler
+ * 
+ *         Instructions Queue Class
+ * 
+ *         > Queue Processing
+ * 
+ *         Server Listener Class
+ * 
+ *         > Runnable Method
+ * 
+ *         > Messaging and Thread Functions
+ * 
+ *         Instruction Handler Class
+ * 
+ *         > Runnable Method
+ * 
+ *         > Specific Instruction Processing
+ * 
+ *         > Messaging and Thread Functions
  * 
  */
 
@@ -72,640 +76,737 @@ public class ClientManager {
 
     private ClientInfo clientInfo;
 
+    private JFrame messagePanel;
+    private JTabbedPane messagePane;
+
     private HashMap<String, ClientInfo> clientListLocal = new HashMap<String, ClientInfo>();
 
     // ===================================================
-    // -                   Constructor                   -
+    // - Constructor -
     // ===================================================
 
-        public ClientManager(String serverIP, int serverPort, String clientID, String clientIP, int clientPort) {
+    public ClientManager(JTabbedPane messagePane, JFrame messagePanel, String serverIP, int serverPort, String clientID, String clientIP,
+            int clientPort) {
 
+        try {
+
+            // Create socket and check that port is free
+            InetAddress inetAddress = InetAddress.getByName(clientIP);
             try {
 
-                // Create socket and check that port is free
-                InetAddress inetAddress = InetAddress.getByName(clientIP);
-                try {
-                    
-                    this.clientSocket = new Socket(serverIP, serverPort, inetAddress, clientPort);
-                    
-                    // Define other variables
-                    this.clientID = clientID;
-                    this.clientInfo = new ClientInfo(clientID, clientIP, clientPort);
-                    this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
-                    this.inputStream = new ObjectInputStream(this.clientSocket.getInputStream());
+                this.clientSocket = new Socket(serverIP, serverPort, inetAddress, clientPort);
 
-                    // Start Threads
-                    new Thread(new ServerListener()).start();
-                    new Thread(new InstructionHandler()).start();
-                    new Thread(new DebuggProgram()).start(); // DEBUG
+                // Define other variables
+                this.messagePane = messagePane;
+                this.messagePanel = messagePanel;
+                this.clientID = clientID;
+                this.clientInfo = new ClientInfo(clientID, clientIP, clientPort);
+                this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
+                this.inputStream = new ObjectInputStream(this.clientSocket.getInputStream());
 
-                    // Establish contact with server
+                // Start Threads
+                new Thread(new ServerListener()).start();
+                new Thread(new InstructionHandler()).start();
+                new Thread(new DebuggProgram()).start(); // DEBUG
 
-                        // Create 'Establish Connection' Instruction
-                    String establishConnectionInstructionString = ClientInstruction.createEstablishConnectionInstructionString(this.clientID);
-                    ClientInstruction establishConnectionInstruction = new ClientInstruction(establishConnectionInstructionString);
+                // Establish contact with server
 
-                        // Add Instruction to queue
-                    this.instructionsQueue.addInstructionToQueue(establishConnectionInstruction);
-                    
-                } catch (BindException e) {
-                    showMessageDialog(null, "Cannot connect to server! Port already in use");
-                }
-                
-            } catch (IOException e) {
-                InterfaceManager.displayError(e, "Failed to establish connection with the server.");
-            } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException | ClientInstruction.DataFormatException e) {}
+                // Create 'Establish Connection' Instruction
+                String establishConnectionInstructionString = ClientInstruction
+                        .createEstablishConnectionInstructionString(this.clientID);
+                ClientInstruction establishConnectionInstruction = new ClientInstruction(
+                        establishConnectionInstructionString);
 
-        }
-    
-    // ===================================================
-    // -                   UI Functions                  -
-    // ===================================================
+                // Add Instruction to queue
+                this.instructionsQueue.addInstructionToQueue(establishConnectionInstruction);
 
-        /**
-         * NOTE
-         * Not all UI functions are found under this section. 
-         * Some can be found in other sections such as 'Local Client Info List Handler'
-         */
-
-        // Allows the UI to send a message
-        public void sendMessage(String receiver, String message) {
-            
-            try {
-
-                String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message);
-                ClientInstruction instructionObj = new ClientInstruction(sendMessageInstruction);
-                this.instructionsQueue.addInstructionToQueue(instructionObj);
-
-            } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException | ClientInstruction.DataFormatException e) {}
-
-        }
-    
-    // ===================================================
-    // -         Local Client Info List Handler          -
-    // ===================================================
-
-        // Adds an enrty to the local client list
-        public void addClientInfoToLocalList(String clientID, ClientInfo clientInfoObj) {
-
-            if (! this.clientListLocal.containsKey(clientID)) {
-                this.clientListLocal.put(clientID, clientInfoObj);
+            } catch (BindException e) {
+                showMessageDialog(null, "Cannot connect to server! Port already in use");
             }
 
+        } catch (IOException e) {
+            InterfaceManager.displayError(e, "Failed to establish connection with the server.");
+        } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException
+                | ClientInstruction.DataFormatException e) {
         }
 
-        // Returns the client info object assigned with the specific clientID in the local client list. Will Return null if clientID is not in the list
-        public ClientInfo getClientInfoFromLocalList(String clientID) {
-            
-            ClientInfo clientInfo = null;
-            
-            if (this.clientListLocal.containsKey(clientID)) {
-                clientInfo = this.clientListLocal.get(clientID);
-            }
-
-            return clientInfo;
-
-        }
-
-        // Returns all the client IDs int he local client list
-        public Set<String> getAllClientIDsFromLocalList() {
-            return this.clientListLocal.keySet();
-        }
-
-        // Returns all the client Info objects in the local client list
-        public HashMap<String, ClientInfo> getAllClientsInfoFromLocalList() {
-            return this.clientListLocal;
-        }
-
-        // Removes a client info entry from the local client list
-        private void removeClientInfoFromLocalList(String clientID) {
-
-            if (this.clientListLocal.containsKey(clientID)) {
-                this.clientListLocal.remove(clientID);
-            }
-
-        }
-
-        // Packages all client info entries into a single string
-        private String getAllClientsInfoFromLocalListAsString() {
-
-            String allClientsInfoString = "";
-
-            for (String clientID : this.clientListLocal.keySet()) {
-
-                ClientInfo clientInfo = this.clientListLocal.get(clientID);
-                allClientsInfoString += clientInfo.toString() + "%%";
-
-            }
-
-            // Remove last 2 %% at the end
-            if (allClientsInfoString.length() > 2) {
-                allClientsInfoString = allClientsInfoString.substring(0, allClientsInfoString.length() - 2);
-            } else {
-                allClientsInfoString = "";
-            }
-            
-
-            return allClientsInfoString;
-
-        }
-
-        // Unpackages all client info string back to a clientInfo hashmap
-        private HashMap<String, ClientInfo> convertAllClientInfoStringToHashMap(String clientInfoString) {
-
-            HashMap<String, ClientInfo> clientInfoList = new HashMap<String, ClientInfo>();
-
-            String[] clients = clientInfoString.split("%%");
-
-            for (String currentClientInfo : clients) {
-                
-                String[] components = currentClientInfo.split(",");
-                String clientID = components[0];
-                String clientIP = components[1];
-                int clientPort = Integer.parseInt(components[2]);
-
-                ClientInfo clientInfoObj = new ClientInfo(clientID, clientIP, clientPort);
-                clientInfoList.put(clientID, clientInfoObj);
-
-            }
-
-            return clientInfoList;
-
-        }
-
-        // Sets the clientInfoListLocal to a predefined hashmap
-        private void setLocalClientInfoList(HashMap<String, ClientInfo> clientInfoList) {
-            this.clientListLocal = clientInfoList;
-        }
-
-
-    
-    // ===================================================
-    // -            Instructions Queue Class            -
-    // ===================================================
-    
-        /** 
-         * The instruction manager is used to allow the other nested classes to communicate with each other.
-         * The instruction manager implements a queue style array to ensure that instructions are executed using the FIFO principle.
-         *      One class will add instructions to the queue, the other will process them. */
-        
-         private class InstructionsQueue {
-
-            private Deque<ClientInstruction> instructionsQueue = new ArrayDeque<ClientInstruction>();
-
-            public InstructionsQueue() {}
-
-            // ===================================================
-            // -                Queue Processing                 -
-            // ===================================================
-
-                // Inserts an instruction to the list of instructions (Inserted using FIFO)
-                public void addInstructionToQueue(ClientInstruction instructionObj) {
-                    this.instructionsQueue.addLast(instructionObj);
-                }
-
-                // Returns the next instruction in the list (Fetched using FIFO)
-                public ClientInstruction getNextInstruction() {
-                    return this.instructionsQueue.poll();
-                }
-
-         }
+    }
 
     // ===================================================
-    // -              Server Listener Class              -
+    // - UI Functions -
     // ===================================================
 
-        /**
-         * A threadable that periodically will check for new messages from the server and will
-         * create instructions based on the server's messages for the client to process.
-         */
-        
-         private class ServerListener implements Runnable {
+    /**
+     * NOTE Not all UI functions are found under this section. Some can be found in
+     * other sections such as 'Local Client Info List Handler'
+     */
 
-            public ServerListener() {}
+    // Allows the UI to send a message
+    public void sendMessage(String receiver, String message, boolean isServerChatMessage) {
 
-            // ===================================================
-            // -                 Runnable Method                 -
-            // ===================================================
+        try {
 
-                @Override
-                public void run() {
+            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message, isServerChatMessage);
+            ClientInstruction instructionObj = new ClientInstruction(sendMessageInstruction);
+            this.instructionsQueue.addInstructionToQueue(instructionObj);
 
-                    while (ClientManager.this.isClientRunning) {
+        } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException
+                | ClientInstruction.DataFormatException e) {
+        }
 
-                        Message serverResponse = this.getMessage();
+    }
 
-                        if (serverResponse != null) {
+    // ===================================================
+    // - Local Client Info List Handler -
+    // ===================================================
 
-                            // Handle Requests
-                            switch (serverResponse.messageType) {
+    // Adds an enrty to the local client list
+    public void addClientInfoToLocalList(String clientID, ClientInfo clientInfoObj) {
 
-                                case Message.INSTRUCTION_TYPE:
+        if (!this.clientListLocal.containsKey(clientID)) {
+            this.clientListLocal.put(clientID, clientInfoObj);
+        }
 
-                                    try {
-                                        
-                                        // Convert server response string to an instruction
-                                        ClientInstruction instructionFromServer = new ClientInstruction(serverResponse.message);
+    }
 
-                                        // Add instruction to instruction queue
-                                        ClientManager.this.instructionsQueue.addInstructionToQueue(instructionFromServer);
-                                        showMessageDialog(null, "Instruction received from " + serverResponse.sender + ": " + serverResponse.message);
-                                        
-                                    } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException | ClientInstruction.DataFormatException e) {
-                                        // TODO How to handle a bad instruction construction, Technically should not happen as error would have been caught when creating an instruction object
-                                        System.out.println("Error creating instruction"); // DEBUG // TODO REMOVE AFTER ALL BACKEND IS DONE
-                                        System.out.println(serverResponse.message); // DEBUG // TODO REMOVE AFTER ALL BACKEND IS DONE
-                                    }
+    // Returns the client info object assigned with the specific clientID in the
+    // local client list. Will Return null if clientID is not in the list
+    public ClientInfo getClientInfoFromLocalList(String clientID) {
 
-                                    break;
-                                
-                                case Message.MESSAGE_TYPE:
+        ClientInfo clientInfo = null;
 
-                                    showMessageDialog(null, "Message received from " + serverResponse.sender + ": " + serverResponse.message);
-                                    break;
-                                
-                                default:
+        if (this.clientListLocal.containsKey(clientID)) {
+            clientInfo = this.clientListLocal.get(clientID);
+        }
 
-                                    showMessageDialog(null, "Unknown Message Type Sent: " + Integer.toString(serverResponse.messageType));
-                                    break;
-                                
+        return clientInfo;
+
+    }
+
+    // Returns all the client IDs int he local client list
+    public Set<String> getAllClientIDsFromLocalList() {
+        return this.clientListLocal.keySet();
+    }
+
+    // Returns all the client Info objects in the local client list
+    public HashMap<String, ClientInfo> getAllClientsInfoFromLocalList() {
+        return this.clientListLocal;
+    }
+
+    // Removes a client info entry from the local client list
+    private void removeClientInfoFromLocalList(String clientID) {
+
+        if (this.clientListLocal.containsKey(clientID)) {
+            this.clientListLocal.remove(clientID);
+        }
+
+    }
+
+    // Packages all client info entries into a single string
+    private String getAllClientsInfoFromLocalListAsString() {
+
+        String allClientsInfoString = "";
+
+        for (String clientID : this.clientListLocal.keySet()) {
+
+            ClientInfo clientInfo = this.clientListLocal.get(clientID);
+            allClientsInfoString += clientInfo.toString() + "%%";
+
+        }
+
+        // Remove last 2 %% at the end
+        if (allClientsInfoString.length() > 2) {
+            allClientsInfoString = allClientsInfoString.substring(0, allClientsInfoString.length() - 2);
+        } else {
+            allClientsInfoString = "";
+        }
+
+        return allClientsInfoString;
+
+    }
+
+    // Unpackages all client info string back to a clientInfo hashmap
+    private HashMap<String, ClientInfo> convertAllClientInfoStringToHashMap(String clientInfoString) {
+
+        HashMap<String, ClientInfo> clientInfoList = new HashMap<String, ClientInfo>();
+
+        String[] clients = clientInfoString.split("%%");
+
+        for (String currentClientInfo : clients) {
+
+            String[] components = currentClientInfo.split(",");
+            String clientID = components[0];
+            String clientIP = components[1];
+            int clientPort = Integer.parseInt(components[2]);
+
+            ClientInfo clientInfoObj = new ClientInfo(clientID, clientIP, clientPort);
+            clientInfoList.put(clientID, clientInfoObj);
+
+        }
+
+        return clientInfoList;
+
+    }
+
+    // Sets the clientInfoListLocal to a predefined hashmap
+    private void setLocalClientInfoList(HashMap<String, ClientInfo> clientInfoList) {
+        this.clientListLocal = clientInfoList;
+    }
+
+    // ===================================================
+    // - Instructions Queue Class -
+    // ===================================================
+
+    /**
+     * The instruction manager is used to allow the other nested classes to
+     * communicate with each other. The instruction manager implements a queue style
+     * array to ensure that instructions are executed using the FIFO principle. One
+     * class will add instructions to the queue, the other will process them.
+     */
+
+    private class InstructionsQueue {
+
+        private Deque<ClientInstruction> instructionsQueue = new ArrayDeque<ClientInstruction>();
+
+        public InstructionsQueue() {
+        }
+
+        // ===================================================
+        // - Queue Processing -
+        // ===================================================
+
+        // Inserts an instruction to the list of instructions (Inserted using FIFO)
+        public void addInstructionToQueue(ClientInstruction instructionObj) {
+            this.instructionsQueue.addLast(instructionObj);
+        }
+
+        // Returns the next instruction in the list (Fetched using FIFO)
+        public ClientInstruction getNextInstruction() {
+            return this.instructionsQueue.poll();
+        }
+
+    }
+
+    // ===================================================
+    // - Server Listener Class -
+    // ===================================================
+
+    /**
+     * A threadable that periodically will check for new messages from the server
+     * and will create instructions based on the server's messages for the client to
+     * process.
+     */
+
+    private class ServerListener implements Runnable {
+
+        public ServerListener() {
+        }
+
+        // ===================================================
+        // - Runnable Method -
+        // ===================================================
+
+        @Override
+        public void run() {
+
+            while (ClientManager.this.isClientRunning) {
+
+                Message serverResponse = this.getMessage();
+
+                if (serverResponse != null) {
+
+                    // Handle Requests
+                    switch (serverResponse.messageType) {
+
+                        case Message.INSTRUCTION_TYPE:
+
+                            try {
+
+                                // Convert server response string to an instruction
+                                ClientInstruction instructionFromServer = new ClientInstruction(serverResponse.message);
+
+                                // Add instruction to instruction queue
+                                ClientManager.this.instructionsQueue.addInstructionToQueue(instructionFromServer);
+
+                            } catch (ClientInstruction.InstructionNotExistException
+                                    | ClientInstruction.InstructionFormatException
+                                    | ClientInstruction.DataFormatException e) {
+                                // TODO How to handle a bad instruction construction, Technically should not
+                                // happen as error would have been caught when creating an instruction object
+                                System.out.println("Error creating instruction"); // DEBUG // TODO REMOVE AFTER ALL
+                                                                                  // BACKEND IS DONE
+                                System.out.println(serverResponse.message); // DEBUG // TODO REMOVE AFTER ALL BACKEND IS
+                                                                            // DONE
                             }
 
-                        }
-                        
-                        this.wait(100);
+                            break;
 
-                    }
-
-                }
-
-            // ===================================================
-            // -          Messaging and Thread Functions         -
-            // ===================================================
-
-                // Returns the next message sent by the server
-                public Message getMessage() {
-
-                    Message messageObj = null;
-                    try {
-                        messageObj = (Message) ClientManager.this.inputStream.readObject();
-                    } catch (IOException | ClassNotFoundException e) {
-
-                        this.endClient();
-                        // InterfaceManager.displayError(e, "Client Related Error.");
-
-                    }
-                    
-                    return messageObj;
-
-                }
-
-                // Tells the thread to sleep a certain amount of time
-                private void wait(int ms) {
-
-                    try {
-                        Thread.sleep(ms);
-                    } catch (InterruptedException e) {
-                        InterfaceManager.displayError(e, "Thread sleep error occurred");
-                    }
-
-                }
-
-                // Server Connection Terminated
-                private void endClient() {
-                    ClientManager.this.isClientRunning = false;
-                    showMessageDialog(null, "Disconnected From Server");
-                }
-
-         }
-
-    // ===================================================
-    // -           Instruction Handler Class             -
-    // ===================================================
-
-        private class InstructionHandler implements Runnable {
-
-            public InstructionHandler() {}
-
-            // ===================================================
-            // -                Runnable Method                  -
-            // ===================================================
-
-                @Override
-                public void run() {
-
-                    while (ClientManager.this.isClientRunning) {
-
-                        ClientInstruction instruction = ClientManager.this.instructionsQueue.getNextInstruction();
-
-                        if (instruction != null) {
-
-                            switch (instruction.instructionType) {
-
-                                case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
-
-                                    // Send Message To Server
-                                    this.processInstructionSendMessage(instruction.data);
-                                    break;
-                                
-                                case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
-
-                                    // Set Client To Coordinator
-                                    this.processInstructionBecomeCoordinator();
-                                    break;
-                                
-                                case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE: // TODO Not being used
-
-                                    // Revoke Client As Coordinator
-                                    this.processInstructionRevokeCoordinator();
-                                    break;
-                                
-                                case ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE:
-
-                                    // Ask server to join network
-                                    this.processInstructionEstablishConnection(instruction.convertInstructionToString());
-                                    break;
-                                
-                                case ClientInstruction.REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE:
-
-                                    // Check if client is coordinator
-                                    if (ClientManager.this.isCoordinator) {
-
-                                        // Accept / Reject connection a new client's connection request
-                                        this.processInstructionReviewJoinRequest(instruction.data);
-
-                                    } else {
-                                        // TODO How to handle a review request being sent to a non-coordinator
-                                    }
-
-                                    break;
-                                
-                                case ClientInstruction.ADD_CLIENT_INFO_TO_LOCAL_LIST_INSTRUCTION_TYPE:
-
-                                    // Check client is not coordinator as coordinator sends this message to others
-                                    if (! ClientManager.this.isCoordinator) {
-
-                                        // Update local client info list
-                                        this.processInstructionAddClientInfoToLocalList(instruction.data);
-
-                                    }
-
-                                    break;
-                                
-                                case ClientInstruction.NOTIFY_CLIENT_DISCONNECTED_INSTRUCTION_TYPE:
-
-                                    // Remove client ID from info list, if coordinator, tell other members
-                                    this.processInstructionNotifyClientDisconnected(instruction.data);
-                                    break;
-                                
-                                case ClientInstruction.CLIENT_ACCEPTED_INSTRUCTION_TYPE:
-
-                                    // Connection accepted, tell ask coordinator for updated list of all other members
-                                    this.processInstructionClientAccepted(instruction.data);
-                                    break;
-                                
-                                case ClientInstruction.GET_UPDATED_CLIENT_INFO_LIST_INSTRUCTION_TYPE:
-
-                                    // Ask for updated list of other clients in the channel
-                                    this.processInstructionGetUpdatedClientInfoList(instruction.data);
-                                    break;
-
-                                case ClientInstruction.SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE:
-
-                                    // Set local client info list
-                                    this.processInstructionSetLocalClientInfoList(instruction.data);
-                                    break;
-                                
-                                default:
-                                    // TODO How to handle unexpected instructions. Technically should not be possible as the instruction object would have hit an error in the ClientInstruction constructor
-                                    break;
-                                
-                            }
+                        case Message.MESSAGE_TYPE:
                             
-                        }
-
-                        this.wait(100);
-
-                    }
-
-                }
-            
-            // ===================================================
-            // -         Specific Instruction Processing         -
-            // ===================================================
-
-                // Processes the instruction 'Send Message Obj of Type Instruction'
-                private void processInstructionSendMessage(String data) {
-
-                    String[] dataComponents = data.split("::");
-                    String receiver = dataComponents[0];
-                    String message = dataComponents[1];
-
-                    this.sendMessage(receiver, message);
-
-                }
-
-                // Processes the instruction 'Become Coordinator'
-                private void processInstructionBecomeCoordinator() {
-
-                    ClientManager.this.isCoordinator = true;
-
-                    // Add self to client info if not already present
-                    if (! ClientManager.this.clientListLocal.containsKey(ClientManager.this.clientID)) {
-                        ClientManager.this.addClientInfoToLocalList(ClientManager.this.clientID, ClientManager.this.clientInfo);
-                    }
-                    showMessageDialog(null, "You are now a coordinator!");
-
-                    // TODO Tell others you are the coordinator
-
-                }
-
-                // Processes the instruction 'Revoke Coordinator'
-                private void processInstructionRevokeCoordinator() {
-                    ClientManager.this.isCoordinator = false;
-                }
-
-                // Processes the instruction 'Establish Connection'
-                private void processInstructionEstablishConnection(String instructionString) {
-                    
-                    // Request connection from coordinator
-                    this.sendInstruction("SERVER", instructionString);
-                    
-                }
-
-                // Process the instruction 'Review Join Request'
-                private void processInstructionReviewJoinRequest(String data) {
-
-                    String[] dataComponents = data.split("::");
-                    String tempID = dataComponents[0];
-                    String clientID = dataComponents[1];
-                    String clientIP = dataComponents[2];
-                    int clientPort = Integer.parseInt(dataComponents[3]);
-
-                    // Check if client ID already in use
-                    if (ClientManager.this.clientListLocal.containsKey(clientID)) {
-
-                        // Reject Connection as client ID already in use
-                            // Tell client why they are being rejected
-                            this.sendMessage(tempID, "Connection Rejected! Client ID already in use!");
-
-                            // Tell server to reject connection
-                            String rejectJoinRequestString = ClientInstruction.createRejectJoinRequestInstructionString(tempID);
-                            this.sendInstruction("SERVER", rejectJoinRequestString);
-
-                    } else {
-
-                        // Accept Connection Request
-                            // Add connection to local list
-                            ClientInfo clientInfo = new ClientInfo(clientID, clientIP, clientPort);
-                            ClientManager.this.addClientInfoToLocalList(clientID, clientInfo);
-
-                            // Tell server to accept connection
-                            String acceptNewConnectionString = ClientInstruction.createAcceptClientConnectionInstructionString(tempID, clientID);
-                            this.sendInstruction("SERVER", acceptNewConnectionString);
-
-                            // Tell client they have been accepted
-                            String clientAcceptedString = ClientInstruction.createClientAcceptedInstructionString(ClientManager.this.clientID);
-                            this.sendInstruction(clientID, clientAcceptedString);
-
-                            // Update client info server cache
-                            String updatedAllClientInfoListString = ClientManager.this.getAllClientsInfoFromLocalListAsString();
-                            String updateServerClientListCacheString = ClientInstruction.createUpdateClientInfosServerCacheInstructionString(updatedAllClientInfoListString);
-                            this.sendInstruction("SERVER", updateServerClientListCacheString);
-
-                            // Message other members to add the new connection
-                            this.tellOthersToAddClientsInfo(clientInfo);
-
-                    }
-
-                }
-
-                // Process the instruction 'Add Client Info To Local List'
-                private void processInstructionAddClientInfoToLocalList(String data) {
-
-                    String[] dataComponents = data.split("::");
-                    String clientID = dataComponents[0];
-                    String clientIP = dataComponents[1];
-                    int clientPort = Integer.parseInt(dataComponents[2]);
-
-                    ClientInfo clientInfo = new ClientInfo(clientID, clientIP, clientPort);
-                    ClientManager.this.addClientInfoToLocalList(clientID, clientInfo);
-
-                }
-
-                // Process the instruction 'Notify Client Disconnected'
-                private void processInstructionNotifyClientDisconnected(String data) {
-
-                    String[] dataComponents = data.split("::");
-                    String clientID = dataComponents[0];
-
-                    // Remove client from local client list
-                    ClientManager.this.removeClientInfoFromLocalList(clientID);
-
-                    // If coordinator, tell others to remove the client as well
-                    if (ClientManager.this.isCoordinator) {
-
-                        for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
-
-                            // Prevents coordinator from causing an infinite loop by sending the message to itself
-                            if (! currentClientID.equals(ClientManager.this.clientID)) {
+                            if(serverResponse.isServerChatMessage){
                                 
-                                String notifyClientDisconnectString = ClientInstruction.createNotifyClientDisconnectedInstructionString(clientID);
-                                this.sendInstruction(currentClientID, notifyClientDisconnectString);
+                                // If message has been received from the group chat channel.
+
+                                // Convert child message string into actual message object
+                                Message serverChatMessage = Message.fromString(serverResponse.message);
+                                InterfaceManager.displayMessage(messagePane, serverChatMessage.timestamp, "Received",
+                                    serverChatMessage.sender, serverChatMessage.message, true);
+                                
+                            } else {
+                                InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received",
+                                    serverResponse.sender, serverResponse.message, false);
+                            }
+                            break;
+
+                        default:
+
+                            showMessageDialog(null,
+                                    "Unknown Message Type Sent: " + Integer.toString(serverResponse.messageType));
+                            break;
+
+                    }
+
+                }
+
+                this.wait(100);
+
+            }
+
+        }
+
+        // ===================================================
+        // - Messaging and Thread Functions -
+        // ===================================================
+
+        // Returns the next message sent by the server
+        public Message getMessage() {
+
+            Message messageObj = null;
+            try {
+                messageObj = (Message) ClientManager.this.inputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+
+                this.endClient();
+                // InterfaceManager.displayError(e, "Client Related Error.");
+
+            }
+
+            return messageObj;
+
+        }
+
+        // Tells the thread to sleep a certain amount of time
+        private void wait(int ms) {
+
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException e) {
+                InterfaceManager.displayError(e, "Thread sleep error occurred");
+            }
+
+        }
+
+        // Server Connection Terminated
+        private void endClient() {
+            ClientManager.this.isClientRunning = false;
+            showMessageDialog(null, "Disconnected From Server!");
+            while (messagePane.getTabCount() > 0) {
+                messagePane.remove(0);
+            }
+            InterfaceManager.changeWindow(messagePanel, new ClientServerConnection());
+        }
+
+    }
+
+    // ===================================================
+    // - Instruction Handler Class -
+    // ===================================================
+
+    private class InstructionHandler implements Runnable {
+
+        public InstructionHandler() {
+        }
+
+        // ===================================================
+        // - Runnable Method -
+        // ===================================================
+
+        @Override
+        public void run() {
+
+            while (ClientManager.this.isClientRunning) {
+
+                ClientInstruction instruction = ClientManager.this.instructionsQueue.getNextInstruction();
+
+                if (instruction != null) {
+
+                    switch (instruction.instructionType) {
+
+                        case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
+
+                            // Send Message To Server
+                            this.processInstructionSendMessage(instruction.data);
+                            break;
+
+                        case ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE:
+
+                            // Set Client To Coordinator
+                            this.processInstructionBecomeCoordinator();
+                            break;
+
+                        case ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE: // TODO Not being used
+
+                            // Revoke Client As Coordinator
+                            this.processInstructionRevokeCoordinator();
+                            break;
+
+                        case ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE:
+
+                            // Ask server to join network
+                            this.processInstructionEstablishConnection(instruction.convertInstructionToString());
+                            break;
+
+                        case ClientInstruction.REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE:
+
+                            // Check if client is coordinator
+                            if (ClientManager.this.isCoordinator) {
+
+                                // Accept / Reject connection a new client's connection request
+                                this.processInstructionReviewJoinRequest(instruction.data);
+
+                            } else {
+                                // TODO How to handle a review request being sent to a non-coordinator
+                            }
+
+                            break;
+
+                        case ClientInstruction.ADD_CLIENT_INFO_TO_LOCAL_LIST_INSTRUCTION_TYPE:
+
+                            // Check client is not coordinator as coordinator sends this message to others
+                            if (!ClientManager.this.isCoordinator) {
+
+                                // Update local client info list
+                                this.processInstructionAddClientInfoToLocalList(instruction.data);
 
                             }
 
-                        }
-                        
-                    }
+                            break;
 
-                }
+                        case ClientInstruction.NOTIFY_CLIENT_DISCONNECTED_INSTRUCTION_TYPE:
 
-                // Process the instruction 'Client Accepted'
-                private void processInstructionClientAccepted(String coordinatorID) {
+                            // Remove client ID from info list, if coordinator, tell other members
+                            this.processInstructionNotifyClientDisconnected(instruction.data);
+                            break;
 
-                    // Get updated client list from coordinator
-                    String getUpdatedClientInfoListString = ClientInstruction.createGetUpdatedClientInfoListInstructionString(ClientManager.this.clientID);
-                    this.sendInstruction(coordinatorID, getUpdatedClientInfoListString);
-                    
-                }
+                        case ClientInstruction.CLIENT_ACCEPTED_INSTRUCTION_TYPE:
 
-                // Process the instruction "Get Updated Client Info List"
-                private void processInstructionGetUpdatedClientInfoList(String sender) {
+                            // Connection accepted, tell ask coordinator for updated list of all other
+                            // members
+                            this.processInstructionClientAccepted(instruction.data);
+                            break;
 
-                    String updatedAllClientInfoListString = ClientManager.this.getAllClientsInfoFromLocalListAsString();
-                    String setLocalClientInfoInstruction = ClientInstruction.createSetLocalClientInfoListString(updatedAllClientInfoListString);
-                    this.sendInstruction(sender, setLocalClientInfoInstruction);
+                        case ClientInstruction.GET_UPDATED_CLIENT_INFO_LIST_INSTRUCTION_TYPE:
 
-                }
+                            // Ask for updated list of other clients in the channel
+                            this.processInstructionGetUpdatedClientInfoList(instruction.data);
+                            break;
 
-                // Process the instruction "Set Local Client Info List"
-                private void processInstructionSetLocalClientInfoList(String allClientInfoListString) {
-                    
-                    HashMap<String, ClientInfo> newLocalClientInfoList = ClientManager.this.convertAllClientInfoStringToHashMap(allClientInfoListString);
-                    ClientManager.this.setLocalClientInfoList(newLocalClientInfoList);
-                    
-                }
+                        case ClientInstruction.SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE:
 
-                // Tells other members to add a client's infomation to their local client info list
-                private void tellOthersToAddClientsInfo(ClientInfo clientInfo) {
+                            // Set local client info list
+                            this.processInstructionSetLocalClientInfoList(instruction.data);
+                            break;
 
-                    String addNewClientToLocalListString = ClientInstruction.createAddClientInfoToLocalListInstructionString(clientInfo.clientID, clientInfo.clientIP, clientInfo.clientPort);
-                    
-                    for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
-                        
-                        // Message all clients except itself (coordinator) and the new client that joined
-                        if (! currentClientID.equals(clientInfo.clientID) && ! currentClientID.equals(ClientManager.this.clientID)) {
-                            this.sendInstruction(currentClientID, addNewClientToLocalListString);
-                        }
+                        case ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE:
+
+                            // Send message to everyone 
+                            this.processInstructionSendServerChatMessage(instruction.data);
+                            break;
+
+                        default:
+                            // TODO How to handle unexpected instructions. Technically should not be
+                            // possible as the instruction object would have hit an error in the
+                            // ClientInstruction constructor
+                            break;
 
                     }
 
                 }
-            
-            // ===================================================
-            // -          Messaging and Thread Functions         -
-            // ===================================================
 
-                // Tells the thread to sleep a certain amount of time
-                private void wait(int ms) {
+                this.wait(100);
 
-                    try {
-                        Thread.sleep(ms);
-                    } catch (InterruptedException e) {
-                        InterfaceManager.displayError(e, "Thread sleep error occurred");
-                    }
-
-                }
-
-                // Sends a message to the server
-                private void sendMessage(String receiver, String message) {
-
-                    Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE);
-                    this.transmitMessage(messageObj);
-
-                }
-
-                // Sends an instruction to the server
-                private void sendInstruction(String receiver, String message) {
-
-                    Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.INSTRUCTION_TYPE);
-                    this.transmitMessage(messageObj);
-
-                }
-
-                // Transmits a message object to the server
-                private void transmitMessage(Message messageObj) {
-
-                    try {
-                        ClientManager.this.outputStream.writeObject(messageObj);
-                    } catch (IOException e) {
-                        InterfaceManager.displayError(e, "Message send failed.");
-                    }
-
-                }
+            }
 
         }
+
+        // ===================================================
+        // - Specific Instruction Processing -
+        // ===================================================
+
+        // Processes the instruction 'Send Message Obj of Type Instruction'
+        private void processInstructionSendMessage(String data) {
+
+            String[] dataComponents = data.split("::");
+            String receiver = dataComponents[0];
+            String message = dataComponents[1];
+            boolean isServerChatMessage = dataComponents[2].equals("true");
+
+            this.sendMessage(receiver, message, isServerChatMessage);
+
+        }
+
+        // Processes the instruction 'Become Coordinator'
+        private void processInstructionBecomeCoordinator() {
+
+            ClientManager.this.isCoordinator = true;
+
+            // Add self to client info if not already present
+            if (!ClientManager.this.clientListLocal.containsKey(ClientManager.this.clientID)) {
+                ClientManager.this.addClientInfoToLocalList(ClientManager.this.clientID, ClientManager.this.clientInfo);
+            }
+            showMessageDialog(null, "You are now a coordinator!");
+
+            // TODO Tell others you are the coordinator
+
+        }
+
+        // Processes the instruction 'Revoke Coordinator'
+        private void processInstructionRevokeCoordinator() {
+            ClientManager.this.isCoordinator = false;
+        }
+
+        // Processes the instruction 'Establish Connection'
+        private void processInstructionEstablishConnection(String instructionString) {
+
+            // Request connection from coordinator
+            this.sendInstruction("SERVER", instructionString);
+
+        }
+
+        // Process the instruction 'Review Join Request'
+        private void processInstructionReviewJoinRequest(String data) {
+
+            String[] dataComponents = data.split("::");
+            String tempID = dataComponents[0];
+            String clientID = dataComponents[1];
+            String clientIP = dataComponents[2];
+            int clientPort = Integer.parseInt(dataComponents[3]);
+
+            // Check if client ID already in use
+            if (ClientManager.this.clientListLocal.containsKey(clientID)) {
+
+                // Reject Connection as client ID already in use
+                // Tell client why they are being rejected
+                this.sendMessage(tempID, "Connection Rejected! Client ID already in use!", false);
+
+                // Tell server to reject connection
+                String rejectJoinRequestString = ClientInstruction.createRejectJoinRequestInstructionString(tempID);
+                this.sendInstruction("SERVER", rejectJoinRequestString);
+
+            } else {
+
+                // Accept Connection Request
+                // Add connection to local list
+                ClientInfo clientInfo = new ClientInfo(clientID, clientIP, clientPort);
+                ClientManager.this.addClientInfoToLocalList(clientID, clientInfo);
+                
+                // Allow co-ordinator to contact user by adding to interface.
+                InterfaceManager.createClient(ClientManager.this.messagePane, clientID);
+
+                // Tell server to accept connection
+                String acceptNewConnectionString = ClientInstruction
+                        .createAcceptClientConnectionInstructionString(tempID, clientID);
+                this.sendInstruction("SERVER", acceptNewConnectionString);
+
+                // Tell client they have been accepted
+                String clientAcceptedString = ClientInstruction
+                        .createClientAcceptedInstructionString(ClientManager.this.clientID);
+                this.sendInstruction(clientID, clientAcceptedString);
+
+                // Update client info server cache
+                String updatedAllClientInfoListString = ClientManager.this.getAllClientsInfoFromLocalListAsString();
+                String updateServerClientListCacheString = ClientInstruction
+                        .createUpdateClientInfosServerCacheInstructionString(updatedAllClientInfoListString);
+                this.sendInstruction("SERVER", updateServerClientListCacheString);
+
+                // Message other members to add the new connection
+                this.tellOthersToAddClientsInfo(clientInfo);
+
+            }
+
+        }
+
+        // Process the instruction 'Add Client Info To Local List'
+        private void processInstructionAddClientInfoToLocalList(String data) {
+
+            String[] dataComponents = data.split("::");
+            String clientID = dataComponents[0];
+            String clientIP = dataComponents[1];
+            int clientPort = Integer.parseInt(dataComponents[2]);
+
+            ClientInfo clientInfo = new ClientInfo(clientID, clientIP, clientPort);
+            ClientManager.this.addClientInfoToLocalList(clientID, clientInfo);
+
+            InterfaceManager.createClient(ClientManager.this.messagePane, clientID);
+
+        }
+
+        // Process the instruction 'Notify Client Disconnected'
+        private void processInstructionNotifyClientDisconnected(String data) {
+
+            String[] dataComponents = data.split("::");
+            String clientID = dataComponents[0];
+
+            // Remove client from local client list
+            ClientManager.this.removeClientInfoFromLocalList(clientID);
+            
+            // Remove User
+            InterfaceManager.removeClient(ClientManager.this.messagePane, clientID);
+            
+
+            // If coordinator, tell others to remove the client as well
+            if (ClientManager.this.isCoordinator) {
+
+                for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
+
+                    // Prevents coordinator from causing an infinite loop by sending the message to
+                    // itself
+                    if (!currentClientID.equals(ClientManager.this.clientID)) {
+
+                        String notifyClientDisconnectString = ClientInstruction
+                                .createNotifyClientDisconnectedInstructionString(clientID);
+                        this.sendInstruction(currentClientID, notifyClientDisconnectString);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        // Process the instruction 'Client Accepted'
+        private void processInstructionClientAccepted(String coordinatorID) {
+
+            // Get updated client list from coordinator
+            String getUpdatedClientInfoListString = ClientInstruction
+                    .createGetUpdatedClientInfoListInstructionString(ClientManager.this.clientID);
+            this.sendInstruction(coordinatorID, getUpdatedClientInfoListString);
+
+        }
+
+        // Process the instruction "Get Updated Client Info List"
+        private void processInstructionGetUpdatedClientInfoList(String sender) {
+
+            String updatedAllClientInfoListString = ClientManager.this.getAllClientsInfoFromLocalListAsString();
+            String setLocalClientInfoInstruction = ClientInstruction
+                    .createSetLocalClientInfoListString(updatedAllClientInfoListString);
+            
+            this.sendInstruction(sender, setLocalClientInfoInstruction);
+
+        }
+
+        // Process the instruction "Set Local Client Info List"
+        private void processInstructionSetLocalClientInfoList(String allClientInfoListString) {
+
+            HashMap<String, ClientInfo> newLocalClientInfoList = ClientManager.this
+                    .convertAllClientInfoStringToHashMap(allClientInfoListString);
+            ClientManager.this.setLocalClientInfoList(newLocalClientInfoList);
+            
+            Iterator clientIterator = newLocalClientInfoList.entrySet().iterator(); 
+            
+            while (clientIterator.hasNext()) { 
+                Map.Entry individualClient = (Map.Entry)clientIterator.next(); 
+                if(!individualClient.getKey().toString().equals(ClientManager.this.clientID)) {
+                    InterfaceManager.createClient(ClientManager.this.messagePane, individualClient.getKey().toString());
+                }
+            } 
+
+        }
+
+        // Process the instruction "Send Server Chat Message"
+        private void processInstructionSendServerChatMessage(String messageObjStr) {
+
+            // For each client send group chat message
+            String senderID = Message.fromString(messageObjStr).sender;
+            
+            for (String currentClientID: ClientManager.this.getAllClientIDsFromLocalList()) {
+
+                // Do not send message back to the person who sent the message.
+                if (!currentClientID.equals(senderID)) {
+                    
+                    // Send message object to clients server chat
+                    this.sendMessage(currentClientID, messageObjStr, true);
+
+                }
+
+            }
+
+        }
+
+        // Tells other members to add a client's infomation to their local client info
+        // list
+        private void tellOthersToAddClientsInfo(ClientInfo clientInfo) {
+
+            String addNewClientToLocalListString = ClientInstruction.createAddClientInfoToLocalListInstructionString(
+                    clientInfo.clientID, clientInfo.clientIP, clientInfo.clientPort);
+
+            for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
+
+                // Message all clients except itself (coordinator) and the new client that
+                // joined
+                if (!currentClientID.equals(clientInfo.clientID)
+                        && !currentClientID.equals(ClientManager.this.clientID)) {
+                    this.sendInstruction(currentClientID, addNewClientToLocalListString);
+                }
+
+            }
+
+        }
+
+        // ===================================================
+        // - Messaging and Thread Functions -
+        // ===================================================
+
+        // Tells the thread to sleep a certain amount of time
+        private void wait(int ms) {
+
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException e) {
+                InterfaceManager.displayError(e, "Thread sleep error occurred");
+            }
+
+        }
+
+        // Sends a message to the server
+        private void sendMessage(String receiver, String message, boolean isServerChatMessage) {
+
+            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE, isServerChatMessage);
+            this.transmitMessage(messageObj);
+
+        }
+
+        // Sends an instruction to the server
+        private void sendInstruction(String receiver, String message) {
+
+            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.INSTRUCTION_TYPE);
+            this.transmitMessage(messageObj);
+
+        }
+
+        // Transmits a message object to the server
+        private void transmitMessage(Message messageObj) {
+
+            try {
+                ClientManager.this.outputStream.writeObject(messageObj);
+            } catch (IOException e) {
+                InterfaceManager.displayError(e, "Message send failed.");
+            }
+
+        }
+
+    }
 
     // DEBUG CLASS
     private class DebuggProgram implements Runnable {
@@ -714,12 +815,12 @@ public class ClientManager {
         public void run() {
 
             while (ClientManager.this.isClientRunning) {
-            
+
                 System.out.println("Connections = " + ClientManager.this.getAllClientsInfoFromLocalList());
                 this.wait(5000);
-                
+
             }
-            
+
         }
 
         private void wait(int ms) {
@@ -732,7 +833,6 @@ public class ClientManager {
 
         }
 
-
     }
-    
+
 }

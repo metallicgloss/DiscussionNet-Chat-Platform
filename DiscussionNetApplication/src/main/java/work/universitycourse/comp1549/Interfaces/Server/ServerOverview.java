@@ -57,6 +57,11 @@ public class ServerOverview extends javax.swing.JFrame {
             }
         }.init(this.mainTable, this.serverIPAddress, Integer.parseInt(this.serverPort), 1024)).start();
         
+        statusValueLabel.setText("Active");
+        ipAddressValueLabel.setText(this.serverIPAddress);
+        portValueLabel.setText(this.serverPort);
+                
+        
     }
 
     private void table() {        
@@ -247,7 +252,7 @@ public class ServerOverview extends javax.swing.JFrame {
         middlePanelLayout.setHorizontalGroup(
             middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, middlePanelLayout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+                .addContainerGap(168, Short.MAX_VALUE)
                 .addComponent(serverStatusImageLabel)
                 .addGap(71, 71, 71)
                 .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,7 +357,7 @@ public class ServerOverview extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void footerLicensesTextLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
-        InterfaceManager.changeWindow(this, new Licenses());
+        InterfaceManager.displayLicenses();
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     /**
@@ -394,7 +399,6 @@ public class ServerOverview extends javax.swing.JFrame {
     private javax.swing.JLabel communicationLogsLabel2;
     private javax.swing.JLabel footerLicensesTextLabel;
     private javax.swing.JPanel footerPanel;
-    private javax.swing.JLabel footerTextLabel1;
     private javax.swing.JLabel footerTextLabel2;
     private javax.swing.JLabel ipAddressLabel;
     private javax.swing.JLabel ipAddressValueLabel;

@@ -5,15 +5,11 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.ArrayDeque;
 import java.util.UUID;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
-
 import java.net.Socket;
-
 import java.sql.Timestamp;
-
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -53,6 +49,7 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
  */
 
 public class ServerChannel {
+    
     private volatile Deque<Message> channelMessages = new ArrayDeque<Message>(); // Used as a Queue
     private HashMap<String, ClientConnection> clientConnections = new HashMap<String, ClientConnection>();
     private ClientConnection coordinatorClientConnection = null;
@@ -286,7 +283,6 @@ public class ServerChannel {
                         this.addMessageToChannel();
                     }
 
-                    System.out.println("Input output streams have been terminated"); // DEBUG
                     this.closeInputOutputStreams();
                     Thread.currentThread().interrupt();
 
@@ -361,9 +357,6 @@ public class ServerChannel {
                     this.closeInputOutputStreams();
 
                     // Check client is not temporay
-                    System.out.println("Hey"); // DEBUG
-                    System.out.println(ServerChannel.this.getAllConnectedClientIDs()); // DEBUG
-                    System.out.println(ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)); // DEBUG
                     if (ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)) {
 
                         // Tell server a connected client left the server

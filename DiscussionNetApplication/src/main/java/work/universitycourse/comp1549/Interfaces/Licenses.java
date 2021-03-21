@@ -31,10 +31,11 @@ public class Licenses extends javax.swing.JFrame {
 
         ImageIcon img = new ImageIcon(getClass().getResource("/icon.png"));
         licensesPanel = new javax.swing.JPanel();
+        googleFontsTitleLabel = new javax.swing.JLabel();
+        googleFontsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle
-                .getBundle("work/universitycourse/comp1549/Interfaces/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Bundle"); // NOI18N
         setTitle(bundle.getString("Licenses.title")); // NOI18N
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(InterfaceManager.programIcon.getImage());
@@ -49,24 +50,52 @@ public class Licenses extends javax.swing.JFrame {
         licensesPanel.setPreferredSize(new java.awt.Dimension(847, 519));
         InterfaceManager.detectExitRequest(licensesPanel);
 
+        googleFontsTitleLabel.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        googleFontsTitleLabel.setText(bundle.getString("Licenses.googleFontsTitleLabel.text")); // NOI18N
+        googleFontsTitleLabel.setName("googleFontsTitleLabel"); // NOI18N
+
+        googleFontsLabel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        googleFontsLabel.setText("<html>Google Fonts (Montserrat)<br>" +
+            "Version: 1.1 Update 5<br>" +
+            "License: SIL Open Font License (OFL)<br>" +
+            "URL: https://fonts.google.com/specimen/Montserrat<br>" +
+            "Copyright: © 2016-2021 Julieta Ulanovsky and other contributors.</html>");
+        googleFontsLabel.setName("googleFontsLabel"); // NOI18N
+
         javax.swing.GroupLayout licensesPanelLayout = new javax.swing.GroupLayout(licensesPanel);
         licensesPanel.setLayout(licensesPanelLayout);
-        licensesPanelLayout.setHorizontalGroup(licensesPanelLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 847, Short.MAX_VALUE));
-        licensesPanelLayout.setVerticalGroup(licensesPanelLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 519, Short.MAX_VALUE));
+        licensesPanelLayout.setHorizontalGroup(
+            licensesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(licensesPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(licensesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(googleFontsTitleLabel)
+                    .addComponent(googleFontsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        licensesPanelLayout.setVerticalGroup(
+            licensesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(licensesPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(googleFontsTitleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(googleFontsLabel)
+                .addContainerGap(434, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-                javax.swing.GroupLayout.Alignment.TRAILING,
-                layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(licensesPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(licensesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(licensesPanel,
-                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(licensesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         getAccessibleContext().setAccessibleName(bundle.getString("Licenses.AccessibleContext.accessibleName")); // NOI18N
 
@@ -108,6 +137,8 @@ public class Licenses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel googleFontsLabel;
+    private javax.swing.JLabel googleFontsTitleLabel;
     private javax.swing.JPanel licensesPanel;
     // End of variables declaration//GEN-END:variables
 }

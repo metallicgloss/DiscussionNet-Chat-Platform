@@ -5,7 +5,6 @@ import javax.swing.JTextField;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -15,10 +14,11 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * @author William Phillips
  * 
  */
-public class RoundJTextField extends JTextField {
+public class JRoundedTextField extends JTextField {
+
     private Shape shape;
 
-    public RoundJTextField() {
+    public JRoundedTextField() {
         setOpaque(false); // As suggested by @AVD in comment.
     }
 
@@ -39,4 +39,5 @@ public class RoundJTextField extends JTextField {
         }
         return shape.contains(x, y);
     }
+    
 }

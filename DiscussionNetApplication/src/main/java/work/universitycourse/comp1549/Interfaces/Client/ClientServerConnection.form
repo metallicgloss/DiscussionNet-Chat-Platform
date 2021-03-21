@@ -250,7 +250,7 @@
               <Color blue="a2" green="96" red="98" type="rgb"/>
             </Property>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
+              <Insets value="[0, 5, 0, 5]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="serverIPAddressTextField" noResource="true"/>
           </Properties>
@@ -259,11 +259,11 @@
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="serverIPAddressTextFieldFocusLost"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new work.universitycourse.comp1549.Components.JRoundedTextField()"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="362" y="219" width="340" height="-1"/>
+              <AbsoluteConstraints x="362" y="219" width="340" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -282,7 +282,7 @@
               <Color blue="a2" green="96" red="98" type="rgb"/>
             </Property>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 0, 0, 0]"/>
+              <Insets value="[0, 5, 0, 5]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="serverPortTextField" noResource="true"/>
           </Properties>
@@ -291,11 +291,11 @@
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="serverPortTextFieldFocusLost"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RoundJTextField()"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new work.universitycourse.comp1549.Components.JRoundedTextField()"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="362" y="291" width="340" height="-1"/>
+              <AbsoluteConstraints x="362" y="291" width="340" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
