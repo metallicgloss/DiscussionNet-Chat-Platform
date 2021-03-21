@@ -136,12 +136,15 @@ public class InterfaceManager {
     }
     
     public static void displayMessage(JTabbedPane messageListPane, Date messageTime, String messageType, String userID, String messageContent, Boolean groupMessage) {
+        JScrollPane messageList = new JScrollPane();
+        
         if (messageType.equals("Received")) {
-            // If received, switch to tab - allows message to show and acts as a 'notification' style alert of new.
-            messageListPane.setSelectedIndex(identifyClientTabIndex(messageListPane, userID));
-        } 
+            // Inbound message, may not be selected for user. Get content from the tab of that user.
+            messageList = (JScrollPane)messageListPane.getComponentAt(identifyClientTabIndex(messageListPane, userID));
+        } else {
+            messageList = (JScrollPane)messageListPane.getSelectedComponent();
+        }
 
-        JScrollPane messageList = (JScrollPane)messageListPane.getSelectedComponent();
         JViewport messageView = messageList.getViewport();
         JPanel targetPanel = (JPanel)messageView.getComponents()[0];
         
