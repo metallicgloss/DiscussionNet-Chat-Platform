@@ -283,7 +283,6 @@ public class ServerChannel {
                         this.addMessageToChannel();
                     }
 
-                    System.out.println("Input output streams have been terminated"); // DEBUG
                     this.closeInputOutputStreams();
                     Thread.currentThread().interrupt();
 
@@ -358,9 +357,6 @@ public class ServerChannel {
                     this.closeInputOutputStreams();
 
                     // Check client is not temporay
-                    System.out.println("Hey"); // DEBUG
-                    System.out.println(ServerChannel.this.getAllConnectedClientIDs()); // DEBUG
-                    System.out.println(ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)); // DEBUG
                     if (ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)) {
 
                         // Tell server a connected client left the server

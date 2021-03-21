@@ -5,6 +5,7 @@ import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.ClientInfo;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Set;
@@ -141,11 +142,11 @@ public class ClientManager {
      */
 
     // Allows the UI to send a message
-    public void sendMessage(String receiver, String message, boolean server_chat_message) {
+    public void sendMessage(String receiver, String message, boolean isServerChatMessage) {
 
         try {
 
-            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message, server_chat_message);
+            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message, isServerChatMessage);
             ClientInstruction instructionObj = new ClientInstruction(sendMessageInstruction);
             this.instructionsQueue.addInstructionToQueue(instructionObj);
 
@@ -342,13 +343,18 @@ public class ClientManager {
 
                         case Message.MESSAGE_TYPE:
                             
-                            if(serverResponse.server_chat_message){
+                            if(serverResponse.isServerChatMessage){
+                                
                                 // If message has been received from the group chat channel.
-                                InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received",
-                                        serverResponse.sender, serverResponse.message, true);
+
+                                // Convert child message string into actual message object
+                                Message serverChatMessage = Message.fromString(serverResponse.message);
+                                InterfaceManager.displayMessage(messagePane, serverChatMessage.timestamp, "Received",
+                                    serverChatMessage.sender, serverChatMessage.message, true);
+                                
                             } else {
                                 InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received",
-                                        serverResponse.sender, serverResponse.message, false);
+                                    serverResponse.sender, serverResponse.message, false);
                             }
                             break;
 
@@ -511,6 +517,12 @@ public class ClientManager {
                             this.processInstructionSetLocalClientInfoList(instruction.data);
                             break;
 
+                        case ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE:
+
+                            // Send message to everyone 
+                            this.processInstructionSendServerChatMessage(instruction.data);
+                            break;
+
                         default:
                             // TODO How to handle unexpected instructions. Technically should not be
                             // possible as the instruction object would have hit an error in the
@@ -537,9 +549,9 @@ public class ClientManager {
             String[] dataComponents = data.split("::");
             String receiver = dataComponents[0];
             String message = dataComponents[1];
-            boolean server_chat_message = dataComponents[2].equals("true");
+            boolean isServerChatMessage = dataComponents[2].equals("true");
 
-            this.sendMessage(receiver, message, server_chat_message);
+            this.sendMessage(receiver, message, isServerChatMessage);
 
         }
 
@@ -712,6 +724,25 @@ public class ClientManager {
 
         }
 
+        // Process the instruction "Send Server Chat Message"
+        private void processInstructionSendServerChatMessage(String messageObjStr) {
+
+            // For each client send group chat message
+            String senderID = Message.fromString(messageObjStr).sender;
+            for (String currentClientID: ClientManager.this.getAllClientIDsFromLocalList()) {
+
+                // Do not send message to itself or the person who sent it
+                if (! currentClientID.equals(ClientManager.this.clientID) && ! currentClientID.equals(senderID)) {
+                    
+                    // Send message object to clients server chat
+                    this.sendMessage(currentClientID, messageObjStr, true);
+
+                }
+
+            }
+
+        }
+
         // Tells other members to add a client's infomation to their local client info
         // list
         private void tellOthersToAddClientsInfo(ClientInfo clientInfo) {
@@ -748,9 +779,9 @@ public class ClientManager {
         }
 
         // Sends a message to the server
-        private void sendMessage(String receiver, String message, boolean server_chat_message) {
+        private void sendMessage(String receiver, String message, boolean isServerChatMessage) {
 
-            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE, server_chat_message);
+            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE, isServerChatMessage);
             this.transmitMessage(messageObj);
 
         }

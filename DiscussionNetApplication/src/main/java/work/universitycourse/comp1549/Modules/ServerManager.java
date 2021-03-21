@@ -207,6 +207,18 @@ public class ServerManager {
                             InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
                         }
 
+                    } else if (messageObj.isServerChatMessage) {
+
+                        // Tell Coordinator to output server chat message
+                        // Create Send Server Message Instruction
+                        String messageObjStr = messageObj.toString();
+                        String sendServerChatMessage = ClientInstruction.createSendServerChatMessageInstructionString(messageObjStr);
+                        
+                        // Send Message to coordinator
+                        String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+                        Message sendInstructionMessage = new Message("SERVER", coordinatorID, sendServerChatMessage, Message.INSTRUCTION_TYPE);
+                        ServerManager.this.serverChannel.sendMessageToClient(sendInstructionMessage);
+
                     } else {
 
                         // Tell sender that receiver does not exists

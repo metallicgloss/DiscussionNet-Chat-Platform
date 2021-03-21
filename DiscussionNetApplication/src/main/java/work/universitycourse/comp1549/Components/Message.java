@@ -17,7 +17,7 @@ public class Message implements Serializable {
     public static final int INSTRUCTION_TYPE = 1;
     public static final int MESSAGE_TYPE = 2;
 
-    public boolean server_chat_message = false;
+    public boolean isServerChatMessage = false;
     public int messageType;
     public String sender, receiver, message;
     public Timestamp timestamp;
@@ -29,12 +29,38 @@ public class Message implements Serializable {
         this.sender = sender;
     }
 
-    public Message(String sender, String receiver, String message, int type, boolean server_chat_message) {
+    public Message(String sender, String receiver, String message, int type, boolean isServerChatMessage) {
         this.message = message;
         this.messageType = type;
         this.receiver = receiver;
         this.sender = sender;
-        this.server_chat_message = server_chat_message;
+        this.isServerChatMessage = isServerChatMessage;
+    }
+
+    public String toString() {
+        
+        return this.sender + "::" + this.receiver + "::" + Integer.toString(this.messageType) +
+         "::" + this.message + "::" + this.timestamp.toString() + "::" + Boolean.toString(this.isServerChatMessage);
+        
+    }
+
+    public static Message fromString(String messageObjString) {
+        
+        // Seperate String into variables
+        String[] messageComponents = messageObjString.split("::");
+        String sender = messageComponents[0];
+        String receiver = messageComponents[1];
+        int messageType = Integer.parseInt(messageComponents[2]);
+        String message = messageComponents[3];
+        Timestamp timestamp = Timestamp.valueOf(messageComponents[4]);
+        boolean isServerChatMessage = messageComponents[5].equals("true");
+
+        // Create message object and set timestamp
+        Message messageObj = new Message(sender, receiver, message, messageType, isServerChatMessage);
+        messageObj.timestamp = timestamp;
+
+        return messageObj;
+
     }
 
 }

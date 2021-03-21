@@ -43,7 +43,7 @@ public class ClientInstruction {
     // -> Add function to handle instructions (Look at section: Instruction Processing Functions)
     // -> Implement function to handle instruction on server / client side
 
-    private static final int HIGHEST_INSTRUCTION_CODE = 14;
+    private static final int HIGHEST_INSTRUCTION_CODE = 15;
     public static final int SEND_MESSAGE_INSTRUCTION_TYPE = 1;
     public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
     public static final int REVOKE_COORDINATOR_INSTRUCTION_TYPE = 3;
@@ -58,6 +58,7 @@ public class ClientInstruction {
     public static final int GET_UPDATED_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 12;
     public static final int CLIENT_ACCEPTED_INSTRUCTION_TYPE = 13;
     public static final int SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 14;
+    public static final int SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE = 15;
     
     public String data;
     public int instructionType;
@@ -102,8 +103,8 @@ public class ClientInstruction {
         }
 
         // Creates a custom 'Send Message' instruction string
-        public static String createSendMessageInstructionString(String receiver, String message, boolean server_chat_message) {
-            return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + "::" + message + "::" + server_chat_message;
+        public static String createSendMessageInstructionString(String receiver, String message, boolean isServerChatMessage) {
+            return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + "::" + message + "::" + isServerChatMessage;
         }
 
         // Create a custom 'Become Coordinator' instruction string
@@ -171,6 +172,11 @@ public class ClientInstruction {
             return Integer.toString(ClientInstruction.SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE) + "<SEPERATOR>" + allClientInfoString;
         }
 
+        // Create a custom 'Send Server Chat Message' instruction string
+        public static String createSendServerChatMessageInstructionString(String messageObjStr) {
+            return Integer.toString(ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + messageObjStr;
+        }
+
 
     // ===================================================
     // -          Instruction Validation Functions       -
@@ -191,7 +197,7 @@ public class ClientInstruction {
             switch (instructionType) {
                 case ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE:
 
-                    // FORMAT: RECEIVER::MESSAGE::SERVER_CHAT_MESSAGE_BOOLEAN
+                    // FORMAT: RECEIVER::MESSAGE::isServerChatMessage_BOOLEAN
                     ClientInstruction.validateDataForMessageInstruction(data);
                     break;
 
@@ -272,6 +278,12 @@ public class ClientInstruction {
                     // FORMAT: ALL_CLIENT_INFO_LIST_STRING
                     ClientInstruction.validateDataForSetLocalClientInfoList(data);
                     break;
+                
+                case ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE:
+
+                    // FORMAT: MESSAGE_OBJECT_STRING (sender, receiver, message, messageType, sever_chat_message, timestamp)
+                    ClientInstruction.validateDataForSendServerChatMessage(data);
+                    break;
 
                 default:
                     throw new InstructionNotExistException(instructionType);
@@ -289,7 +301,7 @@ public class ClientInstruction {
             String[] dataComponents = data.split("::");
 
             if (dataComponents.length != 3) {
-                throw new DataFormatException("RECEIVER::MESSAGE::SERVER_CHAT_MESSAGE_BOOLEAN");
+                throw new DataFormatException("RECEIVER::MESSAGE::isServerChatMessage_BOOLEAN");
             }
 
         }
@@ -433,6 +445,17 @@ public class ClientInstruction {
 
             if (dataComponents.length != 1) {
                 throw new DataFormatException("ALL_CLIENT_INFO_LIST_STRING");
+            }
+
+        }
+
+        // Checks data provided is in a valid form for a 'Send Group Chat Message' instruction type
+        private static void validateDataForSendServerChatMessage(String data) throws DataFormatException {
+
+            String[] dataComponents = data.split("::");
+
+            if (dataComponents.length != 6) {
+                throw new DataFormatException("MESSAGE_OBJECT_STRING (sender, receiver, message, messageType, sever_chat_message, timestamp)");
             }
 
         }
