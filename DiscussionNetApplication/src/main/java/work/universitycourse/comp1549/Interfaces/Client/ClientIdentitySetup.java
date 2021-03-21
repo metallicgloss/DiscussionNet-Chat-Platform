@@ -43,12 +43,12 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         discussionNetIdentitySetupLabel1 = new javax.swing.JLabel();
         discussionNetIdentitySetupLabel2 = new javax.swing.JLabel();
         assignedIDNumberLabel = new javax.swing.JLabel();
-        assignedIDNumberTextfield = new JRoundedTextField();
+        assignedIdentificationTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
         clientIPAddressLabel = new javax.swing.JLabel();
-        clientIPAddressTextField = new JRoundedTextField();
+        clientIPAddressTextField = new work.universitycourse.comp1549.Components.JRoundedTextField();
         userMessagesIconLabel = new javax.swing.JLabel();
         clientPortLabel = new javax.swing.JLabel();
-        clientPortTextField = new JRoundedTextField();
+        clientPortTextField = new work.universitycourse.comp1549.Components.JRoundedTextField();
         authenticateButton = new javax.swing.JButton();
         footerTextLabel = new javax.swing.JLabel();
         footerLicensesTextLabel = new javax.swing.JLabel();
@@ -100,25 +100,25 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         clientIdentitySetupPanel.add(assignedIDNumberLabel);
         assignedIDNumberLabel.setBounds(426, 131, 153, 17);
 
-        assignedIDNumberTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
-        assignedIDNumberTextfield.setForeground(new java.awt.Color(152, 150, 162));
-        assignedIDNumberTextfield.setAlignmentX(0.0F);
-        assignedIDNumberTextfield.setAlignmentY(0.0F);
-        assignedIDNumberTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
-        assignedIDNumberTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
-        assignedIDNumberTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
-        assignedIDNumberTextfield.setName("assignedIDNumberTextfield"); // NOI18N
-        assignedIDNumberTextfield.setSelectionColor(new java.awt.Color(0, 63, 143));
-        assignedIDNumberTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+        assignedIdentificationTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        assignedIdentificationTextfield.setForeground(new java.awt.Color(152, 150, 162));
+        assignedIdentificationTextfield.setAlignmentX(0.0F);
+        assignedIdentificationTextfield.setAlignmentY(0.0F);
+        assignedIdentificationTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
+        assignedIdentificationTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
+        assignedIdentificationTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
+        assignedIdentificationTextfield.setName("assignedIdentificationTextfield"); // NOI18N
+        assignedIdentificationTextfield.setSelectionColor(new java.awt.Color(0, 63, 143));
+        assignedIdentificationTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                assignedIDNumberTextfieldFocusGained(evt);
+                assignedIdentificationTextfieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                assignedIDNumberTextfieldFocusLost(evt);
+                assignedIdentificationTextfieldFocusLost(evt);
             }
         });
-        clientIdentitySetupPanel.add(assignedIDNumberTextfield);
-        assignedIDNumberTextfield.setBounds(426, 159, 343, 30);
+        clientIdentitySetupPanel.add(assignedIdentificationTextfield);
+        assignedIdentificationTextfield.setBounds(426, 159, 343, 30);
 
         clientIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         clientIPAddressLabel.setForeground(new java.awt.Color(47, 46, 65));
@@ -267,13 +267,13 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         InterfaceManager.buttonHover(authenticateButton, false, "medium");
     }//GEN-LAST:event_authenticateButtonMouseExited
 
-    private void assignedIDNumberTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIDNumberTextfieldFocusGained
-        InterfaceManager.toggleTextFieldFocus(assignedIDNumberTextfield, true);
-    }//GEN-LAST:event_assignedIDNumberTextfieldFocusGained
+    private void assignedIdentificationTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIdentificationTextfieldFocusGained
+        InterfaceManager.toggleTextFieldFocus(assignedIdentificationTextfield, true);
+    }//GEN-LAST:event_assignedIdentificationTextfieldFocusGained
 
-    private void assignedIDNumberTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIDNumberTextfieldFocusLost
-        InterfaceManager.toggleTextFieldFocus(assignedIDNumberTextfield, false);
-    }//GEN-LAST:event_assignedIDNumberTextfieldFocusLost
+    private void assignedIdentificationTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_assignedIdentificationTextfieldFocusLost
+        InterfaceManager.toggleTextFieldFocus(assignedIdentificationTextfield, false);
+    }//GEN-LAST:event_assignedIdentificationTextfieldFocusLost
 
     private void clientIPAddressTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clientIPAddressTextFieldFocusGained
         InterfaceManager.toggleTextFieldFocus(clientIPAddressTextField, true);
@@ -292,7 +292,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     }//GEN-LAST:event_clientPortTextFieldFocusLost
 
     private void clientIdentitySetupPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientIdentitySetupPanelMouseClicked
-        InterfaceManager.toggleTextFieldFocus(assignedIDNumberTextfield, false);
+        InterfaceManager.toggleTextFieldFocus(assignedIdentificationTextfield, false);
         InterfaceManager.toggleTextFieldFocus(clientIPAddressTextField, false);
         InterfaceManager.toggleTextFieldFocus(clientPortTextField, false);
     }//GEN-LAST:event_clientIdentitySetupPanelMouseClicked
@@ -310,16 +310,18 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
     }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
 
     private void confirmIdentity() {
-        InterfaceManager.changeWindow(
-            this,
-            new ClientMessaging(
-                this.serverIPAddress,
-                this.serverPort,
-                assignedIDNumberTextfield.getText(),
-                clientIPAddressTextField.getText(),
-                clientPortTextField.getText()
-            )
-        );
+        if(InterfaceManager.validateIPAddress(clientIPAddressTextField.getText()) && InterfaceManager.validatePort(clientPortTextField.getText()) && InterfaceManager.validateIdentifier(assignedIdentificationTextfield.getText())) {
+            InterfaceManager.changeWindow(
+                this,
+                new ClientMessaging(
+                    this.serverIPAddress,
+                    this.serverPort,
+                    assignedIdentificationTextfield.getText(),
+                    clientIPAddressTextField.getText(),
+                    clientPortTextField.getText()
+                )
+            );
+        }
     }
     /**
      * @param args the command line arguments
@@ -358,7 +360,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel assignedIDNumberLabel;
-    private javax.swing.JTextField assignedIDNumberTextfield;
+    private javax.swing.JTextField assignedIdentificationTextfield;
     private javax.swing.JButton authenticateButton;
     private javax.swing.JLabel clientIPAddressLabel;
     private javax.swing.JTextField clientIPAddressTextField;
