@@ -39,14 +39,13 @@ public class ClientServerConnection extends javax.swing.JFrame {
         userMessagesIconLabel = new javax.swing.JLabel();
         connectToServerButton = new javax.swing.JButton();
         serverPortLabel = new javax.swing.JLabel();
-        serverIPAddressTextField = new JRoundedTextField();
-        serverPortTextField = new JRoundedTextField();
+        serverIPAddressTextField = new work.universitycourse.comp1549.Components.JRoundedTextField();
+        serverPortTextField = new work.universitycourse.comp1549.Components.JRoundedTextField();
         footerLicensesTextLabel = new javax.swing.JLabel();
         footerTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Client/Bundle"); // NOI18N
-        setTitle(bundle.getString("ClientServerConnection.title")); // NOI18N
+        setTitle("DiscussionNet");
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
         setName("DiscussionNet"); // NOI18N
@@ -72,20 +71,20 @@ public class ClientServerConnection extends javax.swing.JFrame {
 
         discussionNetServerConnectionLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         discussionNetServerConnectionLabel1.setForeground(new java.awt.Color(0, 36, 109));
-        discussionNetServerConnectionLabel1.setText(bundle.getString("ClientServerConnection.discussionNetServerConnectionLabel1.text_1")); // NOI18N
+        discussionNetServerConnectionLabel1.setText("DiscussionNet");
         discussionNetServerConnectionLabel1.setName("discussionNetServerConnectionLabel1"); // NOI18N
         clientServerConnectionPanel.add(discussionNetServerConnectionLabel1);
         discussionNetServerConnectionLabel1.setBounds(363, 148, 175, 30);
 
         discussionNetServerConnectionLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        discussionNetServerConnectionLabel2.setText(bundle.getString("ClientServerConnection.discussionNetServerConnectionLabel2.text_1")); // NOI18N
+        discussionNetServerConnectionLabel2.setText("Server Connection");
         discussionNetServerConnectionLabel2.setName("discussionNetServerConnectionLabel2"); // NOI18N
         clientServerConnectionPanel.add(discussionNetServerConnectionLabel2);
         discussionNetServerConnectionLabel2.setBounds(544, 148, 224, 30);
 
         serverIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         serverIPAddressLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wireless.png"))); // NOI18N
-        serverIPAddressLabel.setText(bundle.getString("ClientServerConnection.serverIPAddressLabel.text_1")); // NOI18N
+        serverIPAddressLabel.setText("Server IP Address");
         serverIPAddressLabel.setName("serverIPAddressLabel"); // NOI18N
         clientServerConnectionPanel.add(serverIPAddressLabel);
         serverIPAddressLabel.setBounds(363, 196, 129, 17);
@@ -94,7 +93,6 @@ public class ClientServerConnection extends javax.swing.JFrame {
         userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_icon.png"))); // NOI18N
-        userMessagesIconLabel.setText(bundle.getString("ClientServerConnection.userMessagesIconLabel.text")); // NOI18N
         userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
         userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -116,7 +114,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
         connectToServerButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         connectToServerButton.setForeground(new java.awt.Color(255, 255, 255));
         connectToServerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/medium.png"))); // NOI18N
-        connectToServerButton.setText(bundle.getString("ClientServerConnection.connectToServerButton.text_1")); // NOI18N
+        connectToServerButton.setText("Connect to Server      ");
         connectToServerButton.setBorder(null);
         connectToServerButton.setBorderPainted(false);
         connectToServerButton.setContentAreaFilled(false);
@@ -141,7 +139,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
 
         serverPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         serverPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/port_icon.png"))); // NOI18N
-        serverPortLabel.setText(bundle.getString("ClientServerConnection.serverPortLabel.text_1")); // NOI18N
+        serverPortLabel.setText("Server Port");
         serverPortLabel.setName("serverPortLabel"); // NOI18N
         clientServerConnectionPanel.add(serverPortLabel);
         serverPortLabel.setBounds(363, 268, 88, 17);
@@ -182,7 +180,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerLicensesTextLabel.setText(bundle.getString("ClientServerConnection.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
         footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,7 +193,7 @@ public class ClientServerConnection extends javax.swing.JFrame {
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel.setText(bundle.getString("ClientServerConnection.footerTextLabel.text_1")); // NOI18N
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel.setName("footerTextLabel"); // NOI18N
         clientServerConnectionPanel.add(footerTextLabel);
         footerTextLabel.setBounds(285, 507, 189, 12);
@@ -210,8 +208,6 @@ public class ClientServerConnection extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(clientServerConnectionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        getAccessibleContext().setAccessibleName(bundle.getString("ClientServerConnection.AccessibleContext.accessibleName")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

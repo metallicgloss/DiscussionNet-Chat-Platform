@@ -54,8 +54,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Client/Bundle"); // NOI18N
-        setTitle(bundle.getString("ClientIdentitySetup.title")); // NOI18N
+        setTitle("DiscussionNet");
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
         setName("DiscussionNet"); // NOI18N
@@ -81,13 +80,13 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
 
         discussionNetIdentitySetupLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         discussionNetIdentitySetupLabel1.setForeground(new java.awt.Color(0, 36, 109));
-        discussionNetIdentitySetupLabel1.setText(bundle.getString("ClientIdentitySetup.discussionNetIdentitySetupLabel1.text_1")); // NOI18N
+        discussionNetIdentitySetupLabel1.setText("DiscussionNet");
         discussionNetIdentitySetupLabel1.setName("discussionNetIdentitySetupLabel1"); // NOI18N
         clientIdentitySetupPanel.add(discussionNetIdentitySetupLabel1);
         discussionNetIdentitySetupLabel1.setBounds(426, 83, 175, 30);
 
         discussionNetIdentitySetupLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        discussionNetIdentitySetupLabel2.setText(bundle.getString("ClientIdentitySetup.discussionNetIdentitySetupLabel2.text_1")); // NOI18N
+        discussionNetIdentitySetupLabel2.setText("Identity Setup");
         discussionNetIdentitySetupLabel2.setName("discussionNetIdentitySetupLabel2"); // NOI18N
         clientIdentitySetupPanel.add(discussionNetIdentitySetupLabel2);
         discussionNetIdentitySetupLabel2.setBounds(607, 83, 171, 30);
@@ -95,7 +94,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         assignedIDNumberLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         assignedIDNumberLabel.setForeground(new java.awt.Color(47, 46, 65));
         assignedIDNumberLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_id.png"))); // NOI18N
-        assignedIDNumberLabel.setText(bundle.getString("ClientIdentitySetup.assignedIDNumberLabel.text_1")); // NOI18N
+        assignedIDNumberLabel.setText("Assigned ID Number");
         assignedIDNumberLabel.setName("assignedIDNumberLabel"); // NOI18N
         clientIdentitySetupPanel.add(assignedIDNumberLabel);
         assignedIDNumberLabel.setBounds(426, 131, 153, 17);
@@ -123,7 +122,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         clientIPAddressLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         clientIPAddressLabel.setForeground(new java.awt.Color(47, 46, 65));
         clientIPAddressLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wireless.png"))); // NOI18N
-        clientIPAddressLabel.setText(bundle.getString("ClientIdentitySetup.clientIPAddressLabel.text_1")); // NOI18N
+        clientIPAddressLabel.setText("Client IP Address");
         clientIPAddressLabel.setName("clientIPAddressLabel"); // NOI18N
         clientIdentitySetupPanel.add(clientIPAddressLabel);
         clientIPAddressLabel.setBounds(426, 209, 127, 17);
@@ -149,7 +148,6 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_icon.png"))); // NOI18N
-        userMessagesIconLabel.setText(bundle.getString("ClientIdentitySetup.userMessagesIconLabel.text")); // NOI18N
         userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
         userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -170,7 +168,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         clientPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         clientPortLabel.setForeground(new java.awt.Color(47, 46, 65));
         clientPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/port_icon.png"))); // NOI18N
-        clientPortLabel.setText(bundle.getString("ClientIdentitySetup.clientPortLabel.text_1")); // NOI18N
+        clientPortLabel.setText("Client Port");
         clientPortLabel.setName("clientPortLabel"); // NOI18N
         clientIdentitySetupPanel.add(clientPortLabel);
         clientPortLabel.setBounds(426, 293, 86, 17);
@@ -196,7 +194,7 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
         authenticateButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         authenticateButton.setForeground(new java.awt.Color(255, 255, 255));
         authenticateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/medium.png"))); // NOI18N
-        authenticateButton.setText(bundle.getString("ClientIdentitySetup.authenticateButton.text_1")); // NOI18N
+        authenticateButton.setText("Authenticate     ");
         authenticateButton.setBorder(null);
         authenticateButton.setBorderPainted(false);
         authenticateButton.setContentAreaFilled(false);
@@ -221,14 +219,14 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel.setText(bundle.getString("ClientIdentitySetup.footerTextLabel.text_1")); // NOI18N
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel.setName("footerTextLabel"); // NOI18N
         clientIdentitySetupPanel.add(footerTextLabel);
         footerTextLabel.setBounds(285, 507, 189, 12);
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerLicensesTextLabel.setText(bundle.getString("ClientIdentitySetup.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
         footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -249,8 +247,6 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(clientIdentitySetupPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        getAccessibleContext().setAccessibleName(bundle.getString("ClientIdentitySetup.AccessibleContext.accessibleName")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -109,8 +109,7 @@ public class ServerOverview extends javax.swing.JFrame {
         footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Server/Bundle"); // NOI18N
-        setTitle(bundle.getString("ServerOverview.title")); // NOI18N
+        setTitle("DiscussionNet");
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
         setName("DiscussionNet"); // NOI18N
@@ -123,12 +122,12 @@ public class ServerOverview extends javax.swing.JFrame {
         InterfaceManager.detectExitRequest(topPanel);
 
         communicationLogsLabel1.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        communicationLogsLabel1.setText(bundle.getString("ServerOverview.communicationLogsLabel1.text_1")); // NOI18N
+        communicationLogsLabel1.setText("DiscussionNet Server");
         communicationLogsLabel1.setName("communicationLogsLabel1"); // NOI18N
 
         communicationLogsLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         communicationLogsLabel2.setForeground(new java.awt.Color(0, 36, 109));
-        communicationLogsLabel2.setText(bundle.getString("ServerOverview.communicationLogsLabel2.text_1")); // NOI18N
+        communicationLogsLabel2.setText("Logs");
         communicationLogsLabel2.setName("communicationLogsLabel2"); // NOI18N
 
         scrollingPane.setName("scrollingPane"); // NOI18N
@@ -172,9 +171,10 @@ public class ServerOverview extends javax.swing.JFrame {
         mainTable.getTableHeader().setBackground(Color.white);
         mainTable.getTableHeader().setForeground(Color.black);
         scrollingPane.setViewportView(mainTable);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Server/Bundle"); // NOI18N
         if (mainTable.getColumnModel().getColumnCount() > 0) {
             mainTable.getColumnModel().getColumn(0).setResizable(false);
-            mainTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ServerOverview.mainTable.columnModel.title0")); // NOI18N
+            mainTable.getColumnModel().getColumn(0).setHeaderValue("Source");
             mainTable.getColumnModel().getColumn(1).setResizable(false);
             mainTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ServerOverview.mainTable.columnModel.title3")); // NOI18N
             mainTable.getColumnModel().getColumn(2).setResizable(false);
@@ -216,32 +216,29 @@ public class ServerOverview extends javax.swing.JFrame {
         middlePanel.setName("middlePanel"); // NOI18N
 
         serverStatusTextLabel.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        serverStatusTextLabel.setText(bundle.getString("ServerOverview.serverStatusTextLabel.text_1")); // NOI18N
+        serverStatusTextLabel.setText("Server Status");
         serverStatusTextLabel.setName("serverStatusTextLabel"); // NOI18N
 
         statusLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
-        statusLabel.setText(bundle.getString("ServerOverview.statusLabel.text_1")); // NOI18N
+        statusLabel.setText("Status");
         statusLabel.setName("statusLabel"); // NOI18N
 
         ipAddressLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
-        ipAddressLabel.setText(bundle.getString("ServerOverview.ipAddressLabel.text_1")); // NOI18N
+        ipAddressLabel.setText("IP Address");
         ipAddressLabel.setName("ipAddressLabel"); // NOI18N
 
         portLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 13)); // NOI18N
-        portLabel.setText(bundle.getString("ServerOverview.portLabel.text_1")); // NOI18N
+        portLabel.setText("Port");
         portLabel.setName("portLabel"); // NOI18N
 
         statusValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
         statusValueLabel.setForeground(new java.awt.Color(46, 213, 116));
-        statusValueLabel.setText(bundle.getString("ServerOverview.statusValueLabel.text_1")); // NOI18N
         statusValueLabel.setName("statusValueLabel"); // NOI18N
 
         ipAddressValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
-        ipAddressValueLabel.setText(bundle.getString("ServerOverview.ipAddressValueLabel.text_1")); // NOI18N
         ipAddressValueLabel.setName("ipAddressValueLabel"); // NOI18N
 
         portValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 13)); // NOI18N
-        portValueLabel.setText(bundle.getString("ServerOverview.portValueLabel.text_1")); // NOI18N
         portValueLabel.setName("portValueLabel"); // NOI18N
 
         serverStatusImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graphics/broadcast_active.png"))); // NOI18N
@@ -299,12 +296,12 @@ public class ServerOverview extends javax.swing.JFrame {
 
         footerTextLabel2.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel2.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel2.setText(bundle.getString("ServerOverview.footerTextLabel2.text")); // NOI18N
+        footerTextLabel2.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel2.setName("footerTextLabel2"); // NOI18N
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerLicensesTextLabel.setText(bundle.getString("ServerOverview.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
         footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -350,8 +347,6 @@ public class ServerOverview extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        getAccessibleContext().setAccessibleName(bundle.getString("ServerOverview.AccessibleContext.accessibleName")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

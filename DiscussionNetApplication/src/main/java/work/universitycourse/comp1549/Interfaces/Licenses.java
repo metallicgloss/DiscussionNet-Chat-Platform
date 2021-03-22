@@ -35,8 +35,7 @@ public class Licenses extends javax.swing.JFrame {
         googleFontsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Bundle"); // NOI18N
-        setTitle(bundle.getString("Licenses.title")); // NOI18N
+        setTitle("DiscussionNet V1.0 ");
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
@@ -51,7 +50,7 @@ public class Licenses extends javax.swing.JFrame {
         InterfaceManager.detectExitRequest(licensesPanel);
 
         googleFontsTitleLabel.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
-        googleFontsTitleLabel.setText(bundle.getString("Licenses.googleFontsTitleLabel.text")); // NOI18N
+        googleFontsTitleLabel.setText("Google Fonts (Montserrat)");
         googleFontsTitleLabel.setName("googleFontsTitleLabel"); // NOI18N
 
         googleFontsLabel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
@@ -97,7 +96,7 @@ public class Licenses extends javax.swing.JFrame {
             .addComponent(licensesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getAccessibleContext().setAccessibleName(bundle.getString("Licenses.AccessibleContext.accessibleName")); // NOI18N
+        getAccessibleContext().setAccessibleName("DiscussionNet");
 
         pack();
         setLocationRelativeTo(null);

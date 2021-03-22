@@ -51,6 +51,9 @@ public class ServerChannel {
     private ClientConnection coordinatorClientConnection = null;
     private HashMap<String, ClientInfo> clientInfoListCached = new HashMap<String, ClientInfo>();
 
+    public ServerChannel() {
+    }
+    
     // #-----------------------------------------------------------------------#
     // #                  1 - Server Channel Message Handling                  #
     // #-----------------------------------------------------------------------#

@@ -36,17 +36,16 @@ public class ServerConfiguration extends javax.swing.JFrame {
         serverManagementConfigurationLabel2 = new javax.swing.JLabel();
         configuredIPAddresLabel = new javax.swing.JLabel();
         assignedNetworkPortLabel = new javax.swing.JLabel();
-        assignedNetworkPortTextfield = new JRoundedTextField();
+        assignedNetworkPortTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
         userMessagesIconLabel = new javax.swing.JLabel();
         provisionServerButton = new javax.swing.JButton();
         mainImage = new javax.swing.JLabel();
-        configuredIPAddressTextfield = new JRoundedTextField();
+        configuredIPAddressTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
         footerTextLabel1 = new javax.swing.JLabel();
         footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Server/Bundle"); // NOI18N
-        setTitle(bundle.getString("ServerConfiguration.title")); // NOI18N
+        setTitle("DiscussionNet");
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
@@ -68,27 +67,27 @@ public class ServerConfiguration extends javax.swing.JFrame {
 
         serverManagementConfigurationLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         serverManagementConfigurationLabel1.setForeground(new java.awt.Color(0, 36, 109));
-        serverManagementConfigurationLabel1.setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel1.text_1")); // NOI18N
+        serverManagementConfigurationLabel1.setText("Server");
         serverManagementConfigurationLabel1.setName("serverManagementConfigurationLabel1"); // NOI18N
         serverConfigurationPanel.add(serverManagementConfigurationLabel1);
         serverManagementConfigurationLabel1.setBounds(233, 238, 79, 30);
 
         serverManagementConfigurationLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        serverManagementConfigurationLabel2.setText(bundle.getString("ServerConfiguration.serverManagementConfigurationLabel2.text_1")); // NOI18N
+        serverManagementConfigurationLabel2.setText("Management Configuration");
         serverManagementConfigurationLabel2.setName("serverManagementConfigurationLabel2"); // NOI18N
         serverConfigurationPanel.add(serverManagementConfigurationLabel2);
         serverManagementConfigurationLabel2.setBounds(318, 238, 335, 30);
 
         configuredIPAddresLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         configuredIPAddresLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wireless.png"))); // NOI18N
-        configuredIPAddresLabel.setText(bundle.getString("ServerConfiguration.configuredIPAddresLabel.text_1")); // NOI18N
+        configuredIPAddresLabel.setText("Configured IP Address");
         configuredIPAddresLabel.setName("configuredIPAddresLabel"); // NOI18N
         serverConfigurationPanel.add(configuredIPAddresLabel);
         configuredIPAddresLabel.setBounds(140, 310, 162, 17);
 
         assignedNetworkPortLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         assignedNetworkPortLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/port_icon.png"))); // NOI18N
-        assignedNetworkPortLabel.setText(bundle.getString("ServerConfiguration.assignedNetworkPortLabel.text_1")); // NOI18N
+        assignedNetworkPortLabel.setText("Assigned Network Port");
         assignedNetworkPortLabel.setName("assignedNetworkPortLabel"); // NOI18N
         serverConfigurationPanel.add(assignedNetworkPortLabel);
         assignedNetworkPortLabel.setBounds(549, 310, 166, 17);
@@ -96,7 +95,6 @@ public class ServerConfiguration extends javax.swing.JFrame {
         assignedNetworkPortTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         assignedNetworkPortTextfield.setForeground(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        assignedNetworkPortTextfield.setText(bundle.getString("ServerConfiguration.assignedNetworkPortTextfield.text")); // NOI18N
         assignedNetworkPortTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         assignedNetworkPortTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
@@ -116,7 +114,6 @@ public class ServerConfiguration extends javax.swing.JFrame {
         userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_icon.png"))); // NOI18N
-        userMessagesIconLabel.setText(bundle.getString("ServerConfiguration.userMessagesIconLabel.text")); // NOI18N
         userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
         userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -141,7 +138,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
         provisionServerButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         provisionServerButton.setForeground(new java.awt.Color(255, 255, 255));
         provisionServerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/large.png"))); // NOI18N
-        provisionServerButton.setText(bundle.getString("ServerConfiguration.provisionServerButton.text_1")); // NOI18N
+        provisionServerButton.setText("Provision Server       ");
         provisionServerButton.setBorder(null);
         provisionServerButton.setBorderPainted(false);
         provisionServerButton.setContentAreaFilled(false);
@@ -173,7 +170,6 @@ public class ServerConfiguration extends javax.swing.JFrame {
         configuredIPAddressTextfield.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         configuredIPAddressTextfield.setForeground(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        configuredIPAddressTextfield.setText(bundle.getString("ServerConfiguration.configuredIPAddressTextfield.text")); // NOI18N
         configuredIPAddressTextfield.setCaretColor(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setDisabledTextColor(new java.awt.Color(152, 150, 162));
         configuredIPAddressTextfield.setMargin(new java.awt.Insets(0, 5, 0, 5));
@@ -191,14 +187,14 @@ public class ServerConfiguration extends javax.swing.JFrame {
 
         footerTextLabel1.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel1.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel1.setText(bundle.getString("ServerConfiguration.footerTextLabel1.text")); // NOI18N
+        footerTextLabel1.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel1.setName("footerTextLabel1"); // NOI18N
         serverConfigurationPanel.add(footerTextLabel1);
         footerTextLabel1.setBounds(292, 507, 189, 12);
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerLicensesTextLabel.setText(bundle.getString("ServerConfiguration.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
         footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,8 +216,7 @@ public class ServerConfiguration extends javax.swing.JFrame {
             .addComponent(serverConfigurationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getAccessibleContext().setAccessibleName(bundle.getString("ServerConfiguration.AccessibleContext.accessibleName")); // NOI18N
-        getAccessibleContext().setAccessibleDescription(bundle.getString("ServerConfiguration.AccessibleContext.accessibleDescription")); // NOI18N
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

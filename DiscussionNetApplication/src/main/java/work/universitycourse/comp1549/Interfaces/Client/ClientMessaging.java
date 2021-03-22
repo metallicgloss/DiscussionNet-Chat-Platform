@@ -118,8 +118,7 @@ public class ClientMessaging extends javax.swing.JFrame {
         jLabel25.setName("jLabel25"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Client/Bundle"); // NOI18N
-        setTitle(bundle.getString("ClientMessaging.title")); // NOI18N
+        setTitle("DiscussionNet");
         setBackground(new java.awt.Color(242, 244, 250));
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(1090, 708));
@@ -133,7 +132,7 @@ public class ClientMessaging extends javax.swing.JFrame {
 
         discussionNetLabel.setFont(new java.awt.Font("Montserrat SemiBold", 0, 16)); // NOI18N
         discussionNetLabel.setForeground(new java.awt.Color(0, 36, 109));
-        discussionNetLabel.setText(bundle.getString("ClientMessaging.discussionNetLabel.text_1")); // NOI18N
+        discussionNetLabel.setText("DiscussionNet");
         discussionNetLabel.setName("discussionNetLabel"); // NOI18N
 
         javax.swing.GroupLayout headerNamePanelLayout = new javax.swing.GroupLayout(headerNamePanel);
@@ -155,27 +154,27 @@ public class ClientMessaging extends javax.swing.JFrame {
 
         sidePanel.setBackground(new java.awt.Color(0, 36, 109));
         sidePanel.setForeground(new java.awt.Color(0, 36, 109));
-        sidePanel.setToolTipText(bundle.getString("ClientMessaging.sidePanel.toolTipText_1")); // NOI18N
+        sidePanel.setToolTipText("");
         sidePanel.setName("sidePanel"); // NOI18N
         sidePanel.setPreferredSize(new java.awt.Dimension(154, 60));
 
         clientFeaturesLabel.setBackground(new java.awt.Color(255, 255, 255));
         clientFeaturesLabel.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         clientFeaturesLabel.setForeground(new java.awt.Color(255, 255, 255));
-        clientFeaturesLabel.setText(bundle.getString("ClientMessaging.clientFeaturesLabel.text_1")); // NOI18N
+        clientFeaturesLabel.setText("CLIENT FEATURES");
         clientFeaturesLabel.setName("clientFeaturesLabel"); // NOI18N
 
         userMessagingLabel.setFont(new java.awt.Font("Montserrat", 0, 11)); // NOI18N
         userMessagingLabel.setForeground(new java.awt.Color(255, 255, 255));
         userMessagingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mail.png"))); // NOI18N
-        userMessagingLabel.setText(bundle.getString("ClientMessaging.userMessagingLabel.text_1")); // NOI18N
+        userMessagingLabel.setText("User Messaging");
         userMessagingLabel.setName("userMessagingLabel"); // NOI18N
 
         exitApplicationLabel.setBackground(new java.awt.Color(255, 255, 255));
         exitApplicationLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
         exitApplicationLabel.setForeground(new java.awt.Color(255, 255, 255));
         exitApplicationLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exit.png"))); // NOI18N
-        exitApplicationLabel.setText(bundle.getString("ClientMessaging.exitApplicationLabel.text_1")); // NOI18N
+        exitApplicationLabel.setText("Exit Application");
         exitApplicationLabel.setName("exitApplicationLabel"); // NOI18N
         exitApplicationLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,12 +214,12 @@ public class ClientMessaging extends javax.swing.JFrame {
         clientDetailsIcon.setName("clientDetailsIcon"); // NOI18N
 
         clientDetailsLabel1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        clientDetailsLabel1.setText(bundle.getString("ClientMessaging.clientDetailsLabel1.text_1")); // NOI18N
+        clientDetailsLabel1.setText("Client");
         clientDetailsLabel1.setName("clientDetailsLabel1"); // NOI18N
 
         clientDetailsLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
         clientDetailsLabel2.setForeground(new java.awt.Color(0, 36, 109));
-        clientDetailsLabel2.setText(bundle.getString("ClientMessaging.clientDetailsLabel2.text_1")); // NOI18N
+        clientDetailsLabel2.setText("Details");
         clientDetailsLabel2.setName("clientDetailsLabel2"); // NOI18N
 
         javax.swing.GroupLayout clientDetailsPanel1Layout = new javax.swing.GroupLayout(clientDetailsPanel1);
@@ -258,12 +257,12 @@ public class ClientMessaging extends javax.swing.JFrame {
         server_details_icon.setName("server_details_icon"); // NOI18N
 
         serverDetailsLabel1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        serverDetailsLabel1.setText(bundle.getString("ClientMessaging.serverDetailsLabel1.text_1")); // NOI18N
+        serverDetailsLabel1.setText("Server");
         serverDetailsLabel1.setName("serverDetailsLabel1"); // NOI18N
 
         serverDetailsLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 18)); // NOI18N
         serverDetailsLabel2.setForeground(new java.awt.Color(0, 36, 109));
-        serverDetailsLabel2.setText(bundle.getString("ClientMessaging.serverDetailsLabel2.text_1")); // NOI18N
+        serverDetailsLabel2.setText("Details");
         serverDetailsLabel2.setName("serverDetailsLabel2"); // NOI18N
 
         javax.swing.GroupLayout serverDetailsPanel1Layout = new javax.swing.GroupLayout(serverDetailsPanel1);
@@ -300,12 +299,12 @@ public class ClientMessaging extends javax.swing.JFrame {
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel.setText(bundle.getString("ClientMessaging.footerTextLabel.text_1")); // NOI18N
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel.setName("footerTextLabel"); // NOI18N
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerLicensesTextLabel.setText(bundle.getString("ClientMessaging.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
         footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -344,12 +343,12 @@ public class ClientMessaging extends javax.swing.JFrame {
         userMessagingIconLabel.setName("userMessagingIconLabel"); // NOI18N
 
         userMessagingLabel1.setFont(new java.awt.Font("Montserrat", 0, 28)); // NOI18N
-        userMessagingLabel1.setText(bundle.getString("ClientMessaging.userMessagingLabel1.text_1")); // NOI18N
+        userMessagingLabel1.setText("User");
         userMessagingLabel1.setName("userMessagingLabel1"); // NOI18N
 
         userMessagingLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 28)); // NOI18N
         userMessagingLabel2.setForeground(new java.awt.Color(0, 36, 109));
-        userMessagingLabel2.setText(bundle.getString("ClientMessaging.userMessagingLabel2.text_1")); // NOI18N
+        userMessagingLabel2.setText("Messaging");
         userMessagingLabel2.setName("userMessagingLabel2"); // NOI18N
 
         javax.swing.GroupLayout userMessagingTopPanelLayout = new javax.swing.GroupLayout(userMessagingTopPanel);
@@ -399,7 +398,6 @@ public class ClientMessaging extends javax.swing.JFrame {
         userMessagesIconLabel.setForeground(new java.awt.Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userMessagesIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_circle_icon.png"))); // NOI18N
-        userMessagesIconLabel.setText(bundle.getString("ClientMessaging.userMessagesIconLabel.text")); // NOI18N
         userMessagesIconLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
         userMessagesIconLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -434,28 +432,25 @@ public class ClientMessaging extends javax.swing.JFrame {
         clientDetailsPanel2.setName("clientDetailsPanel2"); // NOI18N
 
         clientDetailsIPAddressLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        clientDetailsIPAddressLabel.setText(bundle.getString("ClientMessaging.clientDetailsIPAddressLabel.text_1")); // NOI18N
+        clientDetailsIPAddressLabel.setText("IP Address");
         clientDetailsIPAddressLabel.setName("clientDetailsIPAddressLabel"); // NOI18N
 
         clientDetailsIPAddressValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        clientDetailsIPAddressValueLabel.setText(bundle.getString("ClientMessaging.clientDetailsIPAddressValueLabel.text_1")); // NOI18N
         clientDetailsIPAddressValueLabel.setName("clientDetailsIPAddressValueLabel"); // NOI18N
 
         clientDetailsConnectionPortLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        clientDetailsConnectionPortLabel.setText(bundle.getString("ClientMessaging.clientDetailsConnectionPortLabel.text_1")); // NOI18N
+        clientDetailsConnectionPortLabel.setText("Connection Port");
         clientDetailsConnectionPortLabel.setName("clientDetailsConnectionPortLabel"); // NOI18N
 
         clientDetailsConnectionPortValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        clientDetailsConnectionPortValueLabel.setText(bundle.getString("ClientMessaging.clientDetailsConnectionPortValueLabel.text_1")); // NOI18N
         clientDetailsConnectionPortValueLabel.setName("clientDetailsConnectionPortValueLabel"); // NOI18N
 
         clientDetailsAssignedIDNumberLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        clientDetailsAssignedIDNumberLabel.setText(bundle.getString("ClientMessaging.clientDetailsAssignedIDNumberLabel.text_1")); // NOI18N
+        clientDetailsAssignedIDNumberLabel.setText("Assigned ID Number");
         clientDetailsAssignedIDNumberLabel.setName("clientDetailsAssignedIDNumberLabel"); // NOI18N
 
         clientDetailsAssignedIDNumberValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
         clientDetailsAssignedIDNumberValueLabel.setForeground(new java.awt.Color(112, 161, 255));
-        clientDetailsAssignedIDNumberValueLabel.setText(bundle.getString("ClientMessaging.clientDetailsAssignedIDNumberValueLabel.text_1")); // NOI18N
         clientDetailsAssignedIDNumberValueLabel.setName("clientDetailsAssignedIDNumberValueLabel"); // NOI18N
 
         javax.swing.GroupLayout clientDetailsPanel2Layout = new javax.swing.GroupLayout(clientDetailsPanel2);
@@ -498,28 +493,25 @@ public class ClientMessaging extends javax.swing.JFrame {
         serverDetailsPanel2.setPreferredSize(new java.awt.Dimension(322, 92));
 
         serverDetailsIPAddressLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        serverDetailsIPAddressLabel.setText(bundle.getString("ClientMessaging.serverDetailsIPAddressLabel.text_1")); // NOI18N
+        serverDetailsIPAddressLabel.setText("IP Address");
         serverDetailsIPAddressLabel.setName("serverDetailsIPAddressLabel"); // NOI18N
 
         serverDetailsIPAddressValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        serverDetailsIPAddressValueLabel.setText(bundle.getString("ClientMessaging.serverDetailsIPAddressValueLabel.text_1")); // NOI18N
         serverDetailsIPAddressValueLabel.setName("serverDetailsIPAddressValueLabel"); // NOI18N
 
         serverDetailsConnectionPortLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        serverDetailsConnectionPortLabel.setText(bundle.getString("ClientMessaging.serverDetailsConnectionPortLabel.text_1")); // NOI18N
+        serverDetailsConnectionPortLabel.setText("Connection Port");
         serverDetailsConnectionPortLabel.setName("serverDetailsConnectionPortLabel"); // NOI18N
 
         serverDetailsConnectionPortValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
-        serverDetailsConnectionPortValueLabel.setText(bundle.getString("ClientMessaging.serverDetailsConnectionPortValueLabel.text_1")); // NOI18N
         serverDetailsConnectionPortValueLabel.setName("serverDetailsConnectionPortValueLabel"); // NOI18N
 
         serverDetailsConnectionStatusLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        serverDetailsConnectionStatusLabel.setText(bundle.getString("ClientMessaging.serverDetailsConnectionStatusLabel.text_1")); // NOI18N
+        serverDetailsConnectionStatusLabel.setText("Connection Status");
         serverDetailsConnectionStatusLabel.setName("serverDetailsConnectionStatusLabel"); // NOI18N
 
         serverDetailsConnectionStatusValueLabel.setFont(new java.awt.Font("Montserrat Light", 0, 11)); // NOI18N
         serverDetailsConnectionStatusValueLabel.setForeground(new java.awt.Color(46, 213, 116));
-        serverDetailsConnectionStatusValueLabel.setText(bundle.getString("ClientMessaging.serverDetailsConnectionStatusValueLabel.text_1")); // NOI18N
         serverDetailsConnectionStatusValueLabel.setName("serverDetailsConnectionStatusValueLabel"); // NOI18N
 
         javax.swing.GroupLayout serverDetailsPanel2Layout = new javax.swing.GroupLayout(serverDetailsPanel2);
@@ -562,12 +554,12 @@ public class ClientMessaging extends javax.swing.JFrame {
 
         clientControlPanelLabel2.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         clientControlPanelLabel2.setForeground(new java.awt.Color(0, 36, 109));
-        clientControlPanelLabel2.setText(bundle.getString("ClientMessaging.clientControlPanelLabel2.text_1")); // NOI18N
+        clientControlPanelLabel2.setText("Control Panel");
         clientControlPanelLabel2.setName("clientControlPanelLabel2"); // NOI18N
 
         clientControlPanelLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
         clientControlPanelLabel1.setForeground(new java.awt.Color(0, 36, 109));
-        clientControlPanelLabel1.setText(bundle.getString("ClientMessaging.clientControlPanelLabel1.text_1")); // NOI18N
+        clientControlPanelLabel1.setText("Client");
         clientControlPanelLabel1.setName("clientControlPanelLabel1"); // NOI18N
 
         javax.swing.GroupLayout headerTitlePanelLayout = new javax.swing.GroupLayout(headerTitlePanel);
@@ -652,8 +644,6 @@ public class ClientMessaging extends javax.swing.JFrame {
                         .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)))
         );
-
-        getAccessibleContext().setAccessibleName(bundle.getString("ClientMessaging.AccessibleContext.accessibleName")); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

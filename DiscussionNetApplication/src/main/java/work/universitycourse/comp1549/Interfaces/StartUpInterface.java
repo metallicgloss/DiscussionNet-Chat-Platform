@@ -43,8 +43,7 @@ public class StartUpInterface extends javax.swing.JFrame {
         footerLicensesTextLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("work/universitycourse/comp1549/Interfaces/Bundle"); // NOI18N
-        setTitle(bundle.getString("StartUpInterface.title_1")); // NOI18N
+        setTitle("DiscussionNet V1.0 ");
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new java.awt.Dimension(854, 519));
@@ -61,35 +60,35 @@ public class StartUpInterface extends javax.swing.JFrame {
 
         existingNetworkLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         existingNetworkLabel.setForeground(new java.awt.Color(47, 46, 65));
-        existingNetworkLabel.setText(bundle.getString("StartUpInterface.existingNetworkLabel.text_1")); // NOI18N
+        existingNetworkLabel.setText("I want to connect to an existing network...");
         existingNetworkLabel.setName("existingNetworkLabel"); // NOI18N
         startUpInterfacePanel.add(existingNetworkLabel);
         existingNetworkLabel.setBounds(102, 350, 269, 17);
 
         createNetworkLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         createNetworkLabel.setForeground(new java.awt.Color(47, 46, 65));
-        createNetworkLabel.setText(bundle.getString("StartUpInterface.createNetworkLabel.text_1")); // NOI18N
+        createNetworkLabel.setText("I want to create a new network...");
         createNetworkLabel.setName("createNetworkLabel"); // NOI18N
         startUpInterfacePanel.add(createNetworkLabel);
         createNetworkLabel.setBounds(506, 350, 208, 17);
 
         titleLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
         titleLabel2.setForeground(new java.awt.Color(0, 36, 109));
-        titleLabel2.setText(bundle.getString("StartUpInterface.titleLabel2.text_1")); // NOI18N
+        titleLabel2.setText("DiscussionNet");
         titleLabel2.setName("titleLabel2"); // NOI18N
         startUpInterfacePanel.add(titleLabel2);
         titleLabel2.setBounds(348, 269, 175, 30);
 
         titleLabel3.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         titleLabel3.setForeground(new java.awt.Color(47, 46, 65));
-        titleLabel3.setText(bundle.getString("StartUpInterface.titleLabel3.text_1")); // NOI18N
+        titleLabel3.setText("Initial Setup");
         titleLabel3.setName("titleLabel3"); // NOI18N
         startUpInterfacePanel.add(titleLabel3);
         titleLabel3.setBounds(529, 269, 143, 30);
 
         titleLabel1.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         titleLabel1.setForeground(new java.awt.Color(47, 46, 65));
-        titleLabel1.setText(bundle.getString("StartUpInterface.titleLabel1.text_1")); // NOI18N
+        titleLabel1.setText("Welcome To");
         titleLabel1.setName("titleLabel1"); // NOI18N
         startUpInterfacePanel.add(titleLabel1);
         titleLabel1.setBounds(190, 269, 152, 30);
@@ -103,7 +102,7 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureServerButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         configureServerButton.setForeground(new java.awt.Color(255, 255, 255));
         configureServerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/medium.png"))); // NOI18N
-        configureServerButton.setText(bundle.getString("StartUpInterface.configureServerButton.text_1")); // NOI18N
+        configureServerButton.setText("Configure Server");
         configureServerButton.setBorder(null);
         configureServerButton.setBorderPainted(false);
         configureServerButton.setContentAreaFilled(false);
@@ -130,7 +129,7 @@ public class StartUpInterface extends javax.swing.JFrame {
         configureClientButton.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         configureClientButton.setForeground(new java.awt.Color(255, 255, 255));
         configureClientButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/medium.png"))); // NOI18N
-        configureClientButton.setText(bundle.getString("StartUpInterface.configureClientButton.text_1")); // NOI18N
+        configureClientButton.setText("Configure Client");
         configureClientButton.setBorder(null);
         configureClientButton.setBorderPainted(false);
         configureClientButton.setContentAreaFilled(false);
@@ -155,14 +154,14 @@ public class StartUpInterface extends javax.swing.JFrame {
 
         footerTextLabel.setFont(new java.awt.Font("Montserrat", 0, 9)); // NOI18N
         footerTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerTextLabel.setText(bundle.getString("StartUpInterface.footerTextLabel.text_1")); // NOI18N
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel.setName("footerTextLabel"); // NOI18N
         startUpInterfacePanel.add(footerTextLabel);
         footerTextLabel.setBounds(285, 507, 189, 12);
 
         footerLicensesTextLabel.setFont(new java.awt.Font("Montserrat", 2, 9)); // NOI18N
         footerLicensesTextLabel.setForeground(new java.awt.Color(47, 46, 65));
-        footerLicensesTextLabel.setText(bundle.getString("StartUpInterface.footerLicensesTextLabel.text")); // NOI18N
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel"); // NOI18N
         footerLicensesTextLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +186,7 @@ public class StartUpInterface extends javax.swing.JFrame {
             .addComponent(startUpInterfacePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getAccessibleContext().setAccessibleName(bundle.getString("StartUpInterface.AccessibleContext.accessibleName")); // NOI18N
+        getAccessibleContext().setAccessibleName("DiscussionNet");
 
         pack();
         setLocationRelativeTo(null);

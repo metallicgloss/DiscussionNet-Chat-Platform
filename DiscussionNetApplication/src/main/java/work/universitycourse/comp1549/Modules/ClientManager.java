@@ -83,12 +83,12 @@ public class ClientManager {
                 this.clientSocket = new Socket(serverIP, serverPort, inetAddress, clientPort);
 
                 // Define other variables
-                this.clientID = clientID;
-                this.clientInfo = new ClientInfo(clientID, clientIP, clientPort);
-                this.inputStream = new ObjectInputStream(this.clientSocket.getInputStream());
                 this.messagePane = messagePane;
                 this.messagePanel = messagePanel;
+                this.clientID = clientID;
+                this.clientInfo = new ClientInfo(clientID, clientIP, clientPort);
                 this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
+                this.inputStream = new ObjectInputStream(this.clientSocket.getInputStream());
 
                 // Start Threads
                 new Thread(new ServerListener()).start();
@@ -161,7 +161,6 @@ public class ClientManager {
 
         ClientInfo clientInfo = null;
 
-        // If list contains client ID.
         if (this.clientListLocal.containsKey(clientID)) {
             clientInfo = this.clientListLocal.get(clientID);
         }
@@ -270,17 +269,19 @@ public class ClientManager {
     // #                     5 - Instructions Queue Class                      #
     // #-----------------------------------------------------------------------#
 
+    /**
+    * IMPORTANT NOTE
+    * 
+    * The instruction manager is used to allow the other nested classes to communicate with each other. The instruction manager implements a queue style
+    * array to ensure that instructions are executed using the FIFO principle. One class will add instructions to the queue, the other will process them.
+    * 
+    */
     private class InstructionsQueue {
 
-        /**
-        * IMPORTANT NOTE
-        * 
-        * The instruction manager is used to allow the other nested classes to communicate with each other. The instruction manager implements a queue style
-        * array to ensure that instructions are executed using the FIFO principle. One class will add instructions to the queue, the other will process them.
-        * 
-        */
-
         private Deque<ClientInstruction> instructionsQueue = new ArrayDeque<ClientInstruction>();
+
+        public InstructionsQueue() {
+        }
 
         // #-------------------------------------------------------------------#
         // #                       5.1 - Queue Processing                      #
@@ -301,7 +302,6 @@ public class ClientManager {
     // #-----------------------------------------------------------------------#
     // #                       6 - Server Listener Class                       #
     // #-----------------------------------------------------------------------#
-
     /**
      * IMPORTANT NOTE
      * 
@@ -309,6 +309,9 @@ public class ClientManager {
      */
 
     private class ServerListener implements Runnable {
+
+        public ServerListener() {
+        }
 
         // #-------------------------------------------------------------------#
         // #                       6.1 - Runnable Method                       #
@@ -325,6 +328,7 @@ public class ClientManager {
 
                     // Handle Requests
                     switch (serverResponse.messageType) {
+
                     case Message.INSTRUCTION_TYPE:
 
                         try {
@@ -345,8 +349,9 @@ public class ClientManager {
 
                     case Message.MESSAGE_TYPE:
 
-                        // If message has been received from the group chat channel.
                         if (serverResponse.isServerChatMessage) {
+
+                            // If message has been received from the group chat channel.
 
                             // Convert child message string into actual message object
                             Message serverChatMessage = Message.fromString(serverResponse.message);
@@ -389,11 +394,11 @@ public class ClientManager {
 
                 // Display disconnection message if occurred unexpectedly
                 if (ClientManager.this.isClientRunning) {
-                    InterfaceManager.displayWarning(
-                            "Disconnected From Server!");
+                    InterfaceManager.displayWarning("Disconnected From Server!");
                 }
 
                 ClientManager.this.endClientConnection();
+                // InterfaceManager.displayError(e, "Client Related Error.");
 
             }
 
@@ -419,6 +424,9 @@ public class ClientManager {
     // #-----------------------------------------------------------------------#
 
     private class InstructionHandler implements Runnable {
+
+        public InstructionHandler() {
+        }
 
         // #-------------------------------------------------------------------#
         // #                       7.1 - Runnable Method                       #
@@ -467,6 +475,8 @@ public class ClientManager {
                             // Accept / Reject connection a new client's connection request
                             this.processInstructionReviewJoinRequest(instruction.data);
 
+                        } else {
+                            // TODO How to handle a review request being sent to a non-coordinator
                         }
 
                         break;
@@ -521,7 +531,8 @@ public class ClientManager {
                         break;
 
                     default:
-                        InterfaceManager.displayWarning("An unexpected instruction has been detected. Please contact your system administrator.");
+                        InterfaceManager.displayWarning(
+                                "An unexpected instruction has been detected. Please contact your system administrator.");
                         break;
 
                     }
@@ -749,7 +760,8 @@ public class ClientManager {
 
         }
 
-        // Tells other members to add a client's infomation to their local client info list
+        // Tells other members to add a client's infomation to their local client info
+        // list
         private void tellOthersToAddClientsInfo(ClientInfo clientInfo) {
 
             String addNewClientToLocalListString = ClientInstruction.createAddClientInfoToLocalListInstructionString(
