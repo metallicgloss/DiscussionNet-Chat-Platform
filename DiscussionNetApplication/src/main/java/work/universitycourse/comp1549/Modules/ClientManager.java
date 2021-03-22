@@ -591,7 +591,7 @@ public class ClientManager {
             if (!ClientManager.this.clientListLocal.containsKey(ClientManager.this.clientID)) {
                 ClientManager.this.addClientInfoToLocalList(ClientManager.this.clientID, ClientManager.this.clientInfo);
             }
-            showMessageDialog(null, "You are now a coordinator!");
+            showMessageDialog(null, "You are now the group coordinator!");
 
             // TODO Tell others you are the coordinator
 
