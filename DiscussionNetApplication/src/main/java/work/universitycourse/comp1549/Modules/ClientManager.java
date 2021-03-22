@@ -260,9 +260,21 @@ public class ClientManager {
     // -               Connection Handling               -
     // ===================================================
 
+    // Server Connection Terminated
+    private void endClientConnection() {
+
+        this.isClientRunning = false;
+        this.closeSocket();
+        while (messagePane.getTabCount() > 0) {
+            messagePane.remove(0);
+        }
+        InterfaceManager.changeWindow(messagePanel, new ClientServerConnection());
+
+    }
+
     // Closes the socket connection used by the client
     private void closeSocket() {
-        
+    
         try {
             this.clientSocket.close();
         } catch (IOException e) {}
@@ -400,7 +412,12 @@ public class ClientManager {
                 messageObj = (Message) ClientManager.this.inputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
 
-                this.endClient();
+                // Display disconnection message if occurred unexpectedly
+                if (ClientManager.this.isClientRunning) {
+                    showMessageDialog(null, "Disconnected From Server!");
+                }
+
+                ClientManager.this.endClientConnection();
                 // InterfaceManager.displayError(e, "Client Related Error.");
 
             }
@@ -420,18 +437,6 @@ public class ClientManager {
 
         }
 
-        // Server Connection Terminated
-        private void endClient() {
-
-            ClientManager.this.isClientRunning = false;
-            ClientManager.this.closeSocket();
-            showMessageDialog(null, "Disconnected From Server!");
-            while (messagePane.getTabCount() > 0) {
-                messagePane.remove(0);
-            }
-            InterfaceManager.changeWindow(messagePanel, new ClientServerConnection());
-
-        }
     }
 
     // ===================================================
@@ -538,6 +543,12 @@ public class ClientManager {
                             // Send message to everyone 
                             this.processInstructionSendServerChatMessage(instruction.data);
                             break;
+                        
+                        case ClientInstruction.CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE:
+
+                            // Process being rejected by the coordinator
+                            this.processInstructionConnectionRejectedByCoordinator(instruction.data);
+                            break;
 
                         default:
                             // TODO How to handle unexpected instructions. Technically should not be
@@ -613,7 +624,8 @@ public class ClientManager {
 
                 // Reject Connection as client ID already in use
                 // Tell client why they are being rejected
-                this.sendMessage(tempID, "Connection Rejected! Client ID already in use!", false);
+                String connectionRejectedInstructionString = ClientInstruction.createConnectionRejectedByCoordinatorInstructionString("Connection Rejected! Client ID already in use!");
+                this.sendInstruction(tempID, connectionRejectedInstructionString);
 
                 // Tell server to reject connection
                 String rejectJoinRequestString = ClientInstruction.createRejectJoinRequestInstructionString(tempID);
@@ -757,6 +769,14 @@ public class ClientManager {
                 }
 
             }
+
+        }
+
+        // Process the instruction "Connection Rejected By Coordinator"
+        private void processInstructionConnectionRejectedByCoordinator(String message) {
+
+            ClientManager.this.endClientConnection();
+            showMessageDialog(null, message);
 
         }
 
