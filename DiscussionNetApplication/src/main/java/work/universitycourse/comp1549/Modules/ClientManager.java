@@ -32,33 +32,36 @@ import work.universitycourse.comp1549.Interfaces.Client.ClientServerConnection;
  * @author William Phillips
  *
  * 
- *         =================================================== - Contents -
- *         ===================================================
- * 
- *         Constructor
- * 
- *         UI Functions
- * 
- *         Local Client Info List Handler
- * 
- *         Instructions Queue Class
- * 
- *         > Queue Processing
- * 
- *         Server Listener Class
- * 
- *         > Runnable Method
- * 
- *         > Messaging and Thread Functions
- * 
- *         Instruction Handler Class
- * 
- *         > Runnable Method
- * 
- *         > Specific Instruction Processing
- * 
- *         > Messaging and Thread Functions
- * 
+* =================================================== 
+* -                     Contents                    -
+* ===================================================
+* 
+*                     Constructor
+*           
+*                     UI Functions
+*           
+*             Local Client Info List Handler
+*
+*                 Connection Handling
+*           
+*               Instructions Queue Class
+*           
+*                          > Queue Processing
+*           
+*                 Server Listener Class
+*           
+*                           > Runnable Method
+*           
+*                           > Messaging and Thread Functions
+*           
+*                Instruction Handler Class
+*           
+*                            > Runnable Method
+*           
+*                            > Specific Instruction Processing
+*           
+*                            > Messaging and Thread Functions
+* 
  */
 
 public class ClientManager {
@@ -254,7 +257,20 @@ public class ClientManager {
     }
 
     // ===================================================
-    // - Instructions Queue Class -
+    // -               Connection Handling               -
+    // ===================================================
+
+    // Closes the socket connection used by the client
+    private void closeSocket() {
+        
+        try {
+            this.clientSocket.close();
+        } catch (IOException e) {}
+
+    }
+
+    // ===================================================
+    // -            Instructions Queue Class             -
     // ===================================================
 
     /**
@@ -268,11 +284,10 @@ public class ClientManager {
 
         private Deque<ClientInstruction> instructionsQueue = new ArrayDeque<ClientInstruction>();
 
-        public InstructionsQueue() {
-        }
+        public InstructionsQueue() {}
 
         // ===================================================
-        // - Queue Processing -
+        // -                Queue Processing                 -
         // ===================================================
 
         // Inserts an instruction to the list of instructions (Inserted using FIFO)
@@ -288,7 +303,7 @@ public class ClientManager {
     }
 
     // ===================================================
-    // - Server Listener Class -
+    // -               Server Listener Class             -
     // ===================================================
 
     /**
@@ -299,11 +314,10 @@ public class ClientManager {
 
     private class ServerListener implements Runnable {
 
-        public ServerListener() {
-        }
+        public ServerListener() {}
 
         // ===================================================
-        // - Runnable Method -
+        // -                Runnable Method                  -
         // ===================================================
 
         @Override
@@ -375,7 +389,7 @@ public class ClientManager {
         }
 
         // ===================================================
-        // - Messaging and Thread Functions -
+        // -          Messaging and Thread Functions         -
         // ===================================================
 
         // Returns the next message sent by the server
@@ -408,18 +422,20 @@ public class ClientManager {
 
         // Server Connection Terminated
         private void endClient() {
+
             ClientManager.this.isClientRunning = false;
+            ClientManager.this.closeSocket();
             showMessageDialog(null, "Disconnected From Server!");
             while (messagePane.getTabCount() > 0) {
                 messagePane.remove(0);
             }
             InterfaceManager.changeWindow(messagePanel, new ClientServerConnection());
-        }
 
+        }
     }
 
     // ===================================================
-    // - Instruction Handler Class -
+    // -             Instruction Handler Class           -
     // ===================================================
 
     private class InstructionHandler implements Runnable {
@@ -428,7 +444,7 @@ public class ClientManager {
         }
 
         // ===================================================
-        // - Runnable Method -
+        // -                Runnable Method                  -
         // ===================================================
 
         @Override
@@ -540,7 +556,7 @@ public class ClientManager {
         }
 
         // ===================================================
-        // - Specific Instruction Processing -
+        // -          Specific Instruction Processing        -
         // ===================================================
 
         // Processes the instruction 'Send Message Obj of Type Instruction'
@@ -765,7 +781,7 @@ public class ClientManager {
         }
 
         // ===================================================
-        // - Messaging and Thread Functions -
+        // -          Messaging and Thread Functions         -
         // ===================================================
 
         // Tells the thread to sleep a certain amount of time
