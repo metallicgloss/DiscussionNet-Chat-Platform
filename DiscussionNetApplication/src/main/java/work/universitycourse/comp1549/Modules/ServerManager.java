@@ -31,6 +31,8 @@ import javax.swing.JTable;
  * ===================================================
  * 
  *              Constructor & Server Setup
+ * 
+ *                      UI Functions
  *              
  *                  Request Handler Class
  *                  
@@ -147,6 +149,38 @@ public class ServerManager {
         }
 
     // ===================================================
+    // -                    UI Functions                 -
+    // ===================================================
+
+        // Used to log a message on the server
+        private void displayServerLogMessage(Message messageObj) {
+
+            String messageType = (messageObj.messageType == Message.INSTRUCTION_TYPE) ? "Instruction" : "Message";
+            
+            // If message type is an instruction, set the output to be the message type in text
+            if (messageType.equals("Instruction")) {
+                
+                int instructionCode = Integer.parseInt(messageObj.message.split("<SEPERATOR>")[0]);
+                messageObj.message = ClientInstruction.INSTRUCTIONS_TEXT[instructionCode];
+
+            } else if (messageType.equals("Message") && messageObj.isServerChatMessage) {
+                
+                // Reformat output of message (needed to make the logger display a cleaner message)
+                Message groupChatMessage = Message.fromString(messageObj.message);
+                messageObj.message = "Group Chat Message: " + groupChatMessage.message + " FROM: " + groupChatMessage.sender;
+
+            }
+
+            InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, messageType, messageObj.message);
+
+        }
+
+        // Used when the server is logging a command from itself
+        private void displayServerLogMessage(String message) {
+            InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", message);
+        }
+
+    // ===================================================
     // -               Request Handler Class            -
     // ===================================================
 
@@ -200,12 +234,9 @@ public class ServerManager {
 
                         // Client is in list, send message
                         ServerManager.this.serverChannel.sendMessageToClient(messageObj);
-
-                        if (messageObj.messageType == Message.INSTRUCTION_TYPE) {
-                            InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Instruction", messageObj.message);
-                        } else {
-                            InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver, "Message", messageObj.message);
-                        }
+                        
+                        // Log message on server
+                        ServerManager.this.displayServerLogMessage(messageObj);
 
                     } else if (messageObj.isServerChatMessage) {
 
@@ -319,7 +350,7 @@ public class ServerManager {
 
                     // Remove Client
                     ServerManager.this.serverChannel.removeClientConnection(clientID);
-                    InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", clientID + " has left the server.");
+                    ServerManager.this.displayServerLogMessage(clientID + " has left the server.");
 
                 }
 
@@ -389,7 +420,7 @@ public class ServerManager {
 
                     // Set coordinator to null
                     ServerManager.this.serverChannel.setCoordinatorConnectionNull();
-                    InterfaceManager.registerServerLog(ServerManager.this.serverLogger, "-", "-", "COMMAND", "FIND NEW COORDINATOR");
+                    ServerManager.this.displayServerLogMessage("FIND NEW COORDINATOR");
 
                     // Find new coordinator
                     this.findNewCoordinator(coordinatorID);

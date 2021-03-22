@@ -36,7 +36,7 @@ public class ClientInstruction {
     // #-----------------------------------------------------------------------#
     // 
     // Follow these steps when adding a new instruction:
-    // 1. Never sent and instruction type to 0
+    // 1. Never set instruction type value to 0
     // 2. Update the value of 'HIGHEST_INSTRUCTION_CODE' to be the value of the highest instruction code
     // 3. Update method 'checkDataFormatValid' to validate instruction's data format (look at section: Instruction Validation Functions)
     // 4. Add function to handle instructions (Look at section: Instruction Processing Functions)
@@ -60,8 +60,14 @@ public class ClientInstruction {
     public static final int SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 14;
     public static final int UPDATE_CLIENT_INFOS_SERVER_CACHE_INSTRUCTION_TYPE = 8;
 
-    public int instructionType;
+    public static final String[] INSTRUCTIONS_TEXT = { "", "SEND MESSAGE", "BECOME COORDINATOR", "REVOKE COORDINATOR",
+            "ESTABLISH CONNECTION WITH SERVER", "REVIEW JOIN REQUEST", "REJECT JOIN REQUEST",
+            "ACCEPT CLIENT CONNECTION", "UPDATE CLIENT INFO SERVER CACHE", "ADD CLIENT INFO TO LOCAL LIST",
+            "NOTIFY CLIENT HAS DISCONNECTED", "CLIENT DISCONNECTED", "GET UPDATED CLIENT INFO LIST", "CLIENT ACCEPTED",
+            "SET LOCAL CLIENT INFO LIST", "SEND SERVER CHAT MESSAGE", "CONNECTION REJECTED BY COORDINATOR" };
+
     public String data;
+    public int instructionType;
 
     // Define seperator string value for easy change.
     private static String seperatorString = "::";
@@ -110,8 +116,8 @@ public class ClientInstruction {
     // Creates a custom 'Send Message' instruction string
     public static String createSendMessageInstructionString(String receiver, String message,
             boolean isServerChatMessage) {
-        return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + seperatorString
-                + message + seperatorString + isServerChatMessage;
+        return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver
+                + seperatorString + message + seperatorString + isServerChatMessage;
     }
 
     // Create a custom 'Become Coordinator' instruction string
@@ -134,8 +140,9 @@ public class ClientInstruction {
     // Create a custom 'Review Join Request' instruction string
     public static String createReviewJoinRequestInstructionString(String tempID, String clientID, String clientIP,
             int clientPort) {
-        return Integer.toString(ClientInstruction.REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE) + "<SEPERATOR>" + tempID + seperatorString
-                + clientID + seperatorString + clientIP + seperatorString + Integer.toString(clientPort);
+        return Integer.toString(ClientInstruction.REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE) + "<SEPERATOR>" + tempID
+                + seperatorString + clientID + seperatorString + clientIP + seperatorString
+                + Integer.toString(clientPort);
     }
 
     // Create a custom 'Reject Join Request' instruction string
