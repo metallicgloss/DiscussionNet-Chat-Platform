@@ -276,7 +276,9 @@ public class ServerConfiguration extends javax.swing.JFrame {
     }//GEN-LAST:event_userMessagesIconLabelMouseExited
     
     private void provisionServer() {
-        InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));
+        if(InterfaceManager.validateIPAddress(configuredIPAddressTextfield.getText()) && InterfaceManager.validatePort(assignedNetworkPortTextfield.getText())) {
+            InterfaceManager.changeWindow(this, new ServerOverview(configuredIPAddressTextfield.getText(), assignedNetworkPortTextfield.getText()));
+        }
     }
 
     /**

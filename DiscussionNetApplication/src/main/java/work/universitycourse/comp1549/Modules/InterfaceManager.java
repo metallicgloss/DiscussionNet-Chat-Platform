@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -34,6 +35,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Interfaces.Licenses;
+import org.apache.commons.validator.routines.InetAddressValidator;
+import org.apache.commons.validator.routines.IntegerValidator;
+import org.apache.commons.validator.routines.RegexValidator;
 
 /**
  *
@@ -94,7 +98,20 @@ public class InterfaceManager {
         PrintWriter pw = new PrintWriter(sw);
         errorString.printStackTrace(pw);
         String stackTrace = sw.toString();
-        showMessageDialog(null, stackTrace + " " + errorMessage);
+        showMessageDialog(null, stackTrace + " " + errorMessage, "System Execution Error", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    public static void displayWarning(String warningMessage) {
+        showMessageDialog(null, warningMessage, "Validation Error", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    public static void executeConnectionFault() {
+        // Display formatted message informing them of the network configuration error.
+        showMessageDialog(null, "<html><h2><b>Sorry!</b></h2><h3>The connection could not be initialised. Program execution haulted to allow for diagnostics to be performed.</h3>Unfortunately, the software has failed to bind to the specified IP and port combination.<br>Please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.", "Connection Intialisation Error", JOptionPane.WARNING_MESSAGE);
+        
+        // Due to the complexity of the error, instead of re-routing user back to startup, close program to allow for sysadmin intervention if required to identify available ip/port.
+        // High chance that sysadmin intervention will be required.
+        System.exit(0);
     }
     
     public static void toggleTextFieldFocus(JTextField TextField, Boolean toggleStatus) {
@@ -198,5 +215,50 @@ public class InterfaceManager {
           if (tabTitle.equals(searchString)) return i;
         }
         return -1;
+    }
+    
+    public static boolean validateIPAddress(String internetProtocolAddress) {
+        InetAddressValidator ipValidator = InetAddressValidator.getInstance();
+ 
+        // Validate an IPv4 address - validation for null handled.
+        if (! ipValidator.isValidInet4Address(internetProtocolAddress)) {
+            displayWarning("Please ensure the input entered is a valid IPv4 address.");
+            return false;
+        }
+            
+        return true;
+    }
+    
+    public static boolean validatePort(String networkPort) {
+        RegexValidator typeValidator = new RegexValidator("^[0-9]*$");
+        IntegerValidator rangeValidator = IntegerValidator.getInstance();
+ 
+        // Validate the port entered isn't empty and is numeric.
+        if (!typeValidator.isValid(networkPort) || networkPort.isEmpty()) {
+            displayWarning("Please ensure the port specified is numeric.");
+            return false;
+        }
+        
+        // Validate that port provided is within range.
+        if (!rangeValidator.isInRange(Integer.parseInt(networkPort), 1024, 49151)) {
+            displayWarning("Please ensure the port specified is within the usable range (1024 - 49151).");
+            return false;
+        }
+        
+        // If code execution reached, completed validation.
+        return true;
+    }
+    
+    public static boolean validateIdentifier(String networkPort) {
+        RegexValidator typeValidator = new RegexValidator("^[a-zA-Z0-9_]*$");
+ 
+        // Validate no non-alphanumeric characters.
+        if (!typeValidator.isValid(networkPort) || networkPort.isEmpty()) {
+            displayWarning("Please ensure the ID entered correctly (and doesn't contain special characters or spaces except underscores).");
+            return false;
+        }
+        
+        // If code execution reached, completed validation.
+        return true;
     }
 }

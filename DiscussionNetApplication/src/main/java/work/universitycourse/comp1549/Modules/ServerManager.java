@@ -84,7 +84,7 @@ public class ServerManager {
 
             } catch (IOException e) {
 
-                InterfaceManager.displayError(e, "Failed to start server on port!");
+                InterfaceManager.executeConnectionFault();
                 this.serverRunning = false;
     
             }

@@ -262,14 +262,15 @@ public class ClientServerConnection extends javax.swing.JFrame {
     }//GEN-LAST:event_connectToServerButtonMouseExited
 
     private void connectToServer() {
-        // TODO: Validation / Sanitisation of Input - potentially live updates for colour if invalid.
-        InterfaceManager.changeWindow(
+        if(InterfaceManager.validateIPAddress(serverIPAddressTextField.getText()) && InterfaceManager.validatePort(serverPortTextField.getText())) {
+            InterfaceManager.changeWindow(
                 this,
                 new ClientIdentitySetup(
                         serverIPAddressTextField.getText(),
                         serverPortTextField.getText()
                 )
-        );
+            );
+        }
     }
 
     /**

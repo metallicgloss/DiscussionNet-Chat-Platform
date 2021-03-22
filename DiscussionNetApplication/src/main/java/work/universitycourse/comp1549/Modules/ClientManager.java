@@ -124,11 +124,11 @@ public class ClientManager {
                 this.instructionsQueue.addInstructionToQueue(establishConnectionInstruction);
 
             } catch (BindException e) {
-                showMessageDialog(null, "Cannot connect to server! Port already in use");
+                InterfaceManager.executeConnectionFault();
             }
 
         } catch (IOException e) {
-            InterfaceManager.displayError(e, "Failed to establish connection with the server.");
+            InterfaceManager.executeConnectionFault();
         } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException
                 | ClientInstruction.DataFormatException e) {
         }
