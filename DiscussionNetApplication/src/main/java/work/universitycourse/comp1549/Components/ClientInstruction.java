@@ -37,8 +37,9 @@ public class ClientInstruction {
     // -     READ THIS BEFORE ADDING NEW INSTRUCTIONS    -
     // ===================================================
     // Follow these steps when adding a new instruction
-    // -> Never sent and instruction type to 0 
+    // -> Never set instruction type value to 0 
     // -> Update the value of 'HIGHEST_INSTRUCTION_CODE' to be the value of the highest instruction code
+    // -> Add the name of the new instruction to 'INSTRUCTIONS_TEXT' (The index position must be the same as the instruction code number)
     // -> Update method 'checkDataFormatValid' to validate instruction's data format (look at section: Instruction Validation Functions)
     // -> Add function to handle instructions (Look at section: Instruction Processing Functions)
     // -> Implement function to handle instruction on server / client side
@@ -60,6 +61,15 @@ public class ClientInstruction {
     public static final int SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 14;
     public static final int SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE = 15;
     public static final int CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE = 16;
+
+    public static final String[] INSTRUCTIONS_TEXT = {"","SEND MESSAGE", "BECOME COORDINATOR", "REVOKE COORDINATOR",
+                                                      "ESTABLISH CONNECTION WITH SERVER", "REVIEW JOIN REQUEST",
+                                                      "REJECT JOIN REQUEST", "ACCEPT CLIENT CONNECTION",
+                                                      "UPDATE CLIENT INFO SERVER CACHE", "ADD CLIENT INFO TO LOCAL LIST",
+                                                      "NOTIFY CLIENT HAS DISCONNECTED", "CLIENT DISCONNECTED",
+                                                      "GET UPDATED CLIENT INFO LIST", "CLIENT ACCEPTED",
+                                                      "SET LOCAL CLIENT INFO LIST", "SEND SERVER CHAT MESSAGE",
+                                                      "CONNECTION REJECTED BY COORDINATOR"};
 
     
     public String data;
