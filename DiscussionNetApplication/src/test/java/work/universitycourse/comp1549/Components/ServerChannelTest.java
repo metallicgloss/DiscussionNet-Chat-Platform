@@ -28,6 +28,7 @@ public class ServerChannelTest {
     
     @BeforeAll
     public static void setUpClass() {
+        // setup server
     }
     
     @AfterAll
@@ -117,57 +118,59 @@ public class ServerChannelTest {
 
     /**
      * Test of terminateClientConnection method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testTerminateClientConnection() {
-        System.out.println("terminateClientConnection");
-        String clientID = "";
+        System.out.println("removeClientConnection");
         ServerChannel instance = new ServerChannel();
+        Socket clientSocket = new Socket();
+        String clientID = instance.addNewClientConnection(clientSocket);
         instance.terminateClientConnection(clientID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of removeClientConnection method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testRemoveClientConnection() {
         System.out.println("removeClientConnection");
-        String clientID = "";
         ServerChannel instance = new ServerChannel();
+        Socket clientSocket = new Socket();
+        String clientID = instance.addNewClientConnection(clientSocket);
         instance.removeClientConnection(clientID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of renameClientID method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testRenameClientID() {
         System.out.println("renameClientID");
-        String currentID = "";
-        String newID = "";
+        Socket clientSocket = new Socket();
         ServerChannel instance = new ServerChannel();
-        instance.renameClientID(currentID, newID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String currentID = instance.addNewClientConnection(clientSocket);
+        String newID = "newtestID";
+        instance.renameClientID(currentID, newID);  
+        assertEquals(newID, currentID);
     }
 
-    /**
+    /** 
      * Test of getClientInfo method, of class ServerChannel.
+     * DONE
      */
     @Test
     public void testGetClientInfo() {
         System.out.println("getClientInfo");
-        String clientID = "";
+        String clientID = "testID";
         ServerChannel instance = new ServerChannel();
-        ClientInfo expResult = null;
+        Socket clientSocket = new Socket();
+        ClientInfo expResult = new ClientInfo(clientID, clientSocket);    
         ClientInfo result = instance.getClientInfo(clientID);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
