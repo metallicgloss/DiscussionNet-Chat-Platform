@@ -311,6 +311,15 @@ public class ClientIdentitySetup extends javax.swing.JFrame {
 
     private void confirmIdentity() {
         if(InterfaceManager.validateIPAddress(clientIPAddressTextField.getText()) && InterfaceManager.validatePort(clientPortTextField.getText()) && InterfaceManager.validateIdentifier(assignedIdentificationTextfield.getText())) {
+            // If IP address of the server and client matches, make sure ports aren't the same to prevent loopback.
+            
+            if(this.serverIPAddress.equals(clientIPAddressTextField.getText())) {
+                if(this.serverPort.equals(clientPortTextField.getText())) {
+                    InterfaceManager.displayWarning("Loopback Detected - Fields cannot be the same as the server you're connecting to.");
+                    return;
+                }
+            }
+            
             InterfaceManager.changeWindow(
                 this,
                 new ClientMessaging(

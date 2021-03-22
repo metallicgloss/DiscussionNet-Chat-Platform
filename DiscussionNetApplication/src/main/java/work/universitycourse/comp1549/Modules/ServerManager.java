@@ -84,9 +84,8 @@ public class ServerManager {
 
             } catch (IOException e) {
 
-                InterfaceManager.displayWarning("<html><h2><b>Sorry!</b></h2><h3>We've run into an unrecoverable error - the server could not be started.</h3>Unfortunately, the server failed to bind to the specified IP and port combination.<br>We advise for you to review the network configuration for your device with a systems administrator before re-attempting the setup.");
+                InterfaceManager.executeConnectionFault();
                 this.serverRunning = false;
-                System.exit(0);
     
             }
 
