@@ -52,11 +52,10 @@ public class ServerManager {
     // #                     1 - Constructor & Server Setup                    #
     // #-----------------------------------------------------------------------#
 
-    public ServerManager(JTable serverLogger, String serverIP, int serverPort, int maxClientConnections) {
+    public ServerManager(JTable serverLogger, String serverIP, int serverPort) {
 
         this.serverIP = serverIP;
         this.serverPort = serverPort;
-        this.maxClientConnections = maxClientConnections;
         this.serverLogger = serverLogger;
         this.serverChannel = new ServerChannel();
 

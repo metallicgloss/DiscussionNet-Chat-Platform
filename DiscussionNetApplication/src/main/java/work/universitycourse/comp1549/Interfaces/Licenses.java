@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +12,7 @@ import javax.swing.LayoutStyle;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -27,9 +27,9 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 @SuppressWarnings("serial")
 public class Licenses extends JFrame {
 
-    /**
-     * Creates new form StartUpInterface
-     */
+    // #-----------------------------------------------------------------------#
+    // #                       Create New Licenses Form                        #
+    // #-----------------------------------------------------------------------#
     public Licenses() {
         initComponents();
     }
@@ -39,37 +39,42 @@ public class Licenses extends JFrame {
     // #-----------------------------------------------------------------------#
     private void initComponents() {
 
-        ImageIcon img = new ImageIcon(getClass().getResource("/icon.png"));
-        licensesPanel = new JPanel();
-        googleFontsTitleLabel = new JLabel();
+        // Initialise interface objects.
         googleFontsLabel = new JLabel();
+        googleFontsTitleLabel = new JLabel();
+        licensesPanel = new JPanel();
 
         // Define application window settings.
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DiscussionNet V1.0 ");
         setBackground(new Color(255, 255, 255));
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new Dimension(854, 519));
         setName("DiscussionNet");
         setResizable(false);
+        setTitle("DiscussionNet V1.0 ");
 
+        InterfaceManager.detectExitRequest(licensesPanel);
+
+        // Apply settings to the license panel.
         licensesPanel.setBackground(new Color(255, 255, 255));
         licensesPanel.setMaximumSize(new Dimension(847, 519));
         licensesPanel.setMinimumSize(new Dimension(847, 519));
         licensesPanel.setName("licensesPanel");
         licensesPanel.setPreferredSize(new Dimension(847, 519));
-        InterfaceManager.detectExitRequest(licensesPanel);
 
+        // Apply settings to the google fonts title.
         googleFontsTitleLabel.setFont(new Font("Montserrat SemiBold", 0, 24));
-        googleFontsTitleLabel.setText("Google Fonts (Montserrat)");
         googleFontsTitleLabel.setName("googleFontsTitleLabel");
+        googleFontsTitleLabel.setText("Google Fonts (Montserrat)");
 
+        // Apply settings to the google font license label.
         googleFontsLabel.setFont(new Font("Montserrat", 0, 12));
         googleFontsLabel.setText("<html>Google Fonts (Montserrat)<br>" + "Version: 1.1 Update 5<br>"
                 + "License: SIL Open Font License (OFL)<br>" + "URL: https://fonts.google.com/specimen/Montserrat<br>"
                 + "Copyright: © 2016-2021 Julieta Ulanovsky and other contributors.</html>");
         googleFontsLabel.setName("googleFontsLabel");
 
+        // Apply group layout configuration.
         GroupLayout licensesPanelLayout = new GroupLayout(licensesPanel);
         licensesPanel.setLayout(licensesPanelLayout);
         licensesPanelLayout.setHorizontalGroup(licensesPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -96,16 +101,16 @@ public class Licenses extends JFrame {
         getAccessibleContext().setAccessibleName("DiscussionNet");
 
         pack();
-        setLocationRelativeTo(null);
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // #-----------------------------------------------------------------------#
+    // #                           Interface Runnable                          #
+    // #-----------------------------------------------------------------------#
     public static void main(String args[]) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
+                    // If Windows style available, set the default look and feel of the generated elements.
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -115,7 +120,7 @@ public class Licenses extends JFrame {
             java.util.logging.Logger.getLogger(Licenses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
+        // Execute startup of interface.
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Licenses().setVisible(true);

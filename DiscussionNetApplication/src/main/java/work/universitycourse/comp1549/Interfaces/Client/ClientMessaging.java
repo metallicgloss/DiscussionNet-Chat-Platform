@@ -3,7 +3,6 @@ package work.universitycourse.comp1549.Interfaces.Client;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -24,7 +23,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
-import static javax.swing.JOptionPane.showMessageDialog;
+
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Modules.ClientManager;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
@@ -40,17 +40,18 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 @SuppressWarnings("serial")
 public class ClientMessaging extends JFrame {
 
-    public static String serverIPAddress;
-    public static String serverPort;
-    public static String clientIdentifier;
-    public static String clientIPAddress;
-    public static String clientPort;
+    public String serverIPAddress;
+    public String serverPort;
+    public String clientIdentifier;
+    public String clientIPAddress;
+    public String clientPort;
 
-    private static ClientManager client;
+    private ClientManager client;
 
-    /**
-     * Creates new form clientUserMessaging
-     */
+    // #-----------------------------------------------------------------------#
+    // #                    Create New ClientMessaging Form                    #
+    // #-----------------------------------------------------------------------#
+
     public ClientMessaging(String serverIPAddress, String serverPort, String clientIdentifier, String clientIPAddress,
             String clientPort) {
         super();
@@ -78,75 +79,116 @@ public class ClientMessaging extends JFrame {
     // #-----------------------------------------------------------------------#
     // #                  Initialise User Interface Components                 #
     // #-----------------------------------------------------------------------#
+
     private void initComponents() {
 
-        sendArrowIconLabel = new JLabel();
-        headerNamePanel = new JPanel();
-        discussionNetLabel = new JLabel();
-        sidePanel = new JPanel();
-        clientFeaturesLabel = new JLabel();
-        userMessagingLabel = new JLabel();
-        exitApplicationLabel = new JLabel();
-        clientDetailsPanel1 = new JPanel();
-        clientDetailsIcon = new JLabel();
-        clientDetailsLabel1 = new JLabel();
-        clientDetailsLabel2 = new JLabel();
-        serverDetailsPanel1 = new JPanel();
-        server_details_icon = new JLabel();
-        serverDetailsLabel1 = new JLabel();
-        serverDetailsLabel2 = new JLabel();
-        footerPanel = new JPanel();
-        footerTextLabel = new JLabel();
-        footerLicensesTextLabel = new JLabel();
-        userMessagingTopPanel = new JPanel();
-        userMessagingIconLabel = new JLabel();
-        userMessagingLabel1 = new JLabel();
-        userMessagingLabel2 = new JLabel();
-        userMessagingMainPanel = new JPanel();
-        userMessagesTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
-        userMessagesIconLabel = new JLabel();
-        userMessagesButton = new JButton();
-        clientDetailsPanel2 = new JPanel();
-        clientDetailsIPAddressLabel = new JLabel();
-        clientDetailsIPAddressValueLabel = new JLabel();
-        clientDetailsConnectionPortLabel = new JLabel();
-        clientDetailsConnectionPortValueLabel = new JLabel();
+        // Initialise interface objects.
+        clientControlPanelLabel1 = new JLabel();
+        clientControlPanelLabel2 = new JLabel();
         clientDetailsAssignedIDNumberLabel = new JLabel();
         clientDetailsAssignedIDNumberValueLabel = new JLabel();
-        serverDetailsPanel2 = new JPanel();
-        serverDetailsIPAddressLabel = new JLabel();
-        serverDetailsIPAddressValueLabel = new JLabel();
+        clientDetailsConnectionPortLabel = new JLabel();
+        clientDetailsConnectionPortValueLabel = new JLabel();
+        clientDetailsIcon = new JLabel();
+        clientDetailsIPAddressLabel = new JLabel();
+        clientDetailsIPAddressValueLabel = new JLabel();
+        clientDetailsLabel1 = new JLabel();
+        clientDetailsLabel2 = new JLabel();
+        clientDetailsPanel1 = new JPanel();
+        clientDetailsPanel2 = new JPanel();
+        clientFeaturesLabel = new JLabel();
+        discussionNetLabel = new JLabel();
+        exitApplicationLabel = new JLabel();
+        footerLicensesTextLabel = new JLabel();
+        footerPanel = new JPanel();
+        footerTextLabel = new JLabel();
+        headerNamePanel = new JPanel();
+        headerTitlePanel = new JPanel();
+        primaryMessagePane = new JTabbedPane();
+        sendArrowIconLabel = new JLabel();
+        serverDetailsIcon = new JLabel();
         serverDetailsConnectionPortLabel = new JLabel();
         serverDetailsConnectionPortValueLabel = new JLabel();
         serverDetailsConnectionStatusLabel = new JLabel();
         serverDetailsConnectionStatusValueLabel = new JLabel();
-        headerTitlePanel = new JPanel();
-        clientControlPanelLabel2 = new JLabel();
-        clientControlPanelLabel1 = new JLabel();
-        primaryMessagePane = new JTabbedPane();
+        serverDetailsIPAddressLabel = new JLabel();
+        serverDetailsIPAddressValueLabel = new JLabel();
+        serverDetailsLabel1 = new JLabel();
+        serverDetailsLabel2 = new JLabel();
+        serverDetailsPanel1 = new JPanel();
+        serverDetailsPanel2 = new JPanel();
+        sidePanel = new JPanel();
+        userMessagesButton = new JButton();
+        userMessagesIconLabel = new JLabel();
+        userMessagesTextfield = new JRoundedTextField();
+        userMessagingIconLabel = new JLabel();
+        userMessagingLabel = new JLabel();
+        userMessagingLabel1 = new JLabel();
+        userMessagingLabel2 = new JLabel();
+        userMessagingMainPanel = new JPanel();
+        userMessagingTopPanel = new JPanel();
 
         sendArrowIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/black_arrow.png")));
         sendArrowIconLabel.setName("sendArrowIconLabel");
 
         // Define application window settings.
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DiscussionNet");
         setBackground(new Color(242, 244, 250));
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setIconImage(InterfaceManager.programIcon.getImage());
         setMinimumSize(new Dimension(1090, 708));
         setName("DiscussionNet");
         setResizable(false);
+        setTitle("DiscussionNet");
 
-        headerNamePanel.setBackground(new Color(255, 255, 255));
-        headerNamePanel.setName("headerNamePanel");
-        headerNamePanel.setPreferredSize(new Dimension(153, 43));
         InterfaceManager.detectExitRequest(headerNamePanel);
 
+        // Apply settings to the
         discussionNetLabel.setFont(new Font("Montserrat SemiBold", 0, 16));
         discussionNetLabel.setForeground(new Color(0, 36, 109));
         discussionNetLabel.setText("DiscussionNet");
         discussionNetLabel.setName("discussionNetLabel");
 
+        // #-------------------------------------------------------------------#
+        // #                     Header Container / Panel                      #
+        // #-------------------------------------------------------------------#  
+
+        headerNamePanel.setBackground(new Color(255, 255, 255));
+        headerNamePanel.setName("headerNamePanel");
+        headerNamePanel.setPreferredSize(new Dimension(153, 43));
+
+        // Apply settings to the header panel.
+        headerTitlePanel.setBackground(new Color(255, 255, 255));
+        headerTitlePanel.setName("headerTitlePanel");
+
+        // Apply settings to the title label.
+        clientControlPanelLabel2.setFont(new Font("Montserrat", 0, 14));
+        clientControlPanelLabel2.setForeground(new Color(0, 36, 109));
+        clientControlPanelLabel2.setText("Control Panel");
+        clientControlPanelLabel2.setName("clientControlPanelLabel2");
+
+        // Apply settings to the title label (section 2)
+        clientControlPanelLabel1.setFont(new Font("Montserrat SemiBold", 0, 14));
+        clientControlPanelLabel1.setForeground(new Color(0, 36, 109));
+        clientControlPanelLabel1.setText("Client");
+        clientControlPanelLabel1.setName("clientControlPanelLabel1");
+
+        // Apply settings to the
+        GroupLayout headerTitlePanelLayout = new GroupLayout(headerTitlePanel);
+        headerTitlePanel.setLayout(headerTitlePanelLayout);
+        headerTitlePanelLayout.setHorizontalGroup(headerTitlePanelLayout
+                .createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(headerTitlePanelLayout.createSequentialGroup().addContainerGap()
+                        .addComponent(clientControlPanelLabel1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clientControlPanelLabel2)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        headerTitlePanelLayout.setVerticalGroup(headerTitlePanelLayout
+                .createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING,
+                        headerTitlePanelLayout.createSequentialGroup().addGap(15, 15, 15)
+                                .addGroup(headerTitlePanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(clientControlPanelLabel2).addComponent(clientControlPanelLabel1))
+                                .addContainerGap()));
+
+        // Apply group layout configuration for the header
         GroupLayout headerNamePanelLayout = new GroupLayout(headerNamePanel);
         headerNamePanel.setLayout(headerNamePanelLayout);
         headerNamePanelLayout
@@ -159,36 +201,46 @@ public class ClientMessaging extends JFrame {
                                 .addComponent(discussionNetLabel)
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        // #-------------------------------------------------------------------#
+        // #                              Side Menu                            #
+        // #-------------------------------------------------------------------#  
+
+        // Apply settings to the side panel.
         sidePanel.setBackground(new Color(0, 36, 109));
         sidePanel.setForeground(new Color(0, 36, 109));
         sidePanel.setToolTipText("");
         sidePanel.setName("sidePanel");
         sidePanel.setPreferredSize(new Dimension(154, 60));
 
+        // Apply settings to the client features title.
         clientFeaturesLabel.setBackground(new Color(255, 255, 255));
         clientFeaturesLabel.setFont(new Font("Montserrat", 0, 12));
         clientFeaturesLabel.setForeground(new Color(255, 255, 255));
         clientFeaturesLabel.setText("CLIENT FEATURES");
         clientFeaturesLabel.setName("clientFeaturesLabel");
 
+        // Apply settings to the message menu option label.
         userMessagingLabel.setFont(new Font("Montserrat", 0, 11));
         userMessagingLabel.setForeground(new Color(255, 255, 255));
         userMessagingLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mail.png")));
         userMessagingLabel.setText("User Messaging");
         userMessagingLabel.setName("userMessagingLabel");
 
+        // Apply settings to the menu exit option.
         exitApplicationLabel.setBackground(new Color(255, 255, 255));
+        exitApplicationLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         exitApplicationLabel.setFont(new Font("Montserrat Medium", 0, 11));
         exitApplicationLabel.setForeground(new Color(255, 255, 255));
         exitApplicationLabel.setIcon(new ImageIcon(getClass().getResource("/icons/exit.png")));
-        exitApplicationLabel.setText("Exit Application");
         exitApplicationLabel.setName("exitApplicationLabel");
+        exitApplicationLabel.setText("Exit Application");
         exitApplicationLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 exitApplicationLabelMouseClicked(evt);
             }
         });
 
+        // Apply group layout configuration for the side panel.
         GroupLayout sidePanelLayout = new GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(sidePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -204,22 +256,64 @@ public class ClientMessaging extends JFrame {
                                 GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exitApplicationLabel).addGap(28, 28, 28)));
 
+        // #-------------------------------------------------------------------#
+        // #                        Client Details Box                         #
+        // #-------------------------------------------------------------------#
+
+        // Apply settings to the client details panel.
         clientDetailsPanel1.setBackground(new Color(255, 255, 255));
         clientDetailsPanel1.setName("clientDetailsPanel1");
         clientDetailsPanel1.setPreferredSize(new Dimension(322, 100));
 
+        // Apply settings to the secondary details panel.
+        clientDetailsPanel2.setBackground(new Color(255, 255, 255));
+        clientDetailsPanel2.setMinimumSize(new Dimension(322, 92));
+        clientDetailsPanel2.setName("clientDetailsPanel2");
+
+        // Apply settings to the client details icon.
         clientDetailsIcon.setIcon(new ImageIcon(getClass().getResource("/graphics/client_details.png")));
         clientDetailsIcon.setName("clientDetailsIcon");
 
+        // Apply settings to the client details title label.
         clientDetailsLabel1.setFont(new Font("Montserrat", 0, 18));
         clientDetailsLabel1.setText("Client");
         clientDetailsLabel1.setName("clientDetailsLabel1");
 
+        // Apply settings to the secondary client details title.
         clientDetailsLabel2.setFont(new Font("Montserrat SemiBold", 0, 18));
         clientDetailsLabel2.setForeground(new Color(0, 36, 109));
         clientDetailsLabel2.setText("Details");
         clientDetailsLabel2.setName("clientDetailsLabel2");
 
+        // Apply settings to the client details IP label.
+        clientDetailsIPAddressLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        clientDetailsIPAddressLabel.setText("IP Address");
+        clientDetailsIPAddressLabel.setName("clientDetailsIPAddressLabel");
+
+        // Apply settings to the client IP value label.
+        clientDetailsIPAddressValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        clientDetailsIPAddressValueLabel.setName("clientDetailsIPAddressValueLabel");
+
+        // Apply settings to the client details port label.
+        clientDetailsConnectionPortLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        clientDetailsConnectionPortLabel.setText("Connection Port");
+        clientDetailsConnectionPortLabel.setName("clientDetailsConnectionPortLabel");
+
+        // Apply settings to the client port value panel.
+        clientDetailsConnectionPortValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        clientDetailsConnectionPortValueLabel.setName("clientDetailsConnectionPortValueLabel");
+
+        // Apply settings to the client details ID label.
+        clientDetailsAssignedIDNumberLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        clientDetailsAssignedIDNumberLabel.setText("Assigned ID Number");
+        clientDetailsAssignedIDNumberLabel.setName("clientDetailsAssignedIDNumberLabel");
+
+        // Apply settings to the client ID value label.
+        clientDetailsAssignedIDNumberValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        clientDetailsAssignedIDNumberValueLabel.setForeground(new Color(112, 161, 255));
+        clientDetailsAssignedIDNumberValueLabel.setName("clientDetailsAssignedIDNumberValueLabel");
+
+        // Apply group layout configuration for the primary client details.
         GroupLayout clientDetailsPanel1Layout = new GroupLayout(clientDetailsPanel1);
         clientDetailsPanel1.setLayout(clientDetailsPanel1Layout);
         clientDetailsPanel1Layout
@@ -237,190 +331,7 @@ public class ClientMessaging extends JFrame {
                                         .addComponent(clientDetailsLabel1).addComponent(clientDetailsLabel2))
                                 .addGap(0, 0, Short.MAX_VALUE)));
 
-        serverDetailsPanel1.setBackground(new Color(255, 255, 255));
-        serverDetailsPanel1.setName("serverDetailsPanel1");
-        serverDetailsPanel1.setPreferredSize(new Dimension(322, 100));
-
-        server_details_icon.setIcon(new ImageIcon(getClass().getResource("/graphics/server_details.png")));
-        server_details_icon.setName("server_details_icon");
-
-        serverDetailsLabel1.setFont(new Font("Montserrat", 0, 18));
-        serverDetailsLabel1.setText("Server");
-        serverDetailsLabel1.setName("serverDetailsLabel1");
-
-        serverDetailsLabel2.setFont(new Font("Montserrat SemiBold", 0, 18));
-        serverDetailsLabel2.setForeground(new Color(0, 36, 109));
-        serverDetailsLabel2.setText("Details");
-        serverDetailsLabel2.setName("serverDetailsLabel2");
-
-        GroupLayout serverDetailsPanel1Layout = new GroupLayout(serverDetailsPanel1);
-        serverDetailsPanel1.setLayout(serverDetailsPanel1Layout);
-        serverDetailsPanel1Layout
-                .setHorizontalGroup(serverDetailsPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addGap(36, 36, 36)
-                                .addComponent(server_details_icon).addGap(39, 39, 39).addComponent(serverDetailsLabel1)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(serverDetailsLabel2).addContainerGap(63, Short.MAX_VALUE)));
-        serverDetailsPanel1Layout.setVerticalGroup(serverDetailsPanel1Layout
-                .createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addGroup(serverDetailsPanel1Layout
-                        .createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addContainerGap()
-                                .addComponent(server_details_icon))
-                        .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addGap(34, 34, 34)
-                                .addGroup(serverDetailsPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(serverDetailsLabel1).addComponent(serverDetailsLabel2))))
-                        .addContainerGap()));
-
-        footerPanel.setBackground(new Color(255, 255, 255));
-        footerPanel.setName("footerPanel");
-        footerPanel.setPreferredSize(new Dimension(936, 20));
-
-        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
-        footerTextLabel.setForeground(new Color(47, 46, 65));
-        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
-        footerTextLabel.setName("footerTextLabel");
-
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
-        footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
-        footerLicensesTextLabel.setText("Software Licenses");
-        footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        footerLicensesTextLabel.setName("footerLicensesTextLabel");
-        footerLicensesTextLabel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                footerLicensesTextLabelMouseClicked(evt);
-            }
-        });
-
-        GroupLayout footerPanelLayout = new GroupLayout(footerPanel);
-        footerPanel.setLayout(footerPanelLayout);
-        footerPanelLayout
-                .setHorizontalGroup(footerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(footerTextLabel).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(footerLicensesTextLabel).addGap(328, 328, 328)));
-        footerPanelLayout.setVerticalGroup(footerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(GroupLayout.Alignment.TRAILING,
-                        footerPanelLayout.createSequentialGroup().addGap(5, 5, 5)
-                                .addGroup(footerPanelLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                                        .addComponent(footerLicensesTextLabel).addComponent(footerTextLabel))
-                                .addContainerGap()));
-
-        userMessagingTopPanel.setBackground(new Color(255, 255, 255));
-        userMessagingTopPanel.setMinimumSize(new Dimension(93, 100));
-        userMessagingTopPanel.setName("userMessagingTopPanel");
-        userMessagingTopPanel.setPreferredSize(new Dimension(894, 93));
-
-        userMessagingIconLabel.setIcon(new ImageIcon(getClass().getResource("/graphics/user_messaging.png")));
-        userMessagingIconLabel.setName("userMessagingIconLabel");
-
-        userMessagingLabel1.setFont(new Font("Montserrat", 0, 28));
-        userMessagingLabel1.setText("User");
-        userMessagingLabel1.setName("userMessagingLabel1");
-
-        userMessagingLabel2.setFont(new Font("Montserrat SemiBold", 0, 28));
-        userMessagingLabel2.setForeground(new Color(0, 36, 109));
-        userMessagingLabel2.setText("Messaging");
-        userMessagingLabel2.setName("userMessagingLabel2");
-
-        GroupLayout userMessagingTopPanelLayout = new GroupLayout(userMessagingTopPanel);
-        userMessagingTopPanel.setLayout(userMessagingTopPanelLayout);
-        userMessagingTopPanelLayout.setHorizontalGroup(userMessagingTopPanelLayout
-                .createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addGap(295, 295, 295)
-                        .addComponent(userMessagingIconLabel).addGap(18, 18, 18).addComponent(userMessagingLabel1)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(userMessagingLabel2)
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        userMessagingTopPanelLayout
-                .setVerticalGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addGap(20, 20, 20)
-                                .addGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(userMessagingIconLabel)
-                                        .addGroup(userMessagingTopPanelLayout
-                                                .createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(userMessagingLabel2).addComponent(userMessagingLabel1)))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-
-        userMessagingMainPanel.setBackground(new Color(255, 255, 255));
-        userMessagingMainPanel.setName("userMessagingMainPanel");
-        userMessagingMainPanel.setPreferredSize(new Dimension(737, 298));
-        userMessagingMainPanel.setLayout(null);
-
-        userMessagesTextfield.setFont(new Font("Montserrat", 0, 13));
-        userMessagesTextfield.setForeground(new Color(152, 150, 162));
-        userMessagesTextfield.setCaretColor(new Color(152, 150, 162));
-        userMessagesTextfield.setDisabledTextColor(new Color(152, 150, 162));
-        userMessagesTextfield.setName("userMessagesTextfield");
-        userMessagesTextfield.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent evt) {
-                userMessagesTextfieldKeyPressed(evt);
-            }
-        });
-        userMessagingMainPanel.add(userMessagesTextfield);
-        userMessagesTextfield.setBounds(10, 10, 760, 44);
-
-        userMessagesIconLabel.setBackground(new Color(255, 255, 255));
-        userMessagesIconLabel.setForeground(new Color(255, 255, 255));
-        userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_circle_icon.png")));
-        userMessagesIconLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        userMessagesIconLabel.setFocusable(false);
-        userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        userMessagesIconLabel.setIconTextGap(0);
-        userMessagesIconLabel.setInheritsPopupMenu(false);
-        userMessagesIconLabel.setName("userMessagesIconLabel");
-        userMessagesIconLabel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                userMessagesIconLabelMouseClicked(evt);
-            }
-
-            public void mouseEntered(MouseEvent evt) {
-                userMessagesIconLabelMouseEntered(evt);
-            }
-
-            public void mouseExited(MouseEvent evt) {
-                userMessagesIconLabelMouseExited(evt);
-            }
-        });
-        userMessagingMainPanel.add(userMessagesIconLabel);
-        userMessagesIconLabel.setBounds(780, 10, 120, 40);
-
-        userMessagesButton.setIcon(new ImageIcon(getClass().getResource("/buttons/small.png")));
-        userMessagesButton.setBorder(null);
-        userMessagesButton.setContentAreaFilled(false);
-        userMessagesButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        userMessagesButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        userMessagesButton.setName("userMessagesButton");
-        userMessagingMainPanel.add(userMessagesButton);
-        userMessagesButton.setBounds(770, 0, 140, 60);
-
-        clientDetailsPanel2.setBackground(new Color(255, 255, 255));
-        clientDetailsPanel2.setMinimumSize(new Dimension(322, 92));
-        clientDetailsPanel2.setName("clientDetailsPanel2");
-
-        clientDetailsIPAddressLabel.setFont(new Font("Montserrat Medium", 0, 11));
-        clientDetailsIPAddressLabel.setText("IP Address");
-        clientDetailsIPAddressLabel.setName("clientDetailsIPAddressLabel");
-
-        clientDetailsIPAddressValueLabel.setFont(new Font("Montserrat Light", 0, 11));
-        clientDetailsIPAddressValueLabel.setName("clientDetailsIPAddressValueLabel");
-
-        clientDetailsConnectionPortLabel.setFont(new Font("Montserrat Medium", 0, 11));
-        clientDetailsConnectionPortLabel.setText("Connection Port");
-        clientDetailsConnectionPortLabel.setName("clientDetailsConnectionPortLabel");
-
-        clientDetailsConnectionPortValueLabel.setFont(new Font("Montserrat Light", 0, 11));
-        clientDetailsConnectionPortValueLabel.setName("clientDetailsConnectionPortValueLabel");
-
-        clientDetailsAssignedIDNumberLabel.setFont(new Font("Montserrat Medium", 0, 11));
-        clientDetailsAssignedIDNumberLabel.setText("Assigned ID Number");
-        clientDetailsAssignedIDNumberLabel.setName("clientDetailsAssignedIDNumberLabel");
-
-        clientDetailsAssignedIDNumberValueLabel.setFont(new Font("Montserrat Light", 0, 11));
-        clientDetailsAssignedIDNumberValueLabel.setForeground(new Color(112, 161, 255));
-        clientDetailsAssignedIDNumberValueLabel.setName("clientDetailsAssignedIDNumberValueLabel");
-
+        // Apply settings to the client details panel.
         GroupLayout clientDetailsPanel2Layout = new GroupLayout(clientDetailsPanel2);
         clientDetailsPanel2.setLayout(clientDetailsPanel2Layout);
         clientDetailsPanel2Layout
@@ -452,32 +363,84 @@ public class ClientMessaging extends JFrame {
                                         .addComponent(clientDetailsAssignedIDNumberValueLabel))
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
+        // #-------------------------------------------------------------------#
+        // #                        Server Details Box                         #
+        // #-------------------------------------------------------------------#
+
+        // Apply settings to the server details panel.
+        serverDetailsPanel1.setBackground(new Color(255, 255, 255));
+        serverDetailsPanel1.setName("serverDetailsPanel1");
+        serverDetailsPanel1.setPreferredSize(new Dimension(322, 100));
+
+        // Apply settings to the server icon.
+        serverDetailsIcon.setIcon(new ImageIcon(getClass().getResource("/graphics/server_details.png")));
+        serverDetailsIcon.setName("serverDetailsIcon");
+
+        // Apply settings to the server details title (section 1)
+        serverDetailsLabel1.setFont(new Font("Montserrat", 0, 18));
+        serverDetailsLabel1.setText("Server");
+        serverDetailsLabel1.setName("serverDetailsLabel1");
+
+        // Apply settings to the server details title (section 2)
+        serverDetailsLabel2.setFont(new Font("Montserrat SemiBold", 0, 18));
+        serverDetailsLabel2.setForeground(new Color(0, 36, 109));
+        serverDetailsLabel2.setText("Details");
+        serverDetailsLabel2.setName("serverDetailsLabel2");
+
+        // Apply settings to the server details panel.
         serverDetailsPanel2.setBackground(new Color(255, 255, 255));
         serverDetailsPanel2.setName("serverDetailsPanel2");
         serverDetailsPanel2.setPreferredSize(new Dimension(322, 92));
 
+        // Apply settings to the server IP label.
         serverDetailsIPAddressLabel.setFont(new Font("Montserrat Medium", 0, 11));
         serverDetailsIPAddressLabel.setText("IP Address");
         serverDetailsIPAddressLabel.setName("serverDetailsIPAddressLabel");
 
+        // Apply settings to the server IP value label.
         serverDetailsIPAddressValueLabel.setFont(new Font("Montserrat Light", 0, 11));
         serverDetailsIPAddressValueLabel.setName("serverDetailsIPAddressValueLabel");
 
+        // Apply settings to the server port label.
         serverDetailsConnectionPortLabel.setFont(new Font("Montserrat Medium", 0, 11));
         serverDetailsConnectionPortLabel.setText("Connection Port");
         serverDetailsConnectionPortLabel.setName("serverDetailsConnectionPortLabel");
 
+        // Apply settings to the server port value label.
         serverDetailsConnectionPortValueLabel.setFont(new Font("Montserrat Light", 0, 11));
         serverDetailsConnectionPortValueLabel.setName("serverDetailsConnectionPortValueLabel");
 
+        // Apply settings to the server status label.
         serverDetailsConnectionStatusLabel.setFont(new Font("Montserrat Medium", 0, 11));
         serverDetailsConnectionStatusLabel.setText("Connection Status");
         serverDetailsConnectionStatusLabel.setName("serverDetailsConnectionStatusLabel");
 
+        // Apply settings to the server status value label.
         serverDetailsConnectionStatusValueLabel.setFont(new Font("Montserrat Light", 0, 11));
         serverDetailsConnectionStatusValueLabel.setForeground(new Color(46, 213, 116));
         serverDetailsConnectionStatusValueLabel.setName("serverDetailsConnectionStatusValueLabel");
 
+        // Apply group layout configuration for the server details.
+        GroupLayout serverDetailsPanel1Layout = new GroupLayout(serverDetailsPanel1);
+        serverDetailsPanel1.setLayout(serverDetailsPanel1Layout);
+        serverDetailsPanel1Layout
+                .setHorizontalGroup(serverDetailsPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addGap(36, 36, 36)
+                                .addComponent(serverDetailsIcon).addGap(39, 39, 39).addComponent(serverDetailsLabel1)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(serverDetailsLabel2).addContainerGap(63, Short.MAX_VALUE)));
+        serverDetailsPanel1Layout.setVerticalGroup(serverDetailsPanel1Layout
+                .createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addGroup(serverDetailsPanel1Layout
+                        .createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addContainerGap()
+                                .addComponent(serverDetailsIcon))
+                        .addGroup(serverDetailsPanel1Layout.createSequentialGroup().addGap(34, 34, 34)
+                                .addGroup(serverDetailsPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(serverDetailsLabel1).addComponent(serverDetailsLabel2))))
+                        .addContainerGap()));
+
+        // Apply settings to the server details.
         GroupLayout serverDetailsPanel2Layout = new GroupLayout(serverDetailsPanel2);
         serverDetailsPanel2.setLayout(serverDetailsPanel2Layout);
         serverDetailsPanel2Layout
@@ -509,36 +472,153 @@ public class ClientMessaging extends JFrame {
                                         .addComponent(serverDetailsConnectionStatusValueLabel))
                                 .addContainerGap(47, Short.MAX_VALUE)));
 
-        headerTitlePanel.setBackground(new Color(255, 255, 255));
-        headerTitlePanel.setName("headerTitlePanel");
+        // #-------------------------------------------------------------------#
+        // #                           Messaging Box                           #
+        // #-------------------------------------------------------------------#          
 
-        clientControlPanelLabel2.setFont(new Font("Montserrat", 0, 14));
-        clientControlPanelLabel2.setForeground(new Color(0, 36, 109));
-        clientControlPanelLabel2.setText("Control Panel");
-        clientControlPanelLabel2.setName("clientControlPanelLabel2");
+        // Apply settings to the messaging panel.
+        userMessagingTopPanel.setBackground(new Color(255, 255, 255));
+        userMessagingTopPanel.setMinimumSize(new Dimension(93, 100));
+        userMessagingTopPanel.setName("userMessagingTopPanel");
+        userMessagingTopPanel.setPreferredSize(new Dimension(894, 93));
 
-        clientControlPanelLabel1.setFont(new Font("Montserrat SemiBold", 0, 14));
-        clientControlPanelLabel1.setForeground(new Color(0, 36, 109));
-        clientControlPanelLabel1.setText("Client");
-        clientControlPanelLabel1.setName("clientControlPanelLabel1");
+        // Apply settings to the messaging icon.
+        userMessagingIconLabel.setIcon(new ImageIcon(getClass().getResource("/graphics/user_messaging.png")));
+        userMessagingIconLabel.setName("userMessagingIconLabel");
 
-        GroupLayout headerTitlePanelLayout = new GroupLayout(headerTitlePanel);
-        headerTitlePanel.setLayout(headerTitlePanelLayout);
-        headerTitlePanelLayout.setHorizontalGroup(headerTitlePanelLayout
+        // Apply settings to the messaging label title (section 1)
+        userMessagingLabel1.setFont(new Font("Montserrat", 0, 28));
+        userMessagingLabel1.setText("User");
+        userMessagingLabel1.setName("userMessagingLabel1");
+
+        // Apply settings to themessaging label title (section 2)
+        userMessagingLabel2.setFont(new Font("Montserrat SemiBold", 0, 28));
+        userMessagingLabel2.setForeground(new Color(0, 36, 109));
+        userMessagingLabel2.setText("Messaging");
+        userMessagingLabel2.setName("userMessagingLabel2");
+
+        // Apply settings to the user panel
+        GroupLayout userMessagingTopPanelLayout = new GroupLayout(userMessagingTopPanel);
+        userMessagingTopPanel.setLayout(userMessagingTopPanelLayout);
+        userMessagingTopPanelLayout.setHorizontalGroup(userMessagingTopPanelLayout
                 .createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(headerTitlePanelLayout.createSequentialGroup().addContainerGap()
-                        .addComponent(clientControlPanelLabel1).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clientControlPanelLabel2)
+                .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addGap(295, 295, 295)
+                        .addComponent(userMessagingIconLabel).addGap(18, 18, 18).addComponent(userMessagingLabel1)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(userMessagingLabel2)
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        headerTitlePanelLayout.setVerticalGroup(headerTitlePanelLayout
-                .createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING,
-                        headerTitlePanelLayout.createSequentialGroup().addGap(15, 15, 15)
-                                .addGroup(headerTitlePanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(clientControlPanelLabel2).addComponent(clientControlPanelLabel1))
-                                .addContainerGap()));
+        userMessagingTopPanelLayout
+                .setVerticalGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addGap(20, 20, 20)
+                                .addGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(userMessagingIconLabel)
+                                        .addGroup(userMessagingTopPanelLayout
+                                                .createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(userMessagingLabel2).addComponent(userMessagingLabel1)))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+
+        // Apply settings to the primary message content panel.
+        userMessagingMainPanel.setBackground(new Color(255, 255, 255));
+        userMessagingMainPanel.setName("userMessagingMainPanel");
+        userMessagingMainPanel.setPreferredSize(new Dimension(737, 298));
+        userMessagingMainPanel.setLayout(null);
+
+        // Apply settings and listener to the message send text field.
+        userMessagesTextfield.setBounds(10, 10, 760, 44);
+        userMessagesTextfield.setCaretColor(new Color(152, 150, 162));
+        userMessagesTextfield.setDisabledTextColor(new Color(152, 150, 162));
+        userMessagesTextfield.setFont(new Font("Montserrat", 0, 13));
+        userMessagesTextfield.setForeground(new Color(152, 150, 162));
+        userMessagesTextfield.setName("userMessagesTextfield");
+        userMessagesTextfield.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt) {
+                userMessagesTextfieldKeyPressed(evt);
+            }
+        });
+        userMessagingMainPanel.add(userMessagesTextfield);
+
+        // Apply settings, effects and actions to the send icon
+        userMessagesIconLabel.setBackground(new Color(255, 255, 255));
+        userMessagesIconLabel.setForeground(new Color(255, 255, 255));
+        userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_circle_icon.png")));
+        userMessagesIconLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        userMessagesIconLabel.setFocusable(false);
+        userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+        userMessagesIconLabel.setIconTextGap(0);
+        userMessagesIconLabel.setInheritsPopupMenu(false);
+        userMessagesIconLabel.setName("userMessagesIconLabel");
+        userMessagesIconLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                userMessagesIconLabelMouseClicked(evt);
+            }
+
+            public void mouseEntered(MouseEvent evt) {
+                userMessagesIconLabelMouseEntered(evt);
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                userMessagesIconLabelMouseExited(evt);
+            }
+        });
+        userMessagingMainPanel.add(userMessagesIconLabel);
+        userMessagesIconLabel.setBounds(780, 10, 120, 40);
+
+        // Apply settings to the send button - no actions needed as label is overlayed on top fully
+        userMessagesButton.setBorder(null);
+        userMessagesButton.setBounds(770, 0, 140, 60);
+        userMessagesButton.setContentAreaFilled(false);
+        userMessagesButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        userMessagesButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        userMessagesButton.setIcon(new ImageIcon(getClass().getResource("/buttons/small.png")));
+        userMessagesButton.setName("userMessagesButton");
+        userMessagingMainPanel.add(userMessagesButton);
 
         primaryMessagePane.setName("messageTabbedPane");
 
+        // #-------------------------------------------------------------------#
+        // #                            Footer Box                             #
+        // #-------------------------------------------------------------------#
+
+        // Apply settings to the footer panel.
+        footerPanel.setBackground(new Color(255, 255, 255));
+        footerPanel.setName("footerPanel");
+        footerPanel.setPreferredSize(new Dimension(936, 20));
+
+        // Apply settings to the footer label (first section)
+        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel.setForeground(new Color(47, 46, 65));
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
+        footerTextLabel.setName("footerTextLabel");
+
+        // Apply settings and actions to the footer licenses label
+        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
+        footerLicensesTextLabel.setText("Software Licenses");
+        footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        footerLicensesTextLabel.setName("footerLicensesTextLabel");
+        footerLicensesTextLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                footerLicensesTextLabelMouseClicked(evt);
+            }
+        });
+
+        // Apply group layout configuration for the footer
+        GroupLayout footerPanelLayout = new GroupLayout(footerPanel);
+        footerPanel.setLayout(footerPanelLayout);
+        footerPanelLayout
+                .setHorizontalGroup(footerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(footerTextLabel).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(footerLicensesTextLabel).addGap(328, 328, 328)));
+        footerPanelLayout.setVerticalGroup(footerPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(GroupLayout.Alignment.TRAILING,
+                        footerPanelLayout.createSequentialGroup().addGap(5, 5, 5)
+                                .addGroup(footerPanelLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                        .addComponent(footerLicensesTextLabel).addComponent(footerTextLabel))
+                                .addContainerGap()));
+
+        // Apply settings to the screen.
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout
@@ -604,37 +684,33 @@ public class ClientMessaging extends JFrame {
         pack();
     }
 
-    private void userMessagesButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_userMessagesButtonActionPerformed
-        //this.client.sendMessage("Test", userMessagesTextfield.getText());
-        showMessageDialog(null, this.client.getAllClientIDsFromLocalList());
-    }//GEN-LAST:event_userMessagesButtonActionPerformed
+    // #-----------------------------------------------------------------------#
+    // #                        User Interface Actions                         #
+    // #-----------------------------------------------------------------------#
 
-    private void userMessagesIconLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
-        this.sendMessage();
-    }//GEN-LAST:event_userMessagesIconLabelMouseClicked
-
-    private void userMessagesIconLabelMouseEntered(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
-        InterfaceManager.buttonHover(userMessagesButton, true, "small");
-    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
-
-    private void userMessagesIconLabelMouseExited(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseExited
-        InterfaceManager.buttonHover(userMessagesButton, false, "small");
-    }//GEN-LAST:event_userMessagesIconLabelMouseExited
-
-    private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+    // Display licenses window.
+    private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {
         InterfaceManager.displayLicenses();
-    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
+    }
 
-    private void exitApplicationLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_exitApplicationLabelMouseClicked
+    // Exit the application.
+    private void exitApplicationLabelMouseClicked(MouseEvent evt) {
         System.exit(0);
-    }//GEN-LAST:event_exitApplicationLabelMouseClicked
+    }
 
-    private void userMessagesTextfieldKeyPressed(KeyEvent evt) {//GEN-FIRST:event_userMessagesTextfieldKeyPressed
+    // Execute send message function.
+    private void userMessagesIconLabelMouseClicked(MouseEvent evt) {
+        this.sendMessage();
+    }
+
+    // If enter key pressed by user while in text field, send message.
+    private void userMessagesTextfieldKeyPressed(KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.sendMessage();
         }
-    }//GEN-LAST:event_userMessagesTextfieldKeyPressed
+    }
 
+    // Send message
     private void sendMessage() {
         // Default message type to private.
         Boolean messageType = false;
@@ -658,32 +734,39 @@ public class ClientMessaging extends JFrame {
         userMessagesTextfield.setText("");
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // #-----------------------------------------------------------------------#
+    // #                        User Interface Effects                         #
+    // #-----------------------------------------------------------------------#
+    
+    // Configure Button Hover Effect On
+    private void userMessagesIconLabelMouseEntered(MouseEvent evt) {
+        InterfaceManager.buttonHover(userMessagesButton, true, "small");
+    }
+
+    // Configure Button Hover Effect Off
+    private void userMessagesIconLabelMouseExited(MouseEvent evt) {
+        InterfaceManager.buttonHover(userMessagesButton, false, "small");
+    }
+
+    // #-----------------------------------------------------------------------#
+    // #                           Interface Runnable                          #
+    // #-----------------------------------------------------------------------#
+
     public static void main(String args[]) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
+                    // If Windows style available, set the default look and feel of the generated elements.
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientMessaging.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientMessaging.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientMessaging.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ClientMessaging.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
 
-        /* Create and display the form */
+        // Execute startup of interface.
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ClientMessaging(args[0], args[1], args[2], args[3], args[4]).setVisible(true);
@@ -724,7 +807,7 @@ public class ClientMessaging extends JFrame {
     private JLabel serverDetailsLabel2;
     private JPanel serverDetailsPanel1;
     private JPanel serverDetailsPanel2;
-    private JLabel server_details_icon;
+    private JLabel serverDetailsIcon;
     private JPanel sidePanel;
     private JButton userMessagesButton;
     private JLabel userMessagesIconLabel;

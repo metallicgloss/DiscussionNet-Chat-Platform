@@ -23,6 +23,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -37,9 +39,9 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 @SuppressWarnings("serial")
 public class ClientServerConnection extends JFrame {
 
-    /**
-     * Creates new form serverConnection
-     */
+    // #-----------------------------------------------------------------------#
+    // #                Create New ClientServerConnection Form                 #
+    // #-----------------------------------------------------------------------#
     public ClientServerConnection() {
         initComponents();
     }
@@ -49,18 +51,19 @@ public class ClientServerConnection extends JFrame {
     // #-----------------------------------------------------------------------#
     private void initComponents() {
 
+        // Initialise interface objects.
         clientServerConnectionPanel = new JPanel();
-        mainImage = new JLabel();
+        connectToServerButton = new JButton();
         discussionNetServerConnectionLabel1 = new JLabel();
         discussionNetServerConnectionLabel2 = new JLabel();
-        serverIPAddressLabel = new JLabel();
-        userMessagesIconLabel = new JLabel();
-        connectToServerButton = new JButton();
-        serverPortLabel = new JLabel();
-        serverIPAddressTextField = new work.universitycourse.comp1549.Components.JRoundedTextField();
-        serverPortTextField = new work.universitycourse.comp1549.Components.JRoundedTextField();
         footerLicensesTextLabel = new JLabel();
         footerTextLabel = new JLabel();
+        mainImage = new JLabel();
+        serverIPAddressLabel = new JLabel();
+        serverIPAddressTextField = new JRoundedTextField();
+        serverPortLabel = new JLabel();
+        serverPortTextField = new JRoundedTextField();
+        userMessagesIconLabel = new JLabel();
 
         // Define application window settings.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -70,12 +73,14 @@ public class ClientServerConnection extends JFrame {
         setName("DiscussionNet");
         setResizable(false);
 
+        InterfaceManager.detectExitRequest(clientServerConnectionPanel);
+
+        // Apply settings to the main panel.
         clientServerConnectionPanel.setBackground(new Color(255, 255, 255));
         clientServerConnectionPanel.setMaximumSize(new Dimension(847, 519));
         clientServerConnectionPanel.setMinimumSize(new Dimension(847, 519));
         clientServerConnectionPanel.setName("clientServerConnectionPanel");
         clientServerConnectionPanel.setPreferredSize(new Dimension(847, 519));
-        InterfaceManager.detectExitRequest(clientServerConnectionPanel);
         clientServerConnectionPanel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 clientServerConnectionPanelMouseClicked(evt);
@@ -83,31 +88,83 @@ public class ClientServerConnection extends JFrame {
         });
         clientServerConnectionPanel.setLayout(null);
 
+        // Apply settings to the page graphic.
+        mainImage.setBounds(78, 187, 205, 181);
         mainImage.setIcon(new ImageIcon(getClass().getResource("/graphics/connection.png")));
         mainImage.setName("mainImage");
         clientServerConnectionPanel.add(mainImage);
-        mainImage.setBounds(78, 187, 205, 181);
 
+        // Apply settings to the title label (section 1)
+        discussionNetServerConnectionLabel1.setBounds(363, 148, 175, 30);
         discussionNetServerConnectionLabel1.setFont(new Font("Montserrat SemiBold", 0, 24));
         discussionNetServerConnectionLabel1.setForeground(new Color(0, 36, 109));
-        discussionNetServerConnectionLabel1.setText("DiscussionNet");
         discussionNetServerConnectionLabel1.setName("discussionNetServerConnectionLabel1");
+        discussionNetServerConnectionLabel1.setText("DiscussionNet");
         clientServerConnectionPanel.add(discussionNetServerConnectionLabel1);
-        discussionNetServerConnectionLabel1.setBounds(363, 148, 175, 30);
 
-        discussionNetServerConnectionLabel2.setFont(new Font("Montserrat", 0, 24));
-        discussionNetServerConnectionLabel2.setText("Server Connection");
-        discussionNetServerConnectionLabel2.setName("discussionNetServerConnectionLabel2");
-        clientServerConnectionPanel.add(discussionNetServerConnectionLabel2);
+        // Apply settings to the title label (section 2)
         discussionNetServerConnectionLabel2.setBounds(544, 148, 224, 30);
+        discussionNetServerConnectionLabel2.setFont(new Font("Montserrat", 0, 24));
+        discussionNetServerConnectionLabel2.setName("discussionNetServerConnectionLabel2");
+        discussionNetServerConnectionLabel2.setText("Server Connection");
+        clientServerConnectionPanel.add(discussionNetServerConnectionLabel2);
 
+        // Apply settings to the IP address label.
+        serverIPAddressLabel.setBounds(363, 196, 129, 17);
         serverIPAddressLabel.setFont(new Font("Montserrat", 0, 13));
         serverIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/icons/wireless.png")));
-        serverIPAddressLabel.setText("Server IP Address");
         serverIPAddressLabel.setName("serverIPAddressLabel");
+        serverIPAddressLabel.setText("Server IP Address");
         clientServerConnectionPanel.add(serverIPAddressLabel);
-        serverIPAddressLabel.setBounds(363, 196, 129, 17);
 
+        // Apply settings and effects to the IP text field.
+        serverIPAddressTextField.setBounds(362, 219, 340, 30);
+        serverIPAddressTextField.setCaretColor(new Color(152, 150, 162));
+        serverIPAddressTextField.setDisabledTextColor(new Color(152, 150, 162));
+        serverIPAddressTextField.setFont(new Font("Montserrat", 0, 13));
+        serverIPAddressTextField.setForeground(new Color(152, 150, 162));
+        serverIPAddressTextField.setMargin(new Insets(0, 5, 0, 5));
+        serverIPAddressTextField.setName("serverIPAddressTextField");
+        serverIPAddressTextField.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent evt) {
+                serverIPAddressTextFieldFocusGained(evt);
+            }
+
+            public void focusLost(FocusEvent evt) {
+                serverIPAddressTextFieldFocusLost(evt);
+            }
+        });
+        clientServerConnectionPanel.add(serverIPAddressTextField);
+
+        // Apply settings to the port label.
+        serverPortLabel.setBounds(363, 268, 88, 17);
+        serverPortLabel.setFont(new Font("Montserrat", 0, 13));
+        serverPortLabel.setIcon(new ImageIcon(getClass().getResource("/icons/port_icon.png")));
+        serverPortLabel.setName("serverPortLabel");
+        serverPortLabel.setText("Server Port");
+        clientServerConnectionPanel.add(serverPortLabel);
+
+        // Apply settings and effects to the server port text field.
+        serverPortTextField.setBounds(362, 291, 340, 30);
+        serverPortTextField.setCaretColor(new Color(152, 150, 162));
+        serverPortTextField.setDisabledTextColor(new Color(152, 150, 162));
+        serverPortTextField.setFont(new Font("Montserrat", 0, 13));
+        serverPortTextField.setForeground(new Color(152, 150, 162));
+        serverPortTextField.setMargin(new Insets(0, 5, 0, 5));
+        serverPortTextField.setName("serverPortTextField");
+        serverPortTextField.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent evt) {
+                serverPortTextFieldFocusGained(evt);
+            }
+
+            public void focusLost(FocusEvent evt) {
+                serverPortTextFieldFocusLost(evt);
+            }
+        });
+        clientServerConnectionPanel.add(serverPortTextField);
+
+        // Apply settings, effects and actions to the message send icon.
+        userMessagesIconLabel.setBounds(590, 340, 30, 30);
         userMessagesIconLabel.setBackground(new Color(255, 255, 255));
         userMessagesIconLabel.setForeground(new Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -124,23 +181,28 @@ public class ClientServerConnection extends JFrame {
             }
 
             public void mouseEntered(MouseEvent evt) {
-                userMessagesIconLabelMouseEntered(evt);
+                connectToServerButtonMouseEntered(evt);
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                connectToServerButtonMouseExited(evt);
             }
         });
         clientServerConnectionPanel.add(userMessagesIconLabel);
-        userMessagesIconLabel.setBounds(590, 340, 30, 30);
 
+        // Apply settings, effects and actions to the connection button.
         connectToServerButton.setBackground(new Color(255, 255, 255));
-        connectToServerButton.setFont(new Font("Montserrat", 0, 15));
-        connectToServerButton.setForeground(new Color(255, 255, 255));
-        connectToServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/medium.png")));
-        connectToServerButton.setText("Connect to Server      ");
         connectToServerButton.setBorder(null);
         connectToServerButton.setBorderPainted(false);
+        connectToServerButton.setBounds(360, 320, 340, 69);
         connectToServerButton.setContentAreaFilled(false);
         connectToServerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        connectToServerButton.setFont(new Font("Montserrat", 0, 15));
+        connectToServerButton.setForeground(new Color(255, 255, 255));
         connectToServerButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        connectToServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/medium.png")));
         connectToServerButton.setName("connectToServerButton");
+        connectToServerButton.setText("Connect to Server      ");
         connectToServerButton.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
                 connectToServerButtonMouseEntered(evt);
@@ -156,71 +218,30 @@ public class ClientServerConnection extends JFrame {
             }
         });
         clientServerConnectionPanel.add(connectToServerButton);
-        connectToServerButton.setBounds(360, 320, 340, 69);
 
-        serverPortLabel.setFont(new Font("Montserrat", 0, 13));
-        serverPortLabel.setIcon(new ImageIcon(getClass().getResource("/icons/port_icon.png")));
-        serverPortLabel.setText("Server Port");
-        serverPortLabel.setName("serverPortLabel");
-        clientServerConnectionPanel.add(serverPortLabel);
-        serverPortLabel.setBounds(363, 268, 88, 17);
+        // Apply settings to the first footer label.
+        footerTextLabel.setBounds(285, 507, 189, 12);
+        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel.setForeground(new Color(47, 46, 65));
+        footerTextLabel.setName("footerTextLabel");
+        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
+        clientServerConnectionPanel.add(footerTextLabel);
 
-        serverIPAddressTextField.setFont(new Font("Montserrat", 0, 13));
-        serverIPAddressTextField.setForeground(new Color(152, 150, 162));
-        serverIPAddressTextField.setCaretColor(new Color(152, 150, 162));
-        serverIPAddressTextField.setDisabledTextColor(new Color(152, 150, 162));
-        serverIPAddressTextField.setMargin(new Insets(0, 5, 0, 5));
-        serverIPAddressTextField.setName("serverIPAddressTextField");
-        serverIPAddressTextField.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent evt) {
-                serverIPAddressTextFieldFocusGained(evt);
-            }
-
-            public void focusLost(FocusEvent evt) {
-                serverIPAddressTextFieldFocusLost(evt);
-            }
-        });
-        clientServerConnectionPanel.add(serverIPAddressTextField);
-        serverIPAddressTextField.setBounds(362, 219, 340, 30);
-
-        serverPortTextField.setFont(new Font("Montserrat", 0, 13));
-        serverPortTextField.setForeground(new Color(152, 150, 162));
-        serverPortTextField.setCaretColor(new Color(152, 150, 162));
-        serverPortTextField.setDisabledTextColor(new Color(152, 150, 162));
-        serverPortTextField.setMargin(new Insets(0, 5, 0, 5));
-        serverPortTextField.setName("serverPortTextField");
-        serverPortTextField.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent evt) {
-                serverPortTextFieldFocusGained(evt);
-            }
-
-            public void focusLost(FocusEvent evt) {
-                serverPortTextFieldFocusLost(evt);
-            }
-        });
-        clientServerConnectionPanel.add(serverPortTextField);
-        serverPortTextField.setBounds(362, 291, 340, 30);
-
+        // Apply settings and action to the footer display label.
+        footerLicensesTextLabel.setBounds(480, 507, 80, 12);
+        footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
-        footerLicensesTextLabel.setText("Software Licenses");
-        footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 footerLicensesTextLabelMouseClicked(evt);
             }
         });
         clientServerConnectionPanel.add(footerLicensesTextLabel);
-        footerLicensesTextLabel.setBounds(480, 507, 80, 12);
 
-        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
-        footerTextLabel.setForeground(new Color(47, 46, 65));
-        footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
-        footerTextLabel.setName("footerTextLabel");
-        clientServerConnectionPanel.add(footerTextLabel);
-        footerTextLabel.setBounds(285, 507, 189, 12);
-
+        // Apply group layout configuration.
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(
@@ -231,51 +252,32 @@ public class ClientServerConnection extends JFrame {
         pack();
     }
 
-    private void connectToServerButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_connectToServerButtonActionPerformed
+    // #-----------------------------------------------------------------------#
+    // #                        User Interface Actions                         #
+    // #-----------------------------------------------------------------------#
+
+    // Execute connect to server function
+    private void connectToServerButtonActionPerformed(ActionEvent evt) {
         connectToServer();
-    }//GEN-LAST:event_connectToServerButtonActionPerformed
+    }
 
-    private void serverIPAddressTextFieldFocusGained(FocusEvent evt) {//GEN-FIRST:event_serverIPAddressTextFieldFocusGained
-        InterfaceManager.toggleTextFieldFocus(serverIPAddressTextField, true);
-    }//GEN-LAST:event_serverIPAddressTextFieldFocusGained
-
-    private void serverIPAddressTextFieldFocusLost(FocusEvent evt) {//GEN-FIRST:event_serverIPAddressTextFieldFocusLost
-        InterfaceManager.toggleTextFieldFocus(serverIPAddressTextField, false);
-    }//GEN-LAST:event_serverIPAddressTextFieldFocusLost
-
-    private void serverPortTextFieldFocusGained(FocusEvent evt) {//GEN-FIRST:event_serverPortTextFieldFocusGained
-        InterfaceManager.toggleTextFieldFocus(serverPortTextField, true);
-    }//GEN-LAST:event_serverPortTextFieldFocusGained
-
-    private void serverPortTextFieldFocusLost(FocusEvent evt) {//GEN-FIRST:event_serverPortTextFieldFocusLost
-        InterfaceManager.toggleTextFieldFocus(serverPortTextField, false);
-    }//GEN-LAST:event_serverPortTextFieldFocusLost
-
-    private void clientServerConnectionPanelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_clientServerConnectionPanelMouseClicked
-        InterfaceManager.toggleTextFieldFocus(serverIPAddressTextField, false);
-        InterfaceManager.toggleTextFieldFocus(serverPortTextField, false);
-    }//GEN-LAST:event_clientServerConnectionPanelMouseClicked
-
-    private void userMessagesIconLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
+    // Execute connect to server function
+    private void userMessagesIconLabelMouseClicked(MouseEvent evt) {
         connectToServer();
-    }//GEN-LAST:event_userMessagesIconLabelMouseClicked
+    }
 
-    private void userMessagesIconLabelMouseEntered(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
-        InterfaceManager.buttonHover(connectToServerButton, true, "medium");
-    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
-
-    private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+    // Display licenses window.
+    private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {
         InterfaceManager.displayLicenses();
-    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
+    }
 
-    private void connectToServerButtonMouseEntered(MouseEvent evt) {//GEN-FIRST:event_connectToServerButtonMouseEntered
-        InterfaceManager.buttonHover(connectToServerButton, true, "medium");
-    }//GEN-LAST:event_connectToServerButtonMouseEntered
+    // Clear focus effects.
+    private void clientServerConnectionPanelMouseClicked(MouseEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(serverIPAddressTextField, false);
+        InterfaceManager.toggleTextFieldFocus(serverPortTextField, false);
+    }
 
-    private void connectToServerButtonMouseExited(MouseEvent evt) {//GEN-FIRST:event_connectToServerButtonMouseExited
-        InterfaceManager.buttonHover(connectToServerButton, false, "medium");
-    }//GEN-LAST:event_connectToServerButtonMouseExited
-
+    // If input valid, change window and pass values.
     private void connectToServer() {
         if (InterfaceManager.validateIPAddress(serverIPAddressTextField.getText())
                 && InterfaceManager.validatePort(serverPortTextField.getText())) {
@@ -284,32 +286,59 @@ public class ClientServerConnection extends JFrame {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // #-----------------------------------------------------------------------#
+    // #                        User Interface Effects                         #
+    // #-----------------------------------------------------------------------#
+
+    // Configure Focus Gained Effect On
+    private void serverIPAddressTextFieldFocusGained(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(serverIPAddressTextField, true);
+    }
+
+    // Configure Focus Gained Effect Off
+    private void serverIPAddressTextFieldFocusLost(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(serverIPAddressTextField, false);
+    }
+
+    // Configure Focus Gained Effect On
+    private void serverPortTextFieldFocusGained(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(serverPortTextField, true);
+    }
+
+    // Configure Focus Gained Effect Off
+    private void serverPortTextFieldFocusLost(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(serverPortTextField, false);
+    }
+    
+    // Configure Button Hover Effect On
+    private void connectToServerButtonMouseEntered(MouseEvent evt) {
+        InterfaceManager.buttonHover(connectToServerButton, true, "medium");
+    }
+
+    // Configure Button Hover Effect Off
+    private void connectToServerButtonMouseExited(MouseEvent evt) {
+        InterfaceManager.buttonHover(connectToServerButton, false, "medium");
+    }
+
+    // #-----------------------------------------------------------------------#
+    // #                           Interface Runnable                          #
+    // #-----------------------------------------------------------------------#
+
     public static void main(String args[]) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
+                    // If Windows style available, set the default look and feel of the generated elements.
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientServerConnection.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientServerConnection.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientServerConnection.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ClientServerConnection.class.getName())
                     .log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
+        // Execute startup of interface.
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ClientServerConnection().setVisible(true);

@@ -23,6 +23,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+
+import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Modules.InterfaceManager;
 
 /**
@@ -37,9 +39,9 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 @SuppressWarnings("serial")
 public class ServerConfiguration extends JFrame {
 
-    /**
-     * Creates new form serverManagementConfiguration
-     */
+    // #-----------------------------------------------------------------------#
+    // #                  Create New ServerConfiguration Form                  #
+    // #-----------------------------------------------------------------------#
     public ServerConfiguration() {
         initComponents();
     }
@@ -49,18 +51,19 @@ public class ServerConfiguration extends JFrame {
     // #-----------------------------------------------------------------------#
     private void initComponents() {
 
+        // Initialise interface objects.
+        assignedNetworkPortLabel = new JLabel();
+        assignedNetworkPortTextfield = new JRoundedTextField();
+        configuredIPAddresLabel = new JLabel();
+        configuredIPAddressTextfield = new JRoundedTextField();
+        footerLicensesTextLabel = new JLabel();
+        footerTextLabel1 = new JLabel();
+        mainImage = new JLabel();
+        provisionServerButton = new JButton();
         serverConfigurationPanel = new JPanel();
         serverManagementConfigurationLabel1 = new JLabel();
         serverManagementConfigurationLabel2 = new JLabel();
-        configuredIPAddresLabel = new JLabel();
-        assignedNetworkPortLabel = new JLabel();
-        assignedNetworkPortTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
         userMessagesIconLabel = new JLabel();
-        provisionServerButton = new JButton();
-        mainImage = new JLabel();
-        configuredIPAddressTextfield = new work.universitycourse.comp1549.Components.JRoundedTextField();
-        footerTextLabel1 = new JLabel();
-        footerLicensesTextLabel = new JLabel();
 
         // Define application window settings.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -71,6 +74,7 @@ public class ServerConfiguration extends JFrame {
         setName("DiscussionNet");
         setResizable(false);
 
+        // Apply settings to the configuration panel.
         serverConfigurationPanel.setBackground(new Color(255, 255, 255));
         serverConfigurationPanel.setMaximumSize(new Dimension(847, 519));
         serverConfigurationPanel.setMinimumSize(new Dimension(847, 519));
@@ -84,38 +88,64 @@ public class ServerConfiguration extends JFrame {
         });
         serverConfigurationPanel.setLayout(null);
 
+        // Apply settings to the management title label.
+        serverManagementConfigurationLabel1.setBounds(233, 238, 79, 30);
         serverManagementConfigurationLabel1.setFont(new Font("Montserrat SemiBold", 0, 24));
         serverManagementConfigurationLabel1.setForeground(new Color(0, 36, 109));
-        serverManagementConfigurationLabel1.setText("Server");
         serverManagementConfigurationLabel1.setName("serverManagementConfigurationLabel1");
+        serverManagementConfigurationLabel1.setText("Server");
         serverConfigurationPanel.add(serverManagementConfigurationLabel1);
-        serverManagementConfigurationLabel1.setBounds(233, 238, 79, 30);
 
-        serverManagementConfigurationLabel2.setFont(new Font("Montserrat", 0, 24));
-        serverManagementConfigurationLabel2.setText("Management Configuration");
-        serverManagementConfigurationLabel2.setName("serverManagementConfigurationLabel2");
-        serverConfigurationPanel.add(serverManagementConfigurationLabel2);
+        // Apply settings to the management title label (section 2)
         serverManagementConfigurationLabel2.setBounds(318, 238, 335, 30);
+        serverManagementConfigurationLabel2.setFont(new Font("Montserrat", 0, 24));
+        serverManagementConfigurationLabel2.setName("serverManagementConfigurationLabel2");
+        serverManagementConfigurationLabel2.setText("Management Configuration");
+        serverConfigurationPanel.add(serverManagementConfigurationLabel2);
 
+        // Apply settings to the configured IP label.
+        configuredIPAddresLabel.setBounds(140, 310, 162, 17);
         configuredIPAddresLabel.setFont(new Font("Montserrat", 0, 13));
         configuredIPAddresLabel.setIcon(new ImageIcon(getClass().getResource("/icons/wireless.png")));
-        configuredIPAddresLabel.setText("Configured IP Address");
         configuredIPAddresLabel.setName("configuredIPAddresLabel");
+        configuredIPAddresLabel.setText("Configured IP Address");
         serverConfigurationPanel.add(configuredIPAddresLabel);
-        configuredIPAddresLabel.setBounds(140, 310, 162, 17);
 
+        // Apply settings and effects to the IP text field.
+        configuredIPAddressTextfield.setBounds(68, 333, 334, 30);
+        configuredIPAddressTextfield.setCaretColor(new Color(152, 150, 162));
+        configuredIPAddressTextfield.setDisabledTextColor(new Color(152, 150, 162));
+        configuredIPAddressTextfield.setFont(new Font("Montserrat", 0, 13));
+        configuredIPAddressTextfield.setForeground(new Color(152, 150, 162));
+        configuredIPAddressTextfield.setHorizontalAlignment(JTextField.CENTER);
+        configuredIPAddressTextfield.setMargin(new Insets(0, 5, 0, 5));
+        configuredIPAddressTextfield.setName("configuredIPAddressTextfield");
+        configuredIPAddressTextfield.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent evt) {
+                configuredIPAddressTextfieldFocusGained(evt);
+            }
+
+            public void focusLost(FocusEvent evt) {
+                configuredIPAddressTextfieldFocusLost(evt);
+            }
+        });
+        serverConfigurationPanel.add(configuredIPAddressTextfield);
+
+        // Apply settings to the allocated port label.
+        assignedNetworkPortLabel.setBounds(549, 310, 166, 17);
         assignedNetworkPortLabel.setFont(new Font("Montserrat", 0, 13));
         assignedNetworkPortLabel.setIcon(new ImageIcon(getClass().getResource("/icons/port_icon.png")));
-        assignedNetworkPortLabel.setText("Assigned Network Port");
         assignedNetworkPortLabel.setName("assignedNetworkPortLabel");
+        assignedNetworkPortLabel.setText("Assigned Network Port");
         serverConfigurationPanel.add(assignedNetworkPortLabel);
-        assignedNetworkPortLabel.setBounds(549, 310, 166, 17);
 
+        // Apply settings and effects to the port text field.
+        assignedNetworkPortTextfield.setBounds(456, 333, 334, 30);
+        assignedNetworkPortTextfield.setCaretColor(new Color(152, 150, 162));
+        assignedNetworkPortTextfield.setDisabledTextColor(new Color(152, 150, 162));
         assignedNetworkPortTextfield.setFont(new Font("Montserrat", 0, 13));
         assignedNetworkPortTextfield.setForeground(new Color(152, 150, 162));
         assignedNetworkPortTextfield.setHorizontalAlignment(JTextField.CENTER);
-        assignedNetworkPortTextfield.setCaretColor(new Color(152, 150, 162));
-        assignedNetworkPortTextfield.setDisabledTextColor(new Color(152, 150, 162));
         assignedNetworkPortTextfield.setMargin(new Insets(0, 5, 0, 5));
         assignedNetworkPortTextfield.setName("assignedNetworkPortTextfield");
         assignedNetworkPortTextfield.addFocusListener(new FocusAdapter() {
@@ -128,15 +158,16 @@ public class ServerConfiguration extends JFrame {
             }
         });
         serverConfigurationPanel.add(assignedNetworkPortTextfield);
-        assignedNetworkPortTextfield.setBounds(456, 333, 334, 30);
 
+        // Configure icon label to act as button, apply settings.
         userMessagesIconLabel.setBackground(new Color(255, 255, 255));
-        userMessagesIconLabel.setForeground(new Color(255, 255, 255));
-        userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_icon.png")));
+        userMessagesIconLabel.setBounds(480, 390, 30, 30);
         userMessagesIconLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
+        userMessagesIconLabel.setForeground(new Color(255, 255, 255));
+        userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
         userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_icon.png")));
         userMessagesIconLabel.setIconTextGap(0);
         userMessagesIconLabel.setInheritsPopupMenu(false);
         userMessagesIconLabel.setName("userMessagesIconLabel");
@@ -154,20 +185,21 @@ public class ServerConfiguration extends JFrame {
             }
         });
         serverConfigurationPanel.add(userMessagesIconLabel);
-        userMessagesIconLabel.setBounds(480, 390, 30, 30);
 
+        // Configure button with events, apply settings.
         provisionServerButton.setBackground(new Color(255, 255, 255));
-        provisionServerButton.setFont(new Font("Montserrat", 0, 15));
-        provisionServerButton.setForeground(new Color(255, 255, 255));
-        provisionServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/large.png")));
-        provisionServerButton.setText("Provision Server       ");
         provisionServerButton.setBorder(null);
         provisionServerButton.setBorderPainted(false);
+        provisionServerButton.setBounds(50, 370, 761, 69);
         provisionServerButton.setContentAreaFilled(false);
         provisionServerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        provisionServerButton.setFont(new Font("Montserrat", 0, 15));
+        provisionServerButton.setForeground(new Color(255, 255, 255));
         provisionServerButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        provisionServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/large.png")));
         provisionServerButton.setIconTextGap(3);
         provisionServerButton.setName("provisionServerButton");
+        provisionServerButton.setText("Provision Server       ");
         provisionServerButton.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
                 provisionServerButtonMouseEntered(evt);
@@ -183,52 +215,36 @@ public class ServerConfiguration extends JFrame {
             }
         });
         serverConfigurationPanel.add(provisionServerButton);
-        provisionServerButton.setBounds(50, 370, 761, 69);
 
+        // Set graphic settings. 
+        mainImage.setBounds(272, 40, 315, 192);
         mainImage.setIcon(new ImageIcon(getClass().getResource("/graphics/settings.png")));
         mainImage.setName("mainImage");
         serverConfigurationPanel.add(mainImage);
-        mainImage.setBounds(272, 40, 315, 192);
 
-        configuredIPAddressTextfield.setFont(new Font("Montserrat", 0, 13));
-        configuredIPAddressTextfield.setForeground(new Color(152, 150, 162));
-        configuredIPAddressTextfield.setHorizontalAlignment(JTextField.CENTER);
-        configuredIPAddressTextfield.setCaretColor(new Color(152, 150, 162));
-        configuredIPAddressTextfield.setDisabledTextColor(new Color(152, 150, 162));
-        configuredIPAddressTextfield.setMargin(new Insets(0, 5, 0, 5));
-        configuredIPAddressTextfield.setName("configuredIPAddressTextfield");
-        configuredIPAddressTextfield.addFocusListener(new FocusAdapter() {
-            public void focusGained(FocusEvent evt) {
-                configuredIPAddressTextfieldFocusGained(evt);
-            }
-
-            public void focusLost(FocusEvent evt) {
-                configuredIPAddressTextfieldFocusLost(evt);
-            }
-        });
-        serverConfigurationPanel.add(configuredIPAddressTextfield);
-        configuredIPAddressTextfield.setBounds(68, 333, 334, 30);
-
+        // Apply settings to the first footer label.
+        footerTextLabel1.setBounds(292, 507, 189, 12);
         footerTextLabel1.setFont(new Font("Montserrat", 0, 9));
         footerTextLabel1.setForeground(new Color(47, 46, 65));
-        footerTextLabel1.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel1.setName("footerTextLabel1");
+        footerTextLabel1.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         serverConfigurationPanel.add(footerTextLabel1);
-        footerTextLabel1.setBounds(292, 507, 189, 12);
 
+        // Apply settings and action to the footer display label.
+        footerLicensesTextLabel.setBounds(487, 507, 80, 12);
+        footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
-        footerLicensesTextLabel.setText("Software Licenses");
-        footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
+        footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 footerLicensesTextLabelMouseClicked(evt);
             }
         });
         serverConfigurationPanel.add(footerLicensesTextLabel);
-        footerLicensesTextLabel.setBounds(487, 507, 80, 12);
 
+        // Apply group layout configuration.
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(
@@ -241,55 +257,32 @@ public class ServerConfiguration extends JFrame {
         pack();
     }
 
-    private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_footerLicensesTextLabelMouseClicked
+    // #-----------------------------------------------------------------------#
+    // #                        User Interface Actions                         #
+    // #-----------------------------------------------------------------------#
+
+    // Display licenses window.
+    private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {
         InterfaceManager.displayLicenses();
-    }//GEN-LAST:event_footerLicensesTextLabelMouseClicked
+    }
 
-    private void configuredIPAddressTextfieldFocusGained(FocusEvent evt) {//GEN-FIRST:event_configuredIPAddressTextfieldFocusGained
-        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, true);
-    }//GEN-LAST:event_configuredIPAddressTextfieldFocusGained
-
-    private void configuredIPAddressTextfieldFocusLost(FocusEvent evt) {//GEN-FIRST:event_configuredIPAddressTextfieldFocusLost
-        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, false);
-    }//GEN-LAST:event_configuredIPAddressTextfieldFocusLost
-
-    private void assignedNetworkPortTextfieldFocusGained(FocusEvent evt) {//GEN-FIRST:event_assignedNetworkPortTextfieldFocusGained
-        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, true);
-    }//GEN-LAST:event_assignedNetworkPortTextfieldFocusGained
-
-    private void assignedNetworkPortTextfieldFocusLost(FocusEvent evt) {//GEN-FIRST:event_assignedNetworkPortTextfieldFocusLost
-        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, false);
-    }//GEN-LAST:event_assignedNetworkPortTextfieldFocusLost
-
-    private void serverConfigurationPanelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_serverConfigurationPanelMouseClicked
+    // Disable all field focus effects.
+    private void serverConfigurationPanelMouseClicked(MouseEvent evt) {
         InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, false);
         InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, false);
-    }//GEN-LAST:event_serverConfigurationPanelMouseClicked
+    }
 
-    private void userMessagesIconLabelMouseClicked(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseClicked
+    // Execute server provisioning.
+    private void userMessagesIconLabelMouseClicked(MouseEvent evt) {
         provisionServer();
-    }//GEN-LAST:event_userMessagesIconLabelMouseClicked
+    }
 
-    private void userMessagesIconLabelMouseEntered(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseEntered
-        InterfaceManager.buttonHover(provisionServerButton, true, "large");
-    }//GEN-LAST:event_userMessagesIconLabelMouseEntered
-
-    private void provisionServerButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_provisionServerButtonActionPerformed
+    // Execute server provisioning.
+    private void provisionServerButtonActionPerformed(ActionEvent evt) {
         provisionServer();
-    }//GEN-LAST:event_provisionServerButtonActionPerformed
+    }
 
-    private void provisionServerButtonMouseEntered(MouseEvent evt) {//GEN-FIRST:event_provisionServerButtonMouseEntered
-        InterfaceManager.buttonHover(provisionServerButton, true, "large");
-    }//GEN-LAST:event_provisionServerButtonMouseEntered
-
-    private void provisionServerButtonMouseExited(MouseEvent evt) {//GEN-FIRST:event_provisionServerButtonMouseExited
-        InterfaceManager.buttonHover(provisionServerButton, false, "large");
-    }//GEN-LAST:event_provisionServerButtonMouseExited
-
-    private void userMessagesIconLabelMouseExited(MouseEvent evt) {//GEN-FIRST:event_userMessagesIconLabelMouseExited
-        InterfaceManager.buttonHover(provisionServerButton, false, "large");
-    }//GEN-LAST:event_userMessagesIconLabelMouseExited
-
+    // Validate user input, if passed, change window.
     private void provisionServer() {
         if (InterfaceManager.validateIPAddress(configuredIPAddressTextfield.getText())
                 && InterfaceManager.validatePort(assignedNetworkPortTextfield.getText())) {
@@ -298,32 +291,70 @@ public class ServerConfiguration extends JFrame {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // #-----------------------------------------------------------------------#
+    // #                        User Interface Effects                         #
+    // #-----------------------------------------------------------------------#
+
+    // Configure Focus Gained Effect On
+    private void configuredIPAddressTextfieldFocusGained(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, true);
+    }
+
+    // Configure Focus Gained Effect Off
+    private void configuredIPAddressTextfieldFocusLost(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(configuredIPAddressTextfield, false);
+    }
+
+    // Configure Focus Gained Effect On
+    private void assignedNetworkPortTextfieldFocusGained(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, true);
+    }
+
+    // Configure Focus Gained Effect Off
+    private void assignedNetworkPortTextfieldFocusLost(FocusEvent evt) {
+        InterfaceManager.toggleTextFieldFocus(assignedNetworkPortTextfield, false);
+    }
+
+    // Configure Button Hover Effect On
+    private void userMessagesIconLabelMouseEntered(MouseEvent evt) {
+        InterfaceManager.buttonHover(provisionServerButton, true, "large");
+    }
+
+    // Configure Button Hover Effect Off
+    private void userMessagesIconLabelMouseExited(MouseEvent evt) {
+        InterfaceManager.buttonHover(provisionServerButton, false, "large");
+    }
+
+    // Configure Button Hover Effect On
+    private void provisionServerButtonMouseEntered(MouseEvent evt) {
+        InterfaceManager.buttonHover(provisionServerButton, true, "large");
+    }
+
+    // Configure Button Hover Effect Off
+    private void provisionServerButtonMouseExited(MouseEvent evt) {
+        InterfaceManager.buttonHover(provisionServerButton, false, "large");
+    }
+
+    // #-----------------------------------------------------------------------#
+    // #                           Interface Runnable                          #
+    // #-----------------------------------------------------------------------#
+
     public static void main(String args[]) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
+                    // If Windows style available, set the default look and feel of the generated elements.
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ServerConfiguration.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ServerConfiguration.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ServerConfiguration.class.getName()).log(java.util.logging.Level.SEVERE,
-                    null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ServerConfiguration.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
 
-        /* Create and display the form */
+        // Execute startup of interface.
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ServerConfiguration().setVisible(true);
@@ -331,16 +362,16 @@ public class ServerConfiguration extends JFrame {
         });
     }
 
+    private JButton provisionServerButton;
     private JLabel assignedNetworkPortLabel;
-    private JTextField assignedNetworkPortTextfield;
     private JLabel configuredIPAddresLabel;
-    private JTextField configuredIPAddressTextfield;
     private JLabel footerLicensesTextLabel;
     private JLabel footerTextLabel1;
     private JLabel mainImage;
-    private JButton provisionServerButton;
-    private JPanel serverConfigurationPanel;
     private JLabel serverManagementConfigurationLabel1;
     private JLabel serverManagementConfigurationLabel2;
     private JLabel userMessagesIconLabel;
+    private JPanel serverConfigurationPanel;
+    private JTextField assignedNetworkPortTextfield;
+    private JTextField configuredIPAddressTextfield;
 }
