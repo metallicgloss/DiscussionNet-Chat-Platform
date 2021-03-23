@@ -42,29 +42,31 @@ public class ClientInstruction {
     // 4. Add function to handle instructions (Look at section: Instruction Processing Functions)
     // 5. Implement function to handle instruction on server / client side
 
-    private static final int HIGHEST_INSTRUCTION_CODE = 16;
-    public static final int ACCEPT_CLIENT_CONNECTION_INSTRUCTION_TYPE = 7;
-    public static final int ADD_CLIENT_INFO_TO_LOCAL_LIST_INSTRUCTION_TYPE = 9;
-    public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
-    public static final int CLIENT_ACCEPTED_INSTRUCTION_TYPE = 13;
-    public static final int CLIENT_DISCONNECTED_INSTRUCTION_TYPE = 11;
-    public static final int CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE = 16;
-    public static final int ESTABLISH_CONNECTION_INSTRUCTION_TYPE = 4;
-    public static final int GET_UPDATED_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 12;
-    public static final int NOTIFY_CLIENT_DISCONNECTED_INSTRUCTION_TYPE = 10;
-    public static final int REJECT_JOIN_REQUEST_INSTRUCTION_TYPE = 6;
-    public static final int REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE = 5;
-    public static final int REVOKE_COORDINATOR_INSTRUCTION_TYPE = 3;
+    private static final int HIGHEST_INSTRUCTION_CODE = 17;
     public static final int SEND_MESSAGE_INSTRUCTION_TYPE = 1;
-    public static final int SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE = 15;
-    public static final int SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 14;
+    public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
+    public static final int REVOKE_COORDINATOR_INSTRUCTION_TYPE = 3;
+    public static final int ESTABLISH_CONNECTION_INSTRUCTION_TYPE = 4;
+    public static final int REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE = 5;
+    public static final int REJECT_JOIN_REQUEST_INSTRUCTION_TYPE = 6;
+    public static final int ACCEPT_CLIENT_CONNECTION_INSTRUCTION_TYPE = 7;
     public static final int UPDATE_CLIENT_INFOS_SERVER_CACHE_INSTRUCTION_TYPE = 8;
+    public static final int ADD_CLIENT_INFO_TO_LOCAL_LIST_INSTRUCTION_TYPE = 9;
+    public static final int NOTIFY_CLIENT_DISCONNECTED_INSTRUCTION_TYPE = 10;
+    public static final int CLIENT_DISCONNECTED_INSTRUCTION_TYPE = 11;
+    public static final int GET_UPDATED_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 12;
+    public static final int CLIENT_ACCEPTED_INSTRUCTION_TYPE = 13;
+    public static final int SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 14;
+    public static final int SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE = 15;
+    public static final int CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE = 16;
+    public static final int NOTIFY_OTHERS_OF_NEW_COORDINATOR = 17;
 
     public static final String[] INSTRUCTIONS_TEXT = { "", "SEND MESSAGE", "BECOME COORDINATOR", "REVOKE COORDINATOR",
             "ESTABLISH CONNECTION WITH SERVER", "REVIEW JOIN REQUEST", "REJECT JOIN REQUEST",
             "ACCEPT CLIENT CONNECTION", "UPDATE CLIENT INFO SERVER CACHE", "ADD CLIENT INFO TO LOCAL LIST",
             "NOTIFY CLIENT HAS DISCONNECTED", "CLIENT DISCONNECTED", "GET UPDATED CLIENT INFO LIST", "CLIENT ACCEPTED",
-            "SET LOCAL CLIENT INFO LIST", "SEND SERVER CHAT MESSAGE", "CONNECTION REJECTED BY COORDINATOR" };
+            "SET LOCAL CLIENT INFO LIST", "SEND SERVER CHAT MESSAGE", "CONNECTION REJECTED BY COORDINATOR",
+            "NOTIFY CLIENT OF COORDINATOR ID"};
 
     public String data;
     public int instructionType;
@@ -209,6 +211,11 @@ public class ClientInstruction {
                 + message;
     }
 
+    // Create a custom 'Notify Others Of New Coordinator' instruction string
+    public static String createNotifyOthersOfNewCoordinatorInstructionString(String coordinatorID) {
+        return Integer.toString(ClientInstruction.NOTIFY_OTHERS_OF_NEW_COORDINATOR) + "<SEPERATOR>" + coordinatorID;
+    }
+
     // #-----------------------------------------------------------------------#
     // #                2 - Instruction Validation Functions                   #
     // #-----------------------------------------------------------------------#
@@ -321,6 +328,12 @@ public class ClientInstruction {
 
             // FORMAT: MESSAGE
             ClientInstruction.validateDataForConnectionRejectedByCorrdinator(data);
+            break;
+        
+        case ClientInstruction.NOTIFY_OTHERS_OF_NEW_COORDINATOR:
+
+            // FORMAT: COORDINATOR_ID
+            ClientInstruction.validateDataForNotifyOthersOfNewCoordinator(data);
             break;
 
         default:
@@ -478,6 +491,15 @@ public class ClientInstruction {
 
         if (data.split(seperatorString).length != 1) {
             throw new DataFormatException("MESSAGE");
+        }
+
+    }
+
+    // Checks data provided is in a valid form for a 'Notify Others New Coordinator' instruction type
+    private static void validateDataForNotifyOthersOfNewCoordinator(String data) throws DataFormatException {
+
+        if (data.split(seperatorString).length != 1) {
+            throw new DataFormatException("COORDINATOR_ID");
         }
 
     }

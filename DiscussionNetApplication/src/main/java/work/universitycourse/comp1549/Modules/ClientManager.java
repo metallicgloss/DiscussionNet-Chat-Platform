@@ -64,6 +64,7 @@ public class ClientManager {
     private ObjectOutputStream outputStream;
     private Socket clientSocket;
     private String clientID;
+    private String coordinatorID = "";
 
     private HashMap<String, ClientInfo> clientListLocal = new HashMap<String, ClientInfo>();
 
@@ -141,6 +142,11 @@ public class ClientManager {
                 | ClientInstruction.DataFormatException e) {
         }
 
+    }
+
+    // Returns the coordinator ID
+    public String getCoordinatorID() {
+        return this.coordinatorID;
     }
 
     // #-----------------------------------------------------------------------#
@@ -529,6 +535,12 @@ public class ClientManager {
                         // Process being rejected by the coordinator
                         this.processInstructionConnectionRejectedByCoordinator(instruction.data);
                         break;
+                    
+                    case ClientInstruction.NOTIFY_OTHERS_OF_NEW_COORDINATOR:
+
+                        // Process notifying other members of the new coordinator
+                        this.processInstructionNotifyOthersOfNewCoordinator(instruction.data);
+                        break;
 
                     default:
                         InterfaceManager.displayWarning(
@@ -572,7 +584,25 @@ public class ClientManager {
             }
             InterfaceManager.displayWarning("You've been assigned to be the group coordinator!");
 
-            // TODO Tell others you are the coordinator
+            // Set coordinator ID for self
+            ClientManager.this.coordinatorID = ClientManager.this.clientID;   
+            // TODO @William make it display the coordinator ID here as well
+
+            // Tell others you are the coordinator
+            String notifyOfNewCoordinatorInstructionString = ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
+
+            for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
+
+                // Do not send message back to the person who sent the message.
+                if (!currentClientID.equals(ClientManager.this.clientID)) {
+
+                    // Send message object to clients server chat
+                    this.sendInstruction(currentClientID, notifyOfNewCoordinatorInstructionString);
+
+                }
+                
+            }
+            
 
         }
 
@@ -631,6 +661,10 @@ public class ClientManager {
                 String clientAcceptedString = ClientInstruction
                         .createClientAcceptedInstructionString(ClientManager.this.clientID);
                 this.sendInstruction(clientID, clientAcceptedString);
+
+                // Tell client of coordinator ID
+                String notifyClientOfCoordinatorString = ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
+                this.sendInstruction(clientID, notifyClientOfCoordinatorString);
 
                 // Update client info server cache
                 String updatedAllClientInfoListString = ClientManager.this.getAllClientsInfoFromLocalListAsString();
@@ -757,6 +791,14 @@ public class ClientManager {
 
             ClientManager.this.endClientConnection();
             InterfaceManager.displayWarning(message);
+
+        }
+
+        // Process the instruction "NotifyOthersOfNewCoordiantor"
+        private void processInstructionNotifyOthersOfNewCoordinator(String coordinatorID) {
+
+            ClientManager.this.coordinatorID = coordinatorID;
+            // TODO @William, place code here to display the coordinator ID, use public funtion getCoordinator ID
 
         }
 
