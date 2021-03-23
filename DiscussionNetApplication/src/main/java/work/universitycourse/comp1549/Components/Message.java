@@ -1,7 +1,7 @@
 package work.universitycourse.comp1549.Components;
 
-import java.sql.Timestamp;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  *
@@ -10,6 +10,21 @@ import java.io.Serializable;
  * @author Gabriel Netz
  * @author William Phillips
  */
+
+// #---------------------------------------------------------------------------#
+// #                                  Contents                                 #
+// #---------------------------------------------------------------------------#
+// #                                                                           #
+// #                                  Message                                  #
+// #        Message object for data transfer between clients connected.        #
+// #                                                                           #
+// #                           1 - Direct Message                              #
+// #                           2 - Group Message                               #
+// #                           3 - To String                                   #
+// #                           4 - From String                                 #
+// #                                                                           #
+// #---------------------------------------------------------------------------#
+
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,6 +37,11 @@ public class Message implements Serializable {
     public String sender, receiver, message;
     public Timestamp timestamp;
 
+    // #-----------------------------------------------------------------------#
+    // #                          1 - Direct Message                           #
+    // #-----------------------------------------------------------------------#
+
+    // Initiate object with four parameters, direct personal message.
     public Message(String sender, String receiver, String message, int type) {
         this.message = message;
         this.messageType = type;
@@ -29,23 +49,39 @@ public class Message implements Serializable {
         this.sender = sender;
     }
 
+    // #-----------------------------------------------------------------------#
+    // #                          2 - Group Message                            #
+    // #-----------------------------------------------------------------------#
+
+    // Initiate object with five parameters, group chat message.
     public Message(String sender, String receiver, String message, int type, boolean isServerChatMessage) {
+        this.isServerChatMessage = isServerChatMessage;
         this.message = message;
         this.messageType = type;
         this.receiver = receiver;
         this.sender = sender;
-        this.isServerChatMessage = isServerChatMessage;
     }
 
+    // #-----------------------------------------------------------------------#
+    // #                          3 - To String                                #
+    // #-----------------------------------------------------------------------#
+
+    // Generate string instruction from message object.
     public String toString() {
-        
-        return this.sender + "::" + this.receiver + "::" + Integer.toString(this.messageType) +
-         "::" + this.message + "::" + this.timestamp.toString() + "::" + Boolean.toString(this.isServerChatMessage);
-        
+
+        // Return single message string.
+        return this.sender + "::" + this.receiver + "::" + Integer.toString(this.messageType) + "::" + this.message
+                + "::" + this.timestamp.toString() + "::" + Boolean.toString(this.isServerChatMessage);
+
     }
 
+    // #-----------------------------------------------------------------------#
+    // #                          4 - From String                              #
+    // #-----------------------------------------------------------------------#
+
+    // Split message string into message objects - used when deciphering received.
     public static Message fromString(String messageObjString) {
-        
+
         // Seperate String into variables
         String[] messageComponents = messageObjString.split("::");
         String sender = messageComponents[0];
@@ -59,9 +95,9 @@ public class Message implements Serializable {
         Message messageObj = new Message(sender, receiver, message, messageType, isServerChatMessage);
         messageObj.timestamp = timestamp;
 
+        // Return message object.
         return messageObj;
 
     }
 
 }
-

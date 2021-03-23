@@ -83,7 +83,7 @@ public class ServerChannelTest {
         Message messageObj = null;
         ServerChannel instance = new ServerChannel();
         instance.sendMessageToClient(messageObj);
-        fail("Unsure how to test this one")
+        fail("Unsure how to test this one");
         
     }
 
