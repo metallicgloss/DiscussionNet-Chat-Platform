@@ -3,7 +3,11 @@
  */
 package work.universitycourse.comp1549.Components;
 
-import Graphics;
+import java.awt.Color;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.Graphics;
+import java.awt.Shape;
+import javax.swing.JTextField;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

@@ -48,8 +48,10 @@ public class ClientManagerTest {
         System.out.println("sendMessage");
         String receiver = "";
         String message = "";
-        ClientManager instance = null;
-        instance.sendMessage(receiver, message);
+        ClientManager instance = null
+                ;
+        // NOTE: Needs fixing, test not completed.
+        //instance.sendMessage(receiver, message);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

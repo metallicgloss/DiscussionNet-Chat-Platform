@@ -5,11 +5,11 @@
  */
 package work.universitycourse.comp1549.Modules;
 
-import JButton;
-import JFrame;
-import JPanel;
-import JTable;
-import JTextField;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
