@@ -3,7 +3,7 @@
  */
 package work.universitycourse.comp1549.Components;
 
-import java.awt.Graphics;
+import Graphics;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

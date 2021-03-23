@@ -2,7 +2,9 @@ package work.universitycourse.comp1549.Modules;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -82,7 +84,7 @@ public class InterfaceManager {
     // Allow CTRL+C to exit GUI appliocation.
     public static void detectExitRequest(JPanel currentWindow) {
         // Target input map of "C" and "CTRL" pressed at the same time.
-        currentWindow.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK),
+        currentWindow.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK),
                 "exitApplicationRequest");
 
         // Map action of "exitProgram" to input map defined above of "exitApplicationRequest".
@@ -150,11 +152,11 @@ public class InterfaceManager {
     public static void buttonHover(JButton targetButton, Boolean buttonState, String buttonSize) {
         // If true, mouse is hovering over button.
         if (buttonState) {
-            targetButton.setIcon(new javax.swing.ImageIcon(
+            targetButton.setIcon(new ImageIcon(
                     InterfaceManager.class.getResource("/buttons/" + buttonSize + "-hover.png")));
         } else {
             targetButton.setIcon(
-                    new javax.swing.ImageIcon(InterfaceManager.class.getResource("/buttons/" + buttonSize + ".png")));
+                    new ImageIcon(InterfaceManager.class.getResource("/buttons/" + buttonSize + ".png")));
         }
     }
 
@@ -182,11 +184,11 @@ public class InterfaceManager {
         // Build new user panel.
         JPanel messagePanel = new JPanel();
         messagePanel.setLayout(new GridLayout(0, 2));
-        messagePanel.setBackground(new java.awt.Color(255, 255, 255));
+        messagePanel.setBackground(new Color(255, 255, 255));
 
         // Create label to identify the channel.
         JLabel userIDLabel = new JLabel();
-        userIDLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        userIDLabel.setFont(new Font("Montserrat", 0, 18));
         userIDLabel.setText("Channel: " + userID);
         userIDLabel.setBorder(new CompoundBorder(userIDLabel.getBorder(), new EmptyBorder(10, 10, 10, 10)));
         messagePanel.add(userIDLabel);
@@ -289,7 +291,7 @@ public class InterfaceManager {
         }
 
         // Define message label - content can be HTML.
-        newMessage.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        newMessage.setFont(new Font("Montserrat", 0, 12));
         newMessage.setText("<html><body style='width: 300px'><div style='text-align: " + messageAlignment + ";'><b>"
                 + userID + "</b> - " + messageTime + "<br/>" + messageContent + "</div></body></html>");
         newMessage.setBorder(new CompoundBorder(newMessage.getBorder(), new EmptyBorder(2, 10, 2, 10)));
