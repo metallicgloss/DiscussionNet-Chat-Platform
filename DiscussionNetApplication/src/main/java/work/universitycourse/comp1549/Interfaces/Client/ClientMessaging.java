@@ -62,8 +62,8 @@ public class ClientMessaging extends JFrame {
         this.clientPort = clientPort;
         initComponents();
 
-        this.client = new ClientManager(this.primaryMessagePane, this, this.serverIPAddress,
-                Integer.parseInt(this.serverPort), this.clientIdentifier, this.clientIPAddress,
+        this.client = new ClientManager(this.primaryMessagePane, this, this.serverDetailsCoordinatorValueLabel,
+                this.serverIPAddress, Integer.parseInt(this.serverPort), this.clientIdentifier, this.clientIPAddress,
                 Integer.parseInt(this.clientPort));
 
         clientDetailsIPAddressValueLabel.setText(this.clientIPAddress);
@@ -111,6 +111,8 @@ public class ClientMessaging extends JFrame {
         serverDetailsConnectionPortValueLabel = new JLabel();
         serverDetailsConnectionStatusLabel = new JLabel();
         serverDetailsConnectionStatusValueLabel = new JLabel();
+        serverDetailsCoordinatorLabel = new JLabel();
+        serverDetailsCoordinatorValueLabel = new JLabel();
         serverDetailsIPAddressLabel = new JLabel();
         serverDetailsIPAddressValueLabel = new JLabel();
         serverDetailsLabel1 = new JLabel();
@@ -420,6 +422,13 @@ public class ClientMessaging extends JFrame {
         serverDetailsConnectionStatusValueLabel.setForeground(new Color(46, 213, 116));
         serverDetailsConnectionStatusValueLabel.setName("serverDetailsConnectionStatusValueLabel");
 
+        serverDetailsCoordinatorLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11));
+        serverDetailsCoordinatorLabel.setText("Server Coordinator");
+        serverDetailsCoordinatorLabel.setName("serverDetailsCoordinatorLabel");
+
+        serverDetailsCoordinatorValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        serverDetailsCoordinatorValueLabel.setName("serverDetailsCoordinatorValueLabel");
+
         // Apply group layout configuration for the server details.
         GroupLayout serverDetailsPanel1Layout = new GroupLayout(serverDetailsPanel1);
         serverDetailsPanel1.setLayout(serverDetailsPanel1Layout);
@@ -455,21 +464,32 @@ public class ClientMessaging extends JFrame {
                                         .addComponent(serverDetailsConnectionPortValueLabel))
                                 .addGap(48, 48, 48)
                                 .addGroup(serverDetailsPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(serverDetailsConnectionStatusValueLabel)
-                                        .addComponent(serverDetailsConnectionStatusLabel))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        serverDetailsPanel2Layout
-                .setVerticalGroup(serverDetailsPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(serverDetailsConnectionStatusLabel)
+                                        .addComponent(serverDetailsConnectionStatusValueLabel))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE,
+                                        Short.MAX_VALUE)
+                                .addGroup(serverDetailsPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(serverDetailsCoordinatorLabel)
+                                        .addComponent(serverDetailsCoordinatorValueLabel))
+                                .addGap(37, 37, 37)));
+        serverDetailsPanel2Layout.setVerticalGroup(
+                serverDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(serverDetailsPanel2Layout.createSequentialGroup().addGap(25, 25, 25)
-                                .addGroup(serverDetailsPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(serverDetailsPanel2Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(serverDetailsIPAddressLabel)
                                         .addComponent(serverDetailsConnectionPortLabel)
-                                        .addComponent(serverDetailsConnectionStatusLabel))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(serverDetailsPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(serverDetailsIPAddressValueLabel)
-                                        .addComponent(serverDetailsConnectionPortValueLabel)
-                                        .addComponent(serverDetailsConnectionStatusValueLabel))
+                                        .addComponent(serverDetailsConnectionStatusLabel)
+                                        .addComponent(serverDetailsCoordinatorLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(serverDetailsPanel2Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(serverDetailsPanel2Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(serverDetailsIPAddressValueLabel)
+                                                .addComponent(serverDetailsConnectionPortValueLabel)
+                                                .addComponent(serverDetailsConnectionStatusValueLabel))
+                                        .addComponent(serverDetailsCoordinatorValueLabel))
                                 .addContainerGap(47, Short.MAX_VALUE)));
 
         // #-------------------------------------------------------------------#
@@ -737,7 +757,7 @@ public class ClientMessaging extends JFrame {
     // #-----------------------------------------------------------------------#
     // #                        User Interface Effects                         #
     // #-----------------------------------------------------------------------#
-    
+
     // Configure Button Hover Effect On
     private void userMessagesIconLabelMouseEntered(MouseEvent evt) {
         InterfaceManager.buttonHover(userMessagesButton, true, "small");
@@ -761,7 +781,8 @@ public class ClientMessaging extends JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ClientMessaging.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
@@ -801,6 +822,8 @@ public class ClientMessaging extends JFrame {
     private JLabel serverDetailsConnectionPortValueLabel;
     private JLabel serverDetailsConnectionStatusLabel;
     private JLabel serverDetailsConnectionStatusValueLabel;
+    private JLabel serverDetailsCoordinatorLabel;
+    private JLabel serverDetailsCoordinatorValueLabel;
     private JLabel serverDetailsIPAddressLabel;
     private JLabel serverDetailsIPAddressValueLabel;
     private JLabel serverDetailsLabel1;

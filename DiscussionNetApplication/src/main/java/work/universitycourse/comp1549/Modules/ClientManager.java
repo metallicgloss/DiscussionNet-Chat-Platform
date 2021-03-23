@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import work.universitycourse.comp1549.Components.ClientInfo;
 import work.universitycourse.comp1549.Components.ClientInstruction;
@@ -59,6 +60,7 @@ public class ClientManager {
     private ClientInfo clientInfo;
     private InstructionsQueue instructionsQueue = new InstructionsQueue();
     private JFrame messagePanel;
+    private JLabel coordinatorIDLabel;
     private JTabbedPane messagePane;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
@@ -72,7 +74,7 @@ public class ClientManager {
     // #                            1 - Constructor                            #
     // #-----------------------------------------------------------------------#
 
-    public ClientManager(JTabbedPane messagePane, JFrame messagePanel, String serverIP, int serverPort, String clientID,
+    public ClientManager(JTabbedPane messagePane, JFrame messagePanel, JLabel coordinatorIDLabel, String serverIP, int serverPort, String clientID,
             String clientIP, int clientPort) {
 
         try {
@@ -86,6 +88,7 @@ public class ClientManager {
                 // Define other variables
                 this.messagePane = messagePane;
                 this.messagePanel = messagePanel;
+                this.coordinatorIDLabel = coordinatorIDLabel;
                 this.clientID = clientID;
                 this.clientInfo = new ClientInfo(clientID, clientIP, clientPort);
                 this.outputStream = new ObjectOutputStream(this.clientSocket.getOutputStream());
@@ -586,7 +589,9 @@ public class ClientManager {
 
             // Set coordinator ID for self
             ClientManager.this.coordinatorID = ClientManager.this.clientID;   
-            // TODO @William make it display the coordinator ID here as well
+            
+            InterfaceManager.updateCoordinator(ClientManager.this.coordinatorIDLabel, 
+                    ClientManager.this.getCoordinatorID());
 
             // Tell others you are the coordinator
             String notifyOfNewCoordinatorInstructionString = ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
@@ -798,7 +803,8 @@ public class ClientManager {
         private void processInstructionNotifyOthersOfNewCoordinator(String coordinatorID) {
 
             ClientManager.this.coordinatorID = coordinatorID;
-            // TODO @William, place code here to display the coordinator ID, use public funtion getCoordinator ID
+            InterfaceManager.updateCoordinator(ClientManager.this.coordinatorIDLabel,
+                    ClientManager.this.getCoordinatorID());
 
         }
 
