@@ -37,6 +37,7 @@ import org.apache.commons.validator.routines.IntegerValidator;
 import org.apache.commons.validator.routines.RegexValidator;
 import static javax.swing.JOptionPane.showMessageDialog;
 import work.universitycourse.comp1549.Interfaces.Licenses;
+import work.universitycourse.comp1549.Interfaces.StartUpInterface;
 
 /**
  *
@@ -136,12 +137,17 @@ public class InterfaceManager {
     public static void executeConnectionFault() {
         // Display formatted message informing them of the network configuration error.
         showMessageDialog(null,
-                "<html><h2><b>Sorry!</b></h2><h3>The connection could not be initialised. Program execution haulted to allow for diagnostics to be performed.</h3>Unfortunately, the software has failed to bind to the specified IP and port combination.<br>Please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.",
+                "<html><h2><b>Sorry!</b></h2><h3>A network related error occured. The connection could not be maintained.</h3>If in doubt, please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.",
                 "Connection Intialisation Error", JOptionPane.WARNING_MESSAGE);
 
         // Due to the complexity of the error, instead of re-routing user back to startup, close program to allow for sysadmin intervention if required to identify available ip/port.
         // High chance that sysadmin intervention will be required.
-        System.exit(0);
+        java.awt.Window win[] = java.awt.Window.getWindows();
+        for (int i = 0; i < win.length; i++) {
+            win[i].dispose();
+        }
+        JFrame startUpInterface = new StartUpInterface();
+        startUpInterface.setVisible(true);
     }
 
     // #-----------------------------------------------------------------------#

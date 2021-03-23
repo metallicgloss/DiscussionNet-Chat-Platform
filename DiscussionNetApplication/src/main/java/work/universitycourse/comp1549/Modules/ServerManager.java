@@ -110,10 +110,14 @@ public class ServerManager {
             String clientID;
 
             // Accept new client and add them to the channel
-            Socket clientSocket = this.server.accept();
-            clientID = this.serverChannel.addNewClientConnection(clientSocket);
-            InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection",
-                    "New Client Connected: " + clientID);
+            if(this.server != null) {
+                Socket clientSocket = this.server.accept();
+                clientID = this.serverChannel.addNewClientConnection(clientSocket);
+                InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection",
+                        "New Client Connected: " + clientID);
+            } else {
+                this.serverRunning = false; 
+            }
 
         } catch (IOException e) {
             InterfaceManager.displayError(e, "Failed to add new client!");
