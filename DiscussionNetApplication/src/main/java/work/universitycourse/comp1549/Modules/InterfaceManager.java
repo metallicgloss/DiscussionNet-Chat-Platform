@@ -225,6 +225,11 @@ public class InterfaceManager {
         return -1;
     }
 
+    // Update coordinator on interface after instruction.
+    public static void updateCoordinator(JLabel coordinatorLabel, String coordinatorID) {
+        coordinatorLabel.setText(coordinatorID);
+    }
+
     // #-----------------------------------------------------------------------#
     // #                          6 - Message Handlers                         #
     // #-----------------------------------------------------------------------#
