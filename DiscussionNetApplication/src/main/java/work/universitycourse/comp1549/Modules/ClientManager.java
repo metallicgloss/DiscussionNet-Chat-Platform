@@ -188,6 +188,22 @@ public class ClientManager {
         return this.clientListLocal;
     }
 
+    // Return formatted list of client as string.
+    public String getAllClientsInfoFromLocalListAsFormattedString() {
+
+        String allClientsInfoString = "";
+
+        for (String clientID : this.clientListLocal.keySet()) {
+
+            ClientInfo clientInfo = this.clientListLocal.get(clientID);
+            allClientsInfoString += clientInfo.toString() + "\n";
+
+        }
+
+        return allClientsInfoString;
+
+    }
+
     // Removes a client info entry from the local client list
     private void removeClientInfoFromLocalList(String clientID) {
 

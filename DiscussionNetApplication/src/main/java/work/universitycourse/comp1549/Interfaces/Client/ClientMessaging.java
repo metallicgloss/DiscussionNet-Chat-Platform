@@ -23,6 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 import work.universitycourse.comp1549.Components.JRoundedTextField;
 import work.universitycourse.comp1549.Modules.ClientManager;
@@ -106,13 +107,13 @@ public class ClientMessaging extends JFrame {
         headerTitlePanel = new JPanel();
         primaryMessagePane = new JTabbedPane();
         sendArrowIconLabel = new JLabel();
-        serverDetailsIcon = new JLabel();
         serverDetailsConnectionPortLabel = new JLabel();
         serverDetailsConnectionPortValueLabel = new JLabel();
         serverDetailsConnectionStatusLabel = new JLabel();
         serverDetailsConnectionStatusValueLabel = new JLabel();
         serverDetailsCoordinatorLabel = new JLabel();
         serverDetailsCoordinatorValueLabel = new JLabel();
+        serverDetailsIcon = new JLabel();
         serverDetailsIPAddressLabel = new JLabel();
         serverDetailsIPAddressValueLabel = new JLabel();
         serverDetailsLabel1 = new JLabel();
@@ -120,6 +121,7 @@ public class ClientMessaging extends JFrame {
         serverDetailsPanel1 = new JPanel();
         serverDetailsPanel2 = new JPanel();
         sidePanel = new JPanel();
+        userListLabel = new JLabel();
         userMessagesButton = new JButton();
         userMessagesIconLabel = new JLabel();
         userMessagesTextfield = new JRoundedTextField();
@@ -228,6 +230,19 @@ public class ClientMessaging extends JFrame {
         userMessagingLabel.setText("User Messaging");
         userMessagingLabel.setName("userMessagingLabel");
 
+        // Apply settings and actions to the user list menu label.
+        userListLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        userListLabel.setFont(new Font("Montserrat", 0, 11));
+        userListLabel.setForeground(new Color(255, 255, 255));
+        userListLabel.setIcon(new ImageIcon(getClass().getResource("/icons/users.png")));
+        userListLabel.setName("userListLabel");
+        userListLabel.setText("User List");
+        userListLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                userListLabelMouseClicked(evt);
+            }
+        });
+
         // Apply settings to the menu exit option.
         exitApplicationLabel.setBackground(new Color(255, 255, 255));
         exitApplicationLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -248,13 +263,14 @@ public class ClientMessaging extends JFrame {
         sidePanelLayout.setHorizontalGroup(sidePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(sidePanelLayout.createSequentialGroup().addGap(19, 19, 19)
                         .addGroup(sidePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                .addComponent(userMessagingLabel).addComponent(clientFeaturesLabel)
-                                .addComponent(exitApplicationLabel))
-                        .addContainerGap(21, Short.MAX_VALUE)));
+                                .addComponent(userListLabel).addComponent(userMessagingLabel)
+                                .addComponent(clientFeaturesLabel).addComponent(exitApplicationLabel))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
         sidePanelLayout.setVerticalGroup(sidePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(sidePanelLayout
                         .createSequentialGroup().addGap(27, 27, 27).addComponent(clientFeaturesLabel).addGap(18, 18, 18)
-                        .addComponent(userMessagingLabel).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
+                        .addComponent(userMessagingLabel).addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(userListLabel).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
                                 GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exitApplicationLabel).addGap(28, 28, 28)));
 
@@ -526,15 +542,17 @@ public class ClientMessaging extends JFrame {
                         .addComponent(userMessagingIconLabel).addGap(18, 18, 18).addComponent(userMessagingLabel1)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(userMessagingLabel2)
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-        userMessagingTopPanelLayout
-                .setVerticalGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addGap(20, 20, 20)
-                                .addGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(userMessagingIconLabel)
+        userMessagingTopPanelLayout.setVerticalGroup(userMessagingTopPanelLayout
+                .createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(userMessagingTopPanelLayout.createSequentialGroup()
+                        .addGroup(userMessagingTopPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addGap(20, 20, 20)
                                         .addGroup(userMessagingTopPanelLayout
                                                 .createParallelGroup(GroupLayout.Alignment.BASELINE)
                                                 .addComponent(userMessagingLabel2).addComponent(userMessagingLabel1)))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+                                .addGroup(userMessagingTopPanelLayout.createSequentialGroup().addContainerGap()
+                                        .addComponent(userMessagingIconLabel)))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         // Apply settings to the primary message content panel.
         userMessagingMainPanel.setBackground(new Color(255, 255, 255));
@@ -708,6 +726,11 @@ public class ClientMessaging extends JFrame {
     // #                        User Interface Actions                         #
     // #-----------------------------------------------------------------------#
 
+    // Display user list.
+    private void userListLabelMouseClicked(java.awt.event.MouseEvent evt) {
+        showMessageDialog(null, this.client.getAllClientsInfoFromLocalListAsFormattedString());
+    }
+
     // Display licenses window.
     private void footerLicensesTextLabelMouseClicked(MouseEvent evt) {
         InterfaceManager.displayLicenses();
@@ -795,50 +818,51 @@ public class ClientMessaging extends JFrame {
         });
     }
 
+    private JButton userMessagesButton;
     private JLabel clientControlPanelLabel1;
     private JLabel clientControlPanelLabel2;
     private JLabel clientDetailsAssignedIDNumberLabel;
     private JLabel clientDetailsAssignedIDNumberValueLabel;
     private JLabel clientDetailsConnectionPortLabel;
     private JLabel clientDetailsConnectionPortValueLabel;
+    private JLabel clientDetailsIcon;
     private JLabel clientDetailsIPAddressLabel;
     private JLabel clientDetailsIPAddressValueLabel;
-    private JLabel clientDetailsIcon;
     private JLabel clientDetailsLabel1;
     private JLabel clientDetailsLabel2;
-    private JPanel clientDetailsPanel1;
-    private JPanel clientDetailsPanel2;
     private JLabel clientFeaturesLabel;
     private JLabel discussionNetLabel;
     private JLabel exitApplicationLabel;
     private JLabel footerLicensesTextLabel;
-    private JPanel footerPanel;
     private JLabel footerTextLabel;
-    private JPanel headerNamePanel;
-    private JPanel headerTitlePanel;
     private JLabel sendArrowIconLabel;
-    private JTabbedPane primaryMessagePane;
     private JLabel serverDetailsConnectionPortLabel;
     private JLabel serverDetailsConnectionPortValueLabel;
     private JLabel serverDetailsConnectionStatusLabel;
     private JLabel serverDetailsConnectionStatusValueLabel;
     private JLabel serverDetailsCoordinatorLabel;
     private JLabel serverDetailsCoordinatorValueLabel;
+    private JLabel serverDetailsIcon;
     private JLabel serverDetailsIPAddressLabel;
     private JLabel serverDetailsIPAddressValueLabel;
     private JLabel serverDetailsLabel1;
     private JLabel serverDetailsLabel2;
-    private JPanel serverDetailsPanel1;
-    private JPanel serverDetailsPanel2;
-    private JLabel serverDetailsIcon;
-    private JPanel sidePanel;
-    private JButton userMessagesButton;
+    private JLabel userListLabel;
     private JLabel userMessagesIconLabel;
-    private JTextField userMessagesTextfield;
     private JLabel userMessagingIconLabel;
     private JLabel userMessagingLabel;
     private JLabel userMessagingLabel1;
     private JLabel userMessagingLabel2;
+    private JPanel clientDetailsPanel1;
+    private JPanel clientDetailsPanel2;
+    private JPanel footerPanel;
+    private JPanel headerNamePanel;
+    private JPanel headerTitlePanel;
+    private JPanel serverDetailsPanel1;
+    private JPanel serverDetailsPanel2;
+    private JPanel sidePanel;
     private JPanel userMessagingMainPanel;
     private JPanel userMessagingTopPanel;
+    private JTabbedPane primaryMessagePane;
+    private JTextField userMessagesTextfield;
 }
