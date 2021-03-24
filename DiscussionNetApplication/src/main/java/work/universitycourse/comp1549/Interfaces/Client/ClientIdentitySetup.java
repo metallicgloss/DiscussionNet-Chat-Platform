@@ -319,7 +319,7 @@ public class ClientIdentitySetup extends JFrame {
     }
 
     // Confirm identity.
-    private void confirmIdentity()  {
+    private void confirmIdentity() {
         // If validation passes.
         if (InterfaceManager.validateIPAddress(clientIPAddressTextField.getText())
                 && InterfaceManager.validatePort(clientPortTextField.getText())
@@ -334,11 +334,18 @@ public class ClientIdentitySetup extends JFrame {
                 }
             }
 
-            // Change window and pass values.
-            InterfaceManager.changeWindow(this,
-                    new ClientMessaging(this.serverIPAddress, this.serverPort,
-                            assignedIdentificationTextfield.getText(), clientIPAddressTextField.getText(),
-                            clientPortTextField.getText()));
+            // Initialise creation of new window before request to display it in the event that connection fails
+            ClientMessaging messagingWindow = new ClientMessaging(this.serverIPAddress, this.serverPort,
+                    assignedIdentificationTextfield.getText(), clientIPAddressTextField.getText(),
+                    clientPortTextField.getText());
+
+            if(messagingWindow.clientStatus) {
+                // Change window and pass values.
+                InterfaceManager.changeWindow(this, messagingWindow);
+            } else {
+                // Startup failed, don't open window.
+                messagingWindow.dispose();
+            }
         }
     }
 

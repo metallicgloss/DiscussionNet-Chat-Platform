@@ -55,7 +55,7 @@ import work.universitycourse.comp1549.Interfaces.Client.ClientServerConnection;
 @SuppressWarnings("rawtypes")
 public class ClientManager {
 
-    private boolean isClientRunning = true;
+    public boolean isClientRunning = true;
     private boolean isCoordinator = false;
     private ClientInfo clientInfo;
     private InstructionsQueue instructionsQueue = new InstructionsQueue();
@@ -74,8 +74,8 @@ public class ClientManager {
     // #                            1 - Constructor                            #
     // #-----------------------------------------------------------------------#
 
-    public ClientManager(JTabbedPane messagePane, JFrame messagePanel, JLabel coordinatorIDLabel, String serverIP, int serverPort, String clientID,
-            String clientIP, int clientPort) {
+    public ClientManager(JTabbedPane messagePane, JFrame messagePanel, JLabel coordinatorIDLabel, String serverIP,
+            int serverPort, String clientID, String clientIP, int clientPort) {
 
         try {
 
@@ -110,10 +110,12 @@ public class ClientManager {
                 this.instructionsQueue.addInstructionToQueue(establishConnectionInstruction);
 
             } catch (BindException e) {
+                this.isClientRunning = false;
                 InterfaceManager.executeConnectionFault();
             }
 
         } catch (IOException e) {
+            this.isClientRunning = false;
             InterfaceManager.executeConnectionFault();
         } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException
                 | ClientInstruction.DataFormatException e) {
@@ -198,9 +200,11 @@ public class ClientManager {
             try {
 
                 ClientInfo clientInfo = this.clientListLocal.get(clientID);
-                allClientsInfoString += String.format("%s \t %s \t %s \n", clientInfo.clientID, clientInfo.clientIP, String.valueOf(clientInfo.clientPort));
+                allClientsInfoString += String.format("%s \t %s \t %s \n", clientInfo.clientID, clientInfo.clientIP,
+                        String.valueOf(clientInfo.clientPort));
 
-            } catch (NumberFormatException e) {}
+            } catch (NumberFormatException e) {
+            }
 
         }
 
@@ -556,7 +560,7 @@ public class ClientManager {
                         // Process being rejected by the coordinator
                         this.processInstructionConnectionRejectedByCoordinator(instruction.data);
                         break;
-                    
+
                     case ClientInstruction.NOTIFY_OTHERS_OF_NEW_COORDINATOR:
 
                         // Process notifying other members of the new coordinator
@@ -605,24 +609,25 @@ public class ClientManager {
             }
 
             // Set coordinator ID for self
-            ClientManager.this.coordinatorID = ClientManager.this.clientID;   
-            
-            InterfaceManager.updateCoordinator(ClientManager.this.coordinatorIDLabel, 
+            ClientManager.this.coordinatorID = ClientManager.this.clientID;
+
+            InterfaceManager.updateCoordinator(ClientManager.this.coordinatorIDLabel,
                     ClientManager.this.getCoordinatorID());
-            
+
             // Tell others you are the coordinator
-            String notifyOfNewCoordinatorInstructionString = ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
+            String notifyOfNewCoordinatorInstructionString = ClientInstruction
+                    .createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
 
             for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
 
                 // Do not send message back to the person who sent the message.
-                if (! currentClientID.equals(ClientManager.this.clientID)) {
+                if (!currentClientID.equals(ClientManager.this.clientID)) {
 
                     // Send message object to clients server chat
                     this.sendInstruction(currentClientID, notifyOfNewCoordinatorInstructionString);
 
                 }
-                
+
             }
 
             // NOTE leave the message box at the bottom as it would stop the execution 
@@ -688,7 +693,8 @@ public class ClientManager {
                 this.sendInstruction(clientID, clientAcceptedString);
 
                 // Tell client of coordinator ID
-                String notifyClientOfCoordinatorString = ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
+                String notifyClientOfCoordinatorString = ClientInstruction
+                        .createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
                 this.sendInstruction(clientID, notifyClientOfCoordinatorString);
 
                 // Update client info server cache

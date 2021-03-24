@@ -48,6 +48,8 @@ public class ClientMessaging extends JFrame {
     public String clientIPAddress;
     public String clientPort;
 
+    public Boolean clientStatus = true;
+
     private ClientManager client;
 
     // #-----------------------------------------------------------------------#
@@ -68,6 +70,10 @@ public class ClientMessaging extends JFrame {
                 this.serverIPAddress, Integer.parseInt(this.serverPort), this.clientIdentifier, this.clientIPAddress,
                 Integer.parseInt(this.clientPort));
 
+        if(!this.client.isClientRunning) {
+                // Error occured on startup, don't continue launch.
+                this.clientStatus = false;
+        }
         clientDetailsIPAddressValueLabel.setText(this.clientIPAddress);
         clientDetailsConnectionPortValueLabel.setText(this.clientPort);
         clientDetailsAssignedIDNumberValueLabel.setText(this.clientIdentifier);
