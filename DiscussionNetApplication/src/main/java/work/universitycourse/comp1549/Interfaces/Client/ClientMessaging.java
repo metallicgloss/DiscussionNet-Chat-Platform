@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -727,8 +728,9 @@ public class ClientMessaging extends JFrame {
     // #-----------------------------------------------------------------------#
 
     // Display user list.
-    private void userListLabelMouseClicked(java.awt.event.MouseEvent evt) {
-        showMessageDialog(null, this.client.getAllClientsInfoFromLocalListAsFormattedString());
+    private void userListLabelMouseClicked(MouseEvent evt) {
+        showMessageDialog(null, this.client.getAllClientsInfoFromLocalListAsFormattedString(), "User List",
+                        JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Display licenses window.

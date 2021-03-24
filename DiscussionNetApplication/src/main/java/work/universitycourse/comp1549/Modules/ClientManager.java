@@ -191,7 +191,7 @@ public class ClientManager {
     // Return formatted list of client as string.
     public String getAllClientsInfoFromLocalListAsFormattedString() {
 
-        String allClientsInfoString = "";
+        String allClientsInfoString = "Client ID, Client IP, Client Port\n";
 
         for (String clientID : this.clientListLocal.keySet()) {
 
