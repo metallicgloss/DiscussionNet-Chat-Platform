@@ -420,6 +420,7 @@ public class ServerManager {
         private void executeInstructionClientDisconnected(String clientID) {
 
             String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
+            String OLD_CORDINATOR_ID = coordinatorID;
 
             // Check if coordinator disconnected
             if (clientID.equals(coordinatorID)) {
@@ -427,6 +428,21 @@ public class ServerManager {
                 // Set coordinator to null
                 ServerManager.this.serverChannel.setCoordinatorConnectionNull();
                 ServerManager.this.displayServerLogMessage("FIND NEW COORDINATOR");
+
+                // Tell others that coordinator has disconnected
+                HashMap<String, ClientInfo> clientInfoListCache = ServerManager.this.serverChannel.getAllClientInfo();
+                String clientDisconnectedInstructionString = ClientInstruction.createNotifyClientDisconnectedInstructionString(coordinatorID);
+
+                for (String currentClientID : clientInfoListCache.keySet()) {
+
+                    if (! currentClientID.equals(coordinatorID)) {
+
+                        Message notifyClientDisconnectedInstruction = new Message("SERVER", currentClientID, clientDisconnectedInstructionString, Message.INSTRUCTION_TYPE);
+                        ServerManager.this.serverChannel.addMessageToChannel(notifyClientDisconnectedInstruction);
+
+                    }
+
+                }
 
                 // Find new coordinator
                 this.findNewCoordinator(coordinatorID);
@@ -439,8 +455,10 @@ public class ServerManager {
             // Remove connection from client connection list cache
             this.executeInstructionRemoveConnection(clientID);
 
-            // If coordinator present, notify them
-            if (ServerManager.this.serverChannel.checkCoordinatorIsSet()) {
+
+            // If coordinator present and the client that left was not the coordinator, notify the coordinator
+            // NOTE If it was the coordinator that left, the program would have already notified everyone already
+            if (ServerManager.this.serverChannel.checkCoordinatorIsSet() && ! clientID.equals(OLD_CORDINATOR_ID)) {
 
                 // Tell coordinator about the client that has disconnected
                 String notifyClientDisconnecString = ClientInstruction

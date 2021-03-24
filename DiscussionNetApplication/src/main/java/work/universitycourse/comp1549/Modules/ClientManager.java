@@ -500,8 +500,6 @@ public class ClientManager {
                             // Accept / Reject connection a new client's connection request
                             this.processInstructionReviewJoinRequest(instruction.data);
 
-                        } else {
-                            // TODO How to handle a review request being sent to a non-coordinator
                         }
 
                         break;
@@ -601,21 +599,20 @@ public class ClientManager {
             if (!ClientManager.this.clientListLocal.containsKey(ClientManager.this.clientID)) {
                 ClientManager.this.addClientInfoToLocalList(ClientManager.this.clientID, ClientManager.this.clientInfo);
             }
-            InterfaceManager.displayWarning("You've been assigned to be the group coordinator!");
 
             // Set coordinator ID for self
             ClientManager.this.coordinatorID = ClientManager.this.clientID;   
             
             InterfaceManager.updateCoordinator(ClientManager.this.coordinatorIDLabel, 
                     ClientManager.this.getCoordinatorID());
-
+            
             // Tell others you are the coordinator
             String notifyOfNewCoordinatorInstructionString = ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString(ClientManager.this.clientID);
 
             for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
 
                 // Do not send message back to the person who sent the message.
-                if (!currentClientID.equals(ClientManager.this.clientID)) {
+                if (! currentClientID.equals(ClientManager.this.clientID)) {
 
                     // Send message object to clients server chat
                     this.sendInstruction(currentClientID, notifyOfNewCoordinatorInstructionString);
@@ -623,7 +620,10 @@ public class ClientManager {
                 }
                 
             }
-            
+
+            // NOTE leave the message box at the bottom as it would stop the execution 
+            //      of the rest of the code until the user clicks OK
+            InterfaceManager.displayWarning("You've been assigned to be the group coordinator!");
 
         }
 
