@@ -191,12 +191,16 @@ public class ClientManager {
     // Return formatted list of client as string.
     public String getAllClientsInfoFromLocalListAsFormattedString() {
 
-        String allClientsInfoString = "Client ID, Client IP, Client Port\n";
+        String allClientsInfoString = String.format("%s \t %s \t %s \n", "Client ID", "Client IP", "Client Port");
 
         for (String clientID : this.clientListLocal.keySet()) {
 
-            ClientInfo clientInfo = this.clientListLocal.get(clientID);
-            allClientsInfoString += clientInfo.toString() + "\n";
+            try {
+
+                ClientInfo clientInfo = this.clientListLocal.get(clientID);
+                allClientsInfoString += String.format("%s \t %s \t %s \n", clientInfo.clientID, clientInfo.clientIP, String.valueOf(clientInfo.clientPort));
+
+            } catch (NumberFormatException e) {}
 
         }
 
