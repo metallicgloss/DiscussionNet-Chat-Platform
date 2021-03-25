@@ -10,7 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -54,7 +53,7 @@ public class ServerConfiguration extends JFrame {
         // Initialise interface objects.
         assignedNetworkPortLabel = new JLabel();
         assignedNetworkPortTextfield = new JRoundedTextField();
-        configuredIPAddresLabel = new JLabel();
+        configuredIPAddressLabel = new JLabel();
         configuredIPAddressTextfield = new JRoundedTextField();
         footerLicensesTextLabel = new JLabel();
         footerTextLabel1 = new JLabel();
@@ -90,7 +89,7 @@ public class ServerConfiguration extends JFrame {
 
         // Apply settings to the management title label.
         serverManagementConfigurationLabel1.setBounds(233, 238, 79, 30);
-        serverManagementConfigurationLabel1.setFont(new Font("Montserrat SemiBold", 0, 24));
+        serverManagementConfigurationLabel1.setFont(InterfaceManager.montserratSemiBold.deriveFont(23.0f));
         serverManagementConfigurationLabel1.setForeground(new Color(0, 36, 109));
         serverManagementConfigurationLabel1.setName("serverManagementConfigurationLabel1");
         serverManagementConfigurationLabel1.setText("Server");
@@ -98,24 +97,24 @@ public class ServerConfiguration extends JFrame {
 
         // Apply settings to the management title label (section 2)
         serverManagementConfigurationLabel2.setBounds(318, 238, 335, 30);
-        serverManagementConfigurationLabel2.setFont(new Font("Montserrat", 0, 24));
+        serverManagementConfigurationLabel2.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         serverManagementConfigurationLabel2.setName("serverManagementConfigurationLabel2");
         serverManagementConfigurationLabel2.setText("Management Configuration");
         serverConfigurationPanel.add(serverManagementConfigurationLabel2);
 
         // Apply settings to the configured IP label.
-        configuredIPAddresLabel.setBounds(140, 310, 162, 17);
-        configuredIPAddresLabel.setFont(new Font("Montserrat", 0, 13));
-        configuredIPAddresLabel.setIcon(new ImageIcon(getClass().getResource("/icons/wireless.png")));
-        configuredIPAddresLabel.setName("configuredIPAddresLabel");
-        configuredIPAddresLabel.setText("Configured IP Address");
-        serverConfigurationPanel.add(configuredIPAddresLabel);
+        configuredIPAddressLabel.setBounds(140, 310, 162, 17);
+        configuredIPAddressLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
+        configuredIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/wireless.png")));
+        configuredIPAddressLabel.setName("configuredIPAddressLabel");
+        configuredIPAddressLabel.setText("IP Address");
+        serverConfigurationPanel.add(configuredIPAddressLabel);
 
         // Apply settings and effects to the IP text field.
         configuredIPAddressTextfield.setBounds(68, 333, 334, 30);
         configuredIPAddressTextfield.setCaretColor(new Color(152, 150, 162));
         configuredIPAddressTextfield.setDisabledTextColor(new Color(152, 150, 162));
-        configuredIPAddressTextfield.setFont(new Font("Montserrat", 0, 13));
+        configuredIPAddressTextfield.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         configuredIPAddressTextfield.setForeground(new Color(152, 150, 162));
         configuredIPAddressTextfield.setHorizontalAlignment(JTextField.CENTER);
         configuredIPAddressTextfield.setMargin(new Insets(0, 5, 0, 5));
@@ -133,17 +132,17 @@ public class ServerConfiguration extends JFrame {
 
         // Apply settings to the allocated port label.
         assignedNetworkPortLabel.setBounds(549, 310, 166, 17);
-        assignedNetworkPortLabel.setFont(new Font("Montserrat", 0, 13));
-        assignedNetworkPortLabel.setIcon(new ImageIcon(getClass().getResource("/icons/port_icon.png")));
+        assignedNetworkPortLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
+        assignedNetworkPortLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/port_icon.png")));
         assignedNetworkPortLabel.setName("assignedNetworkPortLabel");
-        assignedNetworkPortLabel.setText("Assigned Network Port");
+        assignedNetworkPortLabel.setText("Port");
         serverConfigurationPanel.add(assignedNetworkPortLabel);
 
         // Apply settings and effects to the port text field.
         assignedNetworkPortTextfield.setBounds(456, 333, 334, 30);
         assignedNetworkPortTextfield.setCaretColor(new Color(152, 150, 162));
         assignedNetworkPortTextfield.setDisabledTextColor(new Color(152, 150, 162));
-        assignedNetworkPortTextfield.setFont(new Font("Montserrat", 0, 13));
+        assignedNetworkPortTextfield.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         assignedNetworkPortTextfield.setForeground(new Color(152, 150, 162));
         assignedNetworkPortTextfield.setHorizontalAlignment(JTextField.CENTER);
         assignedNetworkPortTextfield.setMargin(new Insets(0, 5, 0, 5));
@@ -167,7 +166,7 @@ public class ServerConfiguration extends JFrame {
         userMessagesIconLabel.setForeground(new Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
         userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_icon.png")));
+        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/arrow_icon.png")));
         userMessagesIconLabel.setIconTextGap(0);
         userMessagesIconLabel.setInheritsPopupMenu(false);
         userMessagesIconLabel.setName("userMessagesIconLabel");
@@ -193,10 +192,10 @@ public class ServerConfiguration extends JFrame {
         provisionServerButton.setBounds(50, 370, 761, 69);
         provisionServerButton.setContentAreaFilled(false);
         provisionServerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        provisionServerButton.setFont(new Font("Montserrat", 0, 15));
+        provisionServerButton.setFont(InterfaceManager.montserratRegular.deriveFont(15.0f));
         provisionServerButton.setForeground(new Color(255, 255, 255));
         provisionServerButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        provisionServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/large.png")));
+        provisionServerButton.setIcon(new ImageIcon(getClass().getResource("/imgs/buttons/large.png")));
         provisionServerButton.setIconTextGap(3);
         provisionServerButton.setName("provisionServerButton");
         provisionServerButton.setText("Provision Server       ");
@@ -218,13 +217,13 @@ public class ServerConfiguration extends JFrame {
 
         // Set graphic settings. 
         mainImage.setBounds(272, 40, 315, 192);
-        mainImage.setIcon(new ImageIcon(getClass().getResource("/graphics/settings.png")));
+        mainImage.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/settings.png")));
         mainImage.setName("mainImage");
         serverConfigurationPanel.add(mainImage);
 
         // Apply settings to the first footer label.
         footerTextLabel1.setBounds(292, 507, 189, 12);
-        footerTextLabel1.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel1.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerTextLabel1.setForeground(new Color(47, 46, 65));
         footerTextLabel1.setName("footerTextLabel1");
         footerTextLabel1.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
@@ -233,7 +232,7 @@ public class ServerConfiguration extends JFrame {
         // Apply settings and action to the footer display label.
         footerLicensesTextLabel.setBounds(487, 507, 80, 12);
         footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
         footerLicensesTextLabel.setText("Software Licenses");
@@ -364,7 +363,7 @@ public class ServerConfiguration extends JFrame {
 
     private JButton provisionServerButton;
     private JLabel assignedNetworkPortLabel;
-    private JLabel configuredIPAddresLabel;
+    private JLabel configuredIPAddressLabel;
     private JLabel footerLicensesTextLabel;
     private JLabel footerTextLabel1;
     private JLabel mainImage;

@@ -10,7 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -90,13 +89,13 @@ public class ClientServerConnection extends JFrame {
 
         // Apply settings to the page graphic.
         mainImage.setBounds(78, 187, 205, 181);
-        mainImage.setIcon(new ImageIcon(getClass().getResource("/graphics/connection.png")));
+        mainImage.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/connection.png")));
         mainImage.setName("mainImage");
         clientServerConnectionPanel.add(mainImage);
 
         // Apply settings to the title label (section 1)
         discussionNetServerConnectionLabel1.setBounds(363, 148, 175, 30);
-        discussionNetServerConnectionLabel1.setFont(new Font("Montserrat SemiBold", 0, 24));
+        discussionNetServerConnectionLabel1.setFont(InterfaceManager.montserratSemiBold.deriveFont(23.0f));
         discussionNetServerConnectionLabel1.setForeground(new Color(0, 36, 109));
         discussionNetServerConnectionLabel1.setName("discussionNetServerConnectionLabel1");
         discussionNetServerConnectionLabel1.setText("DiscussionNet");
@@ -104,15 +103,15 @@ public class ClientServerConnection extends JFrame {
 
         // Apply settings to the title label (section 2)
         discussionNetServerConnectionLabel2.setBounds(544, 148, 224, 30);
-        discussionNetServerConnectionLabel2.setFont(new Font("Montserrat", 0, 24));
+        discussionNetServerConnectionLabel2.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         discussionNetServerConnectionLabel2.setName("discussionNetServerConnectionLabel2");
         discussionNetServerConnectionLabel2.setText("Server Connection");
         clientServerConnectionPanel.add(discussionNetServerConnectionLabel2);
 
         // Apply settings to the IP address label.
         serverIPAddressLabel.setBounds(363, 196, 129, 17);
-        serverIPAddressLabel.setFont(new Font("Montserrat", 0, 13));
-        serverIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/icons/wireless.png")));
+        serverIPAddressLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
+        serverIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/wireless.png")));
         serverIPAddressLabel.setName("serverIPAddressLabel");
         serverIPAddressLabel.setText("Server IP Address");
         clientServerConnectionPanel.add(serverIPAddressLabel);
@@ -121,7 +120,7 @@ public class ClientServerConnection extends JFrame {
         serverIPAddressTextField.setBounds(362, 219, 340, 30);
         serverIPAddressTextField.setCaretColor(new Color(152, 150, 162));
         serverIPAddressTextField.setDisabledTextColor(new Color(152, 150, 162));
-        serverIPAddressTextField.setFont(new Font("Montserrat", 0, 13));
+        serverIPAddressTextField.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         serverIPAddressTextField.setForeground(new Color(152, 150, 162));
         serverIPAddressTextField.setMargin(new Insets(0, 5, 0, 5));
         serverIPAddressTextField.setName("serverIPAddressTextField");
@@ -138,8 +137,8 @@ public class ClientServerConnection extends JFrame {
 
         // Apply settings to the port label.
         serverPortLabel.setBounds(363, 268, 88, 17);
-        serverPortLabel.setFont(new Font("Montserrat", 0, 13));
-        serverPortLabel.setIcon(new ImageIcon(getClass().getResource("/icons/port_icon.png")));
+        serverPortLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
+        serverPortLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/port_icon.png")));
         serverPortLabel.setName("serverPortLabel");
         serverPortLabel.setText("Server Port");
         clientServerConnectionPanel.add(serverPortLabel);
@@ -148,7 +147,7 @@ public class ClientServerConnection extends JFrame {
         serverPortTextField.setBounds(362, 291, 340, 30);
         serverPortTextField.setCaretColor(new Color(152, 150, 162));
         serverPortTextField.setDisabledTextColor(new Color(152, 150, 162));
-        serverPortTextField.setFont(new Font("Montserrat", 0, 13));
+        serverPortTextField.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         serverPortTextField.setForeground(new Color(152, 150, 162));
         serverPortTextField.setMargin(new Insets(0, 5, 0, 5));
         serverPortTextField.setName("serverPortTextField");
@@ -168,7 +167,7 @@ public class ClientServerConnection extends JFrame {
         userMessagesIconLabel.setBackground(new Color(255, 255, 255));
         userMessagesIconLabel.setForeground(new Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_icon.png")));
+        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/arrow_icon.png")));
         userMessagesIconLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
         userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -197,10 +196,10 @@ public class ClientServerConnection extends JFrame {
         connectToServerButton.setBounds(360, 320, 340, 69);
         connectToServerButton.setContentAreaFilled(false);
         connectToServerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        connectToServerButton.setFont(new Font("Montserrat", 0, 15));
+        connectToServerButton.setFont(InterfaceManager.montserratRegular.deriveFont(15.0f));
         connectToServerButton.setForeground(new Color(255, 255, 255));
         connectToServerButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        connectToServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/medium.png")));
+        connectToServerButton.setIcon(new ImageIcon(getClass().getResource("/imgs/buttons/medium.png")));
         connectToServerButton.setName("connectToServerButton");
         connectToServerButton.setText("Connect to Server      ");
         connectToServerButton.addMouseListener(new MouseAdapter() {
@@ -221,7 +220,7 @@ public class ClientServerConnection extends JFrame {
 
         // Apply settings to the first footer label.
         footerTextLabel.setBounds(285, 507, 189, 12);
-        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerTextLabel.setForeground(new Color(47, 46, 65));
         footerTextLabel.setName("footerTextLabel");
         footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
@@ -230,7 +229,7 @@ public class ClientServerConnection extends JFrame {
         // Apply settings and action to the footer display label.
         footerLicensesTextLabel.setBounds(480, 507, 80, 12);
         footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
         footerLicensesTextLabel.setText("Software Licenses");

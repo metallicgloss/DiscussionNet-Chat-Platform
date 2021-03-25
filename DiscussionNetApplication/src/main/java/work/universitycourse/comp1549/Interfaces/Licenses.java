@@ -3,7 +3,6 @@ package work.universitycourse.comp1549.Interfaces;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -63,12 +62,12 @@ public class Licenses extends JFrame {
         licensesPanel.setPreferredSize(new Dimension(847, 519));
 
         // Apply settings to the google fonts title.
-        googleFontsTitleLabel.setFont(new Font("Montserrat SemiBold", 0, 24));
+        googleFontsTitleLabel.setFont(InterfaceManager.montserratSemiBold.deriveFont(23.0f));
         googleFontsTitleLabel.setName("googleFontsTitleLabel");
         googleFontsTitleLabel.setText("Google Fonts (Montserrat)");
 
         // Apply settings to the google font license label.
-        googleFontsLabel.setFont(new Font("Montserrat", 0, 12));
+        googleFontsLabel.setFont(InterfaceManager.montserratRegular.deriveFont(12.0f));
         googleFontsLabel.setText("<html>Google Fonts (Montserrat)<br>" + "Version: 1.1 Update 5<br>"
                 + "License: SIL Open Font License (OFL)<br>" + "URL: https://fonts.google.com/specimen/Montserrat<br>"
                 + "Copyright: © 2016-2021 Julieta Ulanovsky and other contributors.</html>");
