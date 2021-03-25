@@ -55,7 +55,7 @@ import work.universitycourse.comp1549.Interfaces.Client.ClientServerConnection;
 @SuppressWarnings("rawtypes")
 public class ClientManager {
 
-    public boolean isClientRunning = true;
+    private boolean isClientRunning = true;
     private boolean isCoordinator = false;
     private ClientInfo clientInfo;
     private InstructionsQueue instructionsQueue = new InstructionsQueue();
@@ -152,6 +152,11 @@ public class ClientManager {
     // Returns the coordinator ID
     public String getCoordinatorID() {
         return this.coordinatorID;
+    }
+
+    // Returns the client Status
+    public Boolean getClientStatus() {
+        return this.isClientRunning;
     }
 
     // #-----------------------------------------------------------------------#

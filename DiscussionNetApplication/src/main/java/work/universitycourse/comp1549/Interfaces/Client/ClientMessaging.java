@@ -69,7 +69,7 @@ public class ClientMessaging extends JFrame {
                 this.serverIPAddress, Integer.parseInt(this.serverPort), this.clientIdentifier, this.clientIPAddress,
                 Integer.parseInt(this.clientPort));
 
-        if (!this.client.isClientRunning) {
+        if (!this.client.getClientStatus()) {
             // Error occured on startup, don't continue launch.
             this.clientStatus = false;
         } else {
