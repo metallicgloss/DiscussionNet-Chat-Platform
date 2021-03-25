@@ -10,7 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -97,13 +96,13 @@ public class ClientIdentitySetup extends JFrame {
 
         // Apply settings to the page graphic.
         mainImage.setBounds(70, 159, 239, 207);
-        mainImage.setIcon(new ImageIcon(getClass().getResource("/graphics/identity.png")));
+        mainImage.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/identity.png")));
         mainImage.setName("mainImage");
         clientIdentitySetupPanel.add(mainImage);
 
         // Apply settings to the identity title label (section 1)
         discussionNetIdentitySetupLabel1.setBounds(426, 83, 175, 30);
-        discussionNetIdentitySetupLabel1.setFont(new Font("Montserrat SemiBold", 0, 24));
+        discussionNetIdentitySetupLabel1.setFont(InterfaceManager.montserratSemiBold.deriveFont(23.0f));
         discussionNetIdentitySetupLabel1.setForeground(new Color(0, 36, 109));
         discussionNetIdentitySetupLabel1.setName("discussionNetIdentitySetupLabel1");
         discussionNetIdentitySetupLabel1.setText("DiscussionNet");
@@ -111,18 +110,18 @@ public class ClientIdentitySetup extends JFrame {
 
         // Apply settings to the identity title label (section 2)
         discussionNetIdentitySetupLabel2.setBounds(607, 83, 171, 30);
-        discussionNetIdentitySetupLabel2.setFont(new Font("Montserrat", 0, 24));
+        discussionNetIdentitySetupLabel2.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         discussionNetIdentitySetupLabel2.setName("discussionNetIdentitySetupLabel2");
         discussionNetIdentitySetupLabel2.setText("Identity Setup");
         clientIdentitySetupPanel.add(discussionNetIdentitySetupLabel2);
 
         // Apply settings to the assign ID label.
         assignedIDNumberLabel.setBounds(426, 131, 153, 17);
-        assignedIDNumberLabel.setFont(new Font("Montserrat", 0, 13));
+        assignedIDNumberLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         assignedIDNumberLabel.setForeground(new Color(47, 46, 65));
-        assignedIDNumberLabel.setIcon(new ImageIcon(getClass().getResource("/icons/user_id.png")));
+        assignedIDNumberLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/user_id.png")));
         assignedIDNumberLabel.setName("assignedIDNumberLabel");
-        assignedIDNumberLabel.setText("Assigned ID Number");
+        assignedIDNumberLabel.setText("ID Number");
         clientIdentitySetupPanel.add(assignedIDNumberLabel);
 
         // Apply settings and effects to the assign ID text field.
@@ -131,7 +130,7 @@ public class ClientIdentitySetup extends JFrame {
         assignedIdentificationTextfield.setBounds(426, 159, 343, 30);
         assignedIdentificationTextfield.setCaretColor(new Color(152, 150, 162));
         assignedIdentificationTextfield.setDisabledTextColor(new Color(152, 150, 162));
-        assignedIdentificationTextfield.setFont(new Font("Montserrat", 0, 13));
+        assignedIdentificationTextfield.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         assignedIdentificationTextfield.setForeground(new Color(152, 150, 162));
         assignedIdentificationTextfield.setMargin(new Insets(0, 5, 0, 5));
         assignedIdentificationTextfield.setName("assignedIdentificationTextfield");
@@ -149,18 +148,18 @@ public class ClientIdentitySetup extends JFrame {
 
         // Apply settings to the client IP label.
         clientIPAddressLabel.setBounds(426, 209, 127, 17);
-        clientIPAddressLabel.setFont(new Font("Montserrat", 0, 13));
+        clientIPAddressLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         clientIPAddressLabel.setForeground(new Color(47, 46, 65));
-        clientIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/icons/wireless.png")));
+        clientIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/wireless.png")));
         clientIPAddressLabel.setName("clientIPAddressLabel");
-        clientIPAddressLabel.setText("Client IP Address");
+        clientIPAddressLabel.setText("IP Address");
         clientIdentitySetupPanel.add(clientIPAddressLabel);
 
         // Apply settings and effects to the IP text field.
         clientIPAddressTextField.setBounds(426, 237, 343, 30);
         clientIPAddressTextField.setCaretColor(new Color(152, 150, 162));
         clientIPAddressTextField.setDisabledTextColor(new Color(152, 150, 162));
-        clientIPAddressTextField.setFont(new Font("Montserrat", 0, 13));
+        clientIPAddressTextField.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         clientIPAddressTextField.setForeground(new Color(152, 150, 162));
         clientIPAddressTextField.setMargin(new Insets(0, 5, 0, 5));
         clientIPAddressTextField.setName("clientIPAddressTextField");
@@ -177,18 +176,18 @@ public class ClientIdentitySetup extends JFrame {
 
         // Apply settings to the port label.
         clientPortLabel.setBounds(426, 293, 86, 17);
-        clientPortLabel.setFont(new Font("Montserrat", 0, 13));
+        clientPortLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         clientPortLabel.setForeground(new Color(47, 46, 65));
-        clientPortLabel.setIcon(new ImageIcon(getClass().getResource("/icons/port_icon.png")));
+        clientPortLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/port_icon.png")));
         clientPortLabel.setName("clientPortLabel");
-        clientPortLabel.setText("Client Port");
+        clientPortLabel.setText("Port");
         clientIdentitySetupPanel.add(clientPortLabel);
 
         // Apply settings and effects to the port text field.
         clientPortTextField.setBounds(426, 321, 343, 30);
         clientPortTextField.setCaretColor(new Color(152, 150, 162));
         clientPortTextField.setDisabledTextColor(new Color(152, 150, 162));
-        clientPortTextField.setFont(new Font("Montserrat", 0, 13));
+        clientPortTextField.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         clientPortTextField.setForeground(new Color(152, 150, 162));
         clientPortTextField.setMargin(new Insets(0, 5, 0, 5));
         clientPortTextField.setName("clientPortTextField");
@@ -211,7 +210,7 @@ public class ClientIdentitySetup extends JFrame {
         userMessagesIconLabel.setForeground(new Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
         userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_icon.png")));
+        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/arrow_icon.png")));
         userMessagesIconLabel.setIconTextGap(0);
         userMessagesIconLabel.setInheritsPopupMenu(false);
         userMessagesIconLabel.setName("userMessagesIconLabel");
@@ -237,10 +236,10 @@ public class ClientIdentitySetup extends JFrame {
         authenticateButton.setBounds(430, 350, 343, 69);
         authenticateButton.setContentAreaFilled(false);
         authenticateButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        authenticateButton.setFont(new Font("Montserrat", 0, 15));
+        authenticateButton.setFont(InterfaceManager.montserratRegular.deriveFont(15.0f));
         authenticateButton.setForeground(new Color(255, 255, 255));
         authenticateButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        authenticateButton.setIcon(new ImageIcon(getClass().getResource("/buttons/medium.png")));
+        authenticateButton.setIcon(new ImageIcon(getClass().getResource("/imgs/buttons/medium.png")));
         authenticateButton.setName("authenticateButton");
         authenticateButton.setText("Authenticate     ");
         authenticateButton.addMouseListener(new MouseAdapter() {
@@ -261,7 +260,7 @@ public class ClientIdentitySetup extends JFrame {
 
         // Apply settings to the first footer label.
         footerTextLabel.setBounds(285, 507, 189, 12);
-        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerTextLabel.setForeground(new Color(47, 46, 65));
         footerTextLabel.setName("footerTextLabel");
         footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
@@ -270,7 +269,7 @@ public class ClientIdentitySetup extends JFrame {
         // Apply settings and action to the footer display label.
         footerLicensesTextLabel.setBounds(480, 507, 80, 12);
         footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
         footerLicensesTextLabel.setText("Software Licenses");

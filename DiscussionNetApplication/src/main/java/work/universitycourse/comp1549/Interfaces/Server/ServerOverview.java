@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.EventQueue;
-import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -85,7 +84,7 @@ public class ServerOverview extends JFrame {
         mainTable.setFillsViewportHeight(true);
         mainTable.setBackground(Color.white);
 
-        mainTable.getTableHeader().setFont(new Font("Montserrat Medium", 0, 13));
+        mainTable.getTableHeader().setFont(InterfaceManager.montserratMedium.deriveFont(13.0f));
 
         DefaultTableCellRenderer stringRenderer = (DefaultTableCellRenderer) mainTable.getDefaultRenderer(String.class);
         stringRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -139,12 +138,12 @@ public class ServerOverview extends JFrame {
         InterfaceManager.detectExitRequest(topPanel);
 
         // Apply settings to the communication logs label (section 1)
-        communicationLogsLabel1.setFont(new Font("Montserrat", 0, 24));
+        communicationLogsLabel1.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         communicationLogsLabel1.setName("communicationLogsLabel1");
         communicationLogsLabel1.setText("DiscussionNet Server");
 
         // Apply settings to the communication logs label (section 2)
-        communicationLogsLabel2.setFont(new Font("Montserrat SemiBold", 0, 24));
+        communicationLogsLabel2.setFont(InterfaceManager.montserratSemiBold.deriveFont(23.0f));
         communicationLogsLabel2.setForeground(new Color(0, 36, 109));
         communicationLogsLabel2.setName("communicationLogsLabel2");
         communicationLogsLabel2.setText("Logs");
@@ -152,7 +151,7 @@ public class ServerOverview extends JFrame {
         scrollingPane.setName("scrollingPane");
 
         // Apply table settings, schema.
-        mainTable.setFont(new Font("Montserrat", 0, 11));
+        mainTable.setFont(InterfaceManager.montserratRegular.deriveFont(11.0f));
         mainTable.setModel(new DefaultTableModel(new Object[][] {
 
         }, new String[] { "Source", "Destination", "Type", "Payload" }) {
@@ -223,40 +222,40 @@ public class ServerOverview extends JFrame {
         middlePanel.setName("middlePanel");
 
         // Apply settings to the status text label.
-        serverStatusTextLabel.setFont(new Font("Montserrat", 0, 24));
+        serverStatusTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         serverStatusTextLabel.setText("Server Status");
         serverStatusTextLabel.setName("serverStatusTextLabel");
 
         // Apply settings to the status title label.
-        statusLabel.setFont(new Font("Montserrat Medium", 0, 13));
+        statusLabel.setFont(InterfaceManager.montserratMedium.deriveFont(13.0f));
         statusLabel.setText("Status");
         statusLabel.setName("statusLabel");
 
         // Apply settings to the IP title label.
-        ipAddressLabel.setFont(new Font("Montserrat Medium", 0, 13));
+        ipAddressLabel.setFont(InterfaceManager.montserratMedium.deriveFont(13.0f));
         ipAddressLabel.setText("IP Address");
         ipAddressLabel.setName("ipAddressLabel");
 
         // Apply settings to the port title label.
-        portLabel.setFont(new Font("Montserrat Medium", 0, 13));
+        portLabel.setFont(InterfaceManager.montserratMedium.deriveFont(13.0f));
         portLabel.setText("Port");
         portLabel.setName("portLabel");
 
         // Apply settings to the status value label.
-        statusValueLabel.setFont(new Font("Montserrat Light", 0, 13));
+        statusValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(13.0f));
         statusValueLabel.setForeground(new Color(46, 213, 116));
         statusValueLabel.setName("statusValueLabel");
 
         // Apply settings to the IP Value label.
-        ipAddressValueLabel.setFont(new Font("Montserrat Light", 0, 13));
+        ipAddressValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(13.0f));
         ipAddressValueLabel.setName("ipAddressValueLabel");
 
         // Apply settings to the port value label.
-        portValueLabel.setFont(new Font("Montserrat Light", 0, 13));
+        portValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(13.0f));
         portValueLabel.setName("portValueLabel");
 
         // Apply settings status graphic.
-        serverStatusImageLabel.setIcon(new ImageIcon(getClass().getResource("/graphics/broadcast_active.png")));
+        serverStatusImageLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/broadcast_active.png")));
         serverStatusImageLabel.setName("serverStatusImageLabel");
 
         // Apply group layout configuration for the middle panel.
@@ -299,14 +298,14 @@ public class ServerOverview extends JFrame {
         footerPanel.setName("footerPanel");
 
         // Apply settings to the first footer label.
-        footerTextLabel2.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel2.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerTextLabel2.setForeground(new Color(47, 46, 65));
         footerTextLabel2.setName("footerTextLabel2");
         footerTextLabel2.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
 
         // Apply settings and action to the footer display label.
         footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
         footerLicensesTextLabel.setText("Software Licenses");

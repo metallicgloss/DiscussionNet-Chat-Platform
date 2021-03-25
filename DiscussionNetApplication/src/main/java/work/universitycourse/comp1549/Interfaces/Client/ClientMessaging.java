@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.util.Calendar;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -141,7 +140,7 @@ public class ClientMessaging extends JFrame {
         userMessagingMainPanel = new JPanel();
         userMessagingTopPanel = new JPanel();
 
-        sendArrowIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/black_arrow.png")));
+        sendArrowIconLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/black_arrow.png")));
         sendArrowIconLabel.setName("sendArrowIconLabel");
 
         // Define application window settings.
@@ -156,7 +155,7 @@ public class ClientMessaging extends JFrame {
         InterfaceManager.detectExitRequest(headerNamePanel);
 
         // Apply settings to the
-        discussionNetLabel.setFont(new Font("Montserrat SemiBold", 0, 16));
+        discussionNetLabel.setFont(InterfaceManager.montserratSemiBold.deriveFont(16.0f));
         discussionNetLabel.setForeground(new Color(0, 36, 109));
         discussionNetLabel.setText("DiscussionNet");
         discussionNetLabel.setName("discussionNetLabel");
@@ -174,13 +173,13 @@ public class ClientMessaging extends JFrame {
         headerTitlePanel.setName("headerTitlePanel");
 
         // Apply settings to the title label.
-        clientControlPanelLabel2.setFont(new Font("Montserrat", 0, 14));
+        clientControlPanelLabel2.setFont(InterfaceManager.montserratRegular.deriveFont(14.0f));
         clientControlPanelLabel2.setForeground(new Color(0, 36, 109));
         clientControlPanelLabel2.setText("Control Panel");
         clientControlPanelLabel2.setName("clientControlPanelLabel2");
 
         // Apply settings to the title label (section 2)
-        clientControlPanelLabel1.setFont(new Font("Montserrat SemiBold", 0, 14));
+        clientControlPanelLabel1.setFont(InterfaceManager.montserratSemiBold.deriveFont(14.0f));
         clientControlPanelLabel1.setForeground(new Color(0, 36, 109));
         clientControlPanelLabel1.setText("Client");
         clientControlPanelLabel1.setName("clientControlPanelLabel1");
@@ -227,23 +226,23 @@ public class ClientMessaging extends JFrame {
 
         // Apply settings to the client features title.
         clientFeaturesLabel.setBackground(new Color(255, 255, 255));
-        clientFeaturesLabel.setFont(new Font("Montserrat", 0, 12));
+        clientFeaturesLabel.setFont(InterfaceManager.montserratRegular.deriveFont(12.0f));
         clientFeaturesLabel.setForeground(new Color(255, 255, 255));
         clientFeaturesLabel.setText("CLIENT FEATURES");
         clientFeaturesLabel.setName("clientFeaturesLabel");
 
         // Apply settings to the message menu option label.
-        userMessagingLabel.setFont(new Font("Montserrat", 0, 11));
+        userMessagingLabel.setFont(InterfaceManager.montserratRegular.deriveFont(11.0f));
         userMessagingLabel.setForeground(new Color(255, 255, 255));
-        userMessagingLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mail.png")));
+        userMessagingLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/mail.png")));
         userMessagingLabel.setText("User Messaging");
         userMessagingLabel.setName("userMessagingLabel");
 
         // Apply settings and actions to the user list menu label.
         userListLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        userListLabel.setFont(new Font("Montserrat", 0, 11));
+        userListLabel.setFont(InterfaceManager.montserratRegular.deriveFont(11.0f));
         userListLabel.setForeground(new Color(255, 255, 255));
-        userListLabel.setIcon(new ImageIcon(getClass().getResource("/icons/users.png")));
+        userListLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/users.png")));
         userListLabel.setName("userListLabel");
         userListLabel.setText("User List");
         userListLabel.addMouseListener(new MouseAdapter() {
@@ -255,9 +254,9 @@ public class ClientMessaging extends JFrame {
         // Apply settings to the menu exit option.
         exitApplicationLabel.setBackground(new Color(255, 255, 255));
         exitApplicationLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        exitApplicationLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        exitApplicationLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         exitApplicationLabel.setForeground(new Color(255, 255, 255));
-        exitApplicationLabel.setIcon(new ImageIcon(getClass().getResource("/icons/exit.png")));
+        exitApplicationLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/exit.png")));
         exitApplicationLabel.setName("exitApplicationLabel");
         exitApplicationLabel.setText("Exit Application");
         exitApplicationLabel.addMouseListener(new MouseAdapter() {
@@ -298,45 +297,45 @@ public class ClientMessaging extends JFrame {
         clientDetailsPanel2.setName("clientDetailsPanel2");
 
         // Apply settings to the client details icon.
-        clientDetailsIcon.setIcon(new ImageIcon(getClass().getResource("/graphics/client_details.png")));
+        clientDetailsIcon.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/client_details.png")));
         clientDetailsIcon.setName("clientDetailsIcon");
 
         // Apply settings to the client details title label.
-        clientDetailsLabel1.setFont(new Font("Montserrat", 0, 18));
+        clientDetailsLabel1.setFont(InterfaceManager.montserratRegular.deriveFont(18.0f));
         clientDetailsLabel1.setText("Client");
         clientDetailsLabel1.setName("clientDetailsLabel1");
 
         // Apply settings to the secondary client details title.
-        clientDetailsLabel2.setFont(new Font("Montserrat SemiBold", 0, 18));
+        clientDetailsLabel2.setFont(InterfaceManager.montserratSemiBold.deriveFont(18.0f));
         clientDetailsLabel2.setForeground(new Color(0, 36, 109));
         clientDetailsLabel2.setText("Details");
         clientDetailsLabel2.setName("clientDetailsLabel2");
 
         // Apply settings to the client details IP label.
-        clientDetailsIPAddressLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        clientDetailsIPAddressLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         clientDetailsIPAddressLabel.setText("IP Address");
         clientDetailsIPAddressLabel.setName("clientDetailsIPAddressLabel");
 
         // Apply settings to the client IP value label.
-        clientDetailsIPAddressValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        clientDetailsIPAddressValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         clientDetailsIPAddressValueLabel.setName("clientDetailsIPAddressValueLabel");
 
         // Apply settings to the client details port label.
-        clientDetailsConnectionPortLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        clientDetailsConnectionPortLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         clientDetailsConnectionPortLabel.setText("Connection Port");
         clientDetailsConnectionPortLabel.setName("clientDetailsConnectionPortLabel");
 
         // Apply settings to the client port value panel.
-        clientDetailsConnectionPortValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        clientDetailsConnectionPortValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         clientDetailsConnectionPortValueLabel.setName("clientDetailsConnectionPortValueLabel");
 
         // Apply settings to the client details ID label.
-        clientDetailsAssignedIDNumberLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        clientDetailsAssignedIDNumberLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         clientDetailsAssignedIDNumberLabel.setText("Assigned ID Number");
         clientDetailsAssignedIDNumberLabel.setName("clientDetailsAssignedIDNumberLabel");
 
         // Apply settings to the client ID value label.
-        clientDetailsAssignedIDNumberValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        clientDetailsAssignedIDNumberValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         clientDetailsAssignedIDNumberValueLabel.setForeground(new Color(112, 161, 255));
         clientDetailsAssignedIDNumberValueLabel.setName("clientDetailsAssignedIDNumberValueLabel");
 
@@ -400,16 +399,16 @@ public class ClientMessaging extends JFrame {
         serverDetailsPanel1.setPreferredSize(new Dimension(322, 100));
 
         // Apply settings to the server icon.
-        serverDetailsIcon.setIcon(new ImageIcon(getClass().getResource("/graphics/server_details.png")));
+        serverDetailsIcon.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/server_details.png")));
         serverDetailsIcon.setName("serverDetailsIcon");
 
         // Apply settings to the server details title (section 1)
-        serverDetailsLabel1.setFont(new Font("Montserrat", 0, 18));
+        serverDetailsLabel1.setFont(InterfaceManager.montserratRegular.deriveFont(18.0f));
         serverDetailsLabel1.setText("Server");
         serverDetailsLabel1.setName("serverDetailsLabel1");
 
         // Apply settings to the server details title (section 2)
-        serverDetailsLabel2.setFont(new Font("Montserrat SemiBold", 0, 18));
+        serverDetailsLabel2.setFont(InterfaceManager.montserratSemiBold.deriveFont(18.0f));
         serverDetailsLabel2.setForeground(new Color(0, 36, 109));
         serverDetailsLabel2.setText("Details");
         serverDetailsLabel2.setName("serverDetailsLabel2");
@@ -420,38 +419,38 @@ public class ClientMessaging extends JFrame {
         serverDetailsPanel2.setPreferredSize(new Dimension(322, 92));
 
         // Apply settings to the server IP label.
-        serverDetailsIPAddressLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        serverDetailsIPAddressLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         serverDetailsIPAddressLabel.setText("IP Address");
         serverDetailsIPAddressLabel.setName("serverDetailsIPAddressLabel");
 
         // Apply settings to the server IP value label.
-        serverDetailsIPAddressValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        serverDetailsIPAddressValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         serverDetailsIPAddressValueLabel.setName("serverDetailsIPAddressValueLabel");
 
         // Apply settings to the server port label.
-        serverDetailsConnectionPortLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        serverDetailsConnectionPortLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         serverDetailsConnectionPortLabel.setText("Connection Port");
         serverDetailsConnectionPortLabel.setName("serverDetailsConnectionPortLabel");
 
         // Apply settings to the server port value label.
-        serverDetailsConnectionPortValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        serverDetailsConnectionPortValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         serverDetailsConnectionPortValueLabel.setName("serverDetailsConnectionPortValueLabel");
 
         // Apply settings to the server status label.
-        serverDetailsConnectionStatusLabel.setFont(new Font("Montserrat Medium", 0, 11));
+        serverDetailsConnectionStatusLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         serverDetailsConnectionStatusLabel.setText("Connection Status");
         serverDetailsConnectionStatusLabel.setName("serverDetailsConnectionStatusLabel");
 
         // Apply settings to the server status value label.
-        serverDetailsConnectionStatusValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        serverDetailsConnectionStatusValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         serverDetailsConnectionStatusValueLabel.setForeground(new Color(46, 213, 116));
         serverDetailsConnectionStatusValueLabel.setName("serverDetailsConnectionStatusValueLabel");
 
-        serverDetailsCoordinatorLabel.setFont(new java.awt.Font("Montserrat Medium", 0, 11));
+        serverDetailsCoordinatorLabel.setFont(InterfaceManager.montserratMedium.deriveFont(11.0f));
         serverDetailsCoordinatorLabel.setText("Server Coordinator");
         serverDetailsCoordinatorLabel.setName("serverDetailsCoordinatorLabel");
 
-        serverDetailsCoordinatorValueLabel.setFont(new Font("Montserrat Light", 0, 11));
+        serverDetailsCoordinatorValueLabel.setFont(InterfaceManager.montserratLight.deriveFont(11.0f));
         serverDetailsCoordinatorValueLabel.setName("serverDetailsCoordinatorValueLabel");
 
         // Apply group layout configuration for the server details.
@@ -528,16 +527,16 @@ public class ClientMessaging extends JFrame {
         userMessagingTopPanel.setPreferredSize(new Dimension(894, 93));
 
         // Apply settings to the messaging icon.
-        userMessagingIconLabel.setIcon(new ImageIcon(getClass().getResource("/graphics/user_messaging.png")));
+        userMessagingIconLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/user_messaging.png")));
         userMessagingIconLabel.setName("userMessagingIconLabel");
 
         // Apply settings to the messaging label title (section 1)
-        userMessagingLabel1.setFont(new Font("Montserrat", 0, 28));
+        userMessagingLabel1.setFont(InterfaceManager.montserratRegular.deriveFont(28.0f));
         userMessagingLabel1.setText("User");
         userMessagingLabel1.setName("userMessagingLabel1");
 
         // Apply settings to themessaging label title (section 2)
-        userMessagingLabel2.setFont(new Font("Montserrat SemiBold", 0, 28));
+        userMessagingLabel2.setFont(InterfaceManager.montserratSemiBold.deriveFont(28.0f));
         userMessagingLabel2.setForeground(new Color(0, 36, 109));
         userMessagingLabel2.setText("Messaging");
         userMessagingLabel2.setName("userMessagingLabel2");
@@ -573,7 +572,7 @@ public class ClientMessaging extends JFrame {
         userMessagesTextfield.setBounds(10, 10, 760, 44);
         userMessagesTextfield.setCaretColor(new Color(152, 150, 162));
         userMessagesTextfield.setDisabledTextColor(new Color(152, 150, 162));
-        userMessagesTextfield.setFont(new Font("Montserrat", 0, 13));
+        userMessagesTextfield.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         userMessagesTextfield.setForeground(new Color(152, 150, 162));
         userMessagesTextfield.setName("userMessagesTextfield");
         userMessagesTextfield.addKeyListener(new KeyAdapter() {
@@ -587,7 +586,7 @@ public class ClientMessaging extends JFrame {
         userMessagesIconLabel.setBackground(new Color(255, 255, 255));
         userMessagesIconLabel.setForeground(new Color(255, 255, 255));
         userMessagesIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/icons/arrow_circle_icon.png")));
+        userMessagesIconLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/arrow_circle_icon.png")));
         userMessagesIconLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         userMessagesIconLabel.setFocusable(false);
         userMessagesIconLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -616,7 +615,7 @@ public class ClientMessaging extends JFrame {
         userMessagesButton.setContentAreaFilled(false);
         userMessagesButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         userMessagesButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        userMessagesButton.setIcon(new ImageIcon(getClass().getResource("/buttons/small.png")));
+        userMessagesButton.setIcon(new ImageIcon(getClass().getResource("/imgs/buttons/small.png")));
         userMessagesButton.setName("userMessagesButton");
         userMessagingMainPanel.add(userMessagesButton);
 
@@ -632,13 +631,13 @@ public class ClientMessaging extends JFrame {
         footerPanel.setPreferredSize(new Dimension(936, 20));
 
         // Apply settings to the footer label (first section)
-        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerTextLabel.setForeground(new Color(47, 46, 65));
         footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
         footerTextLabel.setName("footerTextLabel");
 
         // Apply settings and actions to the footer licenses label
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
         footerLicensesTextLabel.setText("Software Licenses");
         footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
