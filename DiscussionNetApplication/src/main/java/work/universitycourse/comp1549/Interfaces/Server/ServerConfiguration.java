@@ -103,7 +103,7 @@ public class ServerConfiguration extends JFrame {
         serverConfigurationPanel.add(serverManagementConfigurationLabel2);
 
         // Apply settings to the configured IP label.
-        configuredIPAddressLabel.setBounds(140, 310, 162, 17);
+        configuredIPAddressLabel.setBounds(190, 310, 162, 17);
         configuredIPAddressLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         configuredIPAddressLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/wireless.png")));
         configuredIPAddressLabel.setName("configuredIPAddressLabel");
@@ -131,7 +131,7 @@ public class ServerConfiguration extends JFrame {
         serverConfigurationPanel.add(configuredIPAddressTextfield);
 
         // Apply settings to the allocated port label.
-        assignedNetworkPortLabel.setBounds(549, 310, 166, 17);
+        assignedNetworkPortLabel.setBounds(600, 310, 166, 17);
         assignedNetworkPortLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         assignedNetworkPortLabel.setIcon(new ImageIcon(getClass().getResource("/imgs/icons/port_icon.png")));
         assignedNetworkPortLabel.setName("assignedNetworkPortLabel");
