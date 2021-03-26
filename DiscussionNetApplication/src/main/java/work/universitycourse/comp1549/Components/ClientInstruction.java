@@ -309,7 +309,7 @@ public class ClientInstruction {
         case ClientInstruction.CLIENT_ACCEPTED_INSTRUCTION_TYPE:
 
             // FORMAT: COORDINATOR_ID
-            ClientInstruction.validateaDataFromAcceptedClient(data);
+            ClientInstruction.validateaDataForAcceptedClient(data);
             break;
 
         case ClientInstruction.SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE:
@@ -327,7 +327,7 @@ public class ClientInstruction {
         case ClientInstruction.CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE:
 
             // FORMAT: MESSAGE
-            ClientInstruction.validateDataForConnectionRejectedByCorrdinator(data);
+            ClientInstruction.validateDataForConnectionRejectedByCoordinator(data);
             break;
         
         case ClientInstruction.NOTIFY_OTHERS_OF_NEW_COORDINATOR:
@@ -459,7 +459,7 @@ public class ClientInstruction {
     }
 
     // Checks data provided is in a valid form for a 'Accept Client' instruction type
-    private static void validateaDataFromAcceptedClient(String data) throws DataFormatException {
+    private static void validateaDataForAcceptedClient(String data) throws DataFormatException {
 
         if (data.split(seperatorString).length != 1) {
             throw new DataFormatException("COORDINATOR_ID");
@@ -487,7 +487,7 @@ public class ClientInstruction {
     }
 
     // Checks data provided is in a valid form for a 'Connection Rejected By Coordinator' instruction type
-    private static void validateDataForConnectionRejectedByCorrdinator(String data) throws DataFormatException {
+    private static void validateDataForConnectionRejectedByCoordinator(String data) throws DataFormatException {
 
         if (data.split(seperatorString).length != 1) {
             throw new DataFormatException("MESSAGE");
