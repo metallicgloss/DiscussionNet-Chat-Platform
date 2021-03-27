@@ -29,7 +29,7 @@ import java.util.zip.DataFormatException;
 // #---------------------------------------------------------------------------#
 
 @SuppressWarnings({ "unused", "serial" })
-public class ClientInstruction {
+public class ClientInstruction extends Transmittable {
 
     // #-----------------------------------------------------------------------#
     // #             IMPORTANT - READ BEFORE ADDING NEW INSTRUCTION            #
@@ -94,6 +94,14 @@ public class ClientInstruction {
 
     }
 
+    public ClientInstruction(String sender, String receiver, String instructionString) throws InstructionNotExistException, InstructionFormatException, DataFormatException {
+
+        this(instructionString);
+        this.sender = sender;
+        this.receiver = receiver;
+
+    }
+
     // Converts String to Int
     private static int convertStringToInt(String text) {
 
@@ -116,8 +124,7 @@ public class ClientInstruction {
     }
 
     // Creates a custom 'Send Message' instruction string
-    public static String createSendMessageInstructionString(String receiver, String message,
-            boolean isServerChatMessage) {
+    public static String createSendMessageInstructionString(String receiver, String message, boolean isServerChatMessage) {
         return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver
                 + seperatorString + message + seperatorString + isServerChatMessage;
     }

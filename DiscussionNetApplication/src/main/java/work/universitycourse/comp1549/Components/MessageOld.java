@@ -1,5 +1,6 @@
 package work.universitycourse.comp1549.Components;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -24,23 +25,28 @@ import java.sql.Timestamp;
 // #                                                                           #
 // #---------------------------------------------------------------------------#
 
-public class Message extends Transmittable {
-    
-    public boolean isServerChatMessage = false;
-    public String message;
+public class MessageOld implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    public static final int INSTRUCTION_TYPE = 1;
+    public static final int MESSAGE_TYPE = 2;
+
+    public boolean isServerChatMessage = false;
+    public int messageType;
+    public String sender, receiver, message;
+    public Timestamp timestamp;
 
     // #-----------------------------------------------------------------------#
     // #                          1 - Direct Message                           #
     // #-----------------------------------------------------------------------#
 
     // Initiate object with four parameters, direct personal message.
-    public Message(String sender, String receiver, String message) {
-        
-        this.sender = sender;
-        this.receiver = receiver;
+    public MessageOld(String sender, String receiver, String message, int type) {
         this.message = message;
-
+        this.messageType = type;
+        this.receiver = receiver;
+        this.sender = sender;
     }
 
     // #-----------------------------------------------------------------------#
@@ -48,13 +54,12 @@ public class Message extends Transmittable {
     // #-----------------------------------------------------------------------#
 
     // Initiate object with five parameters, group chat message.
-    public Message(String sender, String receiver, String message, boolean isServerChatMessage) {
-
-        this.sender = sender;
-        this.receiver = receiver;
-        this.message = message;
+    public MessageOld(String sender, String receiver, String message, int type, boolean isServerChatMessage) {
         this.isServerChatMessage = isServerChatMessage;
-
+        this.message = message;
+        this.messageType = type;
+        this.receiver = receiver;
+        this.sender = sender;
     }
 
     // #-----------------------------------------------------------------------#
@@ -63,9 +68,11 @@ public class Message extends Transmittable {
 
     // Generate string instruction from message object.
     public String toString() {
+
         // Return single message string.
-        return this.sender + "::" + this.receiver +  "::" + this.message
+        return this.sender + "::" + this.receiver + "::" + Integer.toString(this.messageType) + "::" + this.message
                 + "::" + this.timestamp.toString() + "::" + Boolean.toString(this.isServerChatMessage);
+
     }
 
     // #-----------------------------------------------------------------------#
@@ -73,20 +80,22 @@ public class Message extends Transmittable {
     // #-----------------------------------------------------------------------#
 
     // Split message string into message objects - used when deciphering received.
-    public static Message fromString(String messageObjString) {
+    public static MessageOld fromString(String messageObjString) {
 
         // Seperate String into variables
         String[] messageComponents = messageObjString.split("::");
         String sender = messageComponents[0];
         String receiver = messageComponents[1];
-        String message = messageComponents[2];
-        Timestamp timestamp = Timestamp.valueOf(messageComponents[3]);
-        boolean isServerChatMessage = messageComponents[4].equals("true");
+        int messageType = Integer.parseInt(messageComponents[2]);
+        String message = messageComponents[3];
+        Timestamp timestamp = Timestamp.valueOf(messageComponents[4]);
+        boolean isServerChatMessage = messageComponents[5].equals("true");
 
         // Create message object and set timestamp
-        Message messageObj = new Message(sender, receiver, message, isServerChatMessage);
+        MessageOld messageObj = new MessageOld(sender, receiver, message, messageType, isServerChatMessage);
         messageObj.timestamp = timestamp;
 
+        // Return message object.
         return messageObj;
 
     }
