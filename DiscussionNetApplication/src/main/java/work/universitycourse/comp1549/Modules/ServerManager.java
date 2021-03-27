@@ -171,6 +171,8 @@ public class ServerManager {
                 //Message groupChatMessage = Message.fromString(messageObj.message);
                 serverLogMessage.message = "Group Chat Message: " + messageObj.message + " FROM: "
                         + messageObj.sender;
+            } else {
+                serverLogMessage.message = messageObj.message;
             }
 
         }
