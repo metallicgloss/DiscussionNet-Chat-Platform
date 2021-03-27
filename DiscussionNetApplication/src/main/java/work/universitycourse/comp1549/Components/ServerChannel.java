@@ -58,7 +58,7 @@ public class ServerChannel {
     // #                  1 - Server Channel Message Handling                  #
     // #-----------------------------------------------------------------------#
 
-    // Sets a timestamp for a message objects and adds it to the channelMessages
+    // Sets a timestamp for a transmittable object and adds it to the channelMessages
     public void addTransmittableToChannel(Transmittable transmittableObj) {
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -67,7 +67,7 @@ public class ServerChannel {
 
     }
 
-    // Gets next available message from the channelMessages, using FIFO
+    // Gets next available transmittable from the channelMessages, using FIFO
     public Transmittable getNextTransmittableFromChannel() {
         return this.channelMessages.poll();
     }
@@ -76,7 +76,7 @@ public class ServerChannel {
     // #                  2 - Client Connection Handling                       #
     // #-----------------------------------------------------------------------#
 
-    // Sends a message object to a client
+    // Sends a transmittable object to a client
     public void sendTransmittableToClient(Transmittable transmittableObj) {
         this.clientConnections.get(transmittableObj.receiver).sendTransmittableToClient(transmittableObj);
     }
@@ -86,7 +86,7 @@ public class ServerChannel {
         return this.clientConnections.containsKey(clientID);
     }
 
-    // Adds a new client connection to client connections and starts a thread to listen for incoming messages from the client
+    // Adds a new client connection to client connections and starts a thread to listen for incoming transmittables from the client
     public String addNewClientConnection(Socket clientSocket) {
 
         // Create client connection object
@@ -100,7 +100,7 @@ public class ServerChannel {
         // Add Client Info
         this.addNewClientInfo(clientID, clientSocket);
 
-        //Start thread to listen for new client messages
+        //Start thread to listen for new client transmittables
         this.startClientConnectionThread(clientID);
 
         return clientID;

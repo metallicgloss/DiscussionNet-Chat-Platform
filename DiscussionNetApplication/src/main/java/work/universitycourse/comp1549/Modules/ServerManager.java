@@ -167,7 +167,6 @@ public class ServerManager {
             if (messageObj.isServerChatMessage) {
 
                 // Reformat output of message (needed to make the logger display a cleaner message)
-                //Message groupChatMessage = Message.fromString(messageObj.message);
                 serverLogMessage.message = "GROUP MESSAGE FROM: " + messageObj.sender;
 
             } else {
@@ -209,7 +208,6 @@ public class ServerManager {
 
                     // Check if its a instruction for server or someone else
                     if (transmittableObj.receiver.equals("SERVER") && transmittableObj instanceof ClientInstruction) {
-                    // if (messageObj.receiver.equals("SERVER") && messageObj.messageType == MessageOld.INSTRUCTION_TYPE) { // TODO REMOVE
 
                         // Process instruction to server
                         this.processInstruction((ClientInstruction) transmittableObj);
@@ -237,7 +235,7 @@ public class ServerManager {
             boolean checkSenderInChannel = ServerManager.this.serverChannel
                     .checkClientConnectionExists(transmittableObj.sender);
 
-            if ((checkReceiverInChannel || transmittableObj.receiver == "SERVER") // TODO if error, used to me transmittableObj.sender == "SERVER"
+            if ((checkReceiverInChannel || transmittableObj.receiver == "SERVER")
                     && (checkSenderInChannel || transmittableObj.sender == "SERVER")) {
 
                 // Client is in list, send message
@@ -246,13 +244,9 @@ public class ServerManager {
                 // Log message on server
                 ServerManager.this.displayServerLogMessage(transmittableObj);
 
-            } else { // TODO MAKE CLIENT HANDLE ITS OWN SERVER CHAT MESSAGES
+            } else {
 
                 // Tell sender that receiver does not exists
-                // TODO CHECK IF THE COMMENTED NEEDS REMOVAL
-//                System.out.println("Error try to execute message: " + transmittableObj.message + " from " + transmittableObj.sender
-//                        + " to " + transmittableObj.receiver + " of type " + transmittableObj.messageType);
-
                 // Check sender is in channel otherwise message may of came from a client that has disconnected or been rejected
                 if (checkSenderInChannel) {
 
@@ -272,7 +266,6 @@ public class ServerManager {
         private void processInstruction(ClientInstruction instructionObj) {
 
             // Get Instruction Components
-//            String[] instructionComponents = transmittableObj.message.split("<SEPERATOR>");
             int instructionType = instructionObj.instructionType;
             String[] dataComponents = instructionObj.data.split("::");
 
@@ -386,7 +379,6 @@ public class ServerManager {
             } else {
 
                 // Make client Coordinator
-
                 // Replace Temp ID with specified ID
                 ServerManager.this.serverChannel.renameClientID(tempID, clientID);
 
@@ -406,7 +398,6 @@ public class ServerManager {
         private void executeInstructionRejectJoinRequest(ClientInstruction instructionObj) {
 
             String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
-//            String[] dataComponents = transmittableObj.message.split("<SEPERATOR>")[1].split("::");
             String[] dataComponents = instructionObj.data.split("::");
             String clientID = dataComponents[0];
 
@@ -439,6 +430,7 @@ public class ServerManager {
 
                 for (String currentClientID : clientInfoListCache.keySet()) {
 
+                    // Do not send message to self
                     if (! currentClientID.equals(coordinatorID)) {
 
                         try {
@@ -544,7 +536,6 @@ public class ServerManager {
             } catch (ClientInstruction.InstructionNotExistException
                     | ClientInstruction.InstructionFormatException
                     | ClientInstruction.DataFormatException e) {
-                // TODO HOW TO HANDLE (MAYBE DONT)
             }
 
         }
