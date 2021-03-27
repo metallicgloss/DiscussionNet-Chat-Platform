@@ -844,7 +844,7 @@ public class ClientManager {
         private void sendMessage(String receiver, String message, boolean isServerChatMessage) {
 
             Message messageObj = new Message(ClientManager.this.clientID, receiver, message,isServerChatMessage);
-            this.transmitMessage(messageObj);
+            this.transmitTransmittable(messageObj);
 
         }
 
@@ -854,7 +854,7 @@ public class ClientManager {
             try {
                 
                 Transmittable transmittableObj = new ClientInstruction(ClientManager.this.clientID, receiver, message);
-                this.transmitMessage(transmittableObj);
+                this.transmitTransmittable(transmittableObj);
                 
             } catch (ClientInstruction.InstructionNotExistException
                     | ClientInstruction.InstructionFormatException
@@ -863,8 +863,8 @@ public class ClientManager {
 
         }
 
-        // Transmits a message object to the server
-        private void transmitMessage(Transmittable transmittableObj) {
+        // Transmits a transmittable object to the server
+        private void transmitTransmittable(Transmittable transmittableObj) {
 
             try {
                 ClientManager.this.outputStream.writeObject(transmittableObj);
