@@ -86,7 +86,7 @@ public class InterfaceManager {
         }
     };
 
-    // Allow CTRL+C to exit GUI appliocation.
+    // Allow CTRL+C to exit GUI application.
     public static void detectExitRequest(JPanel currentWindow) {
         // Target input map of "C" and "CTRL" pressed at the same time.
         currentWindow.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK),
@@ -107,7 +107,7 @@ public class InterfaceManager {
         licenseWindow.setVisible(true);
     }
 
-    // Switch visibile window - close existing, open new.
+    // Switch visible window - close existing, open new.
     public static void changeWindow(JFrame currentWindow, JFrame targetWindow) {
         // Close current JFrame.
         currentWindow.dispose();
@@ -132,7 +132,7 @@ public class InterfaceManager {
         showMessageDialog(null, stackTrace + " " + errorMessage, "System Execution Error", JOptionPane.WARNING_MESSAGE);
     }
 
-    // Display a warning or software notication message to the user.
+    // Display a warning or software notification message to the user.
     public static void displayWarning(String warningMessage) {
         showMessageDialog(null, warningMessage, "Application Notification", JOptionPane.WARNING_MESSAGE);
     }
@@ -141,7 +141,7 @@ public class InterfaceManager {
     public static void executeConnectionFault() {
         // Display formatted message informing them of the network configuration error.
         showMessageDialog(null,
-                "<html><h2><b>Sorry!</b></h2><h3>A network related error occured. The connection could not be maintained.</h3>If in doubt, please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.",
+                "<html><h2><b>Sorry!</b></h2><h3>A network related error occurred. The connection could not be maintained.</h3>If in doubt, please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.",
                 "Connection Intialisation Error", JOptionPane.WARNING_MESSAGE);
 
         // Due to the complexity of the error, instead of re-routing user back to startup, close program to allow for sysadmin intervention if required to identify available ip/port.

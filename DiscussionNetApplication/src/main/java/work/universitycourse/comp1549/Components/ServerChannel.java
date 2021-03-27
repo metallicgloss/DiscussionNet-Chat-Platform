@@ -176,7 +176,7 @@ public class ServerChannel {
         return this.clientInfoListCached.keySet();
     }
 
-    // Returns the hashmap of off the locl client info list
+    // Returns the hashmap of off the local client info list
     public HashMap<String, ClientInfo> getAllClientInfo() {
         return this.clientInfoListCached;
     }
@@ -356,7 +356,7 @@ public class ServerChannel {
 
             this.closeInputOutputStreams();
 
-            // Check client is not temporay
+            // Check client is not temporary
             if (ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)) {
 
                 // Tell server a connected client left the server
@@ -380,7 +380,7 @@ public class ServerChannel {
             try {
                 this.clientSocket.close();
             } catch (IOException e) {
-                InterfaceManager.displayError(e, "Unhandled IOExecption error stopping thread.");
+                InterfaceManager.displayError(e, "Unhandled IOException error stopping thread.");
             }
 
         }

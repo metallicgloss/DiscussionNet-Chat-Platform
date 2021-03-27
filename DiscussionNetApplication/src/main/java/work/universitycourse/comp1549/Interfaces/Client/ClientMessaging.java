@@ -70,7 +70,7 @@ public class ClientMessaging extends JFrame {
                 Integer.parseInt(this.clientPort));
 
         if (!this.client.getClientStatus()) {
-            // Error occured on startup, don't continue launch.
+            // Error occurred on startup, don't continue launch.
             this.clientStatus = false;
         } else {
             InterfaceManager.createClient(this.primaryMessagePane, "Group Chat");
@@ -747,6 +747,8 @@ public class ClientMessaging extends JFrame {
 
     // Exit the application.
     private void exitApplicationLabelMouseClicked(MouseEvent evt) {
+            showMessageDialog(null, "<html><h3>Thanks for using DiscussionNet!</h3><p>Should you need any future assistance, please visit https://comp1549.universitycourse.work for more details. Goodbye!</p></html>", "Program Closing",
+                            JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }
 

@@ -361,7 +361,7 @@ public class ServerManager {
 
         }
 
-        // Executes the instrution used to establish a connection from a client to the srver
+        // Executes the instruction used to establish a connection from a client to the server
         private void executeInstructionEstablishConnection(String tempID, String clientID) {
 
             // Check if coordinator is set
@@ -420,7 +420,7 @@ public class ServerManager {
         private void executeInstructionClientDisconnected(String clientID) {
 
             String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
-            String OLD_CORDINATOR_ID = coordinatorID;
+            String OLD_COORDINATOR_ID = coordinatorID;
 
             // Check if coordinator disconnected
             if (clientID.equals(coordinatorID)) {
@@ -458,20 +458,20 @@ public class ServerManager {
 
             // If coordinator present and the client that left was not the coordinator, notify the coordinator
             // NOTE If it was the coordinator that left, the program would have already notified everyone already
-            if (ServerManager.this.serverChannel.checkCoordinatorIsSet() && ! clientID.equals(OLD_CORDINATOR_ID)) {
+            if (ServerManager.this.serverChannel.checkCoordinatorIsSet() && ! clientID.equals(OLD_COORDINATOR_ID)) {
 
                 // Tell coordinator about the client that has disconnected
-                String notifyClientDisconnecString = ClientInstruction
+                String notifyClientDisconnectString = ClientInstruction
                         .createNotifyClientDisconnectedInstructionString(clientID);
                 Message notifyClientDisconnectInstruction = new Message("SERVER", coordinatorID,
-                        notifyClientDisconnecString, Message.INSTRUCTION_TYPE);
+                        notifyClientDisconnectString, Message.INSTRUCTION_TYPE);
                 ServerManager.this.serverChannel.addMessageToChannel(notifyClientDisconnectInstruction);
 
             }
 
         }
 
-        // Execute the instruction used to update the client infomation on the server cache
+        // Execute the instruction used to update the client information on the server cache
         private void executeInstructionUpdateClientInfoCache(String allClientInfoString) {
 
             HashMap<String, ClientInfo> newClientInfoList = this
@@ -547,5 +547,3 @@ public class ServerManager {
     }
 
 }
-
-// Make sure clients dont attempt to connect with same port             [CHECK]

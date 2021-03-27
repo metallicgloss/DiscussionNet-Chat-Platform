@@ -1,51 +1,52 @@
-
 package work.universitycourse.comp1549.Components;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @author Gabriel
- * @author Gabriel
- * @author Gabriel
- * @author Gabriel
+ * @author Adnan Turan
+ * @author Daniel Browne
+ * @author Gabriel Netz
+ * @author William Phillips
  */
+
+// #---------------------------------------------------------------------------#
+// #                                 Contents                                  #
+// #---------------------------------------------------------------------------#
+// #                                                                           #
+// #                            Client Info Testing                            #
+// #          Unit tests of ClientInfo functionality - string methods.         #
+// #                                                                           #
+// #                   1 - Message Export As String Test                       #
+// #                   2 - Message Parse From String Test                      #
+// #                                                                           #
+// #---------------------------------------------------------------------------#
+
 public class ClientInfoTest {
-    
-    public ClientInfoTest() {
+
+    // #-----------------------------------------------------------------------#
+    // #                    1. Message Export As String Test                   #
+    // #-----------------------------------------------------------------------#
+
+    @Test
+    // Test to validate that after initialisation, string returned matches.
+    public void testToString() {
+        ClientInfo client = new ClientInfo("TestID", "192.168.0.1", 11);
+
+        // Assert string matches.
+        assertEquals("TestID,192.168.0.1,11", client.toString());
     }
 
-    /**
-     * Test of toString method, of class ClientInfo.
-     */
-    
+    // #-----------------------------------------------------------------------#
+    // #                  2. - Message Parse From String Test                  #
+    // #-----------------------------------------------------------------------#
+
     @Test
-    public void testToString() {
-        String clientID = "TestID";
-        String clientIP = "192.168.0.1";
-        int clientPort = 11;
-        ClientInfo instance = new ClientInfo(clientID,clientIP,clientPort);
-        System.out.println("toString");
-        String expResult = "TestID,192.168.0.1,11";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-    }
-    
-    @Test
+    // Test to validate that if not all parameters contain content, function does not error.
     public void testToStringError() {
-        String clientID = "TestID";
-        String clientIP = "";
-        int clientPort = 11;
-        ClientInfo instance = new ClientInfo(clientID,clientIP,clientPort);
-        System.out.println(instance);
-        System.out.println("toString");
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
+        ClientInfo instance = new ClientInfo("TestID", "", 11);
+
+        // Assert string matches.
+        assertEquals("TestID,,11", instance.toString());
     }
 }

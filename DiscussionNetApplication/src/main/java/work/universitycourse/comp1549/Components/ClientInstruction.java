@@ -79,16 +79,16 @@ public class ClientInstruction {
             throws InstructionNotExistException, InstructionFormatException, DataFormatException {
 
         // Seperate instruction string into its components <INSTRUCTION_TYPE>, <DATA>
-        String[] instructionComponenets = instructionString.split("<SEPERATOR>");
-        this.instructionType = ClientInstruction.convertStringToInt(instructionComponenets[0]);
+        String[] instructionComponents = instructionString.split("<SEPERATOR>");
+        this.instructionType = ClientInstruction.convertStringToInt(instructionComponents[0]);
 
         // Validate values
         ClientInstruction.checkInstructionTypeExist(this.instructionType);
 
-        if (instructionComponenets.length != 2) {
+        if (instructionComponents.length != 2) {
             throw new InstructionFormatException();
         } else {
-            this.data = instructionComponenets[1];
+            this.data = instructionComponents[1];
             ClientInstruction.checkDataFormatValid(this.instructionType, this.data);
         }
 
@@ -291,7 +291,7 @@ public class ClientInstruction {
         case ClientInstruction.NOTIFY_CLIENT_DISCONNECTED_INSTRUCTION_TYPE:
 
             // FORMAT: CLIENT_ID
-            ClientInstruction.validateDataForNotifyClientDisonnected(data);
+            ClientInstruction.validateDataForNotifyClientDisconnected(data);
             break;
 
         case ClientInstruction.CLIENT_DISCONNECTED_INSTRUCTION_TYPE:
@@ -309,7 +309,7 @@ public class ClientInstruction {
         case ClientInstruction.CLIENT_ACCEPTED_INSTRUCTION_TYPE:
 
             // FORMAT: COORDINATOR_ID
-            ClientInstruction.validateaDataForAcceptedClient(data);
+            ClientInstruction.validateDataForAcceptedClient(data);
             break;
 
         case ClientInstruction.SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE:
@@ -413,7 +413,7 @@ public class ClientInstruction {
 
     }
 
-    // Checks data provided is in a valid form for a 'Updata Client Info Server Cache' instruction type
+    // Checks data provided is in a valid form for a 'Update Client Info Server Cache' instruction type
     private static void validateDataForUpdateClientInforServerCacheInstruction(String data) throws DataFormatException {
 
         if (data.split(seperatorString).length != 1) {
@@ -432,7 +432,7 @@ public class ClientInstruction {
     }
 
     // Checks data provided is in a valid form for a 'Notify Client Has Disconnected' instruction type
-    private static void validateDataForNotifyClientDisonnected(String data) throws DataFormatException {
+    private static void validateDataForNotifyClientDisconnected(String data) throws DataFormatException {
 
         if (data.split(seperatorString).length != 1) {
             throw new DataFormatException("CLIENT_ID");
@@ -459,7 +459,7 @@ public class ClientInstruction {
     }
 
     // Checks data provided is in a valid form for a 'Accept Client' instruction type
-    private static void validateaDataForAcceptedClient(String data) throws DataFormatException {
+    private static void validateDataForAcceptedClient(String data) throws DataFormatException {
 
         if (data.split(seperatorString).length != 1) {
             throw new DataFormatException("COORDINATOR_ID");

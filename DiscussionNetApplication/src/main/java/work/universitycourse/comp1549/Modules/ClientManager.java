@@ -249,7 +249,7 @@ public class ClientManager {
 
     }
 
-    // Unpackages all client info string back to a clientInfo hashmap
+    // Un-packages all client info string back to a clientInfo hashmap
     private HashMap<String, ClientInfo> convertAllClientInfoStringToHashMap(String clientInfoString) {
 
         HashMap<String, ClientInfo> clientInfoList = new HashMap<String, ClientInfo>();
@@ -684,7 +684,7 @@ public class ClientManager {
                 ClientInfo clientInfo = new ClientInfo(clientID, clientIP, clientPort);
                 ClientManager.this.addClientInfoToLocalList(clientID, clientInfo);
 
-                // Allow co-ordinator to contact user by adding to interface.
+                // Allow coordinator to contact user by adding to interface.
                 InterfaceManager.createClient(ClientManager.this.messagePane, clientID);
 
                 // Tell server to accept connection
@@ -830,7 +830,7 @@ public class ClientManager {
 
         }
 
-        // Process the instruction "NotifyOthersOfNewCoordiantor"
+        // Process the instruction "NotifyOthersOfNewCoordinator"
         private void processInstructionNotifyOthersOfNewCoordinator(String coordinatorID) {
 
             ClientManager.this.coordinatorID = coordinatorID;
@@ -839,7 +839,7 @@ public class ClientManager {
 
         }
 
-        // Tells other members to add a client's infomation to their local client info
+        // Tells other members to add a client's information to their local client info
         // list
         private void tellOthersToAddClientsInfo(ClientInfo clientInfo) {
 
