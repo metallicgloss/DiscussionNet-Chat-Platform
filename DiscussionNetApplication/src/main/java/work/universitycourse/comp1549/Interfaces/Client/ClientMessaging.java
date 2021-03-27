@@ -766,26 +766,28 @@ public class ClientMessaging extends JFrame {
 
     // Send message
     private void sendMessage() {
-        // Default message type to private.
-        Boolean messageType = false;
+        if(!userMessagesTextfield.getText().equals("")) {
+            // Default message type to private.
+            Boolean messageType = false;
 
-        // Get selected channel.
-        String messageRecipient = this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex());
+            // Get selected channel.
+            String messageRecipient = this.primaryMessagePane.getTitleAt(this.primaryMessagePane.getSelectedIndex());
 
-        if (messageRecipient == "Group Chat") {
-            // If group chat message, alter message type.
-            messageType = true;
+            if (messageRecipient == "Group Chat") {
+                // If group chat message, alter message type.
+                messageType = true;
+            }
+
+            // Execute send of message.
+            this.client.sendMessage(messageRecipient, userMessagesTextfield.getText(), messageType);
+
+            // Display the outbound message on the user interface.
+            InterfaceManager.displayMessage(this.primaryMessagePane, Calendar.getInstance().getTime(), "Sent",
+                    this.clientIdentifier, userMessagesTextfield.getText(), messageType);
+
+            // Clear text box after message sending.
+            userMessagesTextfield.setText("");
         }
-
-        // Execute send of message.
-        this.client.sendMessage(messageRecipient, userMessagesTextfield.getText(), messageType);
-
-        // Display the outbound message on the user interface.
-        InterfaceManager.displayMessage(this.primaryMessagePane, Calendar.getInstance().getTime(), "Sent",
-                this.clientIdentifier, userMessagesTextfield.getText(), messageType);
-
-        // Clear text box after message sending.
-        userMessagesTextfield.setText("");
     }
 
     // #-----------------------------------------------------------------------#
