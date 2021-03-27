@@ -151,19 +151,16 @@ public class ServerManager {
     // Used to log a message on the server
     private void displayServerLogMessage(Transmittable transmittableObj) {
 
-        String messageType = (transmittableObj instanceof ClientInstruction) ? "Instruction" : "Message";
-        String messageTypeVal = (transmittableObj instanceof ClientInstruction) ? "1" : "2";
+        String messageTypeString = (transmittableObj instanceof ClientInstruction) ? "INSTRUCTION" : "MESSAGE";
         Message serverLogMessage = new Message(transmittableObj.sender, transmittableObj.receiver, "");
 
         // If message type is an instruction, set the output to be the message type in text
-        if (messageType.equals("Instruction")) {
+        if (transmittableObj instanceof ClientInstruction) {
             
-            
-//            int instructionCode = Integer.parseInt(messageObj.message.split("<SEPERATOR>")[0]); // TODO REMOVE
             ClientInstruction instructionObj = (ClientInstruction) transmittableObj;
             serverLogMessage.message = ClientInstruction.INSTRUCTIONS_TEXT[instructionObj.instructionType];
 
-        } else if (messageType.equals("Message")) {
+        } else if (transmittableObj instanceof Message) {
 
             Message messageObj = (Message) transmittableObj;
 
@@ -180,7 +177,7 @@ public class ServerManager {
         }
 
         InterfaceManager.registerServerLog(ServerManager.this.serverLogger, serverLogMessage.sender, serverLogMessage.receiver,
-               messageTypeVal, serverLogMessage.message);
+        messageTypeString, serverLogMessage.message);
 
     }
 

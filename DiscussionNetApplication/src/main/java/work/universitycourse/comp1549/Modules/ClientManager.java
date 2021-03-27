@@ -524,13 +524,6 @@ public class ClientManager {
                         this.processInstructionSetLocalClientInfoList(instruction.data);
                         break;
 
-                    // TODO GET RID OF THIS
-                    // case ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE:
-
-                    //     // Send message to everyone 
-                    //     this.processInstructionSendServerChatMessage(instruction.data);
-                    //     break;
-
                     case ClientInstruction.CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE:
 
                         // Process being rejected by the coordinator
@@ -552,6 +545,7 @@ public class ClientManager {
 
                 }
 
+                // NOTE delay is required to prevent thread from going to fast
                 this.wait(100);
 
             }
@@ -571,7 +565,8 @@ public class ClientManager {
             boolean isServerChatMessage = dataComponents[2].equals("true");
 
             if (isServerChatMessage) {
-                
+
+                // Send group chat message
                 // For each client send group chat message
                 for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
 
@@ -580,9 +575,6 @@ public class ClientManager {
 
                         // Send message object to clients server chat
                         this.sendMessage(currentClientID, message, true);
-//                        String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(currentClientID, message, true);
-//                        ClientInstruction instructionObj = new ClientInstruction(sendMessageInstruction);
-//                        this.instructionsQueue.addInstructionToQueue(instructionObj);
 
                     }
 
@@ -590,6 +582,7 @@ public class ClientManager {
 
             } else {
 
+                // Send private message
                 this.sendMessage(receiver, message, false);
 
             }
@@ -794,26 +787,6 @@ public class ClientManager {
             }
 
         }
-
-        // Process the instruction "Send Server Chat Message" // TODO GET RID OF THIS
-        // private void processInstructionSendServerChatMessage(String instructionObjStr) {
-
-        //     // For each client send group chat message
-        //     String senderID = MessageOld.fromString(instructionObjStr).sender;
-
-        //     for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
-
-        //         // Do not send message back to the person who sent the message.
-        //         if (!currentClientID.equals(senderID)) {
-
-        //             // Send message object to clients server chat
-        //             this.sendMessage(currentClientID, instructionObjStr, true);
-
-        //         }
-
-        //     }
-
-        // }
 
         // Process the instruction "Connection Rejected By Coordinator"
         private void processInstructionConnectionRejectedByCoordinator(String message) {
