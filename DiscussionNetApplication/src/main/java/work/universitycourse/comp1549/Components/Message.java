@@ -24,19 +24,20 @@ import java.sql.Timestamp;
 // #                                                                           #
 // #---------------------------------------------------------------------------#
 
+@SuppressWarnings("serial")
 public class Message extends Transmittable {
-    
+
     public boolean isServerChatMessage = false;
     public String message;
-
 
     // #-----------------------------------------------------------------------#
     // #                          1 - Direct Message                           #
     // #-----------------------------------------------------------------------#
 
     // Initiate object with four parameters, direct personal message.
+    // Abstract factory design pattern potentiality
     public Message(String sender, String receiver, String message) {
-        
+
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
@@ -64,8 +65,8 @@ public class Message extends Transmittable {
     // Generate string instruction from message object.
     public String toString() {
         // Return single message string.
-        return this.sender + "::" + this.receiver +  "::" + this.message
-                + "::" + this.timestamp.toString() + "::" + Boolean.toString(this.isServerChatMessage);
+        return this.sender + "::" + this.receiver + "::" + this.message + "::" + this.timestamp.toString() + "::"
+                + Boolean.toString(this.isServerChatMessage);
     }
 
     // #-----------------------------------------------------------------------#

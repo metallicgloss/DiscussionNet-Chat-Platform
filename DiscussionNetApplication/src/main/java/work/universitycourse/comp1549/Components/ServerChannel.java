@@ -45,7 +45,8 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 public class ServerChannel {
 
     // Used as a message/instruction queue for each channel.
-    private volatile Deque<Transmittable> channelMessages = new ArrayDeque<Transmittable>(); 
+    // Future expandability for transmission protocol design pattern.
+    private volatile Deque<Transmittable> channelMessages = new ArrayDeque<Transmittable>();
 
     private HashMap<String, ClientConnection> clientConnections = new HashMap<String, ClientConnection>();
     private ClientConnection coordinatorClientConnection = null;
@@ -53,7 +54,7 @@ public class ServerChannel {
 
     public ServerChannel() {
     }
-    
+
     // #-----------------------------------------------------------------------#
     // #                  1 - Server Channel Message Handling                  #
     // #-----------------------------------------------------------------------#
@@ -360,7 +361,7 @@ public class ServerChannel {
             if (ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)) {
 
                 try {
-                    
+
                     // Tell server a connected client left the server
                     String clientDisconnectedInstructionString = ClientInstruction
                             .createClientDisconnectedInstructionString(this.clientID);
@@ -369,10 +370,9 @@ public class ServerChannel {
                             clientDisconnectedInstructionString);
 
                     ServerChannel.this.addTransmittableToChannel(terminateClientInstruction);
-                    
-                } catch (ClientInstruction.InstructionNotExistException
-                    | ClientInstruction.InstructionFormatException
-                    | ClientInstruction.DataFormatException e) {
+
+                } catch (ClientInstruction.InstructionNotExistException | ClientInstruction.InstructionFormatException
+                        | ClientInstruction.DataFormatException e) {
                 }
 
             }

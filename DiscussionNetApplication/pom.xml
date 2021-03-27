@@ -23,5 +23,10 @@
             <version>5.7.1</version>
             <type>pom.sha512</type>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.7.7</version>
+        </dependency>
     </dependencies>
 </project>

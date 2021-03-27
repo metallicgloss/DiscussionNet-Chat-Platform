@@ -65,7 +65,7 @@ public class ClientInstruction extends Transmittable {
             "ACCEPT CLIENT CONNECTION", "UPDATE CLIENT INFO SERVER CACHE", "ADD CLIENT INFO TO LOCAL LIST",
             "NOTIFY CLIENT HAS DISCONNECTED", "CLIENT DISCONNECTED", "GET UPDATED CLIENT INFO LIST", "CLIENT ACCEPTED",
             "SET LOCAL CLIENT INFO LIST", "SEND SERVER CHAT MESSAGE", "CONNECTION REJECTED BY COORDINATOR",
-            "NOTIFY CLIENT OF COORDINATOR ID"};
+            "NOTIFY CLIENT OF COORDINATOR ID" };
 
     public String data;
     public int instructionType;
@@ -94,7 +94,8 @@ public class ClientInstruction extends Transmittable {
     }
 
     // Used to create an instruction transmittable
-    public ClientInstruction(String sender, String receiver, String instructionString) throws InstructionNotExistException, InstructionFormatException, DataFormatException {
+    public ClientInstruction(String sender, String receiver, String instructionString)
+            throws InstructionNotExistException, InstructionFormatException, DataFormatException {
 
         this(instructionString);
         this.sender = sender;
@@ -124,7 +125,8 @@ public class ClientInstruction extends Transmittable {
     }
 
     // Creates a custom 'Send Message' instruction string
-    public static String createSendMessageInstructionString(String receiver, String message, boolean isServerChatMessage) {
+    public static String createSendMessageInstructionString(String receiver, String message,
+            boolean isServerChatMessage) {
         return Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver
                 + seperatorString + message + seperatorString + isServerChatMessage;
     }
@@ -324,7 +326,7 @@ public class ClientInstruction extends Transmittable {
             // FORMAT: MESSAGE
             ClientInstruction.validateDataForConnectionRejectedByCoordinator(data);
             break;
-        
+
         case ClientInstruction.NOTIFY_OTHERS_OF_NEW_COORDINATOR:
 
             // FORMAT: COORDINATOR_ID

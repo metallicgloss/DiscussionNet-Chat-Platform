@@ -38,9 +38,8 @@ import work.universitycourse.comp1549.Components.ClientInstruction.InstructionNo
 // #     13 - Generate Get Updated List Instruction String                     #
 // #     14 - Generate Client Accepted Instruction String                      #
 // #     15 - Generate Set Local Info List Instruction String                  #
-// #     16 - Generate Send Group Chat Instruction String                      #
-// #     17 - Generate Connection Rejected Coordinator Instruction String      #
-// #     18 - Generate New Coordinator Instruction String                      #
+// #     16 - Generate Connection Rejected Coordinator Instruction String      #
+// #     17 - Generate New Coordinator Instruction String                      #
 // #                                                                           #
 // #---------------------------------------------------------------------------#
 
@@ -213,34 +212,24 @@ public class ClientInstructionTest {
     }
 
     // #-----------------------------------------------------------------------#
-    // #            16. Generate Send Group Chat Instruction String            #
-    // #-----------------------------------------------------------------------#
-
-    public void testCreateSendServerChatMessageInstructionString() {
-        // Check function generates instruction as expected.
-        assertEquals("15<SEPERATOR>MessageObjectStringHere",
-                ClientInstruction.createSendServerChatMessageInstructionString("MessageObjectStringHere"));
-    }
-
-    // #-----------------------------------------------------------------------#
-    // #    17. Generate Connection Rejected Coordinator Instruction String    #
+    // #    16. Generate Connection Rejected Coordinator Instruction String    #
     // #-----------------------------------------------------------------------#
 
     @Test
     public void testCreateConnectionRejectedByCoordinatorInstructionString() {
         // Check function generates instruction as expected.
-        assertEquals("16<SEPERATOR>Example Message",
+        assertEquals("15<SEPERATOR>Example Message",
                 ClientInstruction.createConnectionRejectedByCoordinatorInstructionString("Example Message"));
     }
 
     // #-----------------------------------------------------------------------#
-    // #            18. Generate New Coordinator Instruction String            #
+    // #            17. Generate New Coordinator Instruction String            #
     // #-----------------------------------------------------------------------#
 
     @Test
     public void testCreateNotifyOthersOfNewCoordinatorInstructionString() {
         // Check function generates instruction as expected.
-        assertEquals("17<SEPERATOR>COORDINATOR",
+        assertEquals("16<SEPERATOR>COORDINATOR",
                 ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString("COORDINATOR"));
     }
 
