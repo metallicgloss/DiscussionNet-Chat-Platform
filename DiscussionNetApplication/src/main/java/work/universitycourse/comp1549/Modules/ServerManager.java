@@ -166,13 +166,15 @@ public class ServerManager {
         } else if (messageType.equals("Message")) {
 
             Message messageObj = (Message) transmittableObj;
+
             if (messageObj.isServerChatMessage) {
+
                 // Reformat output of message (needed to make the logger display a cleaner message)
                 //Message groupChatMessage = Message.fromString(messageObj.message);
-                serverLogMessage.message = "Group Chat Message: " + messageObj.message + " FROM: "
-                        + messageObj.sender;
+                serverLogMessage.message = "GROUP MESSAGE FROM: " + messageObj.sender;
+
             } else {
-                serverLogMessage.message = messageObj.message;
+                serverLogMessage.message = "PRIVATE MESSAGE";
             }
 
         }

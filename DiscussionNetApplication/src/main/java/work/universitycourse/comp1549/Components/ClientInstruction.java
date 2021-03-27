@@ -42,7 +42,7 @@ public class ClientInstruction extends Transmittable {
     // 4. Add function to handle instructions (Look at section: Instruction Processing Functions)
     // 5. Implement function to handle instruction on server / client side
 
-    private static final int HIGHEST_INSTRUCTION_CODE = 17;
+    private static final int HIGHEST_INSTRUCTION_CODE = 16;
     public static final int SEND_MESSAGE_INSTRUCTION_TYPE = 1;
     public static final int BECOME_COORDINATOR_INSTRUCTION_TYPE = 2;
     public static final int REVOKE_COORDINATOR_INSTRUCTION_TYPE = 3;
@@ -57,9 +57,8 @@ public class ClientInstruction extends Transmittable {
     public static final int GET_UPDATED_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 12;
     public static final int CLIENT_ACCEPTED_INSTRUCTION_TYPE = 13;
     public static final int SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE = 14;
-    public static final int SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE = 15;
-    public static final int CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE = 16;
-    public static final int NOTIFY_OTHERS_OF_NEW_COORDINATOR = 17;
+    public static final int CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE = 15;
+    public static final int NOTIFY_OTHERS_OF_NEW_COORDINATOR = 16;
 
     public static final String[] INSTRUCTIONS_TEXT = { "", "SEND MESSAGE", "BECOME COORDINATOR", "REVOKE COORDINATOR",
             "ESTABLISH CONNECTION WITH SERVER", "REVIEW JOIN REQUEST", "REJECT JOIN REQUEST",
@@ -94,6 +93,7 @@ public class ClientInstruction extends Transmittable {
 
     }
 
+    // Used to create an instruction transmittable
     public ClientInstruction(String sender, String receiver, String instructionString) throws InstructionNotExistException, InstructionFormatException, DataFormatException {
 
         this(instructionString);
@@ -204,12 +204,6 @@ public class ClientInstruction extends Transmittable {
     public static String createSetLocalClientInfoListString(String allClientInfoString) {
         return Integer.toString(ClientInstruction.SET_LOCAL_CLIENT_INFO_LIST_INSTRUCTION_TYPE) + "<SEPERATOR>"
                 + allClientInfoString;
-    }
-
-    // Create a custom 'Send Server Chat Message' instruction string
-    public static String createSendServerChatMessageInstructionString(String messageObjStr) {
-        return Integer.toString(ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>"
-                + messageObjStr;
     }
 
     // Create a custom 'Connection Rejected By Coordinator' instruction string
@@ -323,12 +317,6 @@ public class ClientInstruction extends Transmittable {
 
             // FORMAT: ALL_CLIENT_INFO_LIST_STRING
             ClientInstruction.validateDataForSetLocalClientInfoList(data);
-            break;
-
-        case ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE:
-
-            // FORMAT: MESSAGE_OBJECT_STRING (sender, receiver, message, messageType, sever_chat_message, timestamp)
-            ClientInstruction.validateDataForSendServerChatMessage(data);
             break;
 
         case ClientInstruction.CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE:
@@ -479,16 +467,6 @@ public class ClientInstruction extends Transmittable {
 
         if (data.split(seperatorString).length != 1) {
             throw new DataFormatException("ALL_CLIENT_INFO_LIST_STRING");
-        }
-
-    }
-
-    // Checks data provided is in a valid form for a 'Send Group Chat Message' instruction type
-    private static void validateDataForSendServerChatMessage(String data) throws DataFormatException {
-
-        if (data.split(seperatorString).length != 6) {
-            throw new DataFormatException(
-                    "MESSAGE_OBJECT_STRING (sender, receiver, message, messageType, sever_chat_message, timestamp)");
         }
 
     }
