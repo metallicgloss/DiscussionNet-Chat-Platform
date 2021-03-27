@@ -65,11 +65,11 @@ public class MessageTest {
     @Test
     // Test to validate that group message string outputs as expected.
     public void testGroupMessageToString() {
-        Message groupMessage = new Message("ClientA", "ClientB", "Example Message", true);
+        Message groupMessage = new Message("ClientA", "Group Chat", "Example Message", true);
         groupMessage.timestamp = this.timestamp;
 
         // Assert string matches.
-        assertEquals("ClientA::ClientB::Example Message::" + this.timestamp + "::true", groupMessage.toString());
+        assertEquals("ClientA::Group Chat::Example Message::" + this.timestamp + "::true", groupMessage.toString());
     }
 
     // #-----------------------------------------------------------------------#

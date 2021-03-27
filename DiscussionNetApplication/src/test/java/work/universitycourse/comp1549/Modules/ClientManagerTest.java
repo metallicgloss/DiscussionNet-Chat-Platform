@@ -1,35 +1,48 @@
 package work.universitycourse.comp1549.Modules;
 
+
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import work.universitycourse.comp1549.Components.ClientInfo;
 
-import javax.swing.JTable;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-
 /**
  *
- * @author Gabriel
+ * @author Adnan Turan
+ * @author Daniel Browne
+ * @author Gabriel Netz
+ * @author William Phillips
+ *
  */
+
+// #---------------------------------------------------------------------------#
+// #                                 Contents                                  #
+// #---------------------------------------------------------------------------#
+// #                                                                           #
+// #                           ClientManager Testing                           #
+// #        Unit and Integration tests of Client & Server functionality.       #
+// #                                                                           #
+// #               1 - Initialise Server and Clients                           #
+// #               2 - Add Client to Local List                                #
+// #               3 - Get All Client IDs from List                            #
+// #               4 - Get All Client Info from List                           #
+// #               5 - Verify Client Status                                    #
+// #               6 - Verify Client List                                      #
+// #                                                                           #
+// #---------------------------------------------------------------------------#
+
 public class ClientManagerTest {
 
     private ServerManager server;
@@ -39,16 +52,13 @@ public class ClientManagerTest {
     public ClientManagerTest() {
     }
 
-    public void delay(int time) {
-        try {
-            TimeUnit.SECONDS.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+    // #-----------------------------------------------------------------------#
+    // #                    1. Initalise Server and Clients                    #
+    // #-----------------------------------------------------------------------#
 
     @BeforeEach
     public void setUp() {
+        // Execute server as thread.
         new Thread(new Runnable() {
             private JTable serverLog;
             private String serverIPAddress;
@@ -68,77 +78,83 @@ public class ClientManagerTest {
             }
         }.init(new JTable(), "127.0.0.1", 9090)).start();
 
+        // Configure client 1
         this.clientA = new ClientManager(new JTabbedPane(), new JFrame(), new JLabel(), "127.0.0.1", 9090, "ClientA",
                 "127.0.0.1", 9091);
+
+        // Configure client 2
         this.clientB = new ClientManager(new JTabbedPane(), new JFrame(), new JLabel(), "127.0.0.1", 9090, "ClientB",
                 "127.0.0.1", 9092);
     }
 
-    /**
-     * Test of addClientInfoToLocalList method, of class ClientManager.
-     * @throws IOException
-     */
+    // #-----------------------------------------------------------------------#
+    // #                      2. Add Client to Local List                      #
+    // #-----------------------------------------------------------------------#
+
     @Test
     public void testAddClientInfoToLocalList() throws IOException {
+        // Initialise new client, add to local list of Client A.
         this.clientA.addClientInfoToLocalList("ClientC", new ClientInfo("ClientC", new Socket(InetAddress.getByName("127.0.0.1"), 9090)));
 
+        // Check if ClientC has been added correctly, if get function returns correctly.
         assertEquals("ClientC", this.clientA.getClientInfoFromLocalList("ClientC").clientID);
     }
 
-    /**
-     * Test of getClientInfoFromLocalList method, of class ClientManager.
-     * @throws IOException
-     */
-    @Test
-    public void testGetClientInfoFromLocalList() throws IOException {
-        this.clientA.addClientInfoToLocalList("ClientC", new ClientInfo("ClientC", new Socket(InetAddress.getByName("127.0.0.1"), 9090)));
-        assertEquals( "ClientC", this.clientA.getClientInfoFromLocalList("ClientC").clientID);
-    }
+    // #-----------------------------------------------------------------------#
+    // #                    3. Get All Client IDs from List                    #
+    // #-----------------------------------------------------------------------#
 
-    /**
-     * Test of getAllClientIDsFromLocalList method, of class ClientManager.
-     * @throws IOException
-     */
     @Test
     public void testGetAllClientIDsFromLocalList() throws IOException {
+        // Create new client and add to local list.
         this.clientA.addClientInfoToLocalList("ClientC", new ClientInfo("ClientC", new Socket(InetAddress.getByName("127.0.0.1"), 9090)));
         Set<String> expResult = new HashSet<>();
         expResult.add("ClientC");
+
+        // Verify result matches expected.
         assertEquals(expResult, clientA.getAllClientIDsFromLocalList());
 
     }
 
-    /**
-     * Test of getAllClientsInfoFromLocalList method, of class ClientManager.
-     * @throws IOException
-     */
+    // #-----------------------------------------------------------------------#
+    // #                   4. Get All Client Info from List                    #
+    // #-----------------------------------------------------------------------#
+
     @Test
     public void testGetAllClientsInfoFromLocalList() throws IOException {
+        // Define IP object.
         InetAddress localIP = InetAddress.getByName("127.0.0.1");
 
+        // Create new client and add to local list.
         this.clientA.addClientInfoToLocalList("ClientC", new ClientInfo("ClientC", new Socket(localIP, 9090)));
-        HashMap<String, ClientInfo> expResult = new HashMap<>();
 
+        // Define info list.
+        HashMap<String, ClientInfo> expResult = new HashMap<>();
         expResult.put("ClientC", new ClientInfo("ClientC", new Socket(localIP, 9090)));
         HashMap<String, ClientInfo> result = this.clientA.getAllClientsInfoFromLocalList();
         
+        // Check formatting of generated and original matches.
         assertEquals(expResult.get("ClientC").clientID, result.get("ClientC").clientID);
 
     }
 
-    /**
-     * Test of getClientStatus method, of class ClientManager.
-     */
+    // #-----------------------------------------------------------------------#
+    // #                        5. Verify Client Status                        #
+    // #-----------------------------------------------------------------------#
+
     @Test
     public void testGetClientStatus() {
+        // Check client status (disconnected)
         assertEquals(false, this.clientA.getClientStatus());
     }
 
-    /**
-     * Test of getAllClientsInfoFromLocalListAsFormattedString method, of class ClientManager.
-     */
+    // #-----------------------------------------------------------------------#
+    // #                         6. Verify Client List                         #
+    // #-----------------------------------------------------------------------#
+
     @Test
     public void testGetAllClientsInfoFromLocalListAsFormattedString() {
+        // Check Length matches as formatted.
         assertEquals(" Client ID 	 Client IP 	 Client Port ".length(), this.clientA.getAllClientsInfoFromLocalListAsFormattedString().length());
     }
 
