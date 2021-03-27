@@ -51,12 +51,11 @@ public class MessageTest {
     @Test
     // Test to validate that direct message string outputs as expected.
     public void testDirectMessageToString() {
-        Message directMessage = new Message("ClientA", "ClientB", "Example Message", 2);
+        Message directMessage = new Message("ClientA", "ClientB", "Example Message");
         directMessage.timestamp = this.timestamp;
 
         // Assert string matches.
-        assertEquals("ClientA::ClientB::2::Example Message::" + this.timestamp + "::false",
-                directMessage.toString());
+        assertEquals("ClientA::ClientB::Example Message::" + this.timestamp + "::false", directMessage.toString());
     }
 
     // #-----------------------------------------------------------------------#
@@ -66,12 +65,11 @@ public class MessageTest {
     @Test
     // Test to validate that group message string outputs as expected.
     public void testGroupMessageToString() {
-        Message groupMessage = new Message("ClientA", "ClientB", "Example Message", 2, true);
+        Message groupMessage = new Message("ClientA", "Group Chat", "Example Message", true);
         groupMessage.timestamp = this.timestamp;
 
         // Assert string matches.
-        assertEquals("ClientA::ClientB::2::Example Message::" + this.timestamp + "::true",
-                groupMessage.toString());
+        assertEquals("ClientA::Group Chat::Example Message::" + this.timestamp + "::true", groupMessage.toString());
     }
 
     // #-----------------------------------------------------------------------#
@@ -82,10 +80,11 @@ public class MessageTest {
     // Test to validate that direct message ingest as string works as expected.
     public void testDirectMessageFromString() {
         // Generate message object from string import.
-        Message directMessageConstructed = Message.fromString("ClientA::ClientB::2::Example Message::2021-02-01 01:01:01.000000001::false");
+        Message directMessageConstructed = Message
+                .fromString("ClientA::ClientB::Example Message::2021-02-01 01:01:01.000000001::false");
 
         // Initiate message directly.
-        Message directMessage = new Message("ClientA", "ClientB", "Example Message", 2);
+        Message directMessage = new Message("ClientA", "ClientB", "Example Message");
         directMessage.timestamp = Timestamp.valueOf("2021-02-01 01:01:01.000000001");
 
         // Assert matches values
@@ -101,10 +100,10 @@ public class MessageTest {
     public void testGroupMessageFromString() {
         // Generate message object from string import.
         Message groupMessageConstructed = Message
-                .fromString("ClientA::ClientB::2::Example Message::2021-02-01 01:01:01.000000001::true");
+                .fromString("ClientA::ClientB::Example Message::2021-02-01 01:01:01.000000001::true");
 
         // Initiate message directly.
-        Message groupMessage = new Message("ClientA", "ClientB", "Example Message", 2, true);
+        Message groupMessage = new Message("ClientA", "ClientB", "Example Message", true);
         groupMessage.timestamp = Timestamp.valueOf("2021-02-01 01:01:01.000000001");
 
         // Assert matches values

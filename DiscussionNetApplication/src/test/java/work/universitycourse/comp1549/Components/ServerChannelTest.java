@@ -48,13 +48,13 @@ public class ServerChannelTest {
     @Test
     public void testAddMessageToChannel() {
         // Initialise Message Object
-        Message messageObj = new Message("userA", "userB", "testmessage", 2);
+        Message messageObj = new Message("userA", "userB", "testmessage");
 
         // Add message object to channel stream.
-        this.instance.addMessageToChannel(messageObj);
+        this.instance.addTransmittableToChannel(messageObj);
 
         // Verify that next message queued in channel is the message.
-        assertEquals(messageObj, this.instance.getNextMessageFromChannel());
+        assertEquals(messageObj, this.instance.getNextTransmittableFromChannel());
     }
 
     // #-----------------------------------------------------------------------#
@@ -64,7 +64,7 @@ public class ServerChannelTest {
     @Test
     public void testNullAddMessageToChannel() {
         // Check empty channel returns null.
-        assertEquals(null, this.instance.getNextMessageFromChannel());
+        assertEquals(null, this.instance.getNextTransmittableFromChannel());
     }
 
     // #-----------------------------------------------------------------------#
