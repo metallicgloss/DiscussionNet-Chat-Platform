@@ -238,7 +238,7 @@ public class ClientManager {
 
         }
 
-        // Remove last 2 %% at the end
+        // Remove last 2 '%%' at the end
         if (allClientsInfoString.length() > 2) {
             allClientsInfoString = allClientsInfoString.substring(0, allClientsInfoString.length() - 2);
         } else {
@@ -367,41 +367,14 @@ public class ClientManager {
                     // Handle Requests
                     if (serverResponse instanceof ClientInstruction) {
                       
-//                        try {
-
-                            // Convert server response string to an instruction
-                            //ClientInstruction instructionFromServer = new ClientInstruction(serverResponse.message);
-
-                            // Add instruction to instruction queue
-                            ClientInstruction serverInstruction = (ClientInstruction) serverResponse;
-                            ClientManager.this.instructionsQueue.addInstructionToQueue(serverInstruction);
-
-//                        } catch (ClientInstruction.InstructionNotExistException
-//                                | ClientInstruction.InstructionFormatException
-//                                | ClientInstruction.DataFormatException e) {
-//                            InterfaceManager.displayError(e, "Mangled instruction - unhandled / unexpected error.");
-//                        }
+                        // Handle Instruction
+                        ClientInstruction serverInstruction = (ClientInstruction) serverResponse;
+                        ClientManager.this.instructionsQueue.addInstructionToQueue(serverInstruction);
 
                     } else if (serverResponse instanceof Message) {
                         
+                        // Handle Message
                         Message messageObj = (Message) serverResponse;
-
-                        // if (messageObj.isServerChatMessage) {
-
-                        //     // If message has been received from the group chat channel.
-
-                        //     // Convert child message string into actual message object
-                        //     Message serverChatMessage = Message.fromString(messageObj.message);
-                        //     InterfaceManager.displayMessage(messagePane, serverChatMessage.timestamp, "Received",
-                        //             serverChatMessage.sender, serverChatMessage.message, true);
-
-                        // } else {
-
-                        //     InterfaceManager.displayMessage(messagePane, messageObj.timestamp, "Received",
-                        //     messageObj.sender, messageObj.message, false);
-
-                        // }
-
                         InterfaceManager.displayMessage(messagePane, messageObj.timestamp, "Received",
                         messageObj.sender, messageObj.message, messageObj.isServerChatMessage);
 
@@ -409,6 +382,7 @@ public class ClientManager {
 
                 }
 
+                // NOTE delay is required to prevent thread from going to fast
                 this.wait(100);
 
             }
@@ -433,7 +407,6 @@ public class ClientManager {
                 }
 
                 ClientManager.this.endClientConnection();
-                // InterfaceManager.displayError(e, "Client Related Error.");
 
             }
 

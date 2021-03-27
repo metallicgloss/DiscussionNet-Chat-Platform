@@ -90,7 +90,7 @@ public class ServerManager {
         RequestHandler requestHandler = new RequestHandler();
         Thread requestHandlerThread = new Thread(requestHandler);
         requestHandlerThread.start();
-        InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Startup", "Server Started.");
+        InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Startup", "SERVER STARTED");
 
         // Accept new clients while the thread is running
         this.serverRunning = true;
@@ -115,7 +115,7 @@ public class ServerManager {
                 Socket clientSocket = this.server.accept();
                 clientID = this.serverChannel.addNewClientConnection(clientSocket);
                 InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection",
-                        "New Client Connected: " + clientID);
+                        "NEW CLIENT CONNECTED: " + clientID);
             } else {
                 this.serverRunning = false; 
             }
@@ -355,7 +355,7 @@ public class ServerManager {
 
                 // Remove Client
                 ServerManager.this.serverChannel.removeClientConnection(clientID);
-                ServerManager.this.displayServerLogMessage(clientID + " has left the server.");
+                ServerManager.this.displayServerLogMessage(clientID + " HAS LEFT THE SERVER");
 
             }
 
