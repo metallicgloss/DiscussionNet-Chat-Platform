@@ -10,6 +10,7 @@ import work.universitycourse.comp1549.Components.ClientInfo;
 import work.universitycourse.comp1549.Components.ClientInstruction;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Components.ServerChannel;
+import work.universitycourse.comp1549.Components.Transmittable;
 
 /**
  *
@@ -89,7 +90,7 @@ public class ServerManager {
         RequestHandler requestHandler = new RequestHandler();
         Thread requestHandlerThread = new Thread(requestHandler);
         requestHandlerThread.start();
-        InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Startup", "Server Started.");
+        InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Startup", "SERVER STARTED");
 
         // Accept new clients while the thread is running
         this.serverRunning = true;
@@ -114,7 +115,7 @@ public class ServerManager {
                 Socket clientSocket = this.server.accept();
                 clientID = this.serverChannel.addNewClientConnection(clientSocket);
                 InterfaceManager.registerServerLog(this.serverLogger, "-", "-", "Connection",
-                        "New Client Connected: " + clientID);
+                        "NEW CLIENT CONNECTED: " + clientID);
             } else {
                 this.serverRunning = false; 
             }
@@ -148,27 +149,34 @@ public class ServerManager {
 
 
     // Used to log a message on the server
-    private void displayServerLogMessage(Message messageObj) {
+    private void displayServerLogMessage(Transmittable transmittableObj) {
 
-        String messageType = (messageObj.messageType == Message.INSTRUCTION_TYPE) ? "Instruction" : "Message";
+        String messageTypeString = (transmittableObj instanceof ClientInstruction) ? "INSTRUCTION" : "MESSAGE";
+        Message serverLogMessage = new Message(transmittableObj.sender, transmittableObj.receiver, "");
 
         // If message type is an instruction, set the output to be the message type in text
-        if (messageType.equals("Instruction")) {
+        if (transmittableObj instanceof ClientInstruction) {
+            
+            ClientInstruction instructionObj = (ClientInstruction) transmittableObj;
+            serverLogMessage.message = ClientInstruction.INSTRUCTIONS_TEXT[instructionObj.instructionType];
 
-            int instructionCode = Integer.parseInt(messageObj.message.split("<SEPERATOR>")[0]);
-            messageObj.message = ClientInstruction.INSTRUCTIONS_TEXT[instructionCode];
+        } else if (transmittableObj instanceof Message) {
 
-        } else if (messageType.equals("Message") && messageObj.isServerChatMessage) {
+            Message messageObj = (Message) transmittableObj;
 
-            // Reformat output of message (needed to make the logger display a cleaner message)
-            Message groupChatMessage = Message.fromString(messageObj.message);
-            messageObj.message = "Group Chat Message: " + groupChatMessage.message + " FROM: "
-                    + groupChatMessage.sender;
+            if (messageObj.isServerChatMessage) {
+
+                // Reformat output of message (needed to make the logger display a cleaner message)
+                serverLogMessage.message = "GROUP MESSAGE FROM: " + messageObj.sender;
+
+            } else {
+                serverLogMessage.message = "PRIVATE MESSAGE";
+            }
 
         }
 
-        InterfaceManager.registerServerLog(ServerManager.this.serverLogger, messageObj.sender, messageObj.receiver,
-                messageType, messageObj.message);
+        InterfaceManager.registerServerLog(ServerManager.this.serverLogger, serverLogMessage.sender, serverLogMessage.receiver,
+        messageTypeString, serverLogMessage.message);
 
     }
 
@@ -193,19 +201,19 @@ public class ServerManager {
             while (true) {
 
                 // Get next message in channel
-                Message messageObj = ServerManager.this.serverChannel.getNextMessageFromChannel();
+                Transmittable transmittableObj = ServerManager.this.serverChannel.getNextTransmittableFromChannel();
 
                 // Process next message if one is present
-                if (messageObj != null) {
+                if (transmittableObj != null) {
 
                     // Check if its a instruction for server or someone else
-                    if (messageObj.receiver.equals("SERVER") && messageObj.messageType == Message.INSTRUCTION_TYPE) {
+                    if (transmittableObj.receiver.equals("SERVER") && transmittableObj instanceof ClientInstruction) {
 
                         // Process instruction to server
-                        this.processInstruction(messageObj);
+                        this.processInstruction((ClientInstruction) transmittableObj);
 
                     } else {
-                        this.sendMessageToClient(messageObj);
+                        this.sendTransmittableToClient(transmittableObj);
                     }
 
                 }
@@ -218,50 +226,33 @@ public class ServerManager {
         // #                       3.2 - Message Processing                    #
         // #-------------------------------------------------------------------#
 
-        // Sends the message from the server to the client
-        private void sendMessageToClient(Message messageObj) {
+        // Sends the transmittable from the server to the client
+        private void sendTransmittableToClient(Transmittable transmittableObj) {
 
             // Check client is in the list
             boolean checkReceiverInChannel = ServerManager.this.serverChannel
-                    .checkClientConnectionExists(messageObj.receiver);
+                    .checkClientConnectionExists(transmittableObj.receiver);
             boolean checkSenderInChannel = ServerManager.this.serverChannel
-                    .checkClientConnectionExists(messageObj.sender);
+                    .checkClientConnectionExists(transmittableObj.sender);
 
-            if ((checkReceiverInChannel || messageObj.sender == "SERVER")
-                    && (checkSenderInChannel || messageObj.sender == "SERVER")) {
+            if ((checkReceiverInChannel || transmittableObj.receiver == "SERVER")
+                    && (checkSenderInChannel || transmittableObj.sender == "SERVER")) {
 
                 // Client is in list, send message
-                ServerManager.this.serverChannel.sendMessageToClient(messageObj);
+                ServerManager.this.serverChannel.sendTransmittableToClient(transmittableObj);
 
                 // Log message on server
-                ServerManager.this.displayServerLogMessage(messageObj);
-
-            } else if (messageObj.isServerChatMessage) {
-
-                // Tell Coordinator to output server chat message
-                // Create Send Server Message Instruction
-                String messageObjStr = messageObj.toString();
-                String sendServerChatMessage = ClientInstruction
-                        .createSendServerChatMessageInstructionString(messageObjStr);
-
-                // Send Message to coordinator
-                String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
-                Message sendInstructionMessage = new Message("SERVER", coordinatorID, sendServerChatMessage,
-                        Message.INSTRUCTION_TYPE);
-                ServerManager.this.serverChannel.sendMessageToClient(sendInstructionMessage);
+                ServerManager.this.displayServerLogMessage(transmittableObj);
 
             } else {
 
                 // Tell sender that receiver does not exists
-                System.out.println("Error try to execute message: " + messageObj.message + " from " + messageObj.sender
-                        + " to " + messageObj.receiver + " of type " + messageObj.messageType);
-
                 // Check sender is in channel otherwise message may of came from a client that has disconnected or been rejected
                 if (checkSenderInChannel) {
 
-                    Message serverMessage = new Message("SERVER", messageObj.sender,
-                            "'" + messageObj.receiver + "' does not exist", Message.MESSAGE_TYPE);
-                    ServerManager.this.serverChannel.sendMessageToClient(serverMessage);
+                    Message serverMessage = new Message("SERVER", transmittableObj.sender,
+                            "'" + transmittableObj.receiver + "' does not exist");
+                    ServerManager.this.serverChannel.sendTransmittableToClient(serverMessage);
 
                 }
             }
@@ -272,12 +263,11 @@ public class ServerManager {
         // #                       3.3 - Instruction Processing                #
         // #-------------------------------------------------------------------#
 
-        private void processInstruction(Message messageObj) {
+        private void processInstruction(ClientInstruction instructionObj) {
 
             // Get Instruction Components
-            String[] instructionComponents = messageObj.message.split("<SEPERATOR>");
-            int instructionType = Integer.parseInt(instructionComponents[0]);
-            String[] dataComponents = instructionComponents[1].split("::");
+            int instructionType = instructionObj.instructionType;
+            String[] dataComponents = instructionObj.data.split("::");
 
             // Check if Coordinator is set
             if (!ServerManager.this.serverChannel.checkCoordinatorIsSet()
@@ -285,7 +275,7 @@ public class ServerManager {
 
                 // Accept client as coordinator
                 String clientID = dataComponents[0];
-                this.executeInstructionEstablishConnection(messageObj.sender, clientID);
+                this.executeInstructionEstablishConnection(instructionObj.sender, clientID);
 
             } else {
 
@@ -297,19 +287,19 @@ public class ServerManager {
                 case ClientInstruction.REJECT_JOIN_REQUEST_INSTRUCTION_TYPE:
 
                     // Process a reject request
-                    this.executeInstructionRejectJoinRequest(messageObj);
+                    this.executeInstructionRejectJoinRequest(instructionObj);
                     break;
 
                 case ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE:
 
                     // Process connection request
-                    this.executeInstructionEstablishConnection(messageObj.sender, dataComponents[0]);
+                    this.executeInstructionEstablishConnection(instructionObj.sender, dataComponents[0]);
                     break;
 
                 case ClientInstruction.ACCEPT_CLIENT_CONNECTION_INSTRUCTION_TYPE:
 
                     // Check instruction is from coordinator
-                    if (messageObj.sender.equals(coordinatorID)) {
+                    if (instructionObj.sender.equals(coordinatorID)) {
 
                         // Process accept client Connection
                         this.executeInstructionAcceptClientConnection(dataComponents[0], dataComponents[1]);
@@ -355,7 +345,7 @@ public class ServerManager {
 
                 // Remove Client
                 ServerManager.this.serverChannel.removeClientConnection(clientID);
-                ServerManager.this.displayServerLogMessage(clientID + " has left the server.");
+                ServerManager.this.displayServerLogMessage(clientID + " HAS LEFT THE SERVER");
 
             }
 
@@ -376,14 +366,19 @@ public class ServerManager {
                         clientID, clientInfo.clientIP, clientInfo.clientPort);
 
                 // Send to coordinator to determine connection
-                Message reviewJoinRequestInstruction = new Message("SERVER", coordinatorID, reviewJoinRequestString,
-                        Message.INSTRUCTION_TYPE);
-                ServerManager.this.serverChannel.addMessageToChannel(reviewJoinRequestInstruction);
+                try {
+                 
+                    ClientInstruction reviewJoinRequestInstruction = new ClientInstruction("SERVER", coordinatorID, reviewJoinRequestString);
+                    ServerManager.this.serverChannel.addTransmittableToChannel(reviewJoinRequestInstruction);
+                    
+                }  catch (ClientInstruction.InstructionNotExistException
+                        | ClientInstruction.InstructionFormatException
+                        | ClientInstruction.DataFormatException e) {
+                }
 
             } else {
 
                 // Make client Coordinator
-
                 // Replace Temp ID with specified ID
                 ServerManager.this.serverChannel.renameClientID(tempID, clientID);
 
@@ -400,14 +395,14 @@ public class ServerManager {
         }
 
         // Execute the instruction used to reject a join request
-        private void executeInstructionRejectJoinRequest(Message messageObj) {
+        private void executeInstructionRejectJoinRequest(ClientInstruction instructionObj) {
 
             String coordinatorID = ServerManager.this.serverChannel.getCoordinatorID();
-            String[] dataComponents = messageObj.message.split("<SEPERATOR>")[1].split("::");
+            String[] dataComponents = instructionObj.data.split("::");
             String clientID = dataComponents[0];
 
             // Check instruction is from coordinator
-            if (messageObj.sender.equals(coordinatorID)) {
+            if (instructionObj.sender.equals(coordinatorID)) {
 
                 ServerManager.this.serverChannel.terminateClientConnection(clientID);
                 this.executeInstructionRemoveConnection(clientID);
@@ -435,10 +430,18 @@ public class ServerManager {
 
                 for (String currentClientID : clientInfoListCache.keySet()) {
 
+                    // Do not send message to self
                     if (! currentClientID.equals(coordinatorID)) {
 
-                        Message notifyClientDisconnectedInstruction = new Message("SERVER", currentClientID, clientDisconnectedInstructionString, Message.INSTRUCTION_TYPE);
-                        ServerManager.this.serverChannel.addMessageToChannel(notifyClientDisconnectedInstruction);
+                        try {
+                            
+                            ClientInstruction notifyClientDisconnectedInstruction = new ClientInstruction("SERVER", currentClientID, clientDisconnectedInstructionString);
+                            ServerManager.this.serverChannel.addTransmittableToChannel(notifyClientDisconnectedInstruction);
+                            
+                        } catch (ClientInstruction.InstructionNotExistException
+                                | ClientInstruction.InstructionFormatException
+                                | ClientInstruction.DataFormatException e) {
+                        }
 
                     }
 
@@ -460,12 +463,22 @@ public class ServerManager {
             // NOTE If it was the coordinator that left, the program would have already notified everyone already
             if (ServerManager.this.serverChannel.checkCoordinatorIsSet() && ! clientID.equals(OLD_COORDINATOR_ID)) {
 
+                try {
+                
                 // Tell coordinator about the client that has disconnected
                 String notifyClientDisconnectString = ClientInstruction
                         .createNotifyClientDisconnectedInstructionString(clientID);
-                Message notifyClientDisconnectInstruction = new Message("SERVER", coordinatorID,
-                        notifyClientDisconnectString, Message.INSTRUCTION_TYPE);
-                ServerManager.this.serverChannel.addMessageToChannel(notifyClientDisconnectInstruction);
+                
+                ClientInstruction notifyClientDisconnectInstruction = new ClientInstruction("SERVER", coordinatorID,
+                        notifyClientDisconnectString);
+                
+                ServerManager.this.serverChannel.addTransmittableToChannel(notifyClientDisconnectInstruction);
+                
+                } catch (ClientInstruction.InstructionNotExistException
+                        | ClientInstruction.InstructionFormatException
+                        | ClientInstruction.DataFormatException e) {
+                }
+                
 
             }
 
@@ -513,11 +526,17 @@ public class ServerManager {
         // Makes and tells the client specified that they will become the coordinator
         private void makeClientCoordinator(String clientID) {
 
-            String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
-            Message setCoordinatorInstruction = new Message("SERVER", clientID, becomeCoordinatorString,
-                    Message.INSTRUCTION_TYPE);
-            ServerManager.this.serverChannel.addMessageToChannel(setCoordinatorInstruction);
-            ServerManager.this.serverChannel.setCoordinatorConnection(clientID);
+            try {
+                
+                String becomeCoordinatorString = ClientInstruction.createBecomeCoordinatorInstructionString();
+                ClientInstruction setCoordinatorInstruction = new ClientInstruction("SERVER", clientID, becomeCoordinatorString);
+                ServerManager.this.serverChannel.addTransmittableToChannel(setCoordinatorInstruction);
+                ServerManager.this.serverChannel.setCoordinatorConnection(clientID);
+            
+            } catch (ClientInstruction.InstructionNotExistException
+                    | ClientInstruction.InstructionFormatException
+                    | ClientInstruction.DataFormatException e) {
+            }
 
         }
 

@@ -45,7 +45,7 @@ import work.universitycourse.comp1549.Modules.InterfaceManager;
 public class ServerChannel {
 
     // Used as a message/instruction queue for each channel.
-    private volatile Deque<Message> channelMessages = new ArrayDeque<Message>(); 
+    private volatile Deque<Transmittable> channelMessages = new ArrayDeque<Transmittable>(); 
 
     private HashMap<String, ClientConnection> clientConnections = new HashMap<String, ClientConnection>();
     private ClientConnection coordinatorClientConnection = null;
@@ -58,17 +58,17 @@ public class ServerChannel {
     // #                  1 - Server Channel Message Handling                  #
     // #-----------------------------------------------------------------------#
 
-    // Sets a timestamp for a message objects and adds it to the channelMessages
-    public void addMessageToChannel(Message messageObj) {
+    // Sets a timestamp for a transmittable object and adds it to the channelMessages
+    public void addTransmittableToChannel(Transmittable transmittableObj) {
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        messageObj.timestamp = timestamp;
-        this.channelMessages.addLast(messageObj);
+        transmittableObj.timestamp = timestamp;
+        this.channelMessages.addLast(transmittableObj);
 
     }
 
-    // Gets next available message from the channelMessages, using FIFO
-    public Message getNextMessageFromChannel() {
+    // Gets next available transmittable from the channelMessages, using FIFO
+    public Transmittable getNextTransmittableFromChannel() {
         return this.channelMessages.poll();
     }
 
@@ -76,9 +76,9 @@ public class ServerChannel {
     // #                  2 - Client Connection Handling                       #
     // #-----------------------------------------------------------------------#
 
-    // Sends a message object to a client
-    public void sendMessageToClient(Message messageObj) {
-        this.clientConnections.get(messageObj.receiver).sendMessageToClient(messageObj);
+    // Sends a transmittable object to a client
+    public void sendTransmittableToClient(Transmittable transmittableObj) {
+        this.clientConnections.get(transmittableObj.receiver).sendTransmittableToClient(transmittableObj);
     }
 
     // Returns True when a client connection object is found at the ID specified in clientConnections
@@ -86,7 +86,7 @@ public class ServerChannel {
         return this.clientConnections.containsKey(clientID);
     }
 
-    // Adds a new client connection to client connections and starts a thread to listen for incoming messages from the client
+    // Adds a new client connection to client connections and starts a thread to listen for incoming transmittables from the client
     public String addNewClientConnection(Socket clientSocket) {
 
         // Create client connection object
@@ -100,7 +100,7 @@ public class ServerChannel {
         // Add Client Info
         this.addNewClientInfo(clientID, clientSocket);
 
-        //Start thread to listen for new client messages
+        //Start thread to listen for new client transmittables
         this.startClientConnectionThread(clientID);
 
         return clientID;
@@ -279,7 +279,7 @@ public class ServerChannel {
         public void run() {
 
             while (this.isThreadRunning) {
-                this.addMessageToChannel();
+                this.addTransmittableToChannel();
             }
 
             this.closeInputOutputStreams();
@@ -305,27 +305,27 @@ public class ServerChannel {
         // #              5.4 - Message Handling                               #
         // #-------------------------------------------------------------------#
 
-        // Adds a message object to the server channel
-        private void addMessageToChannel() {
+        // Adds a transmittable object to the server channel
+        private void addTransmittableToChannel() {
 
-            Message response = this.receiveMessage();
+            Transmittable response = this.receiveTransmittable();
 
             if (response != null) {
 
                 response.sender = this.clientID; // Done to ensure client does not try to fake their ID
-                ServerChannel.this.addMessageToChannel(response);
+                ServerChannel.this.addTransmittableToChannel(response);
 
             }
 
         }
 
-        // Receives messages for the client connection's input stream, will terminal the connection if an error occurs
-        private Message receiveMessage() {
+        // Receives transmittables for the client connection's input stream, will terminal the connection if an error occurs
+        private Transmittable receiveTransmittable() {
 
-            Message data = null;
+            Transmittable data = null;
 
             try {
-                data = (Message) this.inputStream.readObject();
+                data = (Transmittable) this.inputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
 
                 this.terminateConnection();
@@ -336,13 +336,13 @@ public class ServerChannel {
 
         }
 
-        // Sends a message object via the object output stream
-        public void sendMessageToClient(Message messageObj) {
+        // Sends a transmittable object via the object output stream
+        public void sendTransmittableToClient(Transmittable transmittableObj) {
 
             try {
-                this.outputStream.writeObject(messageObj);
+                this.outputStream.writeObject(transmittableObj);
             } catch (IOException e) {
-                InterfaceManager.displayError(e, "Message Send Failed - unhandled. Please try again.");
+                InterfaceManager.displayError(e, "Transmittable Send Failed - unhandled. Please try again.");
             }
 
         }
@@ -359,12 +359,21 @@ public class ServerChannel {
             // Check client is not temporary
             if (ServerChannel.this.getAllConnectedClientIDs().contains(this.clientID)) {
 
-                // Tell server a connected client left the server
-                String clientDisconnectedInstructionString = ClientInstruction
-                        .createClientDisconnectedInstructionString(this.clientID);
-                Message terminateClientInstruction = new Message("SERVER", "SERVER",
-                        clientDisconnectedInstructionString, Message.INSTRUCTION_TYPE);
-                ServerChannel.this.addMessageToChannel(terminateClientInstruction);
+                try {
+                    
+                    // Tell server a connected client left the server
+                    String clientDisconnectedInstructionString = ClientInstruction
+                            .createClientDisconnectedInstructionString(this.clientID);
+
+                    ClientInstruction terminateClientInstruction = new ClientInstruction("SERVER", "SERVER",
+                            clientDisconnectedInstructionString);
+
+                    ServerChannel.this.addTransmittableToChannel(terminateClientInstruction);
+                    
+                } catch (ClientInstruction.InstructionNotExistException
+                    | ClientInstruction.InstructionFormatException
+                    | ClientInstruction.DataFormatException e) {
+                }
 
             }
 

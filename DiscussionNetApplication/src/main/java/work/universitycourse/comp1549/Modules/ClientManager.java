@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import work.universitycourse.comp1549.Components.ClientInfo;
 import work.universitycourse.comp1549.Components.ClientInstruction;
+import work.universitycourse.comp1549.Components.Transmittable;
 import work.universitycourse.comp1549.Components.Message;
 import work.universitycourse.comp1549.Interfaces.Client.ClientServerConnection;
 
@@ -137,9 +138,8 @@ public class ClientManager {
     public void sendMessage(String receiver, String message, boolean isServerChatMessage) {
 
         try {
-
-            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message,
-                    isServerChatMessage);
+            
+            String sendMessageInstruction = ClientInstruction.createSendMessageInstructionString(receiver, message, isServerChatMessage);
             ClientInstruction instructionObj = new ClientInstruction(sendMessageInstruction);
             this.instructionsQueue.addInstructionToQueue(instructionObj);
 
@@ -238,7 +238,7 @@ public class ClientManager {
 
         }
 
-        // Remove last 2 %% at the end
+        // Remove last 2 '%%' at the end
         if (allClientsInfoString.length() > 2) {
             allClientsInfoString = allClientsInfoString.substring(0, allClientsInfoString.length() - 2);
         } else {
@@ -360,58 +360,29 @@ public class ClientManager {
 
             while (ClientManager.this.isClientRunning) {
 
-                Message serverResponse = this.getMessage();
+                Object serverResponse = this.getTransmittable();
 
                 if (serverResponse != null) {
 
                     // Handle Requests
-                    switch (serverResponse.messageType) {
+                    if (serverResponse instanceof ClientInstruction) {
+                      
+                        // Handle Instruction
+                        ClientInstruction serverInstruction = (ClientInstruction) serverResponse;
+                        ClientManager.this.instructionsQueue.addInstructionToQueue(serverInstruction);
 
-                    case Message.INSTRUCTION_TYPE:
-
-                        try {
-
-                            // Convert server response string to an instruction
-                            ClientInstruction instructionFromServer = new ClientInstruction(serverResponse.message);
-
-                            // Add instruction to instruction queue
-                            ClientManager.this.instructionsQueue.addInstructionToQueue(instructionFromServer);
-
-                        } catch (ClientInstruction.InstructionNotExistException
-                                | ClientInstruction.InstructionFormatException
-                                | ClientInstruction.DataFormatException e) {
-                            InterfaceManager.displayError(e, "Mangled instruction - unhandled / unexpected error.");
-                        }
-
-                        break;
-
-                    case Message.MESSAGE_TYPE:
-
-                        if (serverResponse.isServerChatMessage) {
-
-                            // If message has been received from the group chat channel.
-
-                            // Convert child message string into actual message object
-                            Message serverChatMessage = Message.fromString(serverResponse.message);
-                            InterfaceManager.displayMessage(messagePane, serverChatMessage.timestamp, "Received",
-                                    serverChatMessage.sender, serverChatMessage.message, true);
-
-                        } else {
-                            InterfaceManager.displayMessage(messagePane, serverResponse.timestamp, "Received",
-                                    serverResponse.sender, serverResponse.message, false);
-                        }
-                        break;
-
-                    default:
-
-                        InterfaceManager.displayWarning(
-                                "Unknown Message Type Sent: " + Integer.toString(serverResponse.messageType));
-                        break;
+                    } else if (serverResponse instanceof Message) {
+                        
+                        // Handle Message
+                        Message messageObj = (Message) serverResponse;
+                        InterfaceManager.displayMessage(messagePane, messageObj.timestamp, "Received",
+                        messageObj.sender, messageObj.message, messageObj.isServerChatMessage);
 
                     }
 
                 }
 
+                // NOTE delay is required to prevent thread from going to fast
                 this.wait(100);
 
             }
@@ -422,12 +393,12 @@ public class ClientManager {
         // #                6.2 - Messaging and Thread Functions               #
         // #-------------------------------------------------------------------#
 
-        // Returns the next message sent by the server
-        public Message getMessage() {
+        // Returns the next transmittable sent by the server
+        public Transmittable getTransmittable() {
 
-            Message messageObj = null;
+            Transmittable transmittableObj = null;
             try {
-                messageObj = (Message) ClientManager.this.inputStream.readObject();
+                transmittableObj = (Transmittable) ClientManager.this.inputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
 
                 // Display disconnection message if occurred unexpectedly
@@ -436,11 +407,10 @@ public class ClientManager {
                 }
 
                 ClientManager.this.endClientConnection();
-                // InterfaceManager.displayError(e, "Client Related Error.");
 
             }
 
-            return messageObj;
+            return transmittableObj;
 
         }
 
@@ -554,12 +524,6 @@ public class ClientManager {
                         this.processInstructionSetLocalClientInfoList(instruction.data);
                         break;
 
-                    case ClientInstruction.SEND_SERVER_CHAT_MESSAGE_INSTRUCTION_TYPE:
-
-                        // Send message to everyone 
-                        this.processInstructionSendServerChatMessage(instruction.data);
-                        break;
-
                     case ClientInstruction.CONNECTION_REJECTED_BY_COORDINATOR_INSTRUCTION_TYPE:
 
                         // Process being rejected by the coordinator
@@ -581,6 +545,7 @@ public class ClientManager {
 
                 }
 
+                // NOTE delay is required to prevent thread from going to fast
                 this.wait(100);
 
             }
@@ -599,7 +564,28 @@ public class ClientManager {
             String message = dataComponents[1];
             boolean isServerChatMessage = dataComponents[2].equals("true");
 
-            this.sendMessage(receiver, message, isServerChatMessage);
+            if (isServerChatMessage) {
+
+                // Send group chat message
+                // For each client send group chat message
+                for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
+
+                    // Do not send message to self
+                    if (!currentClientID.equals(ClientManager.this.clientID)) {
+
+                        // Send message object to clients server chat
+                        this.sendMessage(currentClientID, message, true);
+
+                    }
+
+                }
+
+            } else {
+
+                // Send private message
+                this.sendMessage(receiver, message, false);
+
+            }
 
         }
 
@@ -802,26 +788,6 @@ public class ClientManager {
 
         }
 
-        // Process the instruction "Send Server Chat Message"
-        private void processInstructionSendServerChatMessage(String messageObjStr) {
-
-            // For each client send group chat message
-            String senderID = Message.fromString(messageObjStr).sender;
-
-            for (String currentClientID : ClientManager.this.getAllClientIDsFromLocalList()) {
-
-                // Do not send message back to the person who sent the message.
-                if (!currentClientID.equals(senderID)) {
-
-                    // Send message object to clients server chat
-                    this.sendMessage(currentClientID, messageObjStr, true);
-
-                }
-
-            }
-
-        }
-
         // Process the instruction "Connection Rejected By Coordinator"
         private void processInstructionConnectionRejectedByCoordinator(String message) {
 
@@ -877,25 +843,31 @@ public class ClientManager {
         // Sends a message to the server
         private void sendMessage(String receiver, String message, boolean isServerChatMessage) {
 
-            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.MESSAGE_TYPE,
-                    isServerChatMessage);
-            this.transmitMessage(messageObj);
+            Message messageObj = new Message(ClientManager.this.clientID, receiver, message,isServerChatMessage);
+            this.transmitTransmittable(messageObj);
 
         }
 
         // Sends an instruction to the server
         private void sendInstruction(String receiver, String message) {
 
-            Message messageObj = new Message(ClientManager.this.clientID, receiver, message, Message.INSTRUCTION_TYPE);
-            this.transmitMessage(messageObj);
+            try {
+                
+                Transmittable transmittableObj = new ClientInstruction(ClientManager.this.clientID, receiver, message);
+                this.transmitTransmittable(transmittableObj);
+                
+            } catch (ClientInstruction.InstructionNotExistException
+                    | ClientInstruction.InstructionFormatException
+                    | ClientInstruction.DataFormatException e) {
+            }
 
         }
 
-        // Transmits a message object to the server
-        private void transmitMessage(Message messageObj) {
+        // Transmits a transmittable object to the server
+        private void transmitTransmittable(Transmittable transmittableObj) {
 
             try {
-                ClientManager.this.outputStream.writeObject(messageObj);
+                ClientManager.this.outputStream.writeObject(transmittableObj);
             } catch (IOException e) {
                 InterfaceManager.displayError(e, "Message send failed.");
             }
