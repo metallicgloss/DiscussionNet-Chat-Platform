@@ -5,9 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,6 +40,7 @@ import org.apache.commons.validator.routines.InetAddressValidator;
 import org.apache.commons.validator.routines.IntegerValidator;
 import org.apache.commons.validator.routines.RegexValidator;
 import static javax.swing.JOptionPane.showMessageDialog;
+
 import work.universitycourse.comp1549.Interfaces.Licenses;
 import work.universitycourse.comp1549.Interfaces.StartUpInterface;
 
@@ -62,13 +67,12 @@ import work.universitycourse.comp1549.Interfaces.StartUpInterface;
 // #                   6 - Message Handlers                                    #
 // #                   7 - Input Validation Handlers                           #
 // #                   8 - Server Log Handler                                  #
+// #                   9 - Icon and Font Specification                         #
 // #                                                                           #
 // #---------------------------------------------------------------------------#
 
 @SuppressWarnings("serial")
 public class InterfaceManager {
-    // Define program icon.
-    public static ImageIcon programIcon = new ImageIcon(InterfaceManager.class.getResource("/icon.png"));
 
     // #-----------------------------------------------------------------------#
     // #                            1 - Exit Request                           #
@@ -82,7 +86,7 @@ public class InterfaceManager {
         }
     };
 
-    // Allow CTRL+C to exit GUI appliocation.
+    // Allow CTRL+C to exit GUI application.
     public static void detectExitRequest(JPanel currentWindow) {
         // Target input map of "C" and "CTRL" pressed at the same time.
         currentWindow.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK),
@@ -103,7 +107,7 @@ public class InterfaceManager {
         licenseWindow.setVisible(true);
     }
 
-    // Switch visibile window - close existing, open new.
+    // Switch visible window - close existing, open new.
     public static void changeWindow(JFrame currentWindow, JFrame targetWindow) {
         // Close current JFrame.
         currentWindow.dispose();
@@ -128,7 +132,7 @@ public class InterfaceManager {
         showMessageDialog(null, stackTrace + " " + errorMessage, "System Execution Error", JOptionPane.WARNING_MESSAGE);
     }
 
-    // Display a warning or software notication message to the user.
+    // Display a warning or software notification message to the user.
     public static void displayWarning(String warningMessage) {
         showMessageDialog(null, warningMessage, "Application Notification", JOptionPane.WARNING_MESSAGE);
     }
@@ -137,7 +141,7 @@ public class InterfaceManager {
     public static void executeConnectionFault() {
         // Display formatted message informing them of the network configuration error.
         showMessageDialog(null,
-                "<html><h2><b>Sorry!</b></h2><h3>A network related error occured. The connection could not be maintained.</h3>If in doubt, please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.",
+                "<html><h2><b>Sorry!</b></h2><h3>A network related error occurred. The connection could not be maintained.</h3>If in doubt, please review the network configuration for your device with a systems administrator before re-attempting the setup of this application.",
                 "Connection Intialisation Error", JOptionPane.WARNING_MESSAGE);
 
         // Due to the complexity of the error, instead of re-routing user back to startup, close program to allow for sysadmin intervention if required to identify available ip/port.
@@ -158,11 +162,11 @@ public class InterfaceManager {
     public static void buttonHover(JButton targetButton, Boolean buttonState, String buttonSize) {
         // If true, mouse is hovering over button.
         if (buttonState) {
-            targetButton.setIcon(new ImageIcon(
-                    InterfaceManager.class.getResource("/buttons/" + buttonSize + "-hover.png")));
-        } else {
             targetButton.setIcon(
-                    new ImageIcon(InterfaceManager.class.getResource("/buttons/" + buttonSize + ".png")));
+                    new ImageIcon(InterfaceManager.class.getResource("/imgs/buttons/" + buttonSize + "-hover.png")));
+        } else {
+            targetButton
+                    .setIcon(new ImageIcon(InterfaceManager.class.getResource("/imgs/buttons/" + buttonSize + ".png")));
         }
     }
 
@@ -194,7 +198,7 @@ public class InterfaceManager {
 
         // Create label to identify the channel.
         JLabel userIDLabel = new JLabel();
-        userIDLabel.setFont(new Font("Montserrat", 0, 18));
+        userIDLabel.setFont(InterfaceManager.montserratRegular.deriveFont(18.0f));
         userIDLabel.setText("Channel: " + userID);
         userIDLabel.setBorder(new CompoundBorder(userIDLabel.getBorder(), new EmptyBorder(10, 10, 10, 10)));
         messagePanel.add(userIDLabel);
@@ -302,7 +306,7 @@ public class InterfaceManager {
         }
 
         // Define message label - content can be HTML.
-        newMessage.setFont(new Font("Montserrat", 0, 12));
+        newMessage.setFont(montserratRegular.deriveFont(12.0f));
         newMessage.setText("<html><body style='width: 300px'><div style='text-align: " + messageAlignment + ";'><b>"
                 + userID + "</b> - " + messageTime + "<br/>" + messageContent + "</div></body></html>");
         newMessage.setBorder(new CompoundBorder(newMessage.getBorder(), new EmptyBorder(2, 10, 2, 10)));
@@ -376,4 +380,35 @@ public class InterfaceManager {
         model.addRow(new Object[] { sourceClient, destinationClient, requestType, requestPayload });
     }
 
+    // #-----------------------------------------------------------------------#
+    // #                    9 - Icon and Font Specification                    #
+    // #-----------------------------------------------------------------------#
+
+    // Define program icon.
+    public static ImageIcon programIcon = new ImageIcon(InterfaceManager.class.getResource("/imgs/icon.png"));
+
+    // Define light font.
+    public static Font montserratLight = generateFont("Montserrat-Light.ttf");
+
+    // Define regular font.
+    public static Font montserratRegular = generateFont("Montserrat-Regular.ttf");
+
+    // Define medium font.
+    public static Font montserratMedium = generateFont("Montserrat-Medium.ttf");
+
+    // Define bold font.
+    public static Font montserratSemiBold = generateFont("Montserrat-SemiBold.ttf");
+
+    private static Font generateFont(String fontName) {
+        try {
+            // Attempt generation of font from project file.
+            URL fontURL = InterfaceManager.class.getResource("/fonts/" + fontName);
+            Font generatedFont = Font.createFont(Font.TRUETYPE_FONT,
+                    new File(fontURL.getPath().replaceAll("%20", " ")));
+            return generatedFont;
+        } catch (IOException | FontFormatException e) {
+            // Font creation failed, default to times new roman to match coursework report.
+            return new Font("Times New Roman", 0, 15);
+        }
+    }
 }

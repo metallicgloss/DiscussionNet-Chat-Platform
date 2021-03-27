@@ -1,261 +1,236 @@
-
 package work.universitycourse.comp1549.Components;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import work.universitycourse.comp1549.Components.ClientInstruction.DataFormatException;
 import work.universitycourse.comp1549.Components.ClientInstruction.InstructionFormatException;
 import work.universitycourse.comp1549.Components.ClientInstruction.InstructionNotExistException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
+ *
  * @author Adnan Turan
  * @author Daniel Browne
  * @author Gabriel Netz
  * @author William Phillips
+ *
  */
 
+// #---------------------------------------------------------------------------#
+// #                                 Contents                                  #
+// #---------------------------------------------------------------------------#
+// #                                                                           #
+// #                             ClientInstruction                             #
+// #   Definitions, validations and exceptions for client sided instructions.  #
+// #                                                                           #
+// #     1 - Convert Instruction to String                                     #
+// #     2 - Generate Create Message Instruction String                        #
+// #     3 - Generate Become Coordinator Instruction String                    #
+// #     4 - Generate Revoke Coordinator Instruction String                    #
+// #     5 - Generate Establish Connection Instruction String                  #
+// #     6 - Generate Review Join Request Instruction String                   #
+// #     7 - Generate Reject Join Request Instruction String                   #
+// #     8 - Generate Accept Client Connection Instruction String              #
+// #     9 - Generate Update Client Information Cache Instruction String       #
+// #     10 - Generate Add Client to List Instruction String                   #
+// #     11 - Generate Notify Disconnected Instruction String                  #
+// #     12 - Generate Client Disconnected Instruction String                  #
+// #     13 - Generate Get Updated List Instruction String                     #
+// #     14 - Generate Client Accepted Instruction String                      #
+// #     15 - Generate Set Local Info List Instruction String                  #
+// #     16 - Generate Connection Rejected Coordinator Instruction String      #
+// #     17 - Generate New Coordinator Instruction String                      #
+// #                                                                           #
+// #---------------------------------------------------------------------------#
+
 public class ClientInstructionTest {
-    
+
     public ClientInstructionTest() {
     }
 
-    @org.junit.jupiter.api.BeforeAll
-    public static void setUpClass() throws Exception {
+    // #-----------------------------------------------------------------------#
+    // #                   1. Convert Instruction to String                    #
+    // #-----------------------------------------------------------------------#
+
+    @Test
+    // Test To String from any instruction.
+    public void testConvertInstructionToString()
+            throws InstructionNotExistException, InstructionFormatException, DataFormatException {
+        // Generate example become coordinator instruction.
+        ClientInstruction instruction = new ClientInstruction("2<SEPERATOR>BECOME COORDINATOR");
+
+        // Test to see if matches string.
+        assertEquals("2<SEPERATOR>BECOME COORDINATOR", instruction.convertInstructionToString());
     }
 
-    @org.junit.jupiter.api.AfterAll
-    public static void tearDownClass() throws Exception {
-    }
+    // #-----------------------------------------------------------------------#
+    // #             2. Generate Create Message Instruction String             #
+    // #-----------------------------------------------------------------------#
 
-    @org.junit.jupiter.api.BeforeEach
-    public void setUp() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterEach
-    public void tearDown() throws Exception {
-    }
-    
-    
-
-    /**
-     * Test of convertInstructionToString method, of class ClientInstruction.
-     * DONE
-     */
-    @org.junit.jupiter.api.Test
-    public void testConvertInstructionToString() {
-        System.out.println("convertInstructionToString");
-        ClientInstruction instance;
-        String expResult = "<MESSAGE>,<TEST_MESSAGE>";
-        String test = "message<separator>test_message";
-        try {
-            instance = new ClientInstruction(test);
-        } catch (InstructionNotExistException | InstructionFormatException | DataFormatException e) {
-            e.printStackTrace();
-        }
-        
-        // NOTE: Needs fixing, test not completed.
-        //String result = instance.convertInstructionToString();
-        //assertEquals(expResult, result);
-        
-    }
-
-    /**
-     * Test of createSendMessageInstructionString method, of class ClientInstruction.
-     * DONE
-     */
-    @org.junit.jupiter.api.Test
+    @Test
     public void testCreateSendMessageInstructionString() {
-        System.out.println("createSendMessageInstructionString");
-        String receiver = "COORDINATOR";
-        String message = "testmessage";
-        String expResult = Integer.toString(ClientInstruction.SEND_MESSAGE_INSTRUCTION_TYPE) + "<SEPERATOR>" + receiver + "::" + message;
-        
-        // NOTE: Needs fixing, test not completed.
-        //String result = ClientInstruction.createSendMessageInstructionString(receiver, message);
-        //assertEquals(expResult, result);
+        // Check function generates instruction as expected.
+        assertEquals("1<SEPERATOR>CLIENTB::Example Message::false",
+                ClientInstruction.createSendMessageInstructionString("CLIENTB", "Example Message", false));
     }
 
-    /**
-     * Test of createBecomeCoordinatorInstructionString method, of class ClientInstruction.
-     * DONE
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #           3. Generate Become Coordinator Instruction String           #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateBecomeCoordinatorInstructionString() {
-        System.out.println("createBecomeCoordinatorInstructionString");
-        String expResult = Integer.toString(ClientInstruction.BECOME_COORDINATOR_INSTRUCTION_TYPE) + "<SEPERATOR>BECOME COORDINATOR";
-        String result = ClientInstruction.createBecomeCoordinatorInstructionString();
-        assertEquals(expResult, result);
+        // Check function generates instruction as expected.
+        assertEquals("2<SEPERATOR>BECOME COORDINATOR", ClientInstruction.createBecomeCoordinatorInstructionString());
     }
 
-    /**
-     * Test of createRevokeCoordinatorInstructionString method, of class ClientInstruction.
-     * DONE
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #           4. Generate Revoke Coordinator Instruction String           #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateRevokeCoordinatorInstructionString() {
-        System.out.println("createRevokeCoordinatorInstructionString");
-        String expResult = Integer.toString(ClientInstruction.REVOKE_COORDINATOR_INSTRUCTION_TYPE) + "<SEPERATOR>REVOKE COORDINATOR";
-        String result = ClientInstruction.createRevokeCoordinatorInstructionString();
-        assertEquals(expResult, result);
+        // Check function generates instruction as expected.
+        assertEquals("3<SEPERATOR>REVOKE COORDINATOR", ClientInstruction.createRevokeCoordinatorInstructionString());
     }
 
-    /**
-     * Test of createEstablishConnectionInstructionString method, of class ClientInstruction.
-     * DONE
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #          5. Generate Establish Connection Instruction String          #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateEstablishConnectionInstructionString() {
-        System.out.println("createEstablishConnectionInstructionString");
-        String clientID = "ID";
-        String expResult = Integer.toString(ClientInstruction.ESTABLISH_CONNECTION_INSTRUCTION_TYPE) + "<SEPERATOR>" + clientID;
-        String result = ClientInstruction.createEstablishConnectionInstructionString(clientID);
-        assertEquals(expResult, result);
+        // Check function generates instruction as expected.
+        assertEquals("4<SEPERATOR>CLIENTA", ClientInstruction.createEstablishConnectionInstructionString("CLIENTA"));
     }
 
-    /**
-     * Test of createReviewJoinRequestInstructionString method, of class ClientInstruction.
-     * DONE
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #          6. Generate Review Join Request Instruction String           #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateReviewJoinRequestInstructionString() {
-        System.out.println("createReviewJoinRequestInstructionString");
-        String tempID = "123";
-        String clientID = "12";
-        String clientIP = "192.168.1.0";
-        int clientPort = 0;
-        String expResult = Integer.toString(ClientInstruction.REVIEW_JOIN_REQUEST_INSTRUCTION_TYPE) + "<SEPERATOR>" + tempID + "::" + clientID + "::" + clientIP + "::" + Integer.toString(clientPort);
-        String result = ClientInstruction.createReviewJoinRequestInstructionString(tempID, clientID, clientIP, clientPort);
-        assertEquals(expResult, result);
+        // Check function generates instruction as expected.
+        assertEquals("5<SEPERATOR>TEMPID::CLIENTA::127.0.0.1::9091",
+                ClientInstruction.createReviewJoinRequestInstructionString("TEMPID", "CLIENTA", "127.0.0.1", 9091));
     }
 
-    
-    /**
-     * Test of createRejectJoinRequestInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
-    public void testCreateRejectJoinRequestInstructionString() {
-        System.out.println("createRejectJoinRequestInstructionString");
-        String tempID = "";
-        String expResult = "";
-        String result = ClientInstruction.createRejectJoinRequestInstructionString(tempID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    // #-----------------------------------------------------------------------#
+    // #          7. Generate Reject Join Request Instruction String           #
+    // #-----------------------------------------------------------------------#
+
+    @Test
+    public void createRejectJoinRequestInstructionString() {
+        // Check function generates instruction as expected.
+        assertEquals("6<SEPERATOR>TEMPID", ClientInstruction.createRejectJoinRequestInstructionString("TEMPID"));
     }
 
-    /**
-     * Test of createAcceptClientConnectionInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #        8. Generate Accept Client Connection Instruction String        #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateAcceptClientConnectionInstructionString() {
-        System.out.println("createAcceptClientConnectionInstructionString");
-        String tempID = "";
-        String clientID = "";
-        String expResult = "";
-        String result = ClientInstruction.createAcceptClientConnectionInstructionString(tempID, clientID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("7<SEPERATOR>TEMPID::CLIENTA",
+                ClientInstruction.createAcceptClientConnectionInstructionString("TEMPID", "CLIENTA"));
     }
 
-    /**
-     * Test of createUpdateClientInfosServerCacheInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #     9. Generate Update Client Information Cache Instruction String    #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateUpdateClientInfosServerCacheInstructionString() {
-        System.out.println("createUpdateClientInfosServerCacheInstructionString");
-        String clientInfosListString = "";
-        String expResult = "";
-        String result = ClientInstruction.createUpdateClientInfosServerCacheInstructionString(clientInfosListString);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("8<SEPERATOR>STRINGHERE",
+                ClientInstruction.createUpdateClientInfosServerCacheInstructionString("STRINGHERE"));
     }
 
-    /**
-     * Test of createAddClientInfoToLocalListInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #           10. Generate Add Client to List Instruction String          #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateAddClientInfoToLocalListInstructionString() {
-        System.out.println("createAddClientInfoToLocalListInstructionString");
-        String clientID = "";
-        String clientIP = "";
-        int clientPort = 0;
-        String expResult = "";
-        String result = ClientInstruction.createAddClientInfoToLocalListInstructionString(clientID, clientIP, clientPort);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("9<SEPERATOR>CLIENTA::127.0.0.1::9091",
+                ClientInstruction.createAddClientInfoToLocalListInstructionString("CLIENTA", "127.0.0.1", 9091));
     }
 
-    /**
-     * Test of createNotifyClientDisconnectedInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #          11. Generate Notify Disconnected Instruction String          #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateNotifyClientDisconnectedInstructionString() {
-        System.out.println("createNotifyClientDisconnectedInstructionString");
-        String clientID = "";
-        String expResult = "";
-        String result = ClientInstruction.createNotifyClientDisconnectedInstructionString(clientID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("10<SEPERATOR>CLIENTA",
+                ClientInstruction.createNotifyClientDisconnectedInstructionString("CLIENTA"));
     }
 
-    /**
-     * Test of createClientDisconnectedInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #          12. Generate Client Disconnected Instruction String          #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateClientDisconnectedInstructionString() {
-        System.out.println("createClientDisconnectedInstructionString");
-        String clientID = "";
-        String expResult = "";
-        String result = ClientInstruction.createClientDisconnectedInstructionString(clientID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("11<SEPERATOR>CLIENTA", ClientInstruction.createClientDisconnectedInstructionString("CLIENTA"));
     }
 
-    /**
-     * Test of createGetUpdatedClientInfoListInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #           13. Generate Get Updated List Instruction String            #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateGetUpdatedClientInfoListInstructionString() {
-        System.out.println("createGetUpdatedClientInfoListInstructionString");
-        String senderID = "";
-        String expResult = "";
-        String result = ClientInstruction.createGetUpdatedClientInfoListInstructionString(senderID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("12<SEPERATOR>CLIENTB",
+                ClientInstruction.createGetUpdatedClientInfoListInstructionString("CLIENTB"));
     }
 
-    /**
-     * Test of createClientAcceptedInstructionString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #            14. Generate Client Accepted Instruction String            #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateClientAcceptedInstructionString() {
-        System.out.println("createClientAcceptedInstructionString");
-        String coordinatorID = "";
-        String expResult = "";
-        String result = ClientInstruction.createClientAcceptedInstructionString(coordinatorID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("13<SEPERATOR>COORDINATOR",
+                ClientInstruction.createClientAcceptedInstructionString("COORDINATOR"));
     }
 
-    /**
-     * Test of createSetLocalClientInfoListString method, of class ClientInstruction.
-     */
-    @org.junit.jupiter.api.Test
+    // #-----------------------------------------------------------------------#
+    // #          15. Generate Set Local Info List Instruction String          #
+    // #-----------------------------------------------------------------------#
+
+    @Test
     public void testCreateSetLocalClientInfoListString() {
-        System.out.println("createSetLocalClientInfoListString");
-        String allClientInfoString = "";
-        String expResult = "";
-        String result = ClientInstruction.createSetLocalClientInfoListString(allClientInfoString);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Check function generates instruction as expected.
+        assertEquals("14<SEPERATOR>STRINGHERE", ClientInstruction.createSetLocalClientInfoListString("STRINGHERE"));
     }
-    
+
+    // #-----------------------------------------------------------------------#
+    // #    16. Generate Connection Rejected Coordinator Instruction String    #
+    // #-----------------------------------------------------------------------#
+
+    @Test
+    public void testCreateConnectionRejectedByCoordinatorInstructionString() {
+        // Check function generates instruction as expected.
+        assertEquals("15<SEPERATOR>Example Message",
+                ClientInstruction.createConnectionRejectedByCoordinatorInstructionString("Example Message"));
+    }
+
+    // #-----------------------------------------------------------------------#
+    // #            17. Generate New Coordinator Instruction String            #
+    // #-----------------------------------------------------------------------#
+
+    @Test
+    public void testCreateNotifyOthersOfNewCoordinatorInstructionString() {
+        // Check function generates instruction as expected.
+        assertEquals("16<SEPERATOR>COORDINATOR",
+                ClientInstruction.createNotifyOthersOfNewCoordinatorInstructionString("COORDINATOR"));
+    }
+
 }

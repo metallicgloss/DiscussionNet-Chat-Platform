@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.EventQueue;
-import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -70,8 +69,9 @@ public class StartUpInterface extends JFrame {
         setResizable(false);
         setTitle("DiscussionNet V1.0 ");
 
-        // Window panel.
         InterfaceManager.detectExitRequest(startUpInterfacePanel);
+
+        // Window panel.
         startUpInterfacePanel.setBackground(new Color(255, 255, 255));
         startUpInterfacePanel.setLayout(null);
         startUpInterfacePanel.setMaximumSize(new Dimension(847, 519));
@@ -81,13 +81,13 @@ public class StartUpInterface extends JFrame {
 
         // Apply settings to the startup interface graphic.
         mainImage.setBounds(298, 51, 260, 200);
-        mainImage.setIcon(new ImageIcon(getClass().getResource("/graphics/welcome_image.png")));
+        mainImage.setIcon(new ImageIcon(getClass().getResource("/imgs/graphics/welcome_image.png")));
         mainImage.setName("mainImage");
         startUpInterfacePanel.add(mainImage);
 
         // Apply settings to first title label (standard text) label.
         titleLabel1.setBounds(190, 269, 152, 30);
-        titleLabel1.setFont(new Font("Montserrat", 0, 24));
+        titleLabel1.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         titleLabel1.setForeground(new Color(47, 46, 65));
         titleLabel1.setName("titleLabel1");
         titleLabel1.setText("Welcome To");
@@ -95,7 +95,7 @@ public class StartUpInterface extends JFrame {
 
         // Apply settings to second title label (blue bold) label.
         titleLabel2.setBounds(348, 269, 175, 30);
-        titleLabel2.setFont(new Font("Montserrat SemiBold", 0, 24));
+        titleLabel2.setFont(InterfaceManager.montserratSemiBold.deriveFont(23.0f));
         titleLabel2.setForeground(new Color(0, 36, 109));
         titleLabel2.setName("titleLabel2");
         titleLabel2.setText("DiscussionNet");
@@ -103,7 +103,7 @@ public class StartUpInterface extends JFrame {
 
         // Apply settings to third title label (standard text) label.
         titleLabel3.setBounds(529, 269, 143, 30);
-        titleLabel3.setFont(new Font("Montserrat", 0, 24));
+        titleLabel3.setFont(InterfaceManager.montserratRegular.deriveFont(23.0f));
         titleLabel3.setForeground(new Color(47, 46, 65));
         titleLabel3.setName("titleLabel3");
         titleLabel3.setText("Initial Setup");
@@ -111,7 +111,7 @@ public class StartUpInterface extends JFrame {
 
         // Apply settings to the "Existing Network" label.
         existingNetworkLabel.setBounds(102, 350, 269, 17);
-        existingNetworkLabel.setFont(new Font("Montserrat", 0, 13));
+        existingNetworkLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         existingNetworkLabel.setForeground(new Color(47, 46, 65));
         existingNetworkLabel.setName("existingNetworkLabel");
         existingNetworkLabel.setText("I want to connect to an existing network...");
@@ -119,7 +119,7 @@ public class StartUpInterface extends JFrame {
 
         // Apply settings to the "Create Network" label.
         createNetworkLabel.setBounds(506, 350, 208, 17);
-        createNetworkLabel.setFont(new Font("Montserrat", 0, 13));
+        createNetworkLabel.setFont(InterfaceManager.montserratRegular.deriveFont(13.0f));
         createNetworkLabel.setForeground(new Color(47, 46, 65));
         createNetworkLabel.setName("createNetworkLabel");
         createNetworkLabel.setText("I want to create a new network...");
@@ -132,10 +132,10 @@ public class StartUpInterface extends JFrame {
         configureServerButton.setBounds(428, 373, 367, 69);
         configureServerButton.setContentAreaFilled(false);
         configureServerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        configureServerButton.setFont(new Font("Montserrat", 0, 15));
+        configureServerButton.setFont(InterfaceManager.montserratRegular.deriveFont(15.0f));
         configureServerButton.setForeground(new Color(255, 255, 255));
         configureServerButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        configureServerButton.setIcon(new ImageIcon(getClass().getResource("/buttons/medium.png")));
+        configureServerButton.setIcon(new ImageIcon(getClass().getResource("/imgs/buttons/medium.png")));
         configureServerButton.setName("configureServerButton");
         configureServerButton.setText("Configure Server");
 
@@ -164,10 +164,10 @@ public class StartUpInterface extends JFrame {
         configureClientButton.setBounds(43, 373, 367, 69);
         configureClientButton.setContentAreaFilled(false);
         configureClientButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        configureClientButton.setFont(new Font("Montserrat", 0, 15));
+        configureClientButton.setFont(InterfaceManager.montserratRegular.deriveFont(15.0f));
         configureClientButton.setForeground(new Color(255, 255, 255));
         configureClientButton.setHorizontalTextPosition(SwingConstants.CENTER);
-        configureClientButton.setIcon(new ImageIcon(getClass().getResource("/buttons/medium.png")));
+        configureClientButton.setIcon(new ImageIcon(getClass().getResource("/imgs/buttons/medium.png")));
         configureClientButton.setName("configureClientButton");
         configureClientButton.setText("Configure Client");
 
@@ -191,7 +191,7 @@ public class StartUpInterface extends JFrame {
 
         // Apply settings to the footer label text.
         footerTextLabel.setBounds(285, 507, 189, 12);
-        footerTextLabel.setFont(new Font("Montserrat", 0, 9));
+        footerTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerTextLabel.setForeground(new Color(47, 46, 65));
         footerTextLabel.setName("footerTextLabel");
         footerTextLabel.setText("DiscussionNet V1.0   -   © Code Squad 2021   -");
@@ -200,7 +200,7 @@ public class StartUpInterface extends JFrame {
         // Apply settings and action to the footer display label.
         footerLicensesTextLabel.setBounds(480, 507, 80, 12);
         footerLicensesTextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        footerLicensesTextLabel.setFont(new Font("Montserrat", 2, 9));
+        footerLicensesTextLabel.setFont(InterfaceManager.montserratRegular.deriveFont(9.0f));
         footerLicensesTextLabel.setForeground(new Color(47, 46, 65));
         footerLicensesTextLabel.setName("footerLicensesTextLabel");
         footerLicensesTextLabel.setText("Software Licenses");
